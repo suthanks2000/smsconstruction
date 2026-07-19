@@ -159,11 +159,10 @@ export default function Journal() {
                     setSelectedCategory(cat);
                     setVisibleCount(3);
                   }}
-                  className={`px-5 py-2.5 rounded-full font-sans text-[14px] font-medium transition-all border ${
-                    selectedCategory === cat
+                  className={`px-5 py-2.5 rounded-full font-sans text-[14px] font-medium transition-all border ${selectedCategory === cat
                       ? "bg-[#1D1C19] border-[#1D1C19] text-white shadow-sm"
                       : "bg-[#F2EDE3] border-[#E7E0D4] text-[#68645D] hover:border-[#795825] hover:text-[#795825]"
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
@@ -213,9 +212,8 @@ export default function Journal() {
                 .map((art, idx) => (
                   <article
                     key={art.id}
-                    className={`group cursor-pointer flex flex-col justify-between ${
-                      idx % 2 === 1 ? "md:translate-y-8" : ""
-                    }`}
+                    className={`group cursor-pointer flex flex-col justify-between ${idx % 2 === 1 ? "md:translate-y-8" : ""
+                      }`}
                   >
                     <div className="relative overflow-hidden rounded-[28px] aspect-[4/5] mb-6 shadow-sm">
                       <Image

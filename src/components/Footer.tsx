@@ -1,67 +1,118 @@
 "use client";
 
+import Link from "next/link";
+
 export default function Footer() {
-  const services = ["Home Interiors", "Turnkey Interiors", "Residential Construction", "Commercial Construction", "Renovation"];
-  const company = ["About Us", "Projects", "Studio", "Journal", "Contact"];
+  const services = [
+    { name: "Luxury Home Interiors", href: "/interior-design" },
+    { name: "Turnkey Interiors", href: "/interior-design" },
+    { name: "Residential Construction", href: "/construction" },
+    { name: "Commercial Construction", href: "/construction" },
+    { name: "Architectural Renovation", href: "/construction" },
+  ];
+
+  const quickLinks = [
+    { name: "About SMS", href: "/about-us" },
+    { name: "Featured Projects", href: "/projects" },
+    { name: "Design Journal", href: "/journal" },
+    { name: "Contact Studio", href: "/contact" },
+  ];
 
   return (
-    <footer className="bg-[#1F1F1F] text-white">
-      <div className="px-6 md:px-16 py-16 md:py-24 max-w-[1440px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-16 border-b border-white/10">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <h3 className="font-serif text-[28px] md:text-[36px] text-white tracking-tight mb-4">
-              SMS Construction
-            </h3>
-            <p className="text-[#8A8A8A] text-[14px] leading-relaxed max-w-sm">
-              Premier Interior Design &amp; Construction Company in Nagercoil, Kanyakumari District.
-              Blending architectural rigor with organic warmth since 2009.
+    <footer className="bg-[#1D1C19] text-white pt-16 md:pt-20 pb-24 md:pb-12 border-t border-[#E7E0D4]/10">
+      <div className="container-custom">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 md:pb-16 border-b border-white/10">
+          {/* Brand & Location (5 cols) */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-[12px] bg-[#B08A52] flex items-center justify-center">
+                <span className="material-symbols-outlined text-white text-[22px] font-light">
+                  architecture
+                </span>
+              </div>
+              <h3 className="font-serif text-[24px] md:text-[26px] font-bold text-white tracking-tight">
+                SMS Construction
+              </h3>
+            </div>
+            <p className="text-[#68645D] text-[15px] md:text-[16px] leading-relaxed max-w-md">
+              Premier Interior Design &amp; Architectural Construction Studio based in Nagercoil, Tamil Nadu.
+              Crafting bespoke luxury homes, turnkey interiors, and architectural landmarks across Kanyakumari District.
             </p>
+            <div className="flex items-center gap-2 text-[#B08A52] text-[14px] md:text-[15px] pt-1">
+              <span className="material-symbols-outlined text-[18px]">location_on</span>
+              <span>Nagercoil, Kanyakumari District, Tamil Nadu</span>
+            </div>
           </div>
 
-          {/* Services */}
-          <div>
-            <div className="text-label-caps text-[#e3c381] mb-6">Services</div>
-            <ul className="space-y-3">
+          {/* Services (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
+            <div className="text-section-label text-[#B08A52]">Our Services</div>
+            <ul className="space-y-1">
               {services.map((s) => (
-                <li key={s}>
-                  <a href="#" className="text-[#8A8A8A] text-[13px] hover:text-white transition-colors">
-                    {s}
-                  </a>
+                <li key={s.name}>
+                  <Link
+                    href={s.href}
+                    className="min-h-[44px] text-[#68645D] hover:text-white text-[15px] transition-colors duration-300 flex items-center gap-2 group touch-target"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#B08A52] opacity-60 group-hover:opacity-100 transition-opacity" />
+                    <span>{s.name}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company */}
-          <div>
-            <div className="text-label-caps text-[#e3c381] mb-6">Company</div>
-            <ul className="space-y-3">
-              {company.map((c) => (
-                <li key={c}>
-                  <a href="#" className="text-[#8A8A8A] text-[13px] hover:text-white transition-colors">
-                    {c}
-                  </a>
+          {/* Quick Links (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <div className="text-section-label text-[#B08A52]">Navigation</div>
+            <ul className="space-y-1">
+              {quickLinks.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="min-h-[44px] text-[#68645D] hover:text-white text-[15px] transition-colors duration-300 flex items-center gap-2 group touch-target"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#B08A52] opacity-60 group-hover:opacity-100 transition-opacity" />
+                    <span>{item.name}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Direct Contact (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <div className="text-section-label text-[#B08A52]">Connect</div>
+            <div className="space-y-3 text-[15px] text-[#68645D]">
+              <p>
+                <a href="tel:+919443123456" className="hover:text-[#B08A52] transition-colors inline-flex items-center min-h-[44px] touch-target">
+                  +91 94431 23456
+                </a>
+              </p>
+              <p>
+                <a href="mailto:info@smsconstruction.in" className="hover:text-[#B08A52] transition-colors inline-flex items-center min-h-[44px] touch-target">
+                  info@smsconstruction.in
+                </a>
+              </p>
+              <div className="pt-1 flex gap-4 text-[#B08A52]">
+                {["Instagram", "WhatsApp", "LinkedIn"].map((platform) => (
+                  <a key={platform} href="#" className="hover:text-white text-[14px] min-h-[44px] inline-flex items-center touch-target">
+                    {platform}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-label-caps text-[#8A8A8A]">
-            © 2026 SMS Construction. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[14px] text-[#68645D] text-center md:text-left">
+          <div>
+            © {new Date().getFullYear()} SMS Construction. All rights reserved. Architectural Interior &amp; Construction Studio, Nagercoil.
           </div>
           <div className="flex gap-6">
-            {["Instagram", "LinkedIn", "Privacy", "Terms"].map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="text-[#8A8A8A] text-[12px] hover:text-[#e3c381] transition-colors"
-              >
-                {link}
-              </a>
-            ))}
+            <a href="#" className="hover:text-white transition-colors min-h-[44px] inline-flex items-center touch-target">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors min-h-[44px] inline-flex items-center touch-target">Terms of Service</a>
           </div>
         </div>
       </div>

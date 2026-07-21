@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 /* ─── Mock Data ───────────────────────────────────────── */
@@ -81,7 +80,6 @@ const areasWeServe = [
 export default function AboutUs() {
   return (
     <>
-      <Navbar />
 
       {/* ── 1. Hero Section ──────────────────────────────── */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">

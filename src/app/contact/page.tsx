@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 /* ─── Mock Data ───────────────────────────────────────── */
@@ -79,7 +78,6 @@ export default function Contact() {
 
   return (
     <>
-      <Navbar />
 
       {/* ── Header / Hero ─────────────────────────────────── */}
       <header className="relative pt-32 md:pt-48 pb-20 md:pb-32 px-6 md:px-20 w-full max-w-[1440px] mx-auto">

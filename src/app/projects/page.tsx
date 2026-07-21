@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 /* ─── Types & Mock Data ───────────────────────────────── */
@@ -296,7 +295,6 @@ export default function Projects() {
 
   return (
     <>
-      <Navbar />
 
       {selectedProject ? (
         /* ────────────────────────────────────────────────────────── */

@@ -6,15 +6,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const phoneNumber = "+1234567890";
 
   const links = [
     { name: "Home", href: "/" },
@@ -26,49 +23,80 @@ export default function Navbar() {
     { name: "Contact", href: "/contact" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 px-4 sm:px-6 md:px-12 lg:px-16 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#FAF8F3]/95 border-b border-[#E7E0D4]/60 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.03)] py-4"
-          : "bg-transparent border-b border-transparent py-6 md:py-8"
+          ? "bg-[#FAF8F3]/80 backdrop-blur-md border-b border-[#E7E0D4]/60 shadow-sm py-4"
+          : "bg-transparent py-6 md:py-8"
       }`}
     >
-      <div className="flex justify-between items-center w-full mx-auto max-w-[1440px]">
-        {/* Left: Luxury Logo & Company Name */}
-        <Link 
-          href="/" 
-          className="flex items-center gap-3 md:gap-4 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52] rounded-lg"
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-16">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="group flex items-center gap-4 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52]"
         >
-          <div className="relative w-10 h-10 md:w-11 md:h-11 flex items-center justify-center overflow-hidden rounded-lg bg-[#FAF8F3] border border-[#E7E0D4]/80 shadow-sm group-hover:shadow group-hover:border-[#B08A52]/30 group-hover:scale-105 transition-all duration-300">
+          <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-[#E7E0D4] bg-[#FAF8F3] shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:border-[#B08A52]/40">
             <Image
               src="/logo.png"
               alt="SMS Construction Logo"
-              width={44}
-              height={44}
-              className="object-contain w-full h-full p-1"
+              fill
               priority
-              quality={100}
+              className="object-contain p-1"
             />
           </div>
-          <span className="font-serif text-[18px] sm:text-[20px] md:text-[23px] font-bold tracking-tight text-[#171714] leading-none transition-colors group-hover:text-[#B08A52]">
+
+          <span className="font-serif text-[20px] font-bold tracking-tight text-[#171714] transition-colors duration-300 group-hover:text-[#B08A52]">
             SMS Construction
           </span>
         </Link>
 
-        {/* Center: Navigation Links */}
-        <div className="hidden lg:flex gap-7 xl:gap-9 items-center">
+        {/* Desktop Navigation */}
+
+        <div className="hidden lg:flex items-center gap-9">
           {links.map((link) => {
-            const isActive = pathname === link.href;
+            const active = pathname === link.href;
+
             return (
               <Link
-                key={link.name}
+                key={link.href}
                 href={link.href}
-                className={`font-sans text-[15px] font-medium tracking-wide transition-all duration-300 relative py-1 focus:outline-none focus-visible:text-[#B08A52] ${
-                  isActive
-                    ? "text-[#B08A52] font-semibold after:w-full"
-                    : "text-[#68645D] hover:text-[#B08A52] after:w-0"
-                } after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-[#B08A52] hover:after:w-full after:transition-all after:duration-300`}
+                className={`relative py-1 text-[15px] font-medium transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-[#B08A52] after:transition-all after:duration-300 ${
+                  active
+                    ? "text-[#B08A52] after:w-full"
+                    : "text-[#68645D] hover:text-[#B08A52] after:w-0 hover:after:w-full"
+                }`}
               >
                 {link.name}
               </Link>
@@ -76,63 +104,76 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Right: Rounded Gold Contact Button */}
+        {/* Desktop CTA */}
+
         <a
-          href="tel:+1234567890"
-          className="hidden md:flex bg-[#B08A52] text-white font-sans font-semibold text-[14px] md:text-[15px] px-6 py-3 rounded-full hover:bg-[#80633D] transition-all duration-300 shadow-[0_4px_18px_rgba(176,138,82,0.15)] hover:shadow-[0_6px_22px_rgba(176,138,82,0.25)] hover:-translate-y-0.5 items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52] focus-visible:ring-offset-2"
+          href={`tel:${phoneNumber}`}
+          className="hidden lg:flex items-center gap-2 rounded-full bg-[#B08A52] px-6 py-3 text-[15px] font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#80633D]"
         >
-          <span className="material-symbols-outlined text-[18px] font-light">phone</span>
-          <span>Contact Us</span>
+          <span className="material-symbols-outlined text-[18px]">
+            phone
+          </span>
+
+          Contact Us
         </a>
 
         {/* Mobile Toggle */}
+
         <button
-          className="lg:hidden text-[#171714] p-2.5 hover:bg-[#F2EDE3] rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52] touch-target"
-          onClick={() => setMenuOpen(!menuOpen)}
+          type="button"
+          aria-label={menuOpen ? "Close Menu" : "Open Menu"}
           aria-expanded={menuOpen}
-          aria-label={menuOpen ? "Close main menu" : "Open main menu"}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          className="flex h-11 w-11 items-center justify-center rounded-full text-[#171714] transition hover:bg-[#F2EDE3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52] lg:hidden"
         >
-          <span className="material-symbols-outlined" style={{ fontSize: 26 }}>
+          <span className="material-symbols-outlined text-[30px]">
             {menuOpen ? "close" : "menu"}
           </span>
         </button>
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-[#FAF8F3]/98 border-t border-[#E7E0D4]/60 px-6 py-6 flex flex-col gap-3 shadow-[0_12px_30px_rgba(0,0,0,0.06)] backdrop-blur-md animate-fade-in">
-          {links.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`font-sans text-[15px] transition-all duration-200 py-2.5 px-3 rounded-lg border-l-2 flex items-center justify-between ${
-                  isActive
-                    ? "text-[#B08A52] font-semibold bg-[#F2EDE3]/50 border-[#B08A52]"
-                    : "text-[#68645D] hover:text-[#B08A52] hover:bg-[#F2EDE3]/30 border-transparent"
-                }`}
-                onClick={() => setMenuOpen(false)}
-              >
-                <span>{link.name}</span>
-                {isActive && (
-                  <span className="material-symbols-outlined text-[16px] text-[#B08A52]">
-                    chevron_right
-                  </span>
-                )}
-              </Link>
-            );
-          })}
-          <a
-            href="tel:+1234567890"
-            className="mt-3 bg-[#B08A52] text-white font-sans font-semibold text-[15px] py-3.5 rounded-full w-full flex items-center justify-center gap-2 hover:bg-[#80633D] transition-colors shadow-[0_4px_15px_rgba(176,138,82,0.15)] touch-target"
-            onClick={() => setMenuOpen(false)}
-          >
-            <span className="material-symbols-outlined text-[18px]">phone</span>
-            Contact Us
-          </a>
+
+      <div
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${
+          menuOpen
+            ? "max-h-[700px] opacity-100"
+            : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="border-t border-[#E7E0D4]/60 bg-[#FAF8F3]/95 px-6 py-6 backdrop-blur-md">
+          <div className="flex flex-col gap-2">
+            {links.map((link) => {
+              const active = pathname === link.href;
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`rounded-lg px-4 py-3 transition ${
+                    active
+                      ? "border-l-2 border-[#B08A52] bg-[#F2EDE3] font-semibold text-[#B08A52]"
+                      : "text-[#68645D] hover:bg-[#F2EDE3]"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+
+            <a
+              href={`tel:${phoneNumber}`}
+              className="mt-4 flex items-center justify-center gap-2 rounded-full bg-[#B08A52] py-3 font-semibold text-white transition hover:bg-[#80633D]"
+            >
+              <span className="material-symbols-outlined">
+                phone
+              </span>
+
+              Contact Us
+            </a>
+          </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

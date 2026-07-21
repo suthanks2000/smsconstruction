@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 /* ─── Mock Data ───────────────────────────────────────── */
@@ -109,7 +108,6 @@ export default function Journal() {
 
   return (
     <>
-      <Navbar />
 
       {/* ── Hero / Header ────────────────────────────────── */}
       <header className="pt-32 pb-20 md:pt-48 md:pb-32 px-6 md:px-20 max-w-[1440px] mx-auto">

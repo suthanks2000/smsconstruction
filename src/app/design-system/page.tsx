@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
@@ -56,7 +54,6 @@ export default function DesignSystemPage() {
 
   return (
     <div className="min-h-screen bg-[#FAF8F3] text-[#171714] font-sans">
-      <Navbar />
 
       {/* Header Banner */}
       <header className="pt-36 md:pt-40 pb-16 md:pb-20 bg-[#F2EDE3] border-b border-[#E7E0D4]">

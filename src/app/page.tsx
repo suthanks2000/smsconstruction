@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 /* ─── Hero ────────────────────────────────────────────────── */
 function Hero() {
   return (
-    <header className="relative min-h-screen w-full flex items-center justify-center pt-32 pb-24 px-6 md:px-16 overflow-hidden">
+    <header className="relative flex min-h-[720px] w-full items-center justify-center overflow-hidden px-6 pb-24 pt-32 md:px-16">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -20,27 +19,28 @@ function Hero() {
           sizes="100vw"
         />
         {/* Soft white gradient overlay (15–20%) from left to right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 via-white/40 to-transparent opacity-95" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/68 via-[#171714]/28 to-[#171714]/10" />
       </div>
 
       {/* Split-feel container */}
-      <div className="relative z-10 w-full mx-auto max-w-[1440px] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[70vh]">
+      <div className="relative z-10 mx-auto grid min-h-[66vh] w-full max-w-[1280px] grid-cols-1 items-center gap-8 lg:grid-cols-12">
         {/* 45% Left Content (6/12 cols) */}
-        <div className="col-span-1 lg:col-span-6 flex flex-col justify-center text-left max-w-xl animate-fade-up">
-          <h1 className="text-display-hero uppercase text-[#1F1F1F] font-bold tracking-tight leading-[0.95] mb-8">
+        <div className="col-span-1 flex max-w-2xl flex-col justify-center rounded-[2rem] p-7 text-left animate-fade-up sm:p-10 lg:col-span-7 lg:p-12">
+          <p className="mb-6 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#e3c381]">Nagercoil&apos;s design &amp; build studio</p>
+          <h1 className="font-serif text-[clamp(3.2rem,7vw,7.25rem)] font-bold uppercase leading-[0.86] tracking-[-0.055em] text-white mb-8">
             DESIGN.<br />
             BUILD.<br />
             <span className="text-[#C89A47]">COMPLETE.</span>
           </h1>
 
-          <div className="space-y-3 border-l-2 border-[#C89A47] pl-6 mb-10">
-            <p className="font-sans text-[24px] font-normal text-[#1F1F1F] leading-tight">
+          <div className="mb-10 space-y-3 border-l-2 border-[#e3c381] pl-5">
+            <p className="font-sans text-[17px] font-medium text-white/90 leading-tight sm:text-[20px]">
               Interior Design &amp; Construction
             </p>
-            <p className="font-sans text-[24px] font-normal text-[#1F1F1F] leading-tight">
+            <p className="font-sans text-[17px] font-medium text-white/90 leading-tight sm:text-[20px]">
               Luxury Living Spaces
             </p>
-            <p className="font-sans text-[24px] font-normal text-[#1F1F1F] leading-tight">
+            <p className="font-sans text-[17px] font-medium text-white/90 leading-tight sm:text-[20px]">
               Modern Architecture Solutions
             </p>
           </div>
@@ -76,7 +76,7 @@ function Hero() {
         >
           <path
             d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86C228.32,67.22,154.38,38.64,83.36,22.81,55.05,16.48,26.9,8.75,0,0V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-            fill="#F8F4EE"
+            fill="#FAF8F3"
           />
         </svg>
       </div>
@@ -94,12 +94,12 @@ function TrustStats() {
   ];
 
   return (
-    <section className="py-24 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE] relative z-30">
+    <section className="relative z-30 mx-auto -mt-2 max-w-[1280px] px-6 py-12 md:px-10 md:py-16">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="bg-white rounded-[24px] p-8 border border-[#E7E0D4]/30 shadow-[0_15px_40px_rgba(0,0,0,0.03)] flex flex-col items-start hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 animate-fade-up"
+            className="rounded-[20px] border border-[#E7E0D4] bg-white p-7 shadow-[0_12px_35px_rgba(23,23,20,0.045)] flex flex-col items-start hover:shadow-[0_20px_45px_rgba(23,23,20,0.08)] hover:-translate-y-1 transition-all duration-300 animate-fade-up"
           >
             {/* Gold Outline Icon */}
             <div className="w-12 h-12 rounded-full border border-[#C89A47]/40 flex items-center justify-center text-[#C89A47] mb-6">
@@ -627,8 +627,7 @@ function FinalCTA() {
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <main>
+      <main className="home-page bg-[#FAF8F3]">
         <Hero />
         <TrustStats />
         <Services />
@@ -640,6 +639,45 @@ export default function Home() {
         <FAQ />
         <FinalCTA />
       </main>
+      <style>{`
+        .home-page .text-label-caps {
+          font-size: 0.69rem;
+          font-weight: 700;
+          letter-spacing: 0.18em;
+          line-height: 1.2;
+          text-transform: uppercase;
+        }
+        .home-page .text-headline-xl {
+          font-family: "Playfair Display", Georgia, serif;
+          font-size: clamp(2.4rem, 4.3vw, 4.5rem);
+          font-weight: 700;
+          letter-spacing: -0.045em;
+          line-height: 1.04;
+        }
+        .home-page .text-headline-md {
+          font-family: "Playfair Display", Georgia, serif;
+          font-size: clamp(1.5rem, 2vw, 2.25rem);
+          font-weight: 700;
+          letter-spacing: -0.03em;
+          line-height: 1.08;
+        }
+        .home-page .text-body-lg {
+          font-size: 1.0625rem;
+          line-height: 1.65;
+        }
+        @media (max-width: 767px) {
+          .home-page > section:not(:first-child) {
+            padding-top: 4.75rem;
+            padding-bottom: 4.75rem;
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .home-page *, .home-page *::before, .home-page *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+      `}</style>
       <Footer />
     </>
   );

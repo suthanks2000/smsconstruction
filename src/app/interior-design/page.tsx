@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 /* ─── Key Spaces grid ─────────────────────────────────── */
@@ -109,7 +108,6 @@ export default function InteriorDesign() {
 
   return (
     <>
-      <Navbar />
 
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-end pt-32 overflow-hidden">

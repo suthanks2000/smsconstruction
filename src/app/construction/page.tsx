@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 /* ─── Data ────────────────────────────────────────────── */
@@ -73,7 +72,6 @@ export default function ConstructionPage() {
 
   return (
     <>
-      <Navbar />
 
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">

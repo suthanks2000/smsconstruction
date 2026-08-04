@@ -11,7 +11,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const phoneNumber = "+1234567890";
+  const phoneNumber = "+919488021183";
 
   const links = [
     { name: "Home", href: "/" },

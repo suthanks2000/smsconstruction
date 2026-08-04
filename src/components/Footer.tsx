@@ -85,13 +85,13 @@ export default function Footer() {
             <div className="text-section-label text-[#B08A52]">Connect</div>
             <div className="space-y-3 text-[15px] text-[#68645D]">
               <p>
-                <a href="tel:+919443123456" className="hover:text-[#B08A52] transition-colors inline-flex items-center min-h-[44px] touch-target">
-                  +91 94431 23456
+                <a href="tel:+919488021183" className="hover:text-[#B08A52] transition-colors inline-flex items-center min-h-[44px] touch-target">
+                  +91 94880 21183
                 </a>
               </p>
               <p>
-                <a href="mailto:info@smsconstruction.in" className="hover:text-[#B08A52] transition-colors inline-flex items-center min-h-[44px] touch-target">
-                  info@smsconstruction.in
+                <a href="mailto:smsconstructionngl@gmail.com" className="hover:text-[#B08A52] transition-colors inline-flex items-center min-h-[44px] touch-target">
+                  smsconstructionngl@gmail.com
                 </a>
               </p>
               <div className="pt-1 flex gap-4 text-[#B08A52]">

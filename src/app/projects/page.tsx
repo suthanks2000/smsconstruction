@@ -313,7 +313,7 @@ export default function Projects() {
           </div>
 
           {/* Hero */}
-          <section className="relative w-full h-[60vh] md:h-[80vh] mb-16 overflow-hidden">
+          <section className="relative w-full h-[60vh] md:h-[80vh] mb-16 overflow-hidden" data-header-theme="dark">
             <Image
               src={selectedProject.img}
               alt={selectedProject.title}

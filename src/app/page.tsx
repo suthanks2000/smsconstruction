@@ -1,45 +1,110 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 /* ─── Hero ────────────────────────────────────────────────── */
 function Hero() {
+  const container = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ delay: 0.2 });
+
+      tl.fromTo(
+        ".gsap-heading",
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+      )
+        .fromTo(
+          ".gsap-subtitle",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.8, ease: "power2.out" },
+          "-=0.4"
+        )
+        .fromTo(
+          ".gsap-desc",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.8, ease: "power2.out" },
+          "-=0.6"
+        )
+        .fromTo(
+          ".gsap-button",
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+          "-=0.4"
+        );
+
+      gsap.fromTo(
+        ".gsap-hero-bg",
+        { scale: 1.05 },
+        {
+          scale: 1,
+          duration: 2.5,
+          ease: "power2.out",
+        }
+      );
+    }, container);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <header className="relative h-[100svh] min-h-[600px] w-full overflow-hidden">
+    <header ref={container} className="relative w-full pt-32 pb-32 md:pt-40 md:pb-40">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src="/hero.jpeg"
           alt="Luxury Construction & Interior Design Background"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-center gsap-hero-bg"
           sizes="100vw"
         />
 
         {/* Overlay - Restored to the elegant soft style */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/70 via-[#171714]/30 to-[#171714]/10" />
+
+        {/* Lively Animated Waves Effect */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 translate-y-[1px]">
+          <svg className="block w-full h-[40px] md:h-[60px] lg:h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <style>{`
+              .wave-anim { animation: wave 10s linear infinite; }
+              .wave-anim-fast { animation: wave 7s linear infinite; }
+              .wave-anim-slow { animation: wave 13s linear infinite; }
+              @keyframes wave {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-600px); }
+              }
+            `}</style>
+            <path className="wave-anim-slow fill-[#FAF8F3]" opacity="0.4" d="M 0 60 Q 150 120 300 60 T 600 60 Q 750 120 900 60 T 1200 60 Q 1350 120 1500 60 T 1800 60 L 1800 120 L 0 120 Z" />
+            <path className="wave-anim-fast fill-[#FAF8F3]" opacity="0.7" d="M 0 60 Q 150 0 300 60 T 600 60 Q 750 0 900 60 T 1200 60 Q 1350 0 1500 60 T 1800 60 L 1800 120 L 0 120 Z" />
+            <path className="wave-anim fill-[#FAF8F3]" d="M 0 80 Q 150 140 300 80 T 600 80 Q 750 140 900 80 T 1200 80 Q 1350 140 1500 80 T 1800 80 L 1800 120 L 0 120 Z" />
+          </svg>
+        </div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex h-full w-full max-w-[1280px] items-center px-6 sm:px-10 lg:px-16">
-        <div className="w-full lg:w-7/12 text-left mt-12 md:mt-20">
-          
-          <div className="animate-fade-up">
-            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#e3c381] sm:text-[12px]">
+        <div className="w-full lg:w-7/12 text-left -mt-8 md:-mt-9 ml-2 sm:ml-6 md:ml-10 lg:ml-16">
+
+          <div>
+            <p className="gsap-subtitle opacity-0 mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#e3c381] sm:text-[12px]">
               Nagercoil&apos;s Design &amp; Build Studio
             </p>
 
-            <h1 className="mb-6 font-serif text-[clamp(2.5rem,5vw,5.5rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em] text-white sm:mb-8">
+            <h1 className="gsap-heading opacity-0 mb-6 font-serif text-[clamp(2.5rem,5vw,5.5rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em] text-white sm:mb-8">
               DESIGN.<br />
               BUILD.<br />
               <span className="text-[#C89A47]">COMPLETE.</span>
             </h1>
           </div>
 
-          <div className="mb-8 space-y-2.5 border-l-[2px] border-[#e3c381] pl-5 sm:mb-10 sm:space-y-3 sm:pl-6 animate-fade-up" style={{ animationDelay: '0.15s' }}>
+          <div className="gsap-desc opacity-0 mb-8 space-y-2.5 border-l-[2px] border-[#e3c381] pl-5 sm:mb-10 sm:space-y-3 sm:pl-6">
             <p className="font-sans text-[15px] font-medium leading-tight text-white/90 sm:text-[18px]">
               Bespoke Interior Design &amp; Construction
             </p>
@@ -51,47 +116,60 @@ function Hero() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-4 sm:flex-row sm:gap-5 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+          <div className="gsap-button opacity-0 flex flex-col gap-4 sm:flex-row sm:gap-5">
+
+            {/* Explore Projects Button - Expanding Icon Animation */}
             <button
               className="
-                flex items-center justify-center gap-2
-                rounded-full bg-[#C89A47]
-                px-8 py-4
-                text-[15px] font-semibold text-white
-                shadow-[0_8px_20px_rgba(200,154,71,0.25)]
-                transition-all duration-300
-                hover:-translate-y-0.5 hover:bg-[#b08436]
+                group relative overflow-hidden
+                flex items-center p-1.5
+                w-[210px] h-[56px]
+                rounded-full bg-[#171714] border border-[#C89A47]/40
+                shadow-[0_8px_20px_rgba(0,0,0,0.3)]
+                transition-all duration-300 ease-out
+                hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(200,154,71,0.25)] hover:border-[#C89A47]
+                active:scale-95
               "
             >
-              <span>Explore Projects</span>
-              <span className="material-symbols-outlined text-[18px]">
-                arrow_forward
+              <div className="
+                flex items-center justify-center
+                w-[44px] h-[44px]
+                rounded-full bg-gradient-to-b from-[#e3c381] to-[#C89A47]
+                z-10 transition-all duration-300 ease-out
+                group-hover:w-[198px]
+              ">
+                <span className="material-symbols-outlined text-[20px] text-white">
+                  arrow_forward
+                </span>
+              </div>
+              <span className="
+                flex items-center justify-center
+                h-full w-[140px]
+                text-white text-[15px] font-semibold tracking-wide whitespace-nowrap
+                z-0 transition-all duration-300 ease-out
+                group-hover:translate-x-4 group-hover:w-0 group-hover:text-[0px] group-hover:opacity-0
+              ">
+                Explore Projects
               </span>
             </button>
 
+            {/* Book Consultation Button */}
             <button
               className="
+                group relative overflow-hidden
                 flex items-center justify-center gap-2
-                rounded-full border border-[#C89A47] bg-white
-                px-8 py-4
-                text-[15px] font-semibold text-[#1F1F1F]
-                transition-all duration-300
-                hover:-translate-y-0.5 hover:bg-[#F8F4EE]
+                rounded-full border border-white/30 bg-white/10 backdrop-blur-md
+                w-[210px] h-[56px]
+                text-[15px] font-semibold text-white tracking-wide
+                transition-all duration-500 ease-out
+                hover:-translate-y-1 hover:bg-white/20 hover:border-white/50 hover:shadow-[0_15px_30px_rgba(0,0,0,0.15)]
+                active:scale-95
               "
             >
-              <span>Book Consultation</span>
+              <div className="absolute inset-0 z-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+              <span className="relative z-10">Book Consultation</span>
             </button>
           </div>
-
-          {/* Trust indicators */}
-          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.12em] text-white/80 animate-fade-up" style={{ animationDelay: '0.45s' }}>
-            <span>150+ Projects</span>
-            <span className="text-[#C89A47] hidden sm:block">|</span>
-            <span>15+ Years Exp</span>
-            <span className="text-[#C89A47] hidden sm:block">|</span>
-            <span>Premium Quality</span>
-          </div>
-
         </div>
       </div>
     </header>
@@ -100,6 +178,7 @@ function Hero() {
 
 /* ─── Statistics Section ──────────────────────────────────── */
 function TrustStats() {
+  const container = useRef<HTMLElement>(null);
   const stats = [
     { icon: "star", value: "150+", label: "Projects Completed", desc: "Successfully delivered luxury residential and turnkey commercial spaces" },
     { icon: "history", value: "15+", label: "Years Experience", desc: "Crafting architectural landmarks with premium workmanship" },
@@ -107,20 +186,63 @@ function TrustStats() {
     { icon: "verified_user", value: "Premium", label: "Quality Commitment", desc: "Uncompromised materials and rigorous inspection checks" },
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Scroll Entrance Animation
+      gsap.fromTo(
+        ".gsap-stat-card",
+        { y: 70, opacity: 0, scale: 0.96 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top 80%",
+          },
+        }
+      );
+
+      // 2. Interactive Hover Animations
+      const cards = gsap.utils.toArray<HTMLElement>(".gsap-stat-card");
+      cards.forEach((card) => {
+        const icon = card.querySelector(".gsap-stat-icon");
+        const number = card.querySelector(".gsap-stat-num");
+
+        card.addEventListener("mouseenter", () => {
+          gsap.to(card, { y: -8, scale: 1.02, duration: 0.4, ease: "power2.out", overwrite: "auto" });
+          gsap.to(icon, { scale: 1.12, rotation: 6, duration: 0.4, ease: "power2.out", overwrite: "auto" });
+          gsap.to(number, { x: 4, duration: 0.4, ease: "power2.out", overwrite: "auto" });
+        });
+
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, { y: 0, scale: 1, duration: 0.4, ease: "power2.out", overwrite: "auto" });
+          gsap.to(icon, { scale: 1, rotation: 0, duration: 0.4, ease: "power2.out", overwrite: "auto" });
+          gsap.to(number, { x: 0, duration: 0.4, ease: "power2.out", overwrite: "auto" });
+        });
+      });
+    }, container);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative z-30 mx-auto -mt-2 max-w-[1280px] px-6 py-12 md:px-10 md:py-16">
+    <section ref={container} className="relative z-30 mx-auto -mt-4 md:-mt-6 max-w-[1280px] px-6 pb-12 md:px-10 md:pb-16">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="rounded-[20px] border border-[#E7E0D4] bg-white p-7 shadow-[0_12px_35px_rgba(23,23,20,0.045)] flex flex-col items-start hover:shadow-[0_20px_45px_rgba(23,23,20,0.08)] hover:-translate-y-1 transition-all duration-300 animate-fade-up"
+            className="gsap-stat-card opacity-0 rounded-[20px] border border-[#E7E0D4] bg-white p-7 shadow-[0_12px_35px_rgba(23,23,20,0.045)] flex flex-col items-start hover:shadow-[0_20px_45px_rgba(23,23,20,0.08)] transition-shadow duration-300"
           >
             {/* Gold Outline Icon */}
-            <div className="w-12 h-12 rounded-full border border-[#C89A47]/40 flex items-center justify-center text-[#C89A47] mb-6">
+            <div className="gsap-stat-icon w-12 h-12 rounded-full border border-[#C89A47]/40 flex items-center justify-center text-[#C89A47] mb-6">
               <span className="material-symbols-outlined text-[24px] font-light">{stat.icon}</span>
             </div>
             {/* Dark Numbers */}
-            <div className="font-serif text-[42px] font-bold text-[#1F1F1F] leading-none mb-2">
+            <div className="gsap-stat-num font-serif text-[42px] font-bold text-[#1F1F1F] leading-none mb-2">
               {stat.value}
             </div>
             {/* Title */}
@@ -139,83 +261,207 @@ function TrustStats() {
 }
 
 /* ─── Services ────────────────────────────────────────────── */
-const services = [
+const servicesData = [
   {
-    icon: "chair",
-    title: "Home Interiors",
+    category: "Interior Works",
     desc: "Bespoke design solutions that transform your residential spaces into tranquil, luxurious havens tailored to your lifestyle.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB_QiVkaGPYs9L0csaJdzofHNJU8nM7LFQYA4ofvisF4GuyJx4GG1eomH2eIpZ110hF2G867AdUlnseriXdOeFJKJYlshuC5_gNIduVDuBldQGmiywCBOZh1ei89OzALGl-3Un5ULM-ePMI6oeayk8JLjXmLMPpzjWO5hpH-mkFRzYfIQq_QvvZqwDQa5E-TstS3vXLzW1IAnlbYT-NehTBB2KjGgRujBMNbqw_yegnFzyoCFEocSWRlA",
+    href: "/interior-design",
+    img: "/images/services/interior.jpg",
   },
   {
-    icon: "key",
-    title: "Turnkey Interiors",
-    desc: "End-to-end execution from conceptualization to final styling, delivering a fully realized space without the hassle.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBFNul2QCbN09c3eUXEUcInQcEEmiiAli4XO7dYZl-1inoGCjJX3vMuDfWx0uNXUqcqKI7Kr4XdDwQDrlZuMtLijfwo3VZIggJ8WLOiGS6cDx3ig_QP6m77ALGFNiNIVM7F28exTdkY3dmNyyI3HImaRcdRyWlesqZNGC0e_yEZfBcnjXO_Z5HYBqAchg32PM_A9Mz1aYCkyK4QWtYSOfHnjA8PKFs_PfWgM0llqSnFD-bDCHPxc--Dsg",
-  },
-  {
-    icon: "architecture",
-    title: "Residential Construction",
+    category: "Construction",
     desc: "Architecturally significant ground-up construction, focusing on precision, premium materials, and structural integrity.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB4u1AD4rLUJ7mcmLXWBUJovupPnHFh9xCYqHc5SJM2HUmDb0kJ3EFg3geiC9i-DrDSrN6wxiroNj6AKPTUnQNGbXOKjpdgtXwl8q5H_y7S5p51hF4NkZTYepK7NmwxPeQO9toax-Pufkc5y6S8U6NSovIE9Xap9U7wx3wFs3WbsTx1bWddXbp7uocXaDWopHRnuc7CpqdH1m4rbqAvHRzPw5IN7TkE8QMCFtkRqUZW8eI6OyUVVT9Byg",
+    href: "/construction",
+    img: "/images/services/construction.jpg",
   },
   {
-    icon: "home_repair_service",
-    title: "Renovation",
-    desc: "Respectful modernization of existing structures, breathing new life into spaces while honoring their original character.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBSkCmntaraUof6hbip-9X-xubDCUnRDtP9xpeT-d80gsQzsYC3dDvWft8Q6fA40J2hOvPmjNjM29q-EZzEMnigFsQ5t2NIMw3Gkf1oM-n01XY8PNKcFRcQDxu5UAHk118rtKjDJZtz51FxYmpJIquGePz8gwO_tE4D78ZS0ZS6tNYhkXaG6hg7xBxYxJbi5LbH22EJbY-6y5nkekF6fbdNuNBNRy7Neel4DB9b3qsG6hbUIqtwYcvPxQ",
+    category: "Design & Planning",
+    desc: "Comprehensive architectural blueprints and spatial planning to visualize your dream project before it begins.",
+    href: "/interior-design",
+    img: "/images/services/planning.jpg",
+  },
+  {
+    category: "Survey & Approvals",
+    desc: "Navigating complex regulations with expert land surveying and seamless government approval processes.",
+    href: "/construction",
+    img: "/images/services/survey.jpg",
+  },
+  {
+    category: "Fabrication Works",
+    desc: "Custom structural steel fabrication and premium metalwork crafted for durability and sophisticated aesthetics.",
+    href: "/construction",
+    img: "/images/services/fabrication.jpg",
   },
 ];
 
 function Services() {
+  const containerRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const activeIndexRef = useRef<number>(0);
+
+  const scrollToService = (index: number) => {
+    const st = ScrollTrigger.getAll().find(t => t.trigger === containerRef.current);
+    if (st) {
+      const scrollPos = st.start + (index * (st.end - st.start) / (servicesData.length - 1));
+      window.scrollTo({ top: scrollPos, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+
+      // Desktop 3D Coverflow animation
+      mm.add("(min-width: 768px)", () => {
+        const cards = gsap.utils.toArray<HTMLElement>(".coverflow-card");
+        
+        // Initial setup text
+        if(titleRef.current) titleRef.current.innerText = servicesData[0].category;
+        
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: () => `+=${window.innerHeight * 4}`, // 4 scroll steps
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const progress = self.progress * (cards.length - 1); // 0 to 4
+              const currentIndex = Math.round(progress);
+              
+              // Update Title if active index changed
+              if (currentIndex !== activeIndexRef.current) {
+                 activeIndexRef.current = currentIndex;
+                 
+                 gsap.to(titleRef.current, { 
+                   y: -10, opacity: 0, duration: 0.2, 
+                   onComplete: () => {
+                     if(titleRef.current) titleRef.current.innerText = servicesData[currentIndex].category;
+                     gsap.fromTo(titleRef.current, 
+                       { y: 10, opacity: 0 }, 
+                       { y: 0, opacity: 1, duration: 0.3 }
+                     );
+                   }
+                 });
+              }
+              
+              // Update each card's 3D projection
+              cards.forEach((card, i) => {
+                const pos = i - progress;
+                const absPos = Math.abs(pos);
+                const clampedPos = Math.max(-2.5, Math.min(2.5, pos));
+                
+                const baseXPercent = -50;
+                const xOffsetPercent = clampedPos * 75; 
+                
+                gsap.set(card, {
+                  xPercent: baseXPercent + xOffsetPercent,
+                  z: -absPos * 300,
+                  rotationY: -clampedPos * 45,
+                  scale: 1 - (absPos * 0.15),
+                  opacity: 1 - (absPos * 0.2),
+                  zIndex: 100 - Math.round(absPos * 10),
+                  transformOrigin: "center center",
+                });
+              });
+            }
+          }
+        });
+        
+        // Force an initial update to render correctly before scrolling
+        tl.progress(0);
+      });
+
+      // Mobile animation
+      mm.add("(max-width: 767px)", () => {
+        const panels = gsap.utils.toArray(".mobile-service-panel");
+        panels.forEach((panel: any) => {
+          gsap.fromTo(panel, 
+            { opacity: 0, y: 50 },
+            { 
+              opacity: 1, y: 0, 
+              duration: 0.8, ease: "power3.out",
+              scrollTrigger: {
+                trigger: panel,
+                start: "top 85%",
+              }
+            }
+          );
+        });
+      });
+
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="py-20 md:py-40 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
-      <div className="mb-16">
-        <span className="text-label-caps text-[#C89A47] tracking-widest">Our Services</span>
-        <h2 className="text-headline-xl text-[#1F1F1F] mt-4 max-w-3xl">
-          Everything You Need Under One Roof.
+    <section ref={containerRef} className="bg-[#111111] relative z-20 md:h-screen overflow-hidden flex flex-col justify-center pt-20 md:pt-0">
+      
+      {/* Header */}
+      <div className="text-center relative z-30 mb-8 md:mb-12">
+        <h2 className="font-serif text-[clamp(2.5rem,4vw,4rem)] font-bold uppercase tracking-[-0.02em] text-white">
+          Services<span className="text-[#C89A47]">.</span>
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-        {services.map((svc) => (
-          <div
-            key={svc.title}
-            className="group bg-white rounded-[28px] overflow-hidden
-                       shadow-[0_4px_24px_rgba(0,0,0,0.03)]
-                       flex flex-col border border-transparent
-                       hover:border-[#E7E0D4] hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)]
-                       transition-all duration-500"
+      {/* Desktop 3D Coverflow */}
+      <div className="hidden md:block relative w-full h-[55vh] lg:h-[60vh] max-w-[1440px] mx-auto" style={{ perspective: "1500px" }}>
+        {servicesData.map((svc, idx) => (
+          <div 
+            key={svc.category} 
+            onClick={() => scrollToService(idx)}
+            className="coverflow-card absolute top-0 left-1/2 w-[350px] lg:w-[450px] h-full rounded-[24px] overflow-hidden shadow-[0_30px_50px_rgba(0,0,0,0.8)] cursor-pointer group border border-white/5"
+            style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="h-72 w-full img-zoom">
-              <Image
-                src={svc.img}
-                alt={svc.title}
-                width={800}
-                height={450}
-                className="w-full h-full object-cover"
-                unoptimized
-              />
+            <Image 
+              src={svc.img} 
+              alt={svc.category} 
+              fill 
+              className="object-cover" 
+              unoptimized
+              priority={idx === 0}
+            />
+            
+            {/* Button Overlay */}
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center z-10">
+              <a href={svc.href} className="bg-white/95 backdrop-blur-sm px-8 py-3 rounded-full text-[#1F1F1F] font-semibold text-[13px] uppercase tracking-widest hover:bg-[#C89A47] hover:text-white transition-colors flex items-center gap-3 shadow-2xl scale-95 group-hover:scale-100 duration-500">
+                Explore Service
+                <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </a>
             </div>
-            <div className="p-8 md:p-10 flex flex-col flex-grow justify-between">
-              <div>
-                <span
-                  className="material-symbols-outlined text-[#C89A47] mb-5 block"
-                  style={{ fontSize: 28 }}
-                >
-                  {svc.icon}
-                </span>
-                <h3 className="text-headline-md text-[#1F1F1F] mb-3">{svc.title}</h3>
-                <p className="text-[#8A8A8A] leading-relaxed text-[15px]">{svc.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Dynamic Title (Desktop Only) */}
+      <div className="hidden md:flex relative z-30 mt-10 px-6 flex-col items-center text-center">
+        <h3 ref={titleRef} className="font-serif text-[36px] lg:text-[42px] text-white min-h-[50px]">
+          {/* Populated by GSAP */}
+        </h3>
+      </div>
+
+      {/* Mobile Normal Scroll Section */}
+      <div className="md:hidden flex flex-col px-6 pb-20 gap-16">
+        {servicesData.map((svc, idx) => (
+          <div key={svc.category} className="mobile-service-panel flex flex-col gap-6">
+            <div className="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden shadow-lg border border-white/10 group">
+              <Image src={svc.img} alt={svc.category} fill className="object-cover" unoptimized />
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <a href={svc.href} className="bg-white/95 px-6 py-3 rounded-full text-[#1F1F1F] font-semibold text-[12px] uppercase tracking-widest flex items-center gap-2 shadow-xl">
+                  Explore
+                  <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
               </div>
-              <button
-                className="mt-8 text-label-caps text-[#C89A47] flex items-center gap-2
-                           group-hover:gap-4 transition-all duration-300"
-              >
-                Explore{" "}
-                <span className="material-symbols-outlined" style={{ fontSize: 16 }}>
-                  arrow_forward
-                </span>
-              </button>
+            </div>
+            <div>
+              <div className="flex items-center gap-4 mb-2">
+                <span className="font-serif text-[18px] italic text-[#C89A47]">0{idx + 1}</span>
+                <div className="h-[1px] flex-1 bg-white/20" />
+              </div>
+              <h3 className="font-serif text-[28px] text-white">{svc.category}</h3>
             </div>
           </div>
         ))}

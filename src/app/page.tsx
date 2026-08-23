@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 /* ─── Hero ────────────────────────────────────────────────── */
 function Hero() {
   return (
-    <header className="relative flex min-h-[720px] w-full items-center justify-center overflow-hidden px-6 pb-24 pt-32 md:px-16">
+    <header className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-4 pb-16 pt-24 md:px-16">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -19,35 +19,37 @@ function Hero() {
           sizes="100vw"
         />
         {/* Soft white gradient overlay (15–20%) from left to right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/68 via-[#171714]/28 to-[#171714]/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/80 via-[#171714]/40 to-[#171714]/10" />
       </div>
 
       {/* Split-feel container */}
       <div className="relative z-10 mx-auto grid min-h-[66vh] w-full max-w-[1280px] grid-cols-1 items-center gap-8 lg:grid-cols-12">
-        {/* 45% Left Content (6/12 cols) */}
-        <div className="col-span-1 flex max-w-2xl flex-col justify-center rounded-[2rem] p-7 text-left animate-fade-up sm:p-10 lg:col-span-7 lg:p-12">
-          <p className="mb-6 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#e3c381]">Nagercoil&apos;s design &amp; build studio</p>
-          <h1 className="font-serif text-[clamp(3.2rem,7vw,7.25rem)] font-bold uppercase leading-[0.86] tracking-[-0.055em] text-white mb-8">
+        {/* Left Content */}
+        <div className="col-span-1 flex max-w-2xl flex-col justify-center rounded-[2rem] py-6 sm:p-10 lg:col-span-7 lg:p-12 text-left animate-fade-up mt-8">
+          <p className="mb-4 text-[10px] sm:text-[12px] font-semibold uppercase tracking-[0.24em] text-[#e3c381]">
+            Nagercoil&apos;s design &amp; build studio
+          </p>
+          <h1 className="font-serif text-[clamp(2.8rem,8vw,7.25rem)] font-bold uppercase leading-[0.9] tracking-[-0.04em] text-white mb-6 sm:mb-8">
             DESIGN.<br />
             BUILD.<br />
             <span className="text-[#C89A47]">COMPLETE.</span>
           </h1>
 
-          <div className="mb-10 space-y-3 border-l-2 border-[#e3c381] pl-5">
-            <p className="font-sans text-[17px] font-medium text-white/90 leading-tight sm:text-[20px]">
+          <div className="mb-8 sm:mb-10 space-y-2 sm:space-y-3 border-l-2 border-[#e3c381] pl-4 sm:pl-5">
+            <p className="font-sans text-[15px] sm:text-[20px] font-medium text-white/90 leading-tight">
               Interior Design &amp; Construction
             </p>
-            <p className="font-sans text-[17px] font-medium text-white/90 leading-tight sm:text-[20px]">
+            <p className="font-sans text-[15px] sm:text-[20px] font-medium text-white/90 leading-tight">
               Luxury Living Spaces
             </p>
-            <p className="font-sans text-[17px] font-medium text-white/90 leading-tight sm:text-[20px]">
+            <p className="font-sans text-[15px] sm:text-[20px] font-medium text-white/90 leading-tight">
               Modern Architecture Solutions
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <button
-              className="bg-[#C89A47] text-white font-sans font-semibold text-[16px] px-8 py-5 rounded-full
+              className="bg-[#C89A47] text-white font-sans font-semibold text-[15px] sm:text-[16px] px-6 sm:px-8 py-4 sm:py-5 rounded-full
                          hover:bg-[#b08436] transition-all duration-300 flex items-center justify-center gap-2
                          shadow-[0_8px_30px_rgba(200,154,71,0.35)] hover:-translate-y-0.5"
             >
@@ -55,7 +57,7 @@ function Hero() {
               <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
             </button>
             <button
-              className="bg-white text-[#1F1F1F] border border-[#C89A47] font-sans font-semibold text-[16px] px-8 py-5 rounded-full
+              className="bg-white text-[#1F1F1F] border border-[#C89A47] font-sans font-semibold text-[15px] sm:text-[16px] px-6 sm:px-8 py-4 sm:py-5 rounded-full
                          hover:bg-[#F8F4EE] transition-all duration-300 flex items-center justify-center gap-2"
             >
               <span>Book Consultation</span>
@@ -63,22 +65,8 @@ function Hero() {
           </div>
         </div>
 
-        {/* 55% Right Space - remains empty to showcase the beautiful background image */}
-        <div className="hidden lg:block lg:col-span-6 h-full" />
-      </div>
-
-      {/* Bottom Hero Divider: Smooth white wave shape */}
-      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-20">
-        <svg
-          className="relative block w-full h-[40px] md:h-[80px]"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86C228.32,67.22,154.38,38.64,83.36,22.81,55.05,16.48,26.9,8.75,0,0V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-            fill="#FAF8F3"
-          />
-        </svg>
+        {/* Right Space */}
+        <div className="hidden lg:block lg:col-span-5 h-full" />
       </div>
     </header>
   );

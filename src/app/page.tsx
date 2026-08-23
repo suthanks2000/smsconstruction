@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 /* ─── Hero ────────────────────────────────────────────────── */
 function Hero() {
   return (
-    <header className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-4 pb-16 pt-24 md:px-16">
+    <header className="relative h-[100svh] min-h-[600px] w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -18,55 +18,81 @@ function Hero() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        {/* Soft white gradient overlay (15–20%) from left to right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/80 via-[#171714]/40 to-[#171714]/10" />
+
+        {/* Overlay - Restored to the elegant soft style */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/70 via-[#171714]/30 to-[#171714]/10" />
       </div>
 
-      {/* Split-feel container */}
-      <div className="relative z-10 mx-auto grid min-h-[66vh] w-full max-w-[1280px] grid-cols-1 items-center gap-8 lg:grid-cols-12">
-        {/* Left Content */}
-        <div className="col-span-1 flex max-w-2xl flex-col justify-center rounded-[2rem] py-6 sm:p-10 lg:col-span-7 lg:p-12 text-left animate-fade-up mt-8">
-          <p className="mb-4 text-[10px] sm:text-[12px] font-semibold uppercase tracking-[0.24em] text-[#e3c381]">
-            Nagercoil&apos;s design &amp; build studio
-          </p>
-          <h1 className="font-serif text-[clamp(2.8rem,8vw,7.25rem)] font-bold uppercase leading-[0.9] tracking-[-0.04em] text-white mb-6 sm:mb-8">
-            DESIGN.<br />
-            BUILD.<br />
-            <span className="text-[#C89A47]">COMPLETE.</span>
-          </h1>
+      {/* Content */}
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-[1280px] items-center px-6 sm:px-10 lg:px-16">
+        <div className="w-full lg:w-7/12 text-left mt-12 md:mt-20">
+          
+          <div className="animate-fade-up">
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#e3c381] sm:text-[12px]">
+              Nagercoil&apos;s Design &amp; Build Studio
+            </p>
 
-          <div className="mb-8 sm:mb-10 space-y-2 sm:space-y-3 border-l-2 border-[#e3c381] pl-4 sm:pl-5">
-            <p className="font-sans text-[15px] sm:text-[20px] font-medium text-white/90 leading-tight">
-              Interior Design &amp; Construction
+            <h1 className="mb-6 font-serif text-[clamp(2.5rem,5vw,5.5rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em] text-white sm:mb-8">
+              DESIGN.<br />
+              BUILD.<br />
+              <span className="text-[#C89A47]">COMPLETE.</span>
+            </h1>
+          </div>
+
+          <div className="mb-8 space-y-2.5 border-l-[2px] border-[#e3c381] pl-5 sm:mb-10 sm:space-y-3 sm:pl-6 animate-fade-up" style={{ animationDelay: '0.15s' }}>
+            <p className="font-sans text-[15px] font-medium leading-tight text-white/90 sm:text-[18px]">
+              Bespoke Interior Design &amp; Construction
             </p>
-            <p className="font-sans text-[15px] sm:text-[20px] font-medium text-white/90 leading-tight">
-              Luxury Living Spaces
+            <p className="font-sans text-[15px] font-medium leading-tight text-white/90 sm:text-[18px]">
+              Architecturally Refined Living Spaces
             </p>
-            <p className="font-sans text-[15px] sm:text-[20px] font-medium text-white/90 leading-tight">
-              Modern Architecture Solutions
+            <p className="font-sans text-[15px] font-medium leading-tight text-white/90 sm:text-[18px]">
+              End-to-End Modern Solutions
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col gap-4 sm:flex-row sm:gap-5 animate-fade-up" style={{ animationDelay: '0.3s' }}>
             <button
-              className="bg-[#C89A47] text-white font-sans font-semibold text-[15px] sm:text-[16px] px-6 sm:px-8 py-4 sm:py-5 rounded-full
-                         hover:bg-[#b08436] transition-all duration-300 flex items-center justify-center gap-2
-                         shadow-[0_8px_30px_rgba(200,154,71,0.35)] hover:-translate-y-0.5"
+              className="
+                flex items-center justify-center gap-2
+                rounded-full bg-[#C89A47]
+                px-8 py-4
+                text-[15px] font-semibold text-white
+                shadow-[0_8px_20px_rgba(200,154,71,0.25)]
+                transition-all duration-300
+                hover:-translate-y-0.5 hover:bg-[#b08436]
+              "
             >
               <span>Explore Projects</span>
-              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+              <span className="material-symbols-outlined text-[18px]">
+                arrow_forward
+              </span>
             </button>
+
             <button
-              className="bg-white text-[#1F1F1F] border border-[#C89A47] font-sans font-semibold text-[15px] sm:text-[16px] px-6 sm:px-8 py-4 sm:py-5 rounded-full
-                         hover:bg-[#F8F4EE] transition-all duration-300 flex items-center justify-center gap-2"
+              className="
+                flex items-center justify-center gap-2
+                rounded-full border border-[#C89A47] bg-white
+                px-8 py-4
+                text-[15px] font-semibold text-[#1F1F1F]
+                transition-all duration-300
+                hover:-translate-y-0.5 hover:bg-[#F8F4EE]
+              "
             >
               <span>Book Consultation</span>
             </button>
           </div>
-        </div>
 
-        {/* Right Space */}
-        <div className="hidden lg:block lg:col-span-5 h-full" />
+          {/* Trust indicators */}
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.12em] text-white/80 animate-fade-up" style={{ animationDelay: '0.45s' }}>
+            <span>150+ Projects</span>
+            <span className="text-[#C89A47] hidden sm:block">|</span>
+            <span>15+ Years Exp</span>
+            <span className="text-[#C89A47] hidden sm:block">|</span>
+            <span>Premium Quality</span>
+          </div>
+
+        </div>
       </div>
     </header>
   );

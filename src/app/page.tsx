@@ -232,26 +232,26 @@ function TrustStats() {
 
   return (
     <section ref={container} className="relative z-30 mx-auto -mt-4 md:-mt-6 max-w-[1280px] px-6 pb-12 md:px-10 md:pb-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="gsap-stat-card opacity-0 rounded-[20px] border border-[#E7E0D4] bg-white p-7 shadow-[0_12px_35px_rgba(23,23,20,0.045)] flex flex-col items-start hover:shadow-[0_20px_45px_rgba(23,23,20,0.08)] transition-shadow duration-300"
+            className="gsap-stat-card opacity-0 rounded-[20px] border border-[#E7E0D4] bg-white p-5 md:p-7 shadow-[0_12px_35px_rgba(23,23,20,0.045)] flex flex-col items-start hover:shadow-[0_20px_45px_rgba(23,23,20,0.08)] transition-shadow duration-300"
           >
             {/* Gold Outline Icon */}
-            <div className="gsap-stat-icon w-12 h-12 rounded-full border border-[#C89A47]/40 flex items-center justify-center text-[#C89A47] mb-6">
-              <span className="material-symbols-outlined text-[24px] font-light">{stat.icon}</span>
+            <div className="gsap-stat-icon w-10 h-10 md:w-12 md:h-12 rounded-full border border-[#C89A47]/40 flex items-center justify-center text-[#C89A47] mb-4 md:mb-6 shrink-0">
+              <span className="material-symbols-outlined text-[20px] md:text-[24px] font-light">{stat.icon}</span>
             </div>
             {/* Dark Numbers */}
-            <div className="gsap-stat-num font-serif text-[42px] font-bold text-[#1F1F1F] leading-none mb-2">
+            <div className="gsap-stat-num font-serif text-[32px] md:text-[42px] font-bold text-[#1F1F1F] leading-none mb-2">
               {stat.value}
             </div>
             {/* Title */}
-            <div className="font-sans font-semibold text-[16px] text-[#1F1F1F] mb-2">
+            <div className="font-sans font-semibold text-[13px] md:text-[16px] text-[#1F1F1F] mb-1 md:mb-2">
               {stat.label}
             </div>
             {/* Gray Description */}
-            <div className="font-sans text-[14px] text-[#8A8A8A] leading-relaxed">
+            <div className="font-sans text-[11px] md:text-[14px] text-[#8A8A8A] leading-relaxed line-clamp-3 md:line-clamp-none">
               {stat.desc}
             </div>
           </div>

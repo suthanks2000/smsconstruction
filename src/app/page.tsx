@@ -417,6 +417,7 @@ function Services() {
               zIndex,
               duration: animate ? 0.8 : 0,
               ease: "power3.out",
+              overwrite: "auto"
             };
 
             if (animate) {
@@ -440,13 +441,14 @@ function Services() {
 
         let currentActiveIndex = 0;
 
-        // Initial closed state
+        // Initialize positions
+        setCardPositions(currentActiveIndex, false);
+
+        // Hide initially for entrance animation
         cardRefs.current.forEach((card) => {
           if (!card) return;
           gsap.set(card, {
-            x: 0,
             y: 250,
-            rotate: 0,
             scale: 0.7,
             opacity: 0,
             zIndex: 1,
@@ -470,7 +472,8 @@ function Services() {
                 scale: 0.7,
                 opacity: 0,
                 duration: 0.8,
-                ease: "power3.inOut"
+                ease: "power3.inOut",
+                overwrite: "auto"
               });
             });
           }
@@ -498,12 +501,13 @@ function Services() {
               if (!card) return;
               gsap.to(card, {
                 x: 0,
-                y: -250,
+                y: 250,
                 rotate: 0,
                 scale: 0.7,
                 opacity: 0,
                 duration: 0.8,
-                ease: "power3.inOut"
+                ease: "power3.inOut",
+                overwrite: "auto"
               });
             });
           },
@@ -516,31 +520,6 @@ function Services() {
           introTrigger.kill();
           trigger.kill();
         };
-      });
-
-      mm.add("(max-width: 767px)", () => {
-        const panels = gsap.utils.toArray(".mobile-service-panel");
-
-        panels.forEach((panel: any) => {
-          gsap.fromTo(
-            panel,
-            {
-              opacity: 0,
-              y: 45,
-            },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: panel,
-                start: "top 85%",
-                toggleActions: "play none none reverse",
-              },
-            }
-          );
-        });
       });
     }, containerRef);
 

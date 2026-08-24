@@ -408,7 +408,7 @@ function Services() {
               zIndex = 1;
             }
 
-            const vars = {
+            const vars: gsap.TweenVars = {
               x,
               y,
               rotate,
@@ -447,8 +447,9 @@ function Services() {
         // Hide initially for entrance animation
         cardRefs.current.forEach((card) => {
           if (!card) return;
+          const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
           gsap.set(card, {
-            y: 250,
+            y: isMobile ? 0 : 250,
             scale: 0.7,
             opacity: 0,
             zIndex: 1,
@@ -461,21 +462,6 @@ function Services() {
           start: "top 75%",
           onEnter: () => {
             setCardPositions(currentActiveIndex, true);
-          },
-          onLeaveBack: () => {
-            cardRefs.current.forEach((card) => {
-              if (!card) return;
-              gsap.to(card, {
-                x: 0,
-                y: 250,
-                rotate: 0,
-                scale: 0.7,
-                opacity: 0,
-                duration: 0.8,
-                ease: "power3.inOut",
-                overwrite: "auto"
-              });
-            });
           }
         });
 
@@ -494,25 +480,6 @@ function Services() {
               currentActiveIndex = nextIndex;
               setCardPositions(nextIndex, true);
             }
-          },
-
-          onLeave: () => {
-            cardRefs.current.forEach((card) => {
-              if (!card) return;
-              gsap.to(card, {
-                x: 0,
-                y: 250,
-                rotate: 0,
-                scale: 0.7,
-                opacity: 0,
-                duration: 0.8,
-                ease: "power3.inOut",
-                overwrite: "auto"
-              });
-            });
-          },
-          onEnterBack: () => {
-            setCardPositions(currentActiveIndex, true);
           }
         });
 

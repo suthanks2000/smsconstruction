@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import gsap from "gsap";
@@ -296,175 +297,343 @@ const servicesData = [
 
 function Services() {
   const containerRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const activeIndexRef = useRef<number>(0);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const router = useRouter();
 
   const scrollToService = (index: number) => {
-    const st = ScrollTrigger.getAll().find(t => t.trigger === containerRef.current);
+    const st = ScrollTrigger.getAll().find((t) => t.trigger === containerRef.current && t.vars.pin === true);
     if (st) {
-      const scrollPos = st.start + (index * (st.end - st.start) / (servicesData.length - 1));
-      window.scrollTo({ top: scrollPos, behavior: 'smooth' });
+      const total = servicesData.length;
+      let scrollPos = st.start + (index * (st.end - st.start)) / (total - 1);
+
+      // Prevent triggering the 'onLeave' animation when clicking the last item
+      if (index === total - 1) {
+        scrollPos -= 10;
+      }
+
+      window.scrollTo({ top: scrollPos, behavior: "auto" });
     }
   };
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // Desktop 3D Coverflow animation
-      mm.add("(min-width: 768px)", () => {
-        const cards = gsap.utils.toArray<HTMLElement>(".coverflow-card");
-        
-        // Initial setup text
-        if(titleRef.current) titleRef.current.innerText = servicesData[0].category;
-        
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top top",
-            end: () => `+=${window.innerHeight * 4}`, // 4 scroll steps
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onUpdate: (self) => {
-              const progress = self.progress * (cards.length - 1); // 0 to 4
-              const currentIndex = Math.round(progress);
-              
-              // Update Title if active index changed
-              if (currentIndex !== activeIndexRef.current) {
-                 activeIndexRef.current = currentIndex;
-                 
-                 gsap.to(titleRef.current, { 
-                   y: -10, opacity: 0, duration: 0.2, 
-                   onComplete: () => {
-                     if(titleRef.current) titleRef.current.innerText = servicesData[currentIndex].category;
-                     gsap.fromTo(titleRef.current, 
-                       { y: 10, opacity: 0 }, 
-                       { y: 0, opacity: 1, duration: 0.3 }
-                     );
-                   }
-                 });
-              }
-              
-              // Update each card's 3D projection
-              cards.forEach((card, i) => {
-                const pos = i - progress;
-                const absPos = Math.abs(pos);
-                const clampedPos = Math.max(-2.5, Math.min(2.5, pos));
-                
-                const baseXPercent = -50;
-                const xOffsetPercent = clampedPos * 75; 
-                
-                gsap.set(card, {
-                  xPercent: baseXPercent + xOffsetPercent,
-                  z: -absPos * 300,
-                  rotationY: -clampedPos * 45,
-                  scale: 1 - (absPos * 0.15),
-                  opacity: 1 - (absPos * 0.2),
-                  zIndex: 100 - Math.round(absPos * 10),
-                  transformOrigin: "center center",
-                });
-              });
+      mm.add("all", () => {
+        const container = containerRef.current;
+
+        if (!container) return;
+
+        const total = servicesData.length;
+
+        // Initial fan position
+        const setCardPositions = (active: number, animate = false) => {
+          cardRefs.current.forEach((card, index) => {
+            if (!card) return;
+
+            let relative = index - active;
+
+            // Make the carousel circular
+            if (relative > total / 2) relative -= total;
+            if (relative < -total / 2) relative += total;
+
+            const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+            const spreadX = isMobile ? 0.45 : 1;
+            const spreadY = isMobile ? 0.55 : 1;
+
+            let x = 0;
+            let y = 0;
+            let rotate = 0;
+            let scale = 1;
+            let opacity = 1;
+            let zIndex = 10 - Math.abs(relative);
+
+            // CENTER CARD
+            if (relative === 0) {
+              x = 0;
+              y = 0;
+              rotate = 0;
+              scale = 1;
+              opacity = 1;
+              zIndex = 50;
             }
+
+            // LEFT 1
+            else if (relative === -1) {
+              x = -270 * spreadX;
+              y = 55 * spreadY;
+              rotate = -11;
+              scale = 0.88;
+              opacity = 1;
+              zIndex = 40;
+            }
+
+            // LEFT 2
+            else if (relative === -2) {
+              x = -465 * spreadX;
+              y = 115 * spreadY;
+              rotate = -19;
+              scale = 0.78;
+              opacity = 1;
+              zIndex = 30;
+            }
+
+            // RIGHT 1
+            else if (relative === 1) {
+              x = 270 * spreadX;
+              y = 55 * spreadY;
+              rotate = 11;
+              scale = 0.88;
+              opacity = 1;
+              zIndex = 40;
+            }
+
+            // RIGHT 2
+            else if (relative === 2) {
+              x = 465 * spreadX;
+              y = 115 * spreadY;
+              rotate = 19;
+              scale = 0.78;
+              opacity = 1;
+              zIndex = 30;
+            }
+
+            // Hide everything outside visible fan
+            else {
+              x = (relative > 0 ? 580 : -580) * spreadX;
+              y = 150 * spreadY;
+              rotate = relative > 0 ? 25 : -25;
+              scale = 0.65;
+              opacity = 0;
+              zIndex = 1;
+            }
+
+            const vars = {
+              x,
+              y,
+              rotate,
+              scale,
+              opacity,
+              zIndex,
+              duration: animate ? 0.8 : 0,
+              ease: "power3.out",
+            };
+
+            if (animate) {
+              gsap.to(card, vars);
+            } else {
+              gsap.set(card, vars);
+            }
+
+            const innerCard = card.querySelector('.inner-card');
+            if (innerCard) {
+              if (relative === 0) {
+                innerCard.classList.add('is-center');
+                innerCard.classList.remove('not-center');
+              } else {
+                innerCard.classList.add('not-center');
+                innerCard.classList.remove('is-center');
+              }
+            }
+          });
+        };
+
+        let currentActiveIndex = 0;
+
+        // Initial closed state
+        cardRefs.current.forEach((card) => {
+          if (!card) return;
+          gsap.set(card, {
+            x: 0,
+            y: 250,
+            rotate: 0,
+            scale: 0.7,
+            opacity: 0,
+            zIndex: 1,
+          });
+        });
+
+        // Trigger for entering from the top
+        const introTrigger = ScrollTrigger.create({
+          trigger: container,
+          start: "top 75%",
+          onEnter: () => {
+            setCardPositions(currentActiveIndex, true);
+          },
+          onLeaveBack: () => {
+            cardRefs.current.forEach((card) => {
+              if (!card) return;
+              gsap.to(card, {
+                x: 0,
+                y: 250,
+                rotate: 0,
+                scale: 0.7,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.inOut"
+              });
+            });
           }
         });
-        
-        // Force an initial update to render correctly before scrolling
-        tl.progress(0);
+
+        const trigger = ScrollTrigger.create({
+          trigger: container,
+          start: "top top",
+          end: `+=${window.innerHeight * (total - 1)}`,
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+
+          onUpdate: (self) => {
+            const nextIndex = Math.round(self.progress * (total - 1));
+
+            if (nextIndex !== currentActiveIndex) {
+              currentActiveIndex = nextIndex;
+              setCardPositions(nextIndex, true);
+            }
+          },
+
+          onLeave: () => {
+            cardRefs.current.forEach((card) => {
+              if (!card) return;
+              gsap.to(card, {
+                x: 0,
+                y: -250,
+                rotate: 0,
+                scale: 0.7,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.inOut"
+              });
+            });
+          },
+          onEnterBack: () => {
+            setCardPositions(currentActiveIndex, true);
+          }
+        });
+
+        return () => {
+          introTrigger.kill();
+          trigger.kill();
+        };
       });
 
-      // Mobile animation
       mm.add("(max-width: 767px)", () => {
         const panels = gsap.utils.toArray(".mobile-service-panel");
+
         panels.forEach((panel: any) => {
-          gsap.fromTo(panel, 
-            { opacity: 0, y: 50 },
-            { 
-              opacity: 1, y: 0, 
-              duration: 0.8, ease: "power3.out",
+          gsap.fromTo(
+            panel,
+            {
+              opacity: 0,
+              y: 45,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power3.out",
               scrollTrigger: {
                 trigger: panel,
                 start: "top 85%",
-              }
+                toggleActions: "play none none reverse",
+              },
             }
           );
         });
       });
-
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={containerRef} className="bg-[#111111] relative z-20 md:h-screen overflow-hidden flex flex-col justify-center pt-20 md:pt-0">
-      
-      {/* Header */}
-      <div className="text-center relative z-30 mb-8 md:mb-12">
-        <h2 className="font-serif text-[clamp(2.5rem,4vw,4rem)] font-bold uppercase tracking-[-0.02em] text-white">
-          Services<span className="text-[#C89A47]">.</span>
-        </h2>
-      </div>
-
-      {/* Desktop 3D Coverflow */}
-      <div className="hidden md:block relative w-full h-[55vh] lg:h-[60vh] max-w-[1440px] mx-auto" style={{ perspective: "1500px" }}>
-        {servicesData.map((svc, idx) => (
-          <div 
-            key={svc.category} 
-            onClick={() => scrollToService(idx)}
-            className="coverflow-card absolute top-0 left-1/2 w-[350px] lg:w-[450px] h-full rounded-[24px] overflow-hidden shadow-[0_30px_50px_rgba(0,0,0,0.8)] cursor-pointer group border border-white/5"
-            style={{ transformStyle: "preserve-3d" }}
-          >
-            <Image 
-              src={svc.img} 
-              alt={svc.category} 
-              fill 
-              className="object-cover" 
-              unoptimized
-              priority={idx === 0}
-            />
-            
-            {/* Button Overlay */}
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center z-10">
-              <a href={svc.href} className="bg-white/95 backdrop-blur-sm px-8 py-3 rounded-full text-[#1F1F1F] font-semibold text-[13px] uppercase tracking-widest hover:bg-[#C89A47] hover:text-white transition-colors flex items-center gap-3 shadow-2xl scale-95 group-hover:scale-100 duration-500">
-                Explore Service
-                <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-              </a>
-            </div>
+    <section
+      ref={containerRef}
+      className="relative z-20 bg-[#F7F3ED] overflow-hidden"
+    >
+      {/* =========================
+          ALL SCREENS
+      ========================== */}
+      <div className="block h-[100dvh] relative w-full">
+        {/* Section heading */}
+        <div className="absolute top-10 md:top-14 left-6 md:left-8 lg:left-16 z-[70]">
+          <div className="flex items-center gap-3 mb-2 md:mb-4">
+            <span className="w-8 md:w-10 h-[1px] bg-[#B08A52]" />
+            <span className="text-[9px] md:text-[11px] uppercase tracking-[0.25em] text-[#6B6862]">
+              What we do
+            </span>
           </div>
-        ))}
-      </div>
 
-      {/* Dynamic Title (Desktop Only) */}
-      <div className="hidden md:flex relative z-30 mt-10 px-6 flex-col items-center text-center">
-        <h3 ref={titleRef} className="font-serif text-[36px] lg:text-[42px] text-white min-h-[50px]">
-          {/* Populated by GSAP */}
-        </h3>
-      </div>
+          <h2 className="font-serif text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614]">
+            Services<span className="text-[#B08A52]">.</span>
+          </h2>
+        </div>
 
-      {/* Mobile Normal Scroll Section */}
-      <div className="md:hidden flex flex-col px-6 pb-20 gap-16">
-        {servicesData.map((svc, idx) => (
-          <div key={svc.category} className="mobile-service-panel flex flex-col gap-6">
-            <div className="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden shadow-lg border border-white/10 group">
-              <Image src={svc.img} alt={svc.category} fill className="object-cover" unoptimized />
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <a href={svc.href} className="bg-white/95 px-6 py-3 rounded-full text-[#1F1F1F] font-semibold text-[12px] uppercase tracking-widest flex items-center gap-2 shadow-xl">
-                  Explore
-                  <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </a>
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center gap-4 mb-2">
-                <span className="font-serif text-[18px] italic text-[#C89A47]">0{idx + 1}</span>
-                <div className="h-[1px] flex-1 bg-white/20" />
-              </div>
-              <h3 className="font-serif text-[28px] text-white">{svc.category}</h3>
-            </div>
+        {/* Top right count */}
+        <div className="hidden md:block absolute top-16 right-8 lg:right-16 z-[70] text-right">
+          <div className="text-[11px] uppercase tracking-[0.25em] text-[#6B6862]">
+            Core Services
           </div>
-        ))}
+        </div>
+
+        {/* Fan stage */}
+        <div className="absolute inset-0 flex items-center justify-center pt-24 pb-4 md:pt-20 md:pb-40">
+          <div className="relative w-full max-w-[1500px] h-[450px] md:h-[650px] flex items-center justify-center mt-10 lg:mt-16">
+            {servicesData.map((svc, index) => (
+              <div
+                key={svc.category}
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
+                className="absolute w-[min(320px,75vw)] md:w-[min(360px,28vw)] h-[min(450px,60vh)] md:h-[min(500px,68vh)]"
+              >
+                <div
+                  className="relative w-full h-full rounded-[28px] overflow-hidden shadow-[0_30px_80px_rgba(23,22,20,0.18)] bg-[#171614] p-6 lg:p-8 flex flex-col justify-between border border-[#B08A52]/10 group transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] [&.not-center:hover]:-translate-y-8 [&.not-center:hover]:-translate-x-2 [&.not-center:hover]:rotate-[-2deg] [&.not-center:hover]:scale-105 [&.is-center:hover]:-translate-y-2 [&.is-center:hover]:scale-[1.02] hover:shadow-[0_40px_100px_rgba(0,0,0,0.6)] hover:border-[#B08A52]/40 cursor-pointer inner-card"
+                  onClick={() => scrollToService(index)}
+                >
+
+                  {/* Image part */}
+                  <div className="relative w-full flex-1 rounded-[20px] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.6)] mb-8">
+                    <Image
+                      src={svc.img}
+                      alt={svc.category}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 1200px) 30vw, 360px"
+                    />
+                  </div>
+
+                  {/* bottom part */}
+                  <div className="relative z-10 w-full pr-12">
+                    <h3 className="font-serif text-[28px] lg:text-[32px] leading-[1.05] text-white mb-3">
+                      {svc.category}
+                    </h3>
+                    <p className="text-white/60 text-[13px] lg:text-[14px] leading-relaxed">
+                      {svc.desc}
+                    </p>
+                  </div>
+
+                  {/* Reveal Button */}
+                  <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 opacity-0 translate-y-8 transition-all duration-500 [.is-center:hover_&]:opacity-100 [.is-center:hover_&]:translate-y-0 z-20">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push(svc.href);
+                      }}
+                      className="flex items-center justify-center w-12 h-12 rounded-full bg-[#B08A52] text-white hover:bg-[#8F6F41] transition-all shadow-[0_4px_15px_rgba(176,138,82,0.4)] group/btn"
+                    >
+                      <svg className="transition-transform duration-300 group-hover/btn:translate-x-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

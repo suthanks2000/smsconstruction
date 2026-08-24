@@ -55,7 +55,7 @@ function Hero() {
   }, []);
 
   return (
-    <header ref={container} className="relative w-full pt-32 pb-32 md:pt-40 md:pb-40">
+    <header ref={container} className="relative w-full min-h-[100dvh] flex items-center pt-24 pb-32 md:pt-40 md:pb-40">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
@@ -68,7 +68,7 @@ function Hero() {
         />
 
         {/* Overlay - Restored to the elegant soft style */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/70 via-[#171714]/30 to-[#171714]/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/80 via-[#171714]/40 to-[#171714]/10" />
 
         {/* Lively Animated Waves Effect */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 translate-y-[1px]">
@@ -90,34 +90,34 @@ function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-[1280px] items-center px-6 sm:px-10 lg:px-16">
-        <div className="w-full lg:w-7/12 text-left -mt-8 md:-mt-9 ml-2 sm:ml-6 md:ml-10 lg:ml-16">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1280px] items-center px-6 sm:px-10 lg:px-16">
+        <div className="w-full lg:w-7/12 text-left -mt-8 md:-mt-12 ml-0 sm:ml-6 md:ml-10 lg:ml-16">
 
           <div>
-            <p className="gsap-subtitle opacity-0 mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#e3c381] sm:text-[12px]">
+            <p className="gsap-subtitle opacity-0 mb-3 md:mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#e3c381] sm:text-[12px]">
               Nagercoil&apos;s Design &amp; Build Studio
             </p>
 
-            <h1 className="gsap-heading opacity-0 mb-6 font-serif text-[clamp(2.5rem,5vw,5.5rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em] text-white sm:mb-8">
+            <h1 className="gsap-heading opacity-0 mb-5 md:mb-8 font-serif text-[42px] sm:text-[clamp(3.5rem,6vw,5.5rem)] font-bold uppercase leading-[0.95] md:leading-[0.9] tracking-[-0.03em] text-white">
               DESIGN.<br />
               BUILD.<br />
               <span className="text-[#C89A47]">COMPLETE.</span>
             </h1>
           </div>
 
-          <div className="gsap-desc opacity-0 mb-8 space-y-2.5 border-l-[2px] border-[#e3c381] pl-5 sm:mb-10 sm:space-y-3 sm:pl-6">
-            <p className="font-sans text-[15px] font-medium leading-tight text-white/90 sm:text-[18px]">
+          <div className="gsap-desc opacity-0 mb-8 space-y-3 border-l-[2px] border-[#e3c381] pl-5 sm:mb-10 sm:space-y-4 sm:pl-6">
+            <p className="font-sans text-[15px] sm:text-[17px] font-medium leading-tight text-white/95">
               Bespoke Interior Design &amp; Construction
             </p>
-            <p className="font-sans text-[15px] font-medium leading-tight text-white/90 sm:text-[18px]">
+            <p className="font-sans text-[15px] sm:text-[17px] font-medium leading-tight text-white/95">
               Architecturally Refined Living Spaces
             </p>
-            <p className="font-sans text-[15px] font-medium leading-tight text-white/90 sm:text-[18px]">
+            <p className="font-sans text-[15px] sm:text-[17px] font-medium leading-tight text-white/95">
               End-to-End Modern Solutions
             </p>
           </div>
 
-          <div className="gsap-button opacity-0 flex flex-col gap-4 sm:flex-row sm:gap-5">
+          <div className="gsap-button opacity-0 flex flex-col sm:flex-row gap-4 sm:gap-5 w-[210px] sm:w-auto">
 
             {/* Explore Projects Button - Expanding Icon Animation */}
             <button

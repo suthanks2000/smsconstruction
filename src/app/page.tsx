@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import Footer from "@/components/Footer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -588,7 +589,7 @@ function Services() {
             </span>
           </div>
 
-          <h2 className="font-serif text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-3">
+          <h2 className="text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-3">
             Services<span className="text-[#B08A52]">.</span>
           </h2>
 
@@ -746,7 +747,7 @@ function WhySMS() {
   return (
     <section ref={container} className="pt-12 pb-20 md:pt-16 md:pb-32 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
       <div className="mb-12 md:mb-16 flex flex-col items-center text-center">
-        <h2 className="font-serif text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-[#171614] mb-3">
+        <h2 className="text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-[#171614] mb-3">
           Why Choose Us<span className="text-[#B08A52]">.</span>
         </h2>
         <h3 className="font-sans text-[13px] md:text-[15px] font-semibold tracking-widest uppercase text-[#B08A52] max-w-3xl mb-3">
@@ -790,102 +791,748 @@ function WhySMS() {
     </section>
   );
 }
+gsap.registerPlugin(ScrollTrigger);
+
 /* ─── Featured Projects ───────────────────────────────────── */
+
 function FeaturedProjects() {
+  const sectionRef = useRef<HTMLElement>(null);
+
   const projects = [
     {
+      number: "01",
       title: "The Glass Pavilion",
       category: "Residential",
       location: "Nagercoil",
+      year: "2026",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDBR_fo2_CyHNYySkdd6srb36FQoCsJr2FtIL3mTiMTy3rGXsHJ5Iih5ciDI9TbJSjH9OdkxWJd1d8gy-E2uQpYXQefrmuYDkTw1QtPfy1Z__ura1QnGA7OngCnNn6GNSK3IHvUjiEgYpKJBdzLBiMlWXHOI1jtS3ohN4kvS2Cb2HnB-_tO5RM3qGewtQ-H0j8b6YMv5rzmjnuVuuaTewMxO3W11Q1Pkscqxll_xD1lXYqeldaMXFSfHg",
-      large: true,
+      href: "/projects/the-glass-pavilion",
     },
     {
+      number: "02",
       title: "Oak & Marble Estate",
       category: "Turnkey",
       location: "Kanyakumari",
+      year: "2026",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC6OjLQPm1eIBjpK4ChN3-L7UJ3Bz8GUvB0nd_IaPxe0mrZzj-64E_Gs1sSrqVilOGrAotp1Zrwh4a8oBh-JHQXw8M-ys-OUXRtSfOLq1ZzFLyLVqVJTVvEF2YLUOGrjVF3Qa7mlPEofIlzqbiOi_39r70-8o5ybiLIUqJbQUT5VtFgw0n1IpGsYW3hlvTV7oeFNi-edSPiVyeHTyNa09MgcuQB4k2CAcxBa0PSDpfxhW58BGPQjJUinQ",
-      large: false,
+      href: "/projects/oak-marble-estate",
     },
     {
+      number: "03",
       title: "Urban Retreat",
       category: "Interior",
       location: "Trivandrum",
+      year: "2026",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCQn1piHpoqb26Itm5N3HjqtSz8N-_O13S8AJ-i7XNSXpzzENymz14054sQR-iVGGlrLt6IYyN2XlGRG5_Kpyqx1_tTArLwsLARyevotALnJpSefTDqztUNo6cAt-K_pajSuqumbV1-dZoEYo8r3LFpnuPE7aXI9iKi_RjlrNBGvXaJn9fl-u6qg6q902w09kkD9vnb-t5jh-rq2m6yS2dWnflAl0YP5AnyF5DJ17bfrX3YIA3Cq4mGcw",
-      large: false,
+      href: "/projects/urban-retreat",
+    },
+    {
+      number: "04",
+      title: "The Courtyard House",
+      category: "Construction",
+      location: "Marthandam",
+      year: "2026",
+      img: "/images/projects/courtyard-house.jpg",
+      href: "/projects/courtyard-house",
+    },
+    {
+      number: "05",
+      title: "Modern Edge Residence",
+      category: "Residential",
+      location: "Kanyakumari",
+      year: "2026",
+      img: "/images/projects/modern-edge-residence.jpg",
+      href: "/projects/modern-edge-residence",
     },
   ];
 
-  const [large, ...small] = projects;
+  /* ─────────────────────────────────────────────
+     OPEN / CLOSE SCROLL ANIMATION
+  ───────────────────────────────────────────── */
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLElement>(".project-card-anim");
+
+      /* Initial closed state */
+      gsap.set(cards, {
+        opacity: 0,
+        y: 45,
+        scale: 0.97,
+        clipPath: "inset(8% 5% 8% 5% round 24px)",
+      });
+
+      /* Opening animation */
+      const openAnimation = gsap.timeline({
+        paused: true,
+      });
+
+      openAnimation.to(cards, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        clipPath: "inset(0% 0% 0% 0% round 24px)",
+        duration: 0.85,
+        stagger: 0.1,
+        ease: "power3.out",
+      });
+
+      /* Scroll trigger */
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 78%",
+        end: "bottom 22%",
+
+        onEnter: () => {
+          openAnimation.play();
+        },
+
+        onEnterBack: () => {
+          openAnimation.play();
+        },
+
+        onLeaveBack: () => {
+          openAnimation.reverse();
+        },
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
+  /* ─────────────────────────────────────────────
+     HOVER OPEN
+  ───────────────────────────────────────────── */
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const card = e.currentTarget;
+
+    const image = card.querySelector(".project-image");
+    const overlay = card.querySelector(".project-hover-overlay");
+    const content = card.querySelector(".project-content");
+    gsap.killTweensOf([
+      card,
+      image,
+      overlay,
+      content
+    ]);
+
+    gsap.to(card, {
+      y: -5,
+      duration: 0.4,
+      ease: "power3.out",
+    });
+
+    gsap.to(image, {
+      scale: 1.06,
+      duration: 0.9,
+      ease: "power3.out",
+    });
+
+    gsap.to(overlay, {
+      opacity: 1,
+      duration: 0.35,
+      ease: "power2.out",
+    });
+
+    gsap.to(content, {
+      y: -7,
+      duration: 0.45,
+      ease: "power3.out",
+    });
+
+    };
+
+  /* ─────────────────────────────────────────────
+     HOVER CLOSE
+  ───────────────────────────────────────────── */
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const card = e.currentTarget;
+
+    const image = card.querySelector(".project-image");
+    const overlay = card.querySelector(".project-hover-overlay");
+    const content = card.querySelector(".project-content");
+    gsap.killTweensOf([
+      card,
+      image,
+      overlay,
+      content
+    ]);
+
+    gsap.to(card, {
+      y: 0,
+      duration: 0.45,
+      ease: "power3.out",
+    });
+
+    gsap.to(image, {
+      scale: 1,
+      duration: 0.8,
+      ease: "power3.out",
+    });
+
+    gsap.to(overlay, {
+      opacity: 0,
+      duration: 0.35,
+      ease: "power2.out",
+    });
+
+    gsap.to(content, {
+      y: 0,
+      duration: 0.45,
+      ease: "power3.out",
+    });
+
+    };
 
   return (
-    <section className="py-20 md:py-40 px-6 md:px-16 max-w-[1440px] mx-auto bg-white rounded-[40px] my-16 shadow-[0_10px_50px_rgba(0,0,0,0.02)]">
-      <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-        <div>
-          <span className="text-label-caps text-[#C89A47] tracking-widest">Featured Work</span>
-          <h2 className="text-headline-xl text-[#1F1F1F] mt-4 max-w-2xl">
-            A Curated Selection of Our Finest Projects.
-          </h2>
-        </div>
-        <button className="border-b border-[#C89A47] text-[#C89A47] text-label-caps pb-1 hover:text-[#1F1F1F] hover:border-[#1F1F1F] transition-colors whitespace-nowrap">
-          View All Projects
-        </button>
-      </div>
+    <section
+      ref={sectionRef}
+      className="relative bg-white min-h-screen overflow-hidden flex items-center"
+    >
+      <div className="w-full max-w-[1500px] mx-auto px-5 sm:px-6 lg:px-12 py-12 md:py-14">
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-        {/* Large Feature */}
-        <div className="md:col-span-8 group cursor-pointer">
-          <div className="rounded-[28px] overflow-hidden img-zoom aspect-[4/3] md:aspect-[16/9]">
-            <Image
-              src={large.img}
-              alt={large.title}
-              width={1200}
-              height={675}
-              className="w-full h-full object-cover"
-              unoptimized
+        {/* ═══════════════════════════════════════
+            HEADER
+        ═══════════════════════════════════════ */}
+
+        <div className="flex items-end justify-between gap-6 mb-7 md:mb-8">
+          <div>
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-9 h-px bg-[#B08A52]" />
+
+              <span className="text-[9px] uppercase tracking-[0.28em] text-[#77736C]">
+                Selected Work
+              </span>
+            </div>
+
+            <h2 className="
+              text-[#171614]
+              text-[clamp(2.8rem,5vw,5.2rem)]
+              leading-[0.88]
+              tracking-[-0.05em]
+            ">
+              Our Projects<span className="text-[#B08A52]">.</span>
+            </h2>
+          </div>
+
+          <a
+            href="/projects"
+            className="
+              hidden
+              sm:inline-flex
+              animated-next-btn
+            "
+          >
+            <span>VIEW ALL PROJECTS</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 43">
+              <polygon points="39.58,4.46 44.11,0 66,21.5 44.11,43 39.58,38.54 56.94,21.5" />
+              <polygon points="19.79,4.46 24.32,0 46.21,21.5 24.32,43 19.79,38.54 37.15,21.5" />
+              <polygon points="0,4.46 4.53,0 26.42,21.5 4.53,43 0,38.54 17.36,21.5" />
+            </svg>
+          </a>
+        </div>
+
+        {/* ═══════════════════════════════════════
+            DESKTOP / TABLET MASONRY
+        ═══════════════════════════════════════ */}
+
+        <div
+          className="
+            hidden
+            md:grid
+            grid-cols-12
+            grid-rows-2
+            gap-3
+            lg:gap-4
+            h-[calc(100vh-100px)]
+            min-h-[650px]
+            max-h-[900px]
+          "
+        >
+
+          {/* ───────────────── PROJECT 01 ───────────────── */}
+
+          <a
+            href={projects[0].href}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="
+              project-card-anim
+              group
+              relative
+              col-span-6
+              row-span-1
+              overflow-hidden
+              rounded-[22px]
+              bg-[#EDE7DE]
+              will-change-transform
+            "
+          >
+            <img
+              src={projects[0].img}
+              alt={projects[0].title}
+              className="
+                project-image
+                absolute
+                inset-0
+                w-full
+                h-full
+                object-cover
+                will-change-transform
+              "
             />
-          </div>
-          <div className="mt-6 flex justify-between items-start">
-            <div>
-              <h3 className="text-headline-md text-[#1F1F1F] mb-1">{large.title}</h3>
-              <span className="text-label-caps text-[#8A8A8A]">
-                {large.category} · {large.location}
-              </span>
-            </div>
-            <div
-              className="w-12 h-12 rounded-full border border-[#E7E0D4] flex items-center justify-center
-                            group-hover:bg-[#C89A47] group-hover:text-white group-hover:border-[#C89A47] transition-all duration-300"
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>
-                arrow_outward
-              </span>
-            </div>
-          </div>
-        </div>
 
-        {/* Small Projects */}
-        <div className="md:col-span-4 flex flex-col gap-10 md:mt-28">
-          {small.map((p) => (
-            <div key={p.title} className="group cursor-pointer">
-              <div className="rounded-[24px] overflow-hidden img-zoom aspect-[4/5]">
-                <Image
-                  src={p.img}
-                  alt={p.title}
-                  width={600}
-                  height={750}
-                  className="w-full h-full object-cover"
-                  unoptimized
-                />
-              </div>
-              <div className="mt-4">
-                <h3 className="text-headline-md text-[#1F1F1F] mb-1">{p.title}</h3>
-                <span className="text-label-caps text-[#8A8A8A]">
-                  {p.category} · {p.location}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+
+            <div
+              className="
+                project-hover-overlay
+                absolute
+                inset-0
+                bg-black/25
+                opacity-0
+              "
+            />
+
+            {/* Number */}
+            <div className="absolute top-4 left-4 lg:top-5 lg:left-5">
+              <span className="font-serif italic text-[17px] text-[#B08A52]">
+                {projects[0].number}
+              </span>
+            </div>
+
+            {/* Content */}
+            <div
+              className="
+                project-content
+                absolute
+                left-5
+                right-5
+                bottom-5
+                lg:left-6
+                lg:right-6
+                lg:bottom-6
+              "
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[8px] uppercase tracking-[0.2em] text-white/70">
+                  {projects[0].category}
+                </span>
+                <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
+                <span className="text-[8px] uppercase tracking-[0.2em] text-white/70">
+                  {projects[0].location}
                 </span>
               </div>
+
+              <h3 className="
+                font-serif
+                text-white
+                text-[clamp(1.8rem,3.2vw,3.2rem)]
+                leading-[0.9]
+                tracking-[-0.03em]
+              ">
+                {projects[0].title}
+              </h3>
+
             </div>
+          </a>
+
+          {/* ───────────────── PROJECT 02 ───────────────── */}
+
+          <a
+            href={projects[1].href}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="
+              project-card-anim
+              group
+              relative
+              col-span-3
+              row-span-1
+              overflow-hidden
+              rounded-[22px]
+              bg-[#EDE7DE]
+              will-change-transform
+            "
+          >
+            <img
+              src={projects[1].img}
+              alt={projects[1].title}
+              className="
+                project-image
+                absolute
+                inset-0
+                w-full
+                h-full
+                object-cover
+                will-change-transform
+              "
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+
+            <div
+              className="
+                project-hover-overlay
+                absolute
+                inset-0
+                bg-black/30
+                opacity-0
+              "
+            />
+
+            <div className="absolute top-4 left-4">
+              <span className="font-serif italic text-[17px] text-[#B08A52]">
+                {projects[1].number}
+              </span>
+            </div>
+
+            <div className="project-content absolute left-4 right-4 bottom-4">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                  {projects[1].category}
+                </span>
+                <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
+                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                  {projects[1].location}
+                </span>
+              </div>
+
+              <h3 className="
+                font-serif
+                text-white
+                text-[clamp(1.35rem,2vw,2rem)]
+                leading-[0.92]
+                tracking-[-0.025em]
+              ">
+                {projects[1].title}
+              </h3>
+
+              
+            </div>
+          </a>
+
+          {/* ───────────────── PROJECT 05 — TALL ───────────────── */}
+
+          <a
+            href={projects[4].href}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="
+              project-card-anim
+              group
+              relative
+              col-span-3
+              row-span-2
+              overflow-hidden
+              rounded-[22px]
+              bg-[#EDE7DE]
+              will-change-transform
+            "
+          >
+            <img
+              src={projects[4].img}
+              alt={projects[4].title}
+              className="
+                project-image
+                absolute
+                inset-0
+                w-full
+                h-full
+                object-cover
+                will-change-transform
+              "
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
+
+            <div
+              className="
+                project-hover-overlay
+                absolute
+                inset-0
+                bg-black/25
+                opacity-0
+              "
+            />
+
+            <div className="absolute top-4 left-4 lg:top-5 lg:left-5">
+              <span className="font-serif italic text-[17px] text-[#B08A52]">
+                {projects[4].number}
+              </span>
+            </div>
+
+            <div className="project-content absolute left-4 right-4 bottom-4 lg:left-5 lg:right-5 lg:bottom-5">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                  {projects[4].category}
+                </span>
+                <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
+                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                  {projects[4].location}
+                </span>
+              </div>
+
+              <h3 className="
+                font-serif
+                text-white
+                text-[clamp(1.45rem,2.2vw,2.3rem)]
+                leading-[0.9]
+                tracking-[-0.03em]
+              ">
+                {projects[4].title}
+              </h3>
+
+              
+            </div>
+          </a>
+
+          {/* ───────────────── PROJECT 03 ───────────────── */}
+
+          <a
+            href={projects[2].href}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="
+              project-card-anim
+              group
+              relative
+              col-span-3
+              row-span-1
+              overflow-hidden
+              rounded-[22px]
+              bg-[#EDE7DE]
+              will-change-transform
+            "
+          >
+            <img
+              src={projects[2].img}
+              alt={projects[2].title}
+              className="
+                project-image
+                absolute
+                inset-0
+                w-full
+                h-full
+                object-cover
+                will-change-transform
+              "
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+
+            <div
+              className="
+                project-hover-overlay
+                absolute
+                inset-0
+                bg-black/25
+                opacity-0
+              "
+            />
+
+            <div className="absolute top-4 left-4">
+              <span className="font-serif italic text-[17px] text-[#B08A52]">
+                {projects[2].number}
+              </span>
+            </div>
+
+            <div className="project-content absolute left-4 right-4 bottom-4">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                  {projects[2].category}
+                </span>
+                <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
+                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                  {projects[2].location}
+                </span>
+              </div>
+
+              <h3 className="
+                font-serif
+                text-white
+                text-[clamp(1.35rem,2vw,2rem)]
+                leading-[0.92]
+                tracking-[-0.025em]
+              ">
+                {projects[2].title}
+              </h3>
+
+              
+            </div>
+          </a>
+
+          {/* ───────────────── PROJECT 04 ───────────────── */}
+
+          <a
+            href={projects[3].href}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="
+              project-card-anim
+              group
+              relative
+              col-span-6
+              row-span-1
+              overflow-hidden
+              rounded-[22px]
+              bg-[#EDE7DE]
+              will-change-transform
+            "
+          >
+            <img
+              src={projects[3].img}
+              alt={projects[3].title}
+              className="
+                project-image
+                absolute
+                inset-0
+                w-full
+                h-full
+                object-cover
+                will-change-transform
+              "
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+
+            <div
+              className="
+                project-hover-overlay
+                absolute
+                inset-0
+                bg-black/25
+                opacity-0
+              "
+            />
+
+            <div className="absolute top-4 left-4">
+              <span className="font-serif italic text-[17px] text-[#B08A52]">
+                {projects[3].number}
+              </span>
+            </div>
+
+            <div className="project-content absolute left-4 right-4 bottom-4 lg:left-5 lg:right-5 lg:bottom-5">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                  {projects[3].category}
+                </span>
+                <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
+                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                  {projects[3].location}
+                </span>
+              </div>
+
+              <h3 className="
+                font-serif
+                text-white
+                text-[clamp(1.5rem,2.3vw,2.4rem)]
+                leading-[0.9]
+                tracking-[-0.03em]
+              ">
+                {projects[3].title}
+              </h3>
+
+              
+            </div>
+          </a>
+        </div>
+
+        {/* ═══════════════════════════════════════
+            MOBILE
+        ═══════════════════════════════════════ */}
+
+        <div className="md:hidden grid grid-cols-2 gap-3">
+
+          {projects.map((project, index) => (
+            <a
+              key={project.number}
+              href={project.href}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className={`
+                project-card-anim
+                group
+                relative
+                block
+                overflow-hidden
+                rounded-[18px]
+                min-h-[320px]
+                bg-[#EDE7DE]
+                ${index === 0 ? "col-span-2 min-h-[460px]" : ""}
+                ${index === 3 ? "col-span-2 min-h-[400px]" : ""}
+                ${index === 4 ? "col-span-2 min-h-[440px]" : ""}
+              `}
+            >
+              <img
+                src={project.img}
+                alt={project.title}
+                className="
+                  project-image
+                  absolute
+                  inset-0
+                  w-full
+                  h-full
+                  object-cover
+                "
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+
+              <div className="project-hover-overlay absolute inset-0 bg-black/20 opacity-0" />
+
+              <div className="absolute top-4 left-4">
+                <span className="font-serif italic text-[16px] text-[#B08A52]">
+                  {project.number}
+                </span>
+              </div>
+
+              
+
+              <div className="project-content absolute left-4 right-4 bottom-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                    {project.category}
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
+                  <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                    {project.location}
+                  </span>
+                </div>
+
+                <h3 className="font-serif text-white text-[1.5rem] leading-[0.92] tracking-[-0.025em]">
+                  {project.title}
+                </h3>
+
+                
+              </div>
+            </a>
           ))}
         </div>
+
+        {/* ───────────────── Mobile CTA ───────────────── */}
+
+        <div className="md:hidden mt-6 flex justify-end">
+          <a
+            href="/projects"
+            className="group inline-flex items-center gap-3 text-[9px] uppercase tracking-[0.2em] font-semibold text-[#171614]"
+          >
+            <span className="border-b border-[#B08A52] pb-1">
+              View All Projects
+            </span>
+
+            <span className="text-[#B08A52] group-hover:translate-x-1 transition-transform">
+              →
+            </span>
+          </a>
+        </div>
+
       </div>
     </section>
   );

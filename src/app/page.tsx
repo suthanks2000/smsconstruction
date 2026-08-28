@@ -181,10 +181,10 @@ function Hero() {
 function TrustStats() {
   const container = useRef<HTMLElement>(null);
   const stats = [
-    { icon: "star", value: "150+", label: "Projects Completed", desc: "Successfully delivered luxury residential and turnkey commercial spaces" },
-    { icon: "history", value: "15+", label: "Years Experience", desc: "Crafting architectural landmarks with premium workmanship" },
-    { icon: "sentiment_very_satisfied", value: "100%", label: "Happy Clients", desc: "Exceptional ratings from homeowners and studio partners" },
-    { icon: "verified_user", value: "Premium", label: "Quality Commitment", desc: "Uncompromised materials and rigorous inspection checks" },
+    { icon: "star", num: 150, suffix: "+", label: "Projects Completed", desc: "Successfully delivered luxury residential and turnkey commercial spaces" },
+    { icon: "history", num: 15, suffix: "+", label: "Years Experience", desc: "Crafting architectural landmarks with premium workmanship" },
+    { icon: "sentiment_very_satisfied", num: 100, suffix: "%", label: "Happy Clients", desc: "Exceptional ratings from homeowners and studio partners" },
+    { icon: "verified_user", text: "Premium", label: "Quality Commitment", desc: "Uncompromised materials and rigorous inspection checks" },
   ];
 
   useEffect(() => {
@@ -207,7 +207,28 @@ function TrustStats() {
         }
       );
 
-      // 2. Interactive Hover Animations
+      // 2. Number Counter Animation
+      const numberElements = gsap.utils.toArray<HTMLElement>(".gsap-stat-num-val");
+      numberElements.forEach((el) => {
+        const target = parseInt(el.getAttribute("data-target") || "0", 10);
+        if (target > 0) {
+          const counter = { val: 0 };
+          gsap.to(counter, {
+            val: target,
+            duration: 2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: container.current,
+              start: "top 80%",
+            },
+            onUpdate: () => {
+              el.innerText = Math.round(counter.val).toString();
+            }
+          });
+        }
+      });
+
+      // 3. Interactive Hover Animations
       const cards = gsap.utils.toArray<HTMLElement>(".gsap-stat-card");
       cards.forEach((card) => {
         const icon = card.querySelector(".gsap-stat-icon");
@@ -243,8 +264,15 @@ function TrustStats() {
               <span className="material-symbols-outlined text-[20px] md:text-[24px] font-light">{stat.icon}</span>
             </div>
             {/* Dark Numbers */}
-            <div className="gsap-stat-num font-serif text-[32px] md:text-[42px] font-bold text-[#1F1F1F] leading-none mb-2">
-              {stat.value}
+            <div className="gsap-stat-num font-serif text-[32px] md:text-[42px] font-bold text-[#1F1F1F] leading-none mb-2 flex items-baseline">
+              {stat.num !== undefined ? (
+                <>
+                  <span className="gsap-stat-num-val" data-target={stat.num}>0</span>
+                  <span>{stat.suffix}</span>
+                </>
+              ) : (
+                <span>{stat.text}</span>
+              )}
             </div>
             {/* Title */}
             <div className="font-sans font-semibold text-[13px] md:text-[16px] text-[#1F1F1F] mb-1 md:mb-2">
@@ -488,6 +516,55 @@ function Services() {
           trigger.kill();
         };
       });
+
+      // --- Mobile / Tablet Autoplay logic overlay ---
+      // This leaves the native scrollbar scrubbing completely intact and smoothly animates the scroll position
+      mm.add("all", () => {
+        let autoplayTimer: NodeJS.Timeout;
+        let interactionTimeout: NodeJS.Timeout;
+
+        const pauseAutoplay = () => {
+          clearInterval(autoplayTimer);
+          clearTimeout(interactionTimeout);
+          interactionTimeout = setTimeout(() => {
+            startAutoplay();
+          }, 500);
+        };
+
+        const startAutoplay = () => {
+          clearInterval(autoplayTimer);
+          autoplayTimer = setInterval(() => {
+            const container = containerRef.current;
+            if (!container) return;
+            const st = ScrollTrigger.getAll().find((t) => t.trigger === container && t.vars.pin === true);
+            
+            if (st && st.isActive) {
+              const total = servicesData.length;
+              let currentIndex = Math.round(st.progress * (total - 1));
+              const nextIdx = (currentIndex + 1) % total;
+              
+              const targetScroll = st.start + (nextIdx * (st.end - st.start)) / (total - 1);
+              window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+            }
+          }, 3000);
+        };
+
+        startAutoplay();
+
+        // Listen for user interaction to temporarily pause the autoplay so they can scroll naturally
+        window.addEventListener('wheel', pauseAutoplay, { passive: true });
+        window.addEventListener('touchstart', pauseAutoplay, { passive: true });
+        window.addEventListener('touchmove', pauseAutoplay, { passive: true });
+
+        return () => {
+          clearInterval(autoplayTimer);
+          clearTimeout(interactionTimeout);
+          window.removeEventListener('wheel', pauseAutoplay);
+          window.removeEventListener('touchstart', pauseAutoplay);
+          window.removeEventListener('touchmove', pauseAutoplay);
+        };
+      });
+
     }, containerRef);
 
     return () => ctx.revert();
@@ -503,17 +580,33 @@ function Services() {
       ========================== */}
       <div className="block h-[100dvh] relative w-full">
         {/* Section heading */}
-        <div className="absolute top-10 md:top-14 left-6 md:left-8 lg:left-16 z-[70]">
-          <div className="flex items-center gap-3 mb-2 md:mb-4">
-            <span className="w-8 md:w-10 h-[1px] bg-[#B08A52]" />
+        <div className="absolute top-10 w-full left-0 flex flex-col items-center text-center md:items-start md:text-left md:w-auto md:left-8 lg:left-16 md:top-14 z-[70]">
+          <div className="flex items-center justify-center md:justify-start gap-3 mb-2 md:mb-4">
+            <span className="hidden md:block w-8 md:w-10 h-[1px] bg-[#B08A52]" />
             <span className="text-[9px] md:text-[11px] uppercase tracking-[0.25em] text-[#6B6862]">
               What we do
             </span>
           </div>
 
-          <h2 className="font-serif text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614]">
+          <h2 className="font-serif text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-3">
             Services<span className="text-[#B08A52]">.</span>
           </h2>
+
+          {/* Scroll Indicator (Mobile & Tablet) */}
+          <div className="flex lg:hidden items-start justify-center md:justify-start gap-3 opacity-100 transition-opacity duration-500 mt-2 md:mt-4 md:ml-1 animate-zoom-scroll">
+            <div className="flex flex-col items-center -space-y-3">
+              <svg className="w-5 h-5 text-[#B08A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+              </svg>
+              <svg className="w-5 h-5 text-[#B08A52] opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+              </svg>
+              <svg className="w-5 h-5 text-[#B08A52] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <span className="text-[10px] md:text-[12px] uppercase tracking-[0.2em] text-[#B08A52] font-bold shadow-sm pt-2">Scroll to explore</span>
+          </div>
         </div>
 
         {/* Top right count */}
@@ -523,6 +616,37 @@ function Services() {
           </div>
         </div>
 
+        <style>{`
+          @keyframes zoomInOutCenter {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.15); }
+          }
+          @keyframes zoomInOut {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+          }
+          .animate-zoom-scroll-center {
+            animation: zoomInOutCenter 2s ease-in-out infinite;
+          }
+          .animate-zoom-scroll {
+            animation: zoomInOut 2s ease-in-out infinite;
+          }
+        `}</style>
+        {/* Scroll Indicator (Laptop/Desktop) */}
+        <div className="absolute bottom-6 md:bottom-10 left-1/2 z-[70] hidden lg:flex flex-col items-center opacity-100 transition-opacity duration-500 animate-zoom-scroll-center">
+          <span className="text-[10px] md:text-[12px] uppercase tracking-[0.2em] text-[#B08A52] mb-1 font-bold shadow-sm">Scroll to explore</span>
+          <div className="flex flex-col items-center -space-y-4">
+            <svg className="w-6 h-6 text-[#B08A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+            </svg>
+            <svg className="w-6 h-6 text-[#B08A52] opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+            </svg>
+            <svg className="w-6 h-6 text-[#B08A52] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
         {/* Fan stage */}
         <div className="absolute inset-0 flex items-center justify-center pt-24 pb-4 md:pt-20 md:pb-40">
           <div className="relative w-full max-w-[1500px] h-[450px] md:h-[650px] flex items-center justify-center mt-10 lg:mt-16">

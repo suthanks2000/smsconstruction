@@ -537,12 +537,12 @@ function Services() {
             const container = containerRef.current;
             if (!container) return;
             const st = ScrollTrigger.getAll().find((t) => t.trigger === container && t.vars.pin === true);
-            
+
             if (st && st.isActive) {
               const total = servicesData.length;
               let currentIndex = Math.round(st.progress * (total - 1));
               const nextIdx = (currentIndex + 1) % total;
-              
+
               const targetScroll = st.start + (nextIdx * (st.end - st.start)) / (total - 1);
               window.scrollTo({ top: targetScroll, behavior: 'smooth' });
             }
@@ -709,6 +709,87 @@ function Services() {
   );
 }
 
+/* ─── Why SMS ─────────────────────────────────────────────── */
+const whyItems = [
+  { icon: "groups", title: "One Team", desc: "A single dedicated team handles design through construction — no miscommunication, no handoffs." },
+  { icon: "workspace_premium", title: "Luxury Quality", desc: "Premium materials, craftsmanship, and finishes at every step of the project lifecycle." },
+  { icon: "analytics", title: "Professional Planning", desc: "Every project begins with meticulous planning, budgeting, and timeline mapping." },
+  { icon: "visibility", title: "Transparent Process", desc: "Full visibility into every milestone with regular updates and open communication." },
+  { icon: "schedule", title: "On-Time Delivery", desc: "We respect your time. Projects are delivered on schedule without compromising quality." },
+  { icon: "task_alt", title: "Complete Execution", desc: "From concept to handover, we manage every detail so you don't have to." },
+];
+
+function WhySMS() {
+  const container = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".gsap-why-card",
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top 80%",
+          },
+        }
+      );
+    }, container);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={container} className="pt-12 pb-20 md:pt-16 md:pb-32 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
+      <div className="mb-12 md:mb-16 flex flex-col items-center text-center">
+        <h2 className="font-serif text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-[#171614] mb-3">
+          Why Choose Us<span className="text-[#B08A52]">.</span>
+        </h2>
+        <h3 className="font-sans text-[13px] md:text-[15px] font-semibold tracking-widest uppercase text-[#B08A52] max-w-3xl mb-3">
+          Built on Trust, Delivered with Excellence
+        </h3>
+        <p className="font-sans text-[12px] md:text-[14px] text-[#8A8A8A] max-w-lg leading-relaxed">
+          Six pillars that define our promise to every client who chooses SMS Construction.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 md:gap-8 auto-rows-fr">
+        {whyItems.map((item) => (
+          <div
+            key={item.title}
+            className="gsap-why-card h-full opacity-0 relative overflow-hidden bg-white rounded-[20px] p-4 sm:p-6 md:p-8 border border-[#E7E0D4] hover:shadow-[0_24px_48px_rgba(23,23,20,0.06)] hover:-translate-y-2 transition-all duration-500 group flex flex-col items-start text-left z-0"
+          >
+            {/* Expanding Background Circle */}
+            <div className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-[#C89A47] -z-10 transform scale-100 origin-center transition-transform duration-[600ms] ease-out group-hover:scale-[45]" />
+
+            {/* Top Right Corner Arrow */}
+            <div className="absolute top-0 right-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-[#C89A47] text-white rounded-bl-[20px] sm:rounded-bl-[24px] overflow-hidden pointer-events-none">
+              <span className="material-symbols-outlined text-[14px] sm:text-[16px] -mt-1 -mr-1 font-bold">arrow_forward</span>
+            </div>
+
+            <div className="relative z-10 flex items-center gap-2 sm:gap-4 mb-3 sm:mb-4 pr-4">
+              <div className="shrink-0 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#F8F4EE] flex items-center justify-center group-hover:bg-white/20 transition-colors duration-500">
+                <span className="material-symbols-outlined text-[#C89A47] group-hover:text-white transition-colors duration-500 text-[16px] sm:text-[24px]">
+                  {item.icon}
+                </span>
+              </div>
+              <h3 className="font-sans font-semibold text-[14px] sm:text-[18px] md:text-[20px] text-[#171614] group-hover:text-white transition-colors duration-300 leading-tight">
+                {item.title}
+              </h3>
+            </div>
+            <p className="relative z-10 font-sans text-[11px] sm:text-[14px] text-[#8A8A8A] leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+              {item.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 /* ─── Featured Projects ───────────────────────────────────── */
 function FeaturedProjects() {
   const projects = [
@@ -850,54 +931,6 @@ function GalleryStrip() {
               height={533}
               className="w-full h-full object-cover"
             />
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-/* ─── Why SMS ─────────────────────────────────────────────── */
-const whyItems = [
-  { icon: "groups", title: "One Team", desc: "A single dedicated team handles design through construction — no miscommunication, no handoffs." },
-  { icon: "workspace_premium", title: "Luxury Quality", desc: "Premium materials, craftsmanship, and finishes at every step of the project lifecycle." },
-  { icon: "analytics", title: "Professional Planning", desc: "Every project begins with meticulous planning, budgeting, and timeline mapping." },
-  { icon: "visibility", title: "Transparent Process", desc: "Full visibility into every milestone with regular updates and open communication." },
-  { icon: "schedule", title: "On-Time Delivery", desc: "We respect your time. Projects are delivered on schedule without compromising quality." },
-  { icon: "task_alt", title: "Complete Execution", desc: "From concept to handover, we manage every detail so you don't have to." },
-];
-
-function WhySMS() {
-  return (
-    <section className="py-20 md:py-40 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
-      <div className="mb-16 flex flex-col md:flex-row justify-between items-start gap-8">
-        <div>
-          <span className="text-label-caps text-[#C89A47] tracking-widest">Why Choose Us</span>
-          <h2 className="text-headline-xl text-[#1F1F1F] mt-4 max-w-xl">
-            Built on Trust, Delivered with Excellence.
-          </h2>
-        </div>
-        <p className="text-body-lg text-[#8A8A8A] max-w-md md:mt-12">
-          Six pillars that define our promise to every client who chooses SMS Construction.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {whyItems.map((item) => (
-          <div
-            key={item.title}
-            className="bg-white rounded-[24px] p-8 border border-[#E7E0D4]/30
-                       hover:shadow-[0_12px_40px_rgba(0,0,0,0.05)] hover:-translate-y-1
-                       transition-all duration-400 group"
-          >
-            <span
-              className="material-symbols-outlined text-[#C89A47] mb-6 block"
-              style={{ fontSize: 32 }}
-            >
-              {item.icon}
-            </span>
-            <h3 className="font-sans font-semibold text-[18px] text-[#1F1F1F] mb-3">{item.title}</h3>
-            <p className="text-[#8A8A8A] text-[14px] leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </div>
@@ -1130,9 +1163,9 @@ export default function Home() {
         <Hero />
         <TrustStats />
         <Services />
+        <WhySMS />
         <FeaturedProjects />
         <GalleryStrip />
-        <WhySMS />
         <Process />
         <Testimonials />
         <FAQ />

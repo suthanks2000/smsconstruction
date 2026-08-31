@@ -103,43 +103,43 @@ function InfiniteMarquee() {
 }
 
 /* ─── Collage Component ─────────────────────────────────────────────────── */
-function ProjectCollage({ images }: { images: string[] }) {
+function ProjectCollage({ images, title }: { images: string[], title: string }) {
   if (images.length === 3) {
     // 3 Images: 1 large on left, 2 smaller on right
     return (
-      <div className="w-full aspect-[4/5] sm:aspect-square md:aspect-[4/5] lg:aspect-square grid grid-cols-2 grid-rows-2 gap-3 md:gap-5 p-2">
+      <div className="w-full aspect-[4/5] md:aspect-auto md:w-full md:h-full grid grid-cols-2 grid-rows-2 gap-2 md:gap-4 p-1 md:p-2">
         {/* Large left image spanning 2 rows */}
-        <div className="relative w-full h-full overflow-hidden row-span-2 rounded-xl" style={{ borderTopRightRadius: '80px', borderBottomRightRadius: '80px' }}>
-          <Image src={images[0]} fill className="object-cover" alt="Project image" unoptimized />
+        <div className="relative w-full h-full overflow-hidden row-span-2 rounded-2xl" style={{ borderTopRightRadius: '80px', borderBottomRightRadius: '80px' }}>
+          <Image src={images[0]} fill className="object-cover" alt={`${title} - Main View`} sizes="(max-width: 1024px) 100vw, 50vw" quality={90} loading="lazy" />
         </div>
         
         {/* Top Right */}
-        <div className="relative w-full h-full overflow-hidden rounded-xl" style={{ borderBottomLeftRadius: '60px' }}>
-          <Image src={images[1]} fill className="object-cover" alt="Project image" unoptimized />
+        <div className="relative w-full h-full overflow-hidden rounded-2xl" style={{ borderBottomLeftRadius: '60px' }}>
+          <Image src={images[1]} fill className="object-cover" alt={`${title} - Detail View 1`} sizes="(max-width: 1024px) 50vw, 25vw" quality={85} loading="lazy" />
         </div>
         
         {/* Bottom Right */}
-        <div className="relative w-full h-full overflow-hidden rounded-xl" style={{ borderTopLeftRadius: '60px' }}>
-          <Image src={images[2]} fill className="object-cover" alt="Project image" unoptimized />
+        <div className="relative w-full h-full overflow-hidden rounded-2xl" style={{ borderTopLeftRadius: '60px' }}>
+          <Image src={images[2]} fill className="object-cover" alt={`${title} - Detail View 2`} sizes="(max-width: 1024px) 50vw, 25vw" quality={85} loading="lazy" />
         </div>
       </div>
     );
   }
 
-  // 4+ Images: 2x2 Grid (Cutout Star shape in middle)
+  // 4+ Images: Premium Asymmetric Bento Grid (7/5 & 5/7)
   return (
-    <div className="w-full aspect-[4/5] sm:aspect-square md:aspect-[4/5] lg:aspect-square grid grid-cols-2 grid-rows-2 gap-3 md:gap-5 p-2">
-      <div className="relative w-full h-full overflow-hidden rounded-xl" style={{ borderBottomRightRadius: '60px' }}>
-        <Image src={images[0]} fill className="object-cover" alt="Project image" unoptimized />
+    <div className="w-full aspect-[4/5] md:aspect-auto md:w-full md:h-full grid grid-cols-12 grid-rows-2 gap-2 md:gap-4 p-1 md:p-2">
+      <div className="relative col-span-7 h-full w-full overflow-hidden rounded-2xl" style={{ borderBottomRightRadius: '60px' }}>
+        <Image src={images[0]} fill className="object-cover" alt={`${title} - View 1`} sizes="(max-width: 1024px) 100vw, 60vw" quality={90} loading="lazy" />
       </div>
-      <div className="relative w-full h-full overflow-hidden rounded-xl" style={{ borderBottomLeftRadius: '60px' }}>
-        <Image src={images[1]} fill className="object-cover" alt="Project image" unoptimized />
+      <div className="relative col-span-5 h-full w-full overflow-hidden rounded-2xl" style={{ borderBottomLeftRadius: '60px' }}>
+        <Image src={images[1]} fill className="object-cover" alt={`${title} - View 2`} sizes="(max-width: 1024px) 50vw, 40vw" quality={90} loading="lazy" />
       </div>
-      <div className="relative w-full h-full overflow-hidden rounded-xl" style={{ borderTopRightRadius: '60px' }}>
-        <Image src={images[2]} fill className="object-cover" alt="Project image" unoptimized />
+      <div className="relative col-span-5 h-full w-full overflow-hidden rounded-2xl" style={{ borderTopRightRadius: '60px' }}>
+        <Image src={images[2]} fill className="object-cover" alt={`${title} - View 3`} sizes="(max-width: 1024px) 50vw, 40vw" quality={90} loading="lazy" />
       </div>
-      <div className="relative w-full h-full overflow-hidden rounded-xl" style={{ borderTopLeftRadius: '60px' }}>
-        <Image src={images[3]} fill className="object-cover" alt="Project image" unoptimized />
+      <div className="relative col-span-7 h-full w-full overflow-hidden rounded-2xl" style={{ borderTopLeftRadius: '60px' }}>
+        <Image src={images[3]} fill className="object-cover" alt={`${title} - View 4`} sizes="(max-width: 1024px) 100vw, 60vw" quality={90} loading="lazy" />
       </div>
     </div>
   );
@@ -229,6 +229,21 @@ export default function ProjectsPage() {
           <p className="intro-elem font-sans text-[16px] md:text-[18px] leading-[1.7] text-[#171614] max-w-xl">
             A collection of spaces shaped through thoughtful design, careful execution and attention to detail.
           </p>
+
+          <button 
+            onClick={() => document.getElementById('projects-start')?.scrollIntoView({ behavior: 'smooth' })}
+            className="intro-elem mt-12 md:mt-20 flex items-center gap-5 hover:opacity-80 transition-opacity cursor-pointer text-left focus:outline-none"
+            aria-label="Scroll down to projects"
+          >
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#B08A52] text-white shadow-xl shadow-[#B08A52]/20">
+              <svg className="w-5 h-5 animate-bounce mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+            <span className="font-sans text-[11px] tracking-[0.3em] uppercase font-bold text-[#171614]">
+              Scroll to explore
+            </span>
+          </button>  
         </section>
 
         {/* ══════════════════════════════════════════════════════
@@ -238,6 +253,9 @@ export default function ProjectsPage() {
           <InfiniteMarquee />
         </div>
       </div>
+
+      {/* Anchor point for scrolling */}
+      <div id="projects-start" />
 
       {/* ══════════════════════════════════════════════════════
           3. EDITORIAL PROJECT SHOWCASE (DESKTOP)
@@ -252,14 +270,14 @@ export default function ProjectsPage() {
                 key={project.slug} 
                 className={`showcase-panel min-h-[100dvh] flex justify-between gap-12 lg:gap-20 items-center py-20 ${isEven ? 'flex-row' : 'flex-row-reverse'}`}
               >
-                {/* TEXT (45%) */}
-                <div className="w-[45%] flex flex-col justify-center">
+                {/* TEXT (25%) */}
+                <div className="w-[30%] lg:w-[25%] min-w-[280px] flex flex-col justify-center">
                   <div className="font-sans text-[11px] tracking-[0.2em] font-semibold text-[#77736C] mb-8">
                     {pad((i + 1).toString())} / {pad(lookbookProjects.length.toString())}
                   </div>
                   
                   <Link href={`/projects/${project.slug}`} className="group block focus-visible:outline-[#B08A52] rounded-md">
-                    <h2 className="font-serif font-bold text-[#171614] text-[36px] lg:text-[44px] leading-[1.1] uppercase mb-4 transition-colors duration-300 group-hover:text-[#B08A52]">
+                    <h2 className="text-serif text-[#171614] text-[32px] lg:text-[40px] xl:text-[44px] leading-[1.1] uppercase mb-4 transition-colors duration-300 group-hover:text-[#B08A52]">
                       {project.title.split(' ').map((word, j) => (
                         <span key={j} className="block">{word}</span>
                       ))}
@@ -272,27 +290,26 @@ export default function ProjectsPage() {
                   <div className="font-sans text-[13px] text-[#77736C] mb-8">
                     {project.location}
                   </div>
-                  <p className="font-sans text-[15px] leading-[1.7] text-[#171614] max-w-sm mb-12">
+                  <p className="font-sans text-[14px] leading-[1.7] text-[#171614] max-w-sm mb-12">
                     {project.description}
                   </p>
                   
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="group inline-flex items-center gap-3 font-sans text-[11px] tracking-[0.2em] uppercase font-semibold text-[#171614] hover:text-[#B08A52] transition-colors relative self-start"
+                    className="group inline-flex items-center gap-3 font-sans text-[11px] tracking-[0.15em] uppercase font-bold text-white bg-[#171614] px-8 py-4 rounded-full hover:bg-[#B08A52] transition-all duration-300 shadow-md hover:shadow-xl self-start"
                   >
                     VIEW PROJECT
-                    <span className="text-[#B08A52] transition-transform duration-300 group-hover:translate-x-1">→</span>
-                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#B08A52] transition-all duration-300 group-hover:w-full" />
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </Link>
                 </div>
 
-                {/* IMAGE COLLAGE (55%) */}
-                <div className="w-[55%] flex justify-center items-center">
+                {/* IMAGE COLLAGE (75%) */}
+                <div className="w-[70%] lg:w-[75%] h-[80dvh] lg:h-[85dvh] flex justify-center items-center">
                   <Link 
                     href={`/projects/${project.slug}`} 
-                    className="group block w-full max-w-[min(650px,75dvh)] collage-container overflow-hidden rounded-xl transition-transform duration-500 hover:scale-[1.02]"
+                    className="group block w-full h-full collage-container overflow-hidden rounded-xl transition-transform duration-700 hover:scale-[1.015]"
                   >
-                    <ProjectCollage images={project.gallery.completed.slice(0, 4)} />
+                    <ProjectCollage images={project.gallery.completed.slice(0, 4)} title={project.title} />
                     
                     {/* Subtle Dark Overlay on Hover */}
                     <div className="absolute inset-0 bg-[#171614]/0 group-hover:bg-[#171614]/5 transition-colors duration-500 rounded-xl pointer-events-none" aria-hidden="true" />
@@ -324,7 +341,7 @@ export default function ProjectsPage() {
             </div>
             
             <Link href={`/projects/${project.slug}`} className="block relative w-full mb-8 rounded-lg overflow-hidden">
-              <ProjectCollage images={project.gallery.completed.slice(0, 4)} />
+              <ProjectCollage images={project.gallery.completed.slice(0, 4)} title={project.title} />
             </Link>
             
             <p className="font-sans text-[15px] leading-[1.6] text-[#171614] mb-8">
@@ -332,9 +349,10 @@ export default function ProjectsPage() {
             </p>
             <Link 
               href={`/projects/${project.slug}`} 
-              className="inline-flex items-center gap-3 font-sans text-[11px] tracking-[0.2em] uppercase font-semibold text-[#171614]"
+              className="group inline-flex items-center gap-3 font-sans text-[11px] tracking-[0.15em] uppercase font-bold text-white bg-[#171614] px-8 py-4 rounded-full active:bg-[#B08A52] transition-all duration-300 shadow-md self-start"
             >
-              VIEW PROJECT <span className="text-[#B08A52]">→</span>
+              VIEW PROJECT
+              <span className="transition-transform duration-300 group-active:translate-x-1">→</span>
             </Link>
           </article>
         ))}
@@ -351,7 +369,7 @@ export default function ProjectsPage() {
           <div>
             <h2
               id="seo-heading"
-              className="font-serif font-bold text-[#171614] leading-[1.1] tracking-[-0.02em]"
+              className="text-[#171614] leading-[1.1] tracking-[-0.02em]"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               OUR PROJECTS

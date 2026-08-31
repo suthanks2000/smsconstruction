@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "SMS Construction | Architectural Excellence",
@@ -51,6 +52,7 @@ export default function RootLayout({
       <body className="antialiased overflow-x-hidden">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

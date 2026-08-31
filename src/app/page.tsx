@@ -1857,7 +1857,6 @@ export default function Home() {
           }
         }
       `}</style>
-      <Footer />
     </>
   );
 }

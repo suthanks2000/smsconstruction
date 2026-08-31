@@ -214,7 +214,7 @@ export default function ProjectsPage() {
       {/* ══════════════════════════════════════════════════════
           1. COMPACT EDITORIAL HERO (100vh)
       ══════════════════════════════════════════════════════ */}
-      <div className="min-h-screen flex flex-col pt-24 md:pt-32">
+      <div className="min-h-[100dvh] flex flex-col pt-24 md:pt-32">
         <section className="flex-grow flex flex-col justify-center px-6 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full pb-12">
           <p className="intro-elem font-sans text-[11px] tracking-[0.28em] uppercase font-semibold text-[#B08A52] mb-4 flex items-center gap-3">
             <span className="inline-block w-8 h-px bg-[#B08A52]" aria-hidden="true" />

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Handshake, Map, DraftingCompass, HardHat, ClipboardCheck, Key } from "lucide-react";
+import { Handshake, Map, DraftingCompass, HardHat, ClipboardCheck, Key, Plus, Play } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -791,7 +791,6 @@ function WhySMS() {
     </section>
   );
 }
-gsap.registerPlugin(ScrollTrigger);
 
 /* ─── Featured Projects ───────────────────────────────────── */
 
@@ -945,7 +944,7 @@ function FeaturedProjects() {
       ease: "power3.out",
     });
 
-    };
+  };
 
   /* ─────────────────────────────────────────────
      HOVER CLOSE
@@ -988,7 +987,7 @@ function FeaturedProjects() {
       ease: "power3.out",
     });
 
-    };
+  };
 
   return (
     <section
@@ -1214,7 +1213,7 @@ function FeaturedProjects() {
                 {projects[1].title}
               </h3>
 
-              
+
             </div>
           </a>
 
@@ -1289,7 +1288,7 @@ function FeaturedProjects() {
                 {projects[4].title}
               </h3>
 
-              
+
             </div>
           </a>
 
@@ -1364,7 +1363,7 @@ function FeaturedProjects() {
                 {projects[2].title}
               </h3>
 
-              
+
             </div>
           </a>
 
@@ -1439,7 +1438,7 @@ function FeaturedProjects() {
                 {projects[3].title}
               </h3>
 
-              
+
             </div>
           </a>
         </div>
@@ -1493,7 +1492,7 @@ function FeaturedProjects() {
                 </span>
               </div>
 
-              
+
 
               <div className="project-content absolute left-4 right-4 bottom-4">
                 <div className="flex items-center gap-2 mb-2">
@@ -1510,7 +1509,7 @@ function FeaturedProjects() {
                   {project.title}
                 </h3>
 
-                
+
               </div>
             </a>
           ))}
@@ -1540,44 +1539,92 @@ function FeaturedProjects() {
 
 /* ─── Gallery Strip ───────────────────────────────────────── */
 function GalleryStrip() {
-  const images = [
+  const videos = [
     {
-      src: "/images/screen1_office.jpg",
-      alt: "Architecture office - SMS Construction",
+      id: 1,
+      poster: "/images/screen1_office.jpg",
+      title: "Design Process",
+      views: "12.4K",
+      src: ""
     },
     {
-      src: "/images/screen2_exterior.jpg",
-      alt: "Luxury residential exterior at sunset",
+      id: 2,
+      poster: "/images/screen2_exterior.jpg",
+      title: "Luxury Exterior",
+      views: "18.2K",
+      src: ""
     },
     {
-      src: "/images/screen3_interior.jpg",
-      alt: "Cinematic luxury interior living space",
+      id: 3,
+      poster: "/images/screen3_interior.jpg",
+      title: "Living Spaces",
+      views: "24.1K",
+      src: ""
     },
     {
-      src: "/images/screen5_detail.jpg",
-      alt: "Minimalist interior design detail",
+      id: 4,
+      poster: "/images/screen5_detail.jpg",
+      title: "Minimal Details",
+      views: "9.8K",
+      src: ""
     },
   ];
 
   return (
     <section className="py-16 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
-      <div className="mb-12 text-center">
-        <span className="text-label-caps text-[#C89A47] tracking-widest">Our Studio</span>
-        <h2 className="text-headline-xl text-[#1F1F1F] mt-4">Spaces We&apos;ve Crafted.</h2>
+      <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
+        <h2 className="text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-4">
+          Our Studio<span className="text-[#B08A52]">.</span>
+        </h2>
+        <span className="text-lg md:text-xl font-serif text-[#C89A47] block">
+          Spaces We&apos;ve Crafted
+        </span>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {images.map((img) => (
+
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        {videos.map((vid) => (
           <div
-            key={img.src}
-            className="img-zoom rounded-[20px] overflow-hidden aspect-[3/4] cursor-pointer"
+            key={vid.id}
+            className="group relative rounded-[24px] overflow-hidden aspect-[9/16] bg-[#E7E0D4] cursor-pointer shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-500 will-change-transform"
           >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              width={400}
-              height={533}
-              className="w-full h-full object-cover"
-            />
+            {/* The Video */}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster={vid.poster}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            >
+              {vid.src && <source src={vid.src} type="video/mp4" />}
+            </video>
+
+            {/* Gradient Overlay for IG look */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
+
+            {/* Instagram Style UI */}
+            <div className="absolute inset-0 p-4 md:p-5 flex flex-col justify-between text-white z-10 pointer-events-none">
+
+              {/* Top View Count */}
+              <div className="self-end bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 text-[11px] font-medium border border-white/10 shadow-sm">
+                <Play size={12} className="fill-white" />
+                {vid.views}
+              </div>
+
+              {/* Bottom Info */}
+              <div>
+                <h3 className="font-semibold text-[15px] md:text-[17px] leading-tight mb-2 text-white">
+                  {vid.title}
+                </h3>
+                <div className="flex items-center gap-2 text-white/90 text-[12px] md:text-[13px] font-medium">
+                  <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#C89A47] flex items-center justify-center text-[9px] md:text-[10px] font-bold text-white shadow-sm border border-white/20">
+                    S
+                  </div>
+                  sms_construction
+                </div>
+              </div>
+
+            </div>
           </div>
         ))}
       </div>
@@ -1601,7 +1648,7 @@ function Process() {
 
   useLayoutEffect(() => {
     if (!containerRef.current) return;
-    
+
     const ctx = gsap.context(() => {
       // Progress bar growing as you scroll down the section
       if (progressBarRef.current) {
@@ -1620,12 +1667,12 @@ function Process() {
       // Stagger fade up for each step when it enters the viewport
       const stepsArray = gsap.utils.toArray(".process-step");
       stepsArray.forEach((step: any) => {
-        gsap.fromTo(step, 
+        gsap.fromTo(step,
           { opacity: 0, y: 40 },
-          { 
-            opacity: 1, 
-            y: 0, 
-            duration: 0.8, 
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
             ease: "power3.out",
             scrollTrigger: {
               trigger: step,
@@ -1634,7 +1681,7 @@ function Process() {
           }
         );
       });
-      
+
     }, containerRef);
     return () => ctx.revert();
   }, []);
@@ -1642,19 +1689,16 @@ function Process() {
   return (
     <section ref={containerRef} className="py-24 md:py-40 bg-[#FAFAFA] relative">
       <div className="max-w-[1440px] mx-auto px-6 md:px-16 flex flex-col lg:flex-row gap-16 lg:gap-24">
-        
+
         {/* Left: Sticky Header */}
         <div className="lg:w-[40%] lg:sticky lg:top-40 h-fit mb-10 lg:mb-0">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-px bg-[#C89A47]" />
-            <span className="font-sans text-[10px] md:text-[11px] uppercase tracking-[0.25em] font-semibold text-[#C89A47]">
-              Our Process
-            </span>
-          </div>
-          <h2 className="font-serif text-[40px] md:text-[48px] lg:text-[64px] text-[#1F1F1F] leading-[1.05] tracking-[-0.02em]">
+          <h2 className="text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-4">
             How we build <br className="hidden lg:block" />
-            your dream space.
+            your dream space<span className="text-[#B08A52]">.</span>
           </h2>
+          <span className="text-lg md:text-xl text-[#C89A47] block">
+            Our Process
+          </span>
           <p className="mt-6 md:mt-8 text-[15px] md:text-[17px] text-[#77736C] leading-[1.7] max-w-md">
             A clear, collaborative journey that takes your project from the first conversation to the final handover, ensuring quality and transparency at every step.
           </p>
@@ -1662,43 +1706,43 @@ function Process() {
 
         {/* Right: Scrolling Steps */}
         <div className="lg:w-[60%] relative">
-           {/* Vertical Line track */}
-           <div className="absolute left-[27px] md:left-[31px] top-4 bottom-4 w-[2px] bg-[#E7E0D4] rounded-full overflow-hidden">
-             <div ref={progressBarRef} className="absolute top-0 left-0 w-full h-full bg-[#C89A47] origin-top scale-y-0" />
-           </div>
+          {/* Vertical Line track */}
+          <div className="absolute left-[23px] md:left-[31px] top-4 bottom-4 w-[2px] bg-[#E7E0D4] rounded-full overflow-hidden">
+            <div ref={progressBarRef} className="absolute top-0 left-0 w-full h-full bg-[#C89A47] origin-top scale-y-0" />
+          </div>
 
-           <div className="flex flex-col gap-12 md:gap-20">
-             {steps.map((step, idx) => {
-               const Icon = step.icon;
-               return (
-                 <div key={idx} className="relative flex gap-8 md:gap-12 group process-step pt-2">
-                    {/* Node on line */}
-                    <div className="w-[56px] h-[56px] md:w-[64px] md:h-[64px] rounded-full bg-white border-2 border-[#E7E0D4] shadow-sm flex items-center justify-center text-[#C89A47] relative z-10 shrink-0 transition-all duration-500 group-hover:bg-[#C89A47] group-hover:text-white group-hover:border-[#C89A47] group-hover:shadow-[0_10px_30px_rgba(200,154,71,0.2)]">
-                       <span className="font-serif italic text-[18px] md:text-[22px]">{step.num}</span>
+          <div className="flex flex-col gap-8 md:gap-20">
+            {steps.map((step, idx) => {
+              const Icon = step.icon;
+              return (
+                <div key={idx} className="relative flex gap-6 md:gap-12 group process-step pt-2">
+                  {/* Node on line */}
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white border-2 border-[#E7E0D4] shadow-sm flex items-center justify-center text-[#C89A47] relative z-10 shrink-0 transition-all duration-500 group-hover:bg-[#C89A47] group-hover:text-white group-hover:border-[#C89A47] group-hover:shadow-[0_10px_30px_rgba(200,154,71,0.2)]">
+                    <span className="text-[16px] md:text-[22px]">{step.num}</span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="pt-1 md:pt-4 pb-10 md:pb-12 border-b border-[#E7E0D4]/50 last:border-0 last:pb-0 w-full">
+                    <h3 className="font-sans font-bold text-[20px] md:text-[28px] text-[#1F1F1F] mb-3 md:mb-4 transition-colors duration-300 group-hover:text-[#C89A47]">{step.title}</h3>
+                    <p className="font-sans text-[14px] md:text-[16px] text-[#77736C] leading-[1.7] md:leading-[1.8] max-w-lg mb-6 md:mb-8">{step.desc}</p>
+
+                    {/* Enhanced Visual Box */}
+                    <div className="rounded-[20px] md:rounded-[24px] overflow-hidden bg-white shadow-[0_5px_20px_rgba(0,0,0,0.02)] border border-[#E7E0D4]/60 p-4 md:p-6 flex flex-col sm:flex-row sm:items-center gap-4 md:gap-5 transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_15px_30px_rgba(0,0,0,0.04)] group-hover:border-[#C89A47]/30">
+                      <div className="w-12 h-12 rounded-full bg-[#F8F4EE] shadow-inner flex items-center justify-center text-[#C89A47] shrink-0 transition-transform duration-500 group-hover:scale-110">
+                        <Icon size={24} strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <div className="text-[10px] md:text-[11px] uppercase tracking-widest text-[#77736C] font-semibold mb-1">Phase {step.num} Overview</div>
+                        <div className="text-[#1F1F1F] text-[13px] md:text-[14px] font-medium leading-relaxed">
+                          Learn more about our meticulous {step.title.toLowerCase()} process.
+                        </div>
+                      </div>
                     </div>
-                    
-                    {/* Content */}
-                    <div className="pt-2 md:pt-4 pb-12 border-b border-[#E7E0D4]/50 last:border-0 last:pb-0 w-full">
-                       <h3 className="font-sans font-bold text-[22px] md:text-[28px] text-[#1F1F1F] mb-3 md:mb-4 transition-colors duration-300 group-hover:text-[#C89A47]">{step.title}</h3>
-                       <p className="font-sans text-[15px] md:text-[16px] text-[#77736C] leading-[1.8] max-w-lg mb-8">{step.desc}</p>
-                       
-                       {/* Enhanced Visual Box */}
-                       <div className="rounded-[24px] overflow-hidden bg-white shadow-[0_5px_20px_rgba(0,0,0,0.02)] border border-[#E7E0D4]/60 p-6 flex flex-col sm:flex-row sm:items-center gap-5 transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_15px_30px_rgba(0,0,0,0.04)] group-hover:border-[#C89A47]/30">
-                          <div className="w-12 h-12 rounded-full bg-[#F8F4EE] shadow-inner flex items-center justify-center text-[#C89A47] shrink-0 transition-transform duration-500 group-hover:scale-110">
-                            <Icon size={24} strokeWidth={1.5} />
-                          </div>
-                          <div>
-                            <div className="text-[10px] md:text-[11px] uppercase tracking-widest text-[#77736C] font-semibold mb-1">Phase {step.num} Overview</div>
-                            <div className="text-[#1F1F1F] text-[13px] md:text-[14px] font-medium leading-relaxed">
-                              Learn more about our meticulous {step.title.toLowerCase()} process.
-                            </div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-               );
-             })}
-           </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
@@ -1708,61 +1752,99 @@ function Process() {
 /* ─── Testimonials ────────────────────────────────────────── */
 const testimonials = [
   {
-    quote: "SMS Construction transformed our home beyond what we imagined. The attention to detail, quality of materials, and the team's professionalism were exceptional throughout.",
     name: "Ramesh & Priya Kumar",
-    role: "Residential Client · Nagercoil",
+    date: "2 months ago",
+    quote: "SMS Construction transformed our home beyond what we imagined. The attention to detail, quality of materials, and the team's professionalism were exceptional throughout.",
     initial: "R",
+    color: "bg-[#EA4335]"
   },
   {
-    quote: "Working with SMS was a completely different experience. They handled everything from design to handover — truly a one-stop luxury construction partner.",
     name: "Dr. Anand Sivakumar",
-    role: "Turnkey Client · Kanyakumari",
+    date: "4 months ago",
+    quote: "Working with SMS was a completely different experience. They handled everything from design to handover — truly a one-stop luxury construction partner.",
     initial: "A",
+    color: "bg-[#4285F4]"
   },
   {
-    quote: "The renovation work they did on our commercial space was outstanding. On time, on budget, and the quality speaks for itself. Highly recommend.",
     name: "Lakshmi Enterprises",
-    role: "Commercial Client · Nagercoil",
+    date: "a month ago",
+    quote: "The renovation work they did on our commercial space was outstanding. On time, on budget, and the quality speaks for itself. Highly recommend.",
     initial: "L",
+    color: "bg-[#34A853]"
   },
+  {
+    name: "Vikram Rajendran",
+    date: "3 weeks ago",
+    quote: "Very professional team. They helped us build our dream villa in Nagercoil. The 3D designs provided before construction were 100% matched in reality.",
+    initial: "V",
+    color: "bg-[#FBBC05]"
+  },
+  {
+    name: "Sneha Varghese",
+    date: "5 months ago",
+    quote: "We hired SMS for our office interior work. The finishing is top-notch and they handed over the site exactly on the promised date.",
+    initial: "S",
+    color: "bg-[#8E24AA]"
+  },
+  {
+    name: "Karthik Menon",
+    date: "a year ago",
+    quote: "One of the best construction companies in Kanyakumari district. From structural planning to final painting, everything was handled seamlessly.",
+    initial: "K",
+    color: "bg-[#009688]"
+  }
 ];
 
 function Testimonials() {
   return (
-    <section className="py-20 md:py-40 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
-      <div className="mb-16 text-center">
-        <span className="text-label-caps text-[#C89A47] tracking-widest">Testimonials</span>
-        <h2 className="text-headline-xl text-[#1F1F1F] mt-4">
-          Words from Our Clients.
-        </h2>
+    <section className="py-12 md:py-20 bg-white overflow-hidden border-t border-[#E7E0D4]/50">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-16 mb-8 md:mb-10">
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className="text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-3">
+            Client Reviews<span className="text-[#B08A52]">.</span>
+          </h2>
+          <span className="text-lg md:text-xl font-serif text-[#C89A47] block">
+            What Our Clients Say
+          </span>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {testimonials.map((t) => (
-          <div
-            key={t.name}
-            className="bg-white rounded-[24px] p-8 border border-[#E7E0D4]/30
-                       hover:shadow-[0_12px_40px_rgba(0,0,0,0.05)] transition-all duration-400"
-          >
-            <div className="text-[#C89A47] mb-6">
-              <span className="material-symbols-outlined" style={{ fontSize: 36, fontVariationSettings: "'FILL' 1" }}>
+      <div className="w-full relative overflow-hidden group">
+        <div className="flex gap-4 md:gap-6 pb-6 md:pb-8 pt-2 animate-scroll w-max group-hover:[animation-play-state:paused]">
+          {[...testimonials, ...testimonials, ...testimonials].map((t, idx) => (
+            <div
+              key={idx}
+              className="w-[320px] md:w-[400px] shrink-0 bg-white p-6 md:p-8 rounded-[20px] border border-[#E7E0D4]/60 flex flex-col gap-5 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-400 ease-out relative overflow-hidden group/card cursor-pointer"
+            >
+              {/* Decorative background quote icon */}
+              <span className="material-symbols-outlined absolute top-4 right-4 text-[80px] text-[#C89A47] opacity-[0.03] group-hover/card:opacity-[0.06] group-hover/card:scale-110 transition-all duration-500 origin-top-right select-none pointer-events-none" style={{ fontVariationSettings: "'FILL' 1" }}>
                 format_quote
               </span>
-            </div>
-            <p className="text-[#1F1F1F] text-[17px] leading-relaxed mb-8 italic font-serif">
-              &ldquo;{t.quote}&rdquo;
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-11 h-11 rounded-full bg-[#C89A47] text-white flex items-center justify-center font-sans font-semibold text-[15px]">
-                {t.initial}
+
+              <div className="flex justify-between items-start relative z-10">
+                <div className="flex gap-4 items-center">
+                  <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full text-white flex items-center justify-center font-medium text-[18px] md:text-[20px] shadow-sm shrink-0 ${t.color}`}>
+                    {t.initial}
+                  </div>
+                  <div className="flex flex-col justify-center gap-1.5">
+                    <div className="text-[15px] md:text-[16px] font-bold text-[#1F1F1F] leading-tight tracking-tight">{t.name}</div>
+                    <div className="flex gap-0.5 relative z-10">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-[14px] h-[14px] md:w-[16px] md:h-[16px] text-[#FABB05]" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <div className="font-sans font-semibold text-[14px] text-[#1F1F1F]">{t.name}</div>
-                <div className="text-label-caps text-[#8A8A8A] mt-0.5">{t.role}</div>
+
+              <div className="text-[14px] md:text-[15px] text-[#202124] leading-relaxed relative z-10 mt-1">
+                {t.quote}
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -1771,74 +1853,130 @@ function Testimonials() {
 /* ─── FAQ ─────────────────────────────────────────────────── */
 const faqs = [
   {
-    q: "What types of projects does SMS Construction handle?",
-    a: "We handle home interiors, turnkey interior projects, residential construction, commercial construction, and renovations — all under one roof in Nagercoil and across Kanyakumari District.",
+    q: "What services does SMS Construction provide?",
+    a: "We specialize in Interior Design, Construction, Design & Planning, Survey & Approvals, and Fabrication Works.",
   },
   {
-    q: "How long does a typical interior project take?",
-    a: "Most residential interior projects range from 45 to 120 days depending on scope. We provide a precise timeline during the planning phase and commit to it.",
+    q: "Do you provide complete interior design for homes?",
+    a: "Yes, we provide end-to-end interior design services for homes — right from 3D design conceptualization through to material selection and complete execution.",
   },
   {
-    q: "Do you offer a free consultation?",
-    a: "Yes — we offer a complimentary first consultation where we understand your vision, assess the space, and provide a broad project estimate at no cost.",
+    q: "Do you undertake residential construction projects in Nagercoil?",
+    a: "Absolutely. We undertake full-scale residential construction and turnkey building projects throughout Nagercoil.",
   },
   {
-    q: "What makes SMS Construction different from other firms?",
-    a: "We combine luxury design sensibility with construction expertise, meaning you get a single team managing your entire project — no coordination headaches, no quality compromises.",
+    q: "Which areas do you serve?",
+    a: "We primarily serve Nagercoil, Kanyakumari, and the surrounding regions across Kanyakumari District.",
   },
   {
-    q: "Do you work outside of Nagercoil?",
-    a: "Our primary service area is Nagercoil and Kanyakumari District. For large-scale projects, we can discuss arrangements for work in nearby regions.",
+    q: "Can you design interiors for an existing home?",
+    a: "Yes, we frequently handle home renovations and interior upgrades for existing residential spaces.",
+  },
+  {
+    q: "What interior spaces do you design?",
+    a: "We design and execute all major interior spaces including Bedrooms, Kitchens, False Ceilings, TV Units, Wall Decor, and Terrace Gardens.",
+  },
+  {
+    q: "How does the project process work?",
+    a: "Our structured approach ensures quality at every step: Consultation → Planning → Design → Execution → Quality Check → Handover.",
+  },
+  {
+    q: "How can I get a quotation or discuss my project?",
+    a: "You can easily reach out to us via our Contact page, WhatsApp, or give us a call directly to schedule a free initial consultation.",
   },
 ];
 
 function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".faq-heading", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+
+      gsap.from(".faq-item", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%",
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power3.out",
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="py-20 md:py-40 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
-      <div className="mb-16">
-        <span className="text-label-caps text-[#C89A47] tracking-widest">FAQ</span>
-        <h2 className="text-headline-xl text-[#1F1F1F] mt-4 max-w-xl">
-          Frequently Asked Questions.
-        </h2>
-      </div>
+    <section ref={sectionRef} className="py-12 md:py-24 bg-[#FAFAFA] border-t border-[#E7E0D4]/50 relative">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-16">
 
-      <div className="max-w-3xl space-y-4">
-        {faqs.map((faq, i) => (
-          <div
-            key={i}
-            className="bg-white rounded-[20px] border border-[#E7E0D4]/30 overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.01)]"
-          >
-            <button
-              className="w-full text-left px-8 py-6 flex justify-between items-center
-                         hover:bg-[#FAF8F5] transition-colors duration-200"
-              onClick={() => setOpen(open === i ? null : i)}
-              aria-expanded={open === i}
-            >
-              <span className="font-sans font-medium text-[15px] text-[#1F1F1F] pr-8">
-                {faq.q}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
+
+          {/* Left: Heading */}
+          <div className="lg:w-[35%] shrink-0">
+            <div className="sticky top-32 faq-heading">
+              <h2 className="text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-4">
+                Frequently Asked Questions<span className="text-[#B08A52]">.</span>
+              </h2>
+              <span className="text-lg md:text-xl text-[#C89A47] block">
+                Everything you need to know
               </span>
-              <span
-                className="material-symbols-outlined text-[#C89A47] transition-transform duration-300 shrink-0"
-                style={{
-                  fontSize: 20,
-                  transform: open === i ? "rotate(45deg)" : "rotate(0deg)",
-                }}
-              >
-                add
-              </span>
-            </button>
-            <div
-              className={`accordion-content ${open === i ? "open" : ""}`}
-              aria-hidden={open !== i}
-            >
-              <div className="px-8 pb-6 text-[#8A8A8A] text-[15px] leading-relaxed">
-                {faq.a}
-              </div>
             </div>
           </div>
-        ))}
+
+          {/* Right: Accordion */}
+          <div className="lg:w-[65%] flex flex-col gap-4">
+            {faqs.map((faq, i) => (
+              <div
+                key={i}
+                className="faq-item bg-white rounded-[20px] border border-[#E7E0D4] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group"
+              >
+                <button
+                  className="w-full text-left px-6 md:px-8 py-6 md:py-7 flex justify-between items-center bg-white group-hover:bg-[#FAF8F5] transition-colors duration-200"
+                  onClick={() => setOpen(open === i ? null : i)}
+                  aria-expanded={open === i}
+                >
+                  <span className={`font-sans font-semibold text-[16px] md:text-[17px] pr-8 leading-snug transition-colors duration-300 ${open === i ? "text-[#C89A47]" : "text-[#1F1F1F]"}`}>
+                    {faq.q}
+                  </span>
+                  <span
+                    className="text-[#C89A47] transition-transform duration-300 shrink-0 bg-[#F8F4EE] w-10 h-10 rounded-full flex items-center justify-center"
+                    style={{
+                      transform: open === i ? "rotate(135deg)" : "rotate(0deg)",
+                    }}
+                  >
+                    <Plus size={20} strokeWidth={2.5} />
+                  </span>
+                </button>
+                <div
+                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${open === i ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
+                  aria-hidden={open !== i}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 md:px-8 pb-7 pt-2 text-[#555] text-[15px] md:text-[16px] leading-[1.8]">
+                      {faq.a}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
       </div>
     </section>
   );
@@ -1936,6 +2074,13 @@ export default function Home() {
             animation-duration: 0.01ms !important;
             transition-duration: 0.01ms !important;
           }
+        }
+        @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.333333%); }
+        }
+        .animate-scroll {
+          animation: scroll 35s linear infinite;
         }
       `}</style>
     </>

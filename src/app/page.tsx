@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "@/components/Footer";
+import { Handshake, Map, DraftingCompass, HardHat, ClipboardCheck, Key } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -1587,38 +1587,119 @@ function GalleryStrip() {
 
 /* ─── Process Timeline ────────────────────────────────────── */
 const steps = [
-  { num: "01", title: "Consultation", desc: "We begin with a deep conversation about your vision, requirements, and budget." },
-  { num: "02", title: "Planning", desc: "Detailed scope of work, timeline, and budget planning with complete transparency." },
-  { num: "03", title: "Design", desc: "Our designers craft bespoke concepts — moodboards, floor plans, 3D renders." },
-  { num: "04", title: "Execution", desc: "Expert craftspeople bring the design to life with premium materials and precision." },
-  { num: "05", title: "Quality Check", desc: "Rigorous inspection at every stage to ensure flawless finishes and durability." },
-  { num: "06", title: "Handover", desc: "A walk-through with you, final touches, and a complete handover of your dream space." },
+  { num: "01", title: "Consultation", icon: Handshake, desc: "We begin with a deep conversation about your vision, requirements, and budget." },
+  { num: "02", title: "Planning", icon: Map, desc: "Detailed scope of work, timeline, and budget planning with complete transparency." },
+  { num: "03", title: "Design", icon: DraftingCompass, desc: "Our designers craft bespoke concepts — moodboards, floor plans, 3D renders." },
+  { num: "04", title: "Execution", icon: HardHat, desc: "Expert craftspeople bring the design to life with premium materials and precision." },
+  { num: "05", title: "Quality Check", icon: ClipboardCheck, desc: "Rigorous inspection at every stage to ensure flawless finishes and durability." },
+  { num: "06", title: "Handover", icon: Key, desc: "A walk-through with you, final touches, and a complete handover of your dream space." },
 ];
 
 function Process() {
-  return (
-    <section className="py-20 md:py-40 px-6 md:px-16 max-w-[1440px] mx-auto bg-white rounded-[40px] my-16 shadow-[0_10px_50px_rgba(0,0,0,0.02)]">
-      <div className="mb-16 text-center">
-        <span className="text-label-caps text-[#C89A47] tracking-widest">Our Process</span>
-        <h2 className="text-headline-xl text-[#1F1F1F] mt-4">
-          How We Build Your Dream Space.
-        </h2>
-      </div>
+  const containerRef = useRef<HTMLElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {steps.map((step) => (
-          <div
-            key={step.num}
-            className="relative p-8 bg-[#F8F4EE]/50 rounded-[24px] border border-[#E7E0D4]/30
-                       hover:shadow-[0_12px_40px_rgba(0,0,0,0.04)] transition-all duration-400"
-          >
-            <div className="font-serif text-[56px] leading-none text-[#E7E0D4] mb-4">
-              {step.num}
-            </div>
-            <h3 className="font-sans font-semibold text-[18px] text-[#1F1F1F] mb-2">{step.title}</h3>
-            <p className="text-[#8A8A8A] text-[14px] leading-relaxed">{step.desc}</p>
+  useLayoutEffect(() => {
+    if (!containerRef.current) return;
+    
+    const ctx = gsap.context(() => {
+      // Progress bar growing as you scroll down the section
+      if (progressBarRef.current) {
+        gsap.to(progressBarRef.current, {
+          scaleY: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top center",
+            end: "bottom center",
+            scrub: true,
+          }
+        });
+      }
+
+      // Stagger fade up for each step when it enters the viewport
+      const stepsArray = gsap.utils.toArray(".process-step");
+      stepsArray.forEach((step: any) => {
+        gsap.fromTo(step, 
+          { opacity: 0, y: 40 },
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 0.8, 
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: step,
+              start: "top 80%",
+            }
+          }
+        );
+      });
+      
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={containerRef} className="py-24 md:py-40 bg-[#FAFAFA] relative">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-16 flex flex-col lg:flex-row gap-16 lg:gap-24">
+        
+        {/* Left: Sticky Header */}
+        <div className="lg:w-[40%] lg:sticky lg:top-40 h-fit mb-10 lg:mb-0">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-8 h-px bg-[#C89A47]" />
+            <span className="font-sans text-[10px] md:text-[11px] uppercase tracking-[0.25em] font-semibold text-[#C89A47]">
+              Our Process
+            </span>
           </div>
-        ))}
+          <h2 className="font-serif text-[40px] md:text-[48px] lg:text-[64px] text-[#1F1F1F] leading-[1.05] tracking-[-0.02em]">
+            How we build <br className="hidden lg:block" />
+            your dream space.
+          </h2>
+          <p className="mt-6 md:mt-8 text-[15px] md:text-[17px] text-[#77736C] leading-[1.7] max-w-md">
+            A clear, collaborative journey that takes your project from the first conversation to the final handover, ensuring quality and transparency at every step.
+          </p>
+        </div>
+
+        {/* Right: Scrolling Steps */}
+        <div className="lg:w-[60%] relative">
+           {/* Vertical Line track */}
+           <div className="absolute left-[27px] md:left-[31px] top-4 bottom-4 w-[2px] bg-[#E7E0D4] rounded-full overflow-hidden">
+             <div ref={progressBarRef} className="absolute top-0 left-0 w-full h-full bg-[#C89A47] origin-top scale-y-0" />
+           </div>
+
+           <div className="flex flex-col gap-12 md:gap-20">
+             {steps.map((step, idx) => {
+               const Icon = step.icon;
+               return (
+                 <div key={idx} className="relative flex gap-8 md:gap-12 group process-step pt-2">
+                    {/* Node on line */}
+                    <div className="w-[56px] h-[56px] md:w-[64px] md:h-[64px] rounded-full bg-white border-2 border-[#E7E0D4] shadow-sm flex items-center justify-center text-[#C89A47] relative z-10 shrink-0 transition-all duration-500 group-hover:bg-[#C89A47] group-hover:text-white group-hover:border-[#C89A47] group-hover:shadow-[0_10px_30px_rgba(200,154,71,0.2)]">
+                       <span className="font-serif italic text-[18px] md:text-[22px]">{step.num}</span>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="pt-2 md:pt-4 pb-12 border-b border-[#E7E0D4]/50 last:border-0 last:pb-0 w-full">
+                       <h3 className="font-sans font-bold text-[22px] md:text-[28px] text-[#1F1F1F] mb-3 md:mb-4 transition-colors duration-300 group-hover:text-[#C89A47]">{step.title}</h3>
+                       <p className="font-sans text-[15px] md:text-[16px] text-[#77736C] leading-[1.8] max-w-lg mb-8">{step.desc}</p>
+                       
+                       {/* Enhanced Visual Box */}
+                       <div className="rounded-[24px] overflow-hidden bg-white shadow-[0_5px_20px_rgba(0,0,0,0.02)] border border-[#E7E0D4]/60 p-6 flex flex-col sm:flex-row sm:items-center gap-5 transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_15px_30px_rgba(0,0,0,0.04)] group-hover:border-[#C89A47]/30">
+                          <div className="w-12 h-12 rounded-full bg-[#F8F4EE] shadow-inner flex items-center justify-center text-[#C89A47] shrink-0 transition-transform duration-500 group-hover:scale-110">
+                            <Icon size={24} strokeWidth={1.5} />
+                          </div>
+                          <div>
+                            <div className="text-[10px] md:text-[11px] uppercase tracking-widest text-[#77736C] font-semibold mb-1">Phase {step.num} Overview</div>
+                            <div className="text-[#1F1F1F] text-[13px] md:text-[14px] font-medium leading-relaxed">
+                              Learn more about our meticulous {step.title.toLowerCase()} process.
+                            </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+               );
+             })}
+           </div>
+        </div>
       </div>
     </section>
   );

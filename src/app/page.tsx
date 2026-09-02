@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Handshake, Map, DraftingCompass, HardHat, ClipboardCheck, Key, Plus, Play } from "lucide-react";
+import { Handshake, Map, DraftingCompass, HardHat, ClipboardCheck, Key, Plus, Play, ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -1985,37 +1985,28 @@ function FAQ() {
 /* ─── Final CTA ───────────────────────────────────────────── */
 function FinalCTA() {
   return (
-    <section className="mx-6 md:mx-16 my-16 rounded-[40px] bg-[#1F1F1F] overflow-hidden relative">
-      <div className="absolute inset-0 opacity-20">
-        <Image
-          src="/hero.jpeg"
-          alt="Background texture"
-          fill
-          className="object-cover"
-        />
-      </div>
-      <div className="relative z-10 px-8 md:px-24 py-24 md:py-32 flex flex-col md:flex-row items-center justify-between gap-12">
-        <div>
-          <span className="text-label-caps text-[#e3c381] tracking-widest">Start Your Project</span>
-          <h2 className="text-headline-xl text-white mt-4 max-w-xl">
-            Let&apos;s Build Something <span className="italic text-[#e3c381]">Extraordinary.</span>
-          </h2>
-        </div>
-        <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-          <button
-            className="bg-[#C89A47] text-white text-label-caps px-10 py-5 rounded-full
-                       hover:bg-[#e3c381] hover:text-[#1F1F1F] transition-all duration-300
-                       shadow-[0_8px_30px_rgba(200,154,71,0.4)]"
+    <section className="py-24 md:py-40 bg-[#FAF8F3] relative overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-16 text-center">
+        
+        <span className="font-sans text-[11px] md:text-[13px] uppercase tracking-[0.25em] font-semibold text-[#77736C] block mb-8 md:mb-12">
+          Start Your Project
+        </span>
+        
+        <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.15] md:leading-[1.1] tracking-[-0.03em] text-[#171614] mx-auto max-w-5xl font-medium">
+          let&apos;s build your dream space—book a <br className="hidden md:block" />
+          free 
+          <Link 
+            href="/contact" 
+            className="inline-flex items-center gap-2 md:gap-3 bg-[#FBE18D] hover:bg-[#FCD372] transition-colors rounded-full pl-5 pr-1.5 md:pl-6 md:pr-2 py-1.5 md:py-2 mx-2 md:mx-3 align-middle text-[18px] md:text-[24px] lg:text-[28px] font-sans font-medium text-[#171614] tracking-normal -mt-1 md:-mt-3 relative group shadow-sm"
           >
-            Start Your Project
-          </button>
-          <button
-            className="border border-white/30 text-white text-label-caps px-10 py-5 rounded-full
-                       hover:bg-white/10 transition-all duration-300"
-          >
-            Contact Us
-          </button>
-        </div>
+            Get a quote
+            <span className="bg-[#171614] text-[#FBE18D] rounded-full w-8 h-8 md:w-11 md:h-11 flex items-center justify-center shrink-0 transition-transform group-hover:translate-x-1">
+              <ArrowRight size={18} strokeWidth={2.5} />
+            </span>
+          </Link> 
+          consultation.
+        </h2>
+        
       </div>
     </section>
   );

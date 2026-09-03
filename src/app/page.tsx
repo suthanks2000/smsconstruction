@@ -1985,28 +1985,33 @@ function FAQ() {
 /* ─── Final CTA ───────────────────────────────────────────── */
 function FinalCTA() {
   return (
-    <section className="py-24 md:py-40 bg-[#FAF8F3] relative overflow-hidden">
+    <section className="py-12 md:py-20 bg-[#FAF8F3] relative overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 md:px-16 text-center">
-        
-        <span className="font-sans text-[11px] md:text-[13px] uppercase tracking-[0.25em] font-semibold text-[#77736C] block mb-8 md:mb-12">
+
+        <span className="font-sans text-[11px] md:text-[13px] uppercase tracking-[0.25em] font-semibold text-[#77736C] block mb-4 md:mb-6">
           Start Your Project
         </span>
-        
+
         <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.15] md:leading-[1.1] tracking-[-0.03em] text-[#171614] mx-auto max-w-5xl font-medium">
           let&apos;s build your dream space—book a <br className="hidden md:block" />
-          free 
-          <Link 
-            href="/contact" 
+          free
+          <Link
+            href="/contact"
             className="inline-flex items-center gap-2 md:gap-3 bg-[#FBE18D] hover:bg-[#FCD372] transition-colors rounded-full pl-5 pr-1.5 md:pl-6 md:pr-2 py-1.5 md:py-2 mx-2 md:mx-3 align-middle text-[18px] md:text-[24px] lg:text-[28px] font-sans font-medium text-[#171614] tracking-normal -mt-1 md:-mt-3 relative group shadow-sm"
           >
             Get a quote
             <span className="bg-[#171614] text-[#FBE18D] rounded-full w-8 h-8 md:w-11 md:h-11 flex items-center justify-center shrink-0 transition-transform group-hover:translate-x-1">
               <ArrowRight size={18} strokeWidth={2.5} />
             </span>
-          </Link> 
+          </Link>
           consultation.
         </h2>
-        
+
+        <p className="mt-8 md:mt-10 max-w-2xl mx-auto text-[15px] md:text-[17px] leading-7 text-[#77736C]">
+          Planning a new home, upgrading your interiors, or renovating an
+          existing space? Discuss your project with SMS Construction in Nagercoil.
+        </p>
+
       </div>
     </section>
   );

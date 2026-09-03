@@ -76,50 +76,49 @@ export default function Footer() {
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-12 xl:px-16">
 
         {/* Main Footer Content - Stacked on Mobile/Tablet/Laptop (< 1280px), Side-by-Side on Desktop (>= 1280px) */}
-        <div className="flex flex-col xl:flex-row justify-between gap-12 xl:gap-8 pb-16 border-b border-white/10">
+        <div className="flex flex-col xl:flex-row items-start justify-between gap-12 xl:gap-8 pb-16 border-b border-white/10">
 
           {/* Brand & Location */}
-          <div className="w-full xl:max-w-[360px] 2xl:max-w-[400px] flex flex-col md:flex-row xl:flex-col justify-between md:items-start xl:items-stretch gap-6 md:gap-12 xl:gap-5 xl:pr-8">
-            <div className="md:max-w-md xl:max-w-none">
-              <Link href="/" title="Go to SMS Construction Home" className="flex items-center gap-3 mb-6 group w-fit">
-                <div className="w-14 h-14 relative flex items-center justify-center shrink-0">
-                  <Image src="/logo.png" alt="SMS Construction" fill sizes="56px" className="object-contain" />
+          <div className="w-full xl:max-w-[360px] 2xl:max-w-[380px] flex flex-col md:flex-row xl:flex-col justify-start md:justify-between xl:justify-start gap-6 md:gap-10 xl:gap-5 xl:pr-6">
+            <div className="max-w-sm">
+              <Link href="/" title="Go to SMS Construction Home" className="inline-flex items-center gap-3 mb-4 group -mt-1 md:-mt-1.5">
+                <div className="w-11 h-11 md:w-12 md:h-12 relative flex items-center justify-center shrink-0">
+                  <Image src="/logo.png" alt="SMS Construction" width={44} height={44} className="object-contain" />
                 </div>
-                <h3 className="font-serif text-[28px] md:text-[32px] font-bold text-white tracking-tight whitespace-nowrap group-hover:text-[#C89A47] transition-colors">
+                <h3 className="font-serif text-[26px] sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight whitespace-nowrap group-hover:text-[#C89A47] transition-colors leading-none">
                   SMS Construction
                 </h3>
               </Link>
-              <p className="text-white/60 text-[15px] md:text-[16px] leading-relaxed font-light">
+              <p className="text-white/60 text-[14px] sm:text-[15px] leading-[1.7] font-light">
                 Premier Construction &amp; Interior Design Studio based in Nagercoil.
                 Crafting bespoke residential, commercial, and industrial spaces with seamless interiors and architectural excellence across Kanyakumari.
               </p>
             </div>
 
-            <div className="pt-2 md:pt-1 xl:pt-2 shrink-0 md:min-w-[240px]">
-              <h4 className="font-sans text-[12px] uppercase tracking-[0.2em] font-semibold text-[#C89A47] mb-3 flex items-center gap-2">
+            <div className="max-w-sm shrink-0 md:min-w-[240px]">
+              <h4 className="font-sans text-[12px] uppercase tracking-[0.2em] font-semibold text-[#C89A47] mb-2 flex items-center gap-2">
                 <span className="material-symbols-outlined text-[16px]">location_on</span>
                 Head Office
               </h4>
-              <address className="not-italic text-[14px] leading-[1.8] font-light">
-                <a 
-                  href="https://www.google.com/maps/dir//SMS+CONSTRUCTION,+25%2F1,+Muthamizh+St,+near+Court+Road,+Nagercoil,+Tamil+Nadu+629001/@8.1807325,77.4307402,66m/data=!3m1!1e3!4m8!4m7!1m0!1m5!1m1!1s0x3b04f108ea52fa71:0x479afff108b86846!2m2!1d77.4308799!2d8.1806677?hl=en-GB&authuser=2&entry=ttu&g_ep=EgoyMDI2MDgzMS4wIKXMDSoASAFQAw%3D%3D" 
-                  target="_blank" 
+              <address className="not-italic text-[13.5px] sm:text-[14px] leading-[1.7] font-light">
+                <a
+                  href="https://www.google.com/maps/dir//SMS+CONSTRUCTION,+25%2F1,+Muthamizh+St,+near+Court+Road,+Nagercoil,+Tamil+Nadu+629001/@8.1807325,77.4307402,66m/data=!3m1!1e3!4m8!4m7!1m0!1m5!1m1!1s0x3b04f108ea52fa71:0x479afff108b86846!2m2!1d77.4308799!2d8.1806677?hl=en-GB&authuser=2&entry=ttu&g_ep=EgoyMDI2MDgzMS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
                   rel="noopener noreferrer"
                   title="View on Google Maps"
-                  className="text-white/70 hover:text-[#C89A47] transition-colors block"
+                  className="text-white/70 hover:text-[#C89A47] transition-colors block group"
                 >
-                  25/1 Muthamizh St, Near Court Road,<br />
-                  Nagercoil, Tamil Nadu 629001, India
+                  <span className="block">25/1 Muthamizh St, Near Court Road, Nagercoil, Tamil Nadu 629001, India</span>
                 </a>
               </address>
             </div>
           </div>
 
-          {/* Links Section Wrapper - 2 cols on mobile (<768px), 4 equal cols on tablet/laptop (768px-1279px), flex row on desktop (>=1280px) */}
-          <nav aria-label="Footer Navigation" className="w-full xl:flex-1 grid grid-cols-2 md:grid-cols-4 xl:flex xl:flex-nowrap xl:justify-between gap-x-6 sm:gap-x-10 md:gap-x-8 gap-y-10 xl:gap-6 xl:pl-10">
+          {/* Links Section Wrapper - Auto-fit tracks to pull Connect close to Navigation */}
+          <nav aria-label="Footer Navigation" className="w-full xl:flex-1 grid grid-cols-[1fr_1.15fr] sm:grid-cols-4 xl:grid-cols-[auto_auto_auto_auto] gap-x-4 sm:gap-x-8 xl:gap-x-12 gap-y-10 xl:pl-6">
 
-            {/* Interior Works - Left (Row 1 on mobile) */}
-            <div className="w-full lg:w-auto lg:min-w-[140px]">
+            {/* Interior Works */}
+            <div className="w-full xl:w-auto">
               <h4 className="font-sans text-[12px] uppercase tracking-[0.2em] font-semibold text-[#C89A47] mb-5 sm:mb-6">Interior Works</h4>
               <ul className="space-y-3">
                 {interiorWorks.map((s) => (
@@ -127,20 +126,20 @@ export default function Footer() {
                     <Link
                       href={s.href}
                       title={`Navigate to ${s.name}`}
-                      className="group flex items-center text-white/60 hover:text-white text-[14px] sm:text-[15px] md:text-[16px] transition-colors duration-300 w-fit"
+                      className="group relative inline-flex items-center text-white/60 hover:text-white text-[14px] sm:text-[15px] md:text-[16px] transition-colors duration-200"
                     >
-                      <span className="w-0 overflow-hidden group-hover:w-4 group-hover:mr-2 transition-all duration-300 text-[#C89A47]">
-                        <ArrowUpRight size={16} />
+                      <span className="transition-transform duration-200 group-hover:translate-x-3.5">{s.name}</span>
+                      <span className="absolute left-0 text-[#C89A47] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none">
+                        <ArrowUpRight size={14} />
                       </span>
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">{s.name}</span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Construction - Right (Row 1 on mobile) */}
-            <div className="w-full lg:w-auto lg:min-w-[140px]">
+            {/* Construction */}
+            <div className="w-full xl:w-auto">
               <h4 className="font-sans text-[12px] uppercase tracking-[0.2em] font-semibold text-[#C89A47] mb-5 sm:mb-6">Construction</h4>
               <ul className="space-y-3">
                 {construction.map((s) => (
@@ -148,20 +147,20 @@ export default function Footer() {
                     <Link
                       href={s.href}
                       title={`Navigate to ${s.name}`}
-                      className="group flex items-center text-white/60 hover:text-white text-[14px] sm:text-[15px] md:text-[16px] transition-colors duration-300 w-fit"
+                      className="group relative inline-flex items-center text-white/60 hover:text-white text-[14px] sm:text-[15px] md:text-[16px] transition-colors duration-200"
                     >
-                      <span className="w-0 overflow-hidden group-hover:w-4 group-hover:mr-2 transition-all duration-300 text-[#C89A47]">
-                        <ArrowUpRight size={16} />
+                      <span className="transition-transform duration-200 group-hover:translate-x-3.5">{s.name}</span>
+                      <span className="absolute left-0 text-[#C89A47] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none">
+                        <ArrowUpRight size={14} />
                       </span>
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">{s.name}</span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Quick Links - Left (Row 2 on mobile) */}
-            <div className="w-full lg:w-auto lg:min-w-[120px]">
+            {/* Quick Links */}
+            <div className="w-full xl:w-auto">
               <h4 className="font-sans text-[12px] uppercase tracking-[0.2em] font-semibold text-[#C89A47] mb-5 sm:mb-6">Navigation</h4>
               <ul className="space-y-3">
                 {quickLinks.map((item) => (
@@ -169,32 +168,32 @@ export default function Footer() {
                     <Link
                       href={item.href}
                       title={`Navigate to ${item.name}`}
-                      className="group flex items-center text-white/60 hover:text-white text-[14px] sm:text-[15px] md:text-[16px] transition-colors duration-300 w-fit"
+                      className="group relative inline-flex items-center text-white/60 hover:text-white text-[14px] sm:text-[15px] md:text-[16px] transition-colors duration-200"
                     >
-                      <span className="w-0 overflow-hidden group-hover:w-4 group-hover:mr-2 transition-all duration-300 text-[#C89A47]">
-                        <ArrowUpRight size={16} />
+                      <span className="transition-transform duration-200 group-hover:translate-x-3.5">{item.name}</span>
+                      <span className="absolute left-0 text-[#C89A47] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none">
+                        <ArrowUpRight size={14} />
                       </span>
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">{item.name}</span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Connect - Right (Row 2 on mobile) */}
-            <div className="w-full lg:w-auto lg:min-w-[190px]">
+            {/* Connect */}
+            <div className="w-full xl:w-auto">
               <h4 className="font-sans text-[12px] uppercase tracking-[0.2em] font-semibold text-[#C89A47] mb-5 sm:mb-6">Connect</h4>
               <div className="space-y-3.5 sm:space-y-4">
-                <a href="tel:+919488021183" title="Call SMS Construction" className="block text-[14px] sm:text-[16px] md:text-[18px] text-white/90 hover:text-[#C89A47] transition-colors font-medium">
+                <a href="tel:+919488021183" title="Call SMS Construction" className="block text-[14px] sm:text-[16px] md:text-[18px] text-white/90 hover:text-[#C89A47] transition-colors font-medium whitespace-nowrap">
                   +91 94880 21183
                 </a>
-                <a href="mailto:smsconstructionngl@gmail.com" title="Email SMS Construction" className="block text-[12.5px] sm:text-[14px] md:text-[16px] text-white/60 hover:text-white transition-colors break-words">
+                <a href="mailto:smsconstructionngl@gmail.com" title="Email SMS Construction" className="block text-[11px] min-[370px]:text-[11.5px] min-[400px]:text-[12.5px] sm:text-[13.5px] md:text-[15px] text-white/60 hover:text-white transition-colors whitespace-nowrap">
                   smsconstructionngl@gmail.com
                 </a>
 
                 <div className="pt-2 sm:pt-4 flex gap-3 sm:gap-4">
                   {socialLinks.map((platform) => (
-                    <Link
+                    <a
                       key={platform.name}
                       href={platform.href}
                       target="_blank"
@@ -204,7 +203,7 @@ export default function Footer() {
                       aria-label={platform.name}
                     >
                       {platform.icon}
-                    </Link>
+                    </a>
                   ))}
                 </div>
               </div>

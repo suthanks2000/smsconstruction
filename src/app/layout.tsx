@@ -2,22 +2,55 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 
 export const metadata: Metadata = {
-  title: "SMS Construction | Architectural Excellence",
+  metadataBase: new URL("https://smsconstruction.in"),
+  title: "SMS Construction | Best Interior & Construction in Nagercoil",
   description:
-    "Premier Interior Design & Construction Company in Nagercoil, blending architectural rigor with organic warmth. Home Interiors, Turnkey, Residential & Commercial Construction.",
+    "Top-rated Interior Design & Construction Company in Nagercoil. We build premium residential homes, turnkey commercial projects, and bespoke interior spaces across Kanyakumari District.",
   keywords:
-    "SMS Construction, Interior Design, Nagercoil, Kanyakumari, Residential Construction, Turnkey Interiors",
+    "Best Construction Company in Nagercoil, Top Interior Designers in Nagercoil, SMS Construction, Turnkey Interiors, Home Builders Kanyakumari, Commercial Construction, Architectural Design",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/logo.png",
     shortcut: "/logo.png",
     apple: "/logo.png",
   },
   openGraph: {
-    title: "SMS Construction | Architectural Excellence",
-    description: "Premier Interior Design & Construction in Nagercoil",
+    title: "SMS Construction | Best Interior & Construction in Nagercoil",
+    description: "Premium Interior Design & Architecture in Nagercoil. Crafting bespoke luxury homes and seamless commercial spaces.",
+    url: "https://smsconstruction.in",
+    siteName: "SMS Construction",
+    images: [
+      {
+        url: "/hero.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "SMS Construction Luxury Interior Design",
+      },
+    ],
+    locale: "en_IN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SMS Construction | Best Interior & Construction in Nagercoil",
+    description: "Premium Interior Design & Architecture in Nagercoil.",
+    images: ["/hero.jpeg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -27,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
         {/* Title Icon (Favicon) */}
         <link rel="icon" href="/logo.png" type="image/png" />
@@ -50,6 +83,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased overflow-x-hidden">
+        <LocalBusinessSchema />
         <Navbar />
         {children}
         <Footer />

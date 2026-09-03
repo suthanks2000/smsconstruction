@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://smsconstruction.in
+
+# Sitemaps
+Sitemap: https://smsconstruction.in/sitemap.xml

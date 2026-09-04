@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -29,56 +29,16 @@ const servicesData = [
     href: "/construction",
   },
 ];
-const MagneticContactButton = ({ href, className, isMobile }: { href: string, className: string, isMobile?: boolean }) => {
-  const buttonRef = useRef<HTMLAnchorElement>(null);
-  const contentRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    if (isMobile) return;
-    
-    const button = buttonRef.current;
-    const content = contentRef.current;
-    if (!button || !content) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const { left, top, width, height } = button.getBoundingClientRect();
-      const x = (e.clientX - left - width / 2) * 0.25;
-      const y = (e.clientY - top - height / 2) * 0.25;
-
-      gsap.to(button, { x, y, duration: 1, ease: "power3.out" });
-      gsap.to(content, { x: x * 0.4, y: y * 0.4, duration: 1, ease: "power3.out" });
-    };
-
-    const handleMouseLeave = () => {
-      gsap.to(button, { x: 0, y: 0, duration: 1, ease: "elastic.out(1, 0.3)" });
-      gsap.to(content, { x: 0, y: 0, duration: 1, ease: "elastic.out(1, 0.3)" });
-    };
-
-    button.addEventListener("mousemove", handleMouseMove);
-    button.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      button.removeEventListener("mousemove", handleMouseMove);
-      button.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, [isMobile]);
-
+const MagneticContactButton = ({ href, className }: { href: string, className?: string, isMobile?: boolean }) => {
   return (
     <a
-      ref={buttonRef}
       href={href}
-      className={`group relative overflow-hidden flex items-center justify-center gap-2 font-semibold text-white shadow-md transition-all duration-300 hover:shadow-lg active:scale-[0.98] ${className}`}
+      className={`group flex items-center justify-center gap-2 font-semibold text-white shadow-sm transition-all duration-200 ease-out hover:shadow-md hover:brightness-105 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${className || ""}`}
     >
-      {/* Wave Fill Background */}
-      <div className="absolute inset-0 bg-[#80633D] translate-y-[100%] rounded-t-[100%] transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:rounded-none" />
-      
-      {/* Content */}
-      <span ref={contentRef} className="relative z-10 flex items-center gap-2 pointer-events-none">
-        <span className="material-symbols-outlined text-[18px] transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-110">
-          phone
-        </span>
-        Contact Us
+      <span className="material-symbols-outlined text-[18px] transition-transform duration-200 ease-out group-hover:scale-110">
+        phone
       </span>
+      <span>Contact Us</span>
     </a>
   );
 };

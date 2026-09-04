@@ -293,7 +293,7 @@ function TrustStats() {
 /* ─── Services ────────────────────────────────────────────── */
 const servicesData = [
   {
-    category: "Interior Works",
+    category: "Interior Design",
     desc: "Bespoke design solutions that transform your residential spaces into tranquil, luxurious havens tailored to your lifestyle.",
     href: "/interior-design",
     img: "/images/services/interior.jpg",
@@ -307,19 +307,19 @@ const servicesData = [
   {
     category: "Design & Planning",
     desc: "Comprehensive architectural blueprints and spatial planning to visualize your dream project before it begins.",
-    href: "/interior-design",
+    href: "/design-planning",
     img: "/images/services/planning.jpg",
   },
   {
     category: "Survey & Approvals",
-    desc: "Navigating complex regulations with expert land surveying and seamless government approval processes.",
-    href: "/construction",
+    desc: "Supporting site understanding, documentation review, and project coordination before construction begins.",
+    href: "/survey-approvals",
     img: "/images/services/survey.jpg",
   },
   {
     category: "Fabrication Works",
-    desc: "Custom structural steel fabrication and premium metalwork crafted for durability and sophisticated aesthetics.",
-    href: "/construction",
+    desc: "Custom architectural metalwork, decorative partitions, and purpose-built elements crafted for your space.",
+    href: "/fabrication-works",
     img: "/images/services/fabrication.jpg",
   },
 ];

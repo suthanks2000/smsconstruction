@@ -8,8 +8,7 @@ import gsap from "gsap";
 
 const servicesData = [
   {
-    category: "Interior Works",
-    isPrimary: true,
+    category: "Interior Design",
     href: "/interior-design",
   },
   {
@@ -18,15 +17,15 @@ const servicesData = [
   },
   {
     category: "Design & Planning",
-    href: "/interior-design",
+    href: "/design-planning",
   },
   {
     category: "Survey & Approvals",
-    href: "/construction",
+    href: "/survey-approvals",
   },
   {
     category: "Fabrication Works",
-    href: "/construction",
+    href: "/fabrication-works",
   },
 ];
 const MagneticContactButton = ({ href, className }: { href: string, className?: string, isMobile?: boolean }) => {
@@ -153,7 +152,17 @@ export default function Navbar() {
     }
   }, [menuOpen]);
 
-  const isServicesActive = servicesData.some((cat) => cat.href === pathname);
+  const serviceRoutes = [
+    "/services",
+    "/interior-design",
+    "/construction",
+    "/design-planning",
+    "/survey-approvals",
+    "/fabrication-works",
+  ];
+  const isServicesActive = serviceRoutes.some(
+    (route) => pathname === route || (pathname ? pathname.startsWith(`${route}/`) : false)
+  );
   const showSolidNavbar = scrolled || menuOpen;
   const useDarkTheme = !showSolidNavbar && hasDarkHero;
 
@@ -222,8 +231,9 @@ export default function Navbar() {
 
             {/* Services Dropdown */}
             <div className="group/services relative">
-              <button
-                className={`relative py-1 flex items-center gap-0.5 text-[15px] font-medium transition-colors duration-300 focus:outline-none after:absolute after:bottom-0 after:left-0 after:h-[2px] after:transition-all after:duration-300 ${
+              <Link
+                href="/services"
+                className={`relative py-1 flex items-center gap-1 text-[15px] font-medium transition-colors duration-300 focus:outline-none after:absolute after:bottom-0 after:left-0 after:h-[2px] after:transition-all after:duration-300 ${
                   isServicesActive
                     ? useDarkTheme
                       ? "text-[#e5c093] after:bg-[#e5c093] after:w-full"
@@ -233,27 +243,31 @@ export default function Navbar() {
                       : "text-[#68645D] hover:text-[#B08A52] after:bg-[#B08A52] after:w-0 hover:after:w-full"
                 }`}
               >
-                Services
+                <span>Services</span>
                 <span className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover/services:rotate-180">
                   keyboard_arrow_down
                 </span>
-              </button>
+              </Link>
 
               {/* Dropdown Panel */}
               <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-[#FAF8F3] border border-[#E7E0D4] rounded-[20px] shadow-2xl p-2.5 opacity-0 invisible translate-y-2 group-hover/services:opacity-100 group-hover/services:visible group-hover/services:translate-y-0 transition-all duration-300 z-50">
                 <div className="flex flex-col gap-1 text-left">
-                  {servicesData.map((cat) => (
-                    <Link
-                      key={cat.category}
-                      href={cat.href}
-                      className={`rounded-xl px-4.5 py-3.5 flex items-center justify-between transition-all duration-300 border border-transparent group/cat ${cat.isPrimary
-                        ? "bg-white shadow-[0_4px_12px_rgba(176,138,82,0.06)] border-[#B08A52]/15 text-[#B08A52] font-semibold"
-                        : "text-[#68645D] hover:bg-white/60 hover:text-[#B08A52] hover:border-[#E7E0D4]/30"
+                  {servicesData.map((cat) => {
+                    const isCatActive = pathname === cat.href || (pathname ? pathname.startsWith(`${cat.href}/`) : false);
+                    return (
+                      <Link
+                        key={cat.category}
+                        href={cat.href}
+                        className={`rounded-xl px-4 py-2.5 flex items-center justify-between transition-all duration-300 border border-transparent group/cat ${
+                          isCatActive
+                            ? "bg-white shadow-[0_4px_12px_rgba(176,138,82,0.06)] border-[#B08A52]/15 text-[#B08A52] font-semibold"
+                            : "text-[#68645D] hover:bg-white/60 hover:text-[#B08A52] hover:border-[#E7E0D4]/30"
                         }`}
-                    >
-                      <span className="text-[15px] font-medium">{cat.category}</span>
-                    </Link>
-                  ))}
+                      >
+                        <span className="text-[14.5px] font-medium">{cat.category}</span>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -333,8 +347,10 @@ export default function Navbar() {
             {/* Services Collapsible Accordion */}
             <div className="mobile-stagger-item opacity-0 flex flex-col">
               <button
+                type="button"
+                aria-expanded={mobileServicesOpen}
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                className={`rounded-xl px-4 py-3 flex items-center justify-between transition-all duration-300 border w-full text-left ${
+                className={`rounded-xl px-4 py-3 flex items-center justify-between transition-all duration-300 border w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52] ${
                   isServicesActive
                     ? "bg-white shadow-[0_4px_12px_rgba(176,138,82,0.06)] border-[#B08A52]/20 text-[#B08A52] font-semibold"
                     : mobileServicesOpen
@@ -343,28 +359,46 @@ export default function Navbar() {
                 }`}
               >
                 <span className="text-[14px]">Services</span>
-                <span className={`material-symbols-outlined text-[18px] transition-transform duration-300 ${mobileServicesOpen ? "rotate-180 text-[#B08A52]" : "text-[#68645D]"
-                  }`}>
+                <span
+                  className={`material-symbols-outlined text-[18px] transition-transform duration-300 ${
+                    mobileServicesOpen ? "rotate-180 text-[#B08A52]" : "text-[#68645D]"
+                  }`}
+                >
                   keyboard_arrow_down
                 </span>
               </button>
 
               {/* Collapsible Services List */}
               <div
-                className={`overflow-hidden transition-all duration-300 pl-3 ${mobileServicesOpen ? "max-h-[500px] opacity-100 mt-1" : "max-h-0 opacity-0"
-                  }`}
+                className={`overflow-hidden transition-all duration-300 pl-3 ${
+                  mobileServicesOpen ? "max-h-[500px] opacity-100 mt-1" : "max-h-0 opacity-0"
+                }`}
               >
                 <div className="flex flex-col gap-0.5 border-l border-[#E7E0D4] pl-3 py-1">
-                  {servicesData.map((cat) => (
-                    <Link
-                      key={cat.category}
-                      href={cat.href}
-                      className={`py-1.5 text-[14px] font-medium text-left transition-colors duration-300 block ${cat.isPrimary ? "text-[#B08A52]" : "text-[#68645D] hover:text-[#B08A52]"
+                  <Link
+                    href="/services"
+                    className={`py-1.5 text-[14px] font-medium text-left transition-colors duration-300 block ${
+                      pathname === "/services"
+                        ? "text-[#B08A52] font-semibold"
+                        : "text-[#68645D] hover:text-[#B08A52]"
+                    }`}
+                  >
+                    View All Services
+                  </Link>
+                  {servicesData.map((cat) => {
+                    const isCatActive = pathname === cat.href || (pathname ? pathname.startsWith(`${cat.href}/`) : false);
+                    return (
+                      <Link
+                        key={cat.category}
+                        href={cat.href}
+                        className={`py-1.5 text-[14px] font-medium text-left transition-colors duration-300 block ${
+                          isCatActive ? "text-[#B08A52] font-semibold" : "text-[#68645D] hover:text-[#B08A52]"
                         }`}
-                    >
-                      {cat.category}
-                    </Link>
-                  ))}
+                      >
+                        {cat.category}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>

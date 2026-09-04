@@ -5,24 +5,23 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
-  const interiorWorks = [
-    { name: "Residential Construction", href: "/projects" },
-    { name: "Interior Design", href: "/projects" },
-    { name: "Turnkey Interiors", href: "/projects" },
-    { name: "Commercial Construction", href: "/projects" },
-    { name: "Renovation", href: "/projects" },
+  const services = [
+    { name: "View All Services", href: "/services" },
+    { name: "Interior Design", href: "/interior-design" },
+    { name: "Construction", href: "/construction" },
+    { name: "Design & Planning", href: "/design-planning" },
+    { name: "Survey & Approvals", href: "/survey-approvals" },
+    { name: "Fabrication Works", href: "/fabrication-works" },
   ];
 
-  const construction = [
-    { name: "Construction", href: "/construction" },
-    { name: "Design & Planning", href: "/interior-design" },
-    { name: "Survey & Approvals", href: "/construction" },
-    { name: "Fabrication Works", href: "/construction" },
+  const portfolio = [
+    { name: "All Projects", href: "/projects" },
+    { name: "Nagarajan Residence", href: "/projects/nagarajan-residence-nagercoil-theroor" },
   ];
 
   const quickLinks = [
     { name: "About Us", href: "/about-us" },
-    { name: "Projects", href: "/projects" },
+    { name: "Journal", href: "/journal" },
     { name: "Our Process", href: "/process" },
     { name: "Contact", href: "/contact" },
   ];
@@ -117,11 +116,11 @@ export default function Footer() {
           {/* Links Section Wrapper - Auto-fit tracks to pull Connect close to Navigation */}
           <nav aria-label="Footer Navigation" className="w-full xl:flex-1 grid grid-cols-[1fr_1.15fr] sm:grid-cols-4 xl:grid-cols-[auto_auto_auto_auto] gap-x-4 sm:gap-x-8 xl:gap-x-12 gap-y-10 xl:pl-6">
 
-            {/* Interior Works */}
+            {/* Services */}
             <div className="w-full xl:w-auto">
-              <h4 className="font-sans text-[12px] uppercase tracking-[0.2em] font-semibold text-[#C89A47] mb-5 sm:mb-6">Interior Works</h4>
+              <h4 className="font-sans text-[12px] uppercase tracking-[0.2em] font-semibold text-[#C89A47] mb-5 sm:mb-6">Services</h4>
               <ul className="space-y-3">
-                {interiorWorks.map((s) => (
+                {services.map((s) => (
                   <li key={s.name}>
                     <Link
                       href={s.href}
@@ -138,11 +137,11 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Construction */}
+            {/* Portfolio */}
             <div className="w-full xl:w-auto">
-              <h4 className="font-sans text-[12px] uppercase tracking-[0.2em] font-semibold text-[#C89A47] mb-5 sm:mb-6">Construction</h4>
+              <h4 className="font-sans text-[12px] uppercase tracking-[0.2em] font-semibold text-[#C89A47] mb-5 sm:mb-6">Portfolio</h4>
               <ul className="space-y-3">
-                {construction.map((s) => (
+                {portfolio.map((s) => (
                   <li key={s.name}>
                     <Link
                       href={s.href}

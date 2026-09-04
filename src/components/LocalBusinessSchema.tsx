@@ -14,7 +14,7 @@ export default function LocalBusinessSchema() {
     email: "smsconstructionngl@gmail.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "25/1 Muthamil Street, Near Court Road",
+      streetAddress: "25/1 Muthamizh Street, Near Court Road",
       addressLocality: "Nagercoil",
       addressRegion: "Tamil Nadu",
       postalCode: "629001",

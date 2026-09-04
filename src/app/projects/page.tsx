@@ -112,12 +112,12 @@ function ProjectCollage({ images, title }: { images: string[], title: string }) 
         <div className="relative w-full h-full overflow-hidden row-span-2 rounded-2xl" style={{ borderTopRightRadius: '80px', borderBottomRightRadius: '80px' }}>
           <Image src={images[0]} fill className="object-cover" alt={`${title} - Main View`} sizes="(max-width: 1024px) 100vw, 50vw" quality={90} loading="lazy" />
         </div>
-        
+
         {/* Top Right */}
         <div className="relative w-full h-full overflow-hidden rounded-2xl" style={{ borderBottomLeftRadius: '60px' }}>
           <Image src={images[1]} fill className="object-cover" alt={`${title} - Detail View 1`} sizes="(max-width: 1024px) 50vw, 25vw" quality={85} loading="lazy" />
         </div>
-        
+
         {/* Bottom Right */}
         <div className="relative w-full h-full overflow-hidden rounded-2xl" style={{ borderTopLeftRadius: '60px' }}>
           <Image src={images[2]} fill className="object-cover" alt={`${title} - Detail View 2`} sizes="(max-width: 1024px) 50vw, 25vw" quality={85} loading="lazy" />
@@ -164,7 +164,7 @@ export default function ProjectsPage() {
       );
 
       const mm = gsap.matchMedia();
-      
+
       // Desktop Showcase Standard Scroll Reveal
       mm.add("(min-width: 768px)", () => {
         gsap.utils.toArray<HTMLElement>(".showcase-panel").forEach((panel) => {
@@ -188,12 +188,12 @@ export default function ProjectsPage() {
       // Mobile Reveal
       mm.add("(max-width: 767px)", () => {
         gsap.utils.toArray<HTMLElement>(".mobile-panel").forEach((el) => {
-          gsap.fromTo(el, 
+          gsap.fromTo(el,
             { opacity: 0, y: 30 },
-            { 
-              opacity: 1, 
-              y: 0, 
-              duration: 0.8, 
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
               ease: "power3.out",
               scrollTrigger: {
                 trigger: el,
@@ -230,7 +230,7 @@ export default function ProjectsPage() {
             A collection of spaces shaped through thoughtful design, careful execution and attention to detail.
           </p>
 
-          <button 
+          <button
             onClick={() => document.getElementById('projects-start')?.scrollIntoView({ behavior: 'smooth' })}
             className="intro-elem mt-12 md:mt-20 flex items-center gap-5 hover:opacity-80 transition-opacity cursor-pointer text-left focus:outline-none"
             aria-label="Scroll down to projects"
@@ -243,7 +243,7 @@ export default function ProjectsPage() {
             <span className="font-sans text-[11px] tracking-[0.3em] uppercase font-bold text-[#171614]">
               Scroll to explore
             </span>
-          </button>  
+          </button>
         </section>
 
         {/* ══════════════════════════════════════════════════════
@@ -262,12 +262,12 @@ export default function ProjectsPage() {
       ══════════════════════════════════════════════════════ */}
       <section className="hidden md:block w-full bg-[#F7F3ED]">
         <div className="max-w-[1440px] mx-auto px-12 lg:px-20 flex flex-col">
-          
+
           {lookbookProjects.map((project, i) => {
             const isEven = i % 2 === 0;
             return (
-              <div 
-                key={project.slug} 
+              <div
+                key={project.slug}
                 className={`showcase-panel min-h-[100dvh] flex justify-between gap-12 lg:gap-20 items-center py-20 ${isEven ? 'flex-row' : 'flex-row-reverse'}`}
               >
                 {/* TEXT (25%) */}
@@ -275,7 +275,7 @@ export default function ProjectsPage() {
                   <div className="font-sans text-[11px] tracking-[0.2em] font-semibold text-[#77736C] mb-8">
                     {pad((i + 1).toString())} / {pad(lookbookProjects.length.toString())}
                   </div>
-                  
+
                   <Link href={`/projects/${project.slug}`} className="group block focus-visible:outline-[#B08A52] rounded-md">
                     <h2 className="text-serif text-[#171614] text-[32px] lg:text-[40px] xl:text-[44px] leading-[1.1] uppercase mb-4 transition-colors duration-300 group-hover:text-[#B08A52]">
                       {project.title.split(' ').map((word, j) => (
@@ -293,7 +293,7 @@ export default function ProjectsPage() {
                   <p className="font-sans text-[14px] leading-[1.7] text-[#171614] max-w-sm mb-12">
                     {project.description}
                   </p>
-                  
+
                   <Link
                     href={`/projects/${project.slug}`}
                     className="group inline-flex items-center gap-3 font-sans text-[11px] tracking-[0.15em] uppercase font-bold text-white bg-[#171614] px-8 py-4 rounded-full hover:bg-[#B08A52] transition-all duration-300 shadow-md hover:shadow-xl self-start"
@@ -305,12 +305,12 @@ export default function ProjectsPage() {
 
                 {/* IMAGE COLLAGE (75%) */}
                 <div className="w-[70%] lg:w-[75%] h-[80dvh] lg:h-[85dvh] flex justify-center items-center">
-                  <Link 
-                    href={`/projects/${project.slug}`} 
+                  <Link
+                    href={`/projects/${project.slug}`}
                     className="group block w-full h-full collage-container overflow-hidden rounded-xl transition-transform duration-700 hover:scale-[1.015]"
                   >
                     <ProjectCollage images={project.gallery.completed.slice(0, 4)} title={project.title} />
-                    
+
                     {/* Subtle Dark Overlay on Hover */}
                     <div className="absolute inset-0 bg-[#171614]/0 group-hover:bg-[#171614]/5 transition-colors duration-500 rounded-xl pointer-events-none" aria-hidden="true" />
                   </Link>
@@ -339,16 +339,16 @@ export default function ProjectsPage() {
             <div className="font-sans text-[13px] text-[#77736C] mb-8">
               {project.location}
             </div>
-            
+
             <Link href={`/projects/${project.slug}`} className="block relative w-full mb-8 rounded-lg overflow-hidden">
               <ProjectCollage images={project.gallery.completed.slice(0, 4)} title={project.title} />
             </Link>
-            
+
             <p className="font-sans text-[15px] leading-[1.6] text-[#171614] mb-8">
               {project.description}
             </p>
-            <Link 
-              href={`/projects/${project.slug}`} 
+            <Link
+              href={`/projects/${project.slug}`}
               className="group inline-flex items-center gap-3 font-sans text-[11px] tracking-[0.15em] uppercase font-bold text-white bg-[#171614] px-8 py-4 rounded-full active:bg-[#B08A52] transition-all duration-300 shadow-md self-start"
             >
               VIEW PROJECT

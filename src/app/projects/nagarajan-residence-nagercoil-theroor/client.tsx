@@ -196,8 +196,8 @@ export default function NagarajanResidenceClient() {
           </div>
 
           {/* Row 4: 50/50 Split */}
-          <div onClick={() => setSelectedImage("/images/projects/nagarajan-residence-nagercoil-theroor/agarajan-residence-bedroom-interior.webp")} className="md:col-span-6 relative w-full h-[50vh] md:h-[70vh] overflow-hidden rounded-2xl group cursor-pointer">
-            <Image src="/images/projects/nagarajan-residence-nagercoil-theroor/agarajan-residence-bedroom-interior.webp" alt="Bedroom interior" width={1000} height={800} className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" />
+          <div onClick={() => setSelectedImage("/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-bedroom-interior.webp")} className="md:col-span-6 relative w-full h-[50vh] md:h-[70vh] overflow-hidden rounded-2xl group cursor-pointer">
+            <Image src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-bedroom-interior.webp" alt="Bedroom interior" width={1000} height={800} className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none rounded-2xl"></div>
             <div className="absolute bottom-6 left-6 pointer-events-none z-10">
               <span className="text-white font-sans text-[11px] tracking-[0.2em] uppercase font-semibold">Master Bedroom</span>

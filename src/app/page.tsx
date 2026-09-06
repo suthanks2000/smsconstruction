@@ -541,7 +541,7 @@ function Services() {
 
             if (st && st.isActive) {
               const total = servicesData.length;
-              let currentIndex = Math.round(st.progress * (total - 1));
+              const currentIndex = Math.round(st.progress * (total - 1));
               const nextIdx = (currentIndex + 1) % total;
 
               const targetScroll = st.start + (nextIdx * (st.end - st.start)) / (total - 1);
@@ -1020,7 +1020,7 @@ function FeaturedProjects() {
             </h2>
           </div>
 
-          <a
+          <Link
             href="/projects"
             className="
               hidden
@@ -1034,7 +1034,7 @@ function FeaturedProjects() {
               <polygon points="19.79,4.46 24.32,0 46.21,21.5 24.32,43 19.79,38.54 37.15,21.5" />
               <polygon points="0,4.46 4.53,0 26.42,21.5 4.53,43 0,38.54 17.36,21.5" />
             </svg>
-          </a>
+          </Link>
         </div>
 
         {/* ═══════════════════════════════════════
@@ -1518,7 +1518,7 @@ function FeaturedProjects() {
         {/* ───────────────── Mobile CTA ───────────────── */}
 
         <div className="md:hidden mt-6 flex justify-end">
-          <a
+          <Link
             href="/projects"
             className="group inline-flex items-center gap-3 text-[9px] uppercase tracking-[0.2em] font-semibold text-[#171614]"
           >
@@ -1529,7 +1529,7 @@ function FeaturedProjects() {
             <span className="text-[#B08A52] group-hover:translate-x-1 transition-transform">
               →
             </span>
-          </a>
+          </Link>
         </div>
 
       </div>
@@ -1665,8 +1665,8 @@ function Process() {
       }
 
       // Stagger fade up for each step when it enters the viewport
-      const stepsArray = gsap.utils.toArray(".process-step");
-      stepsArray.forEach((step: any) => {
+      const stepsArray = gsap.utils.toArray<HTMLElement>(".process-step");
+      stepsArray.forEach((step) => {
         gsap.fromTo(step,
           { opacity: 0, y: 40 },
           {

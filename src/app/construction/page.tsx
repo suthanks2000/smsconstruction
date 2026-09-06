@@ -154,7 +154,10 @@ export default function ConstructionPage() {
         {/* ===================================================================
             SECTION 1: HERO
         =================================================================== */}
-        <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 border-b border-[#E7E0D4]">
+        <section
+          data-header-theme="light"
+          className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 border-b border-[#E7E0D4]"
+        >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             {/* Breadcrumb Navigation & Hub Link */}
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6 sm:mb-8">

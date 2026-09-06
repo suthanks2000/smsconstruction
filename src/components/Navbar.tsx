@@ -75,13 +75,13 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const isDarkPath =
-      pathname === "/" ||
-      pathname === "/interior-design" ||
-      pathname === "/construction" ||
-      pathname === "/about-us";
+    const isDarkPath = pathname === "/" || pathname === "/about-us";
 
     const checkDarkHero = () => {
+      if (document.querySelector("[data-header-theme='light']")) {
+        setHasDarkHero(false);
+        return;
+      }
       const el = document.querySelector("[data-header-theme='dark']");
       setHasDarkHero(isDarkPath || !!el);
     };

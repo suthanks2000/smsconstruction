@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   Phone,
-  MessageSquare,
   CheckCircle2,
   MapPin,
 } from "lucide-react";
@@ -12,13 +11,13 @@ import {
   interiorCategories,
   realProjectShowcase,
   approachSteps,
-  craftDetails,
   interiorFaqs,
 } from "@/data/interiorDesign";
 import ServiceFaqAccordion from "../services/components/ServiceFaqAccordion";
-import BedroomVideoPlayer from "./components/BedroomVideoPlayer";
 import CatalogGalleryDrawer from "./components/CatalogGalleryDrawer";
 import LocationMarquee from "./components/LocationMarquee";
+import CategoryJumpNav from "./components/CategoryJumpNav";
+import ConversionCTA from "@/components/ConversionCTA";
 
 export const metadata: Metadata = {
   title: "Interior Design in Nagercoil & Kanyakumari | SMS Construction",
@@ -168,15 +167,15 @@ export default function InteriorDesignPage() {
 
       <main className="bg-[#FAF8F3] text-[#171614] selection:bg-[#B08A52] selection:text-white min-h-screen">
         {/* ══════════════════════════════════════════════════════
-            1. COMPACT EDITORIAL HERO (100vh)
+            1. COMPACT EDITORIAL HERO (100dvh)
         ══════════════════════════════════════════════════════ */}
-        <div className="min-h-[100dvh] flex flex-col pt-24 md:pt-32 bg-[#FAF8F3]">
+        <div className="h-[100dvh] min-h-[560px] flex flex-col pt-[64px] sm:pt-[80px] bg-[#FAF8F3] relative overflow-hidden">
           <section
             data-header-theme="light"
-            className="flex-grow flex flex-col justify-center px-6 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full pb-8 md:pb-12"
+            className="flex-1 flex flex-col justify-center -mt-4 sm:mt-0 px-5 sm:px-8 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full py-4 sm:py-8 lg:py-10"
           >
             {/* Breadcrumb Navigation */}
-            <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
+            <nav aria-label="Breadcrumb" className="mb-4 sm:mb-5">
               <ol className="flex items-center gap-2 text-[12px] sm:text-[13px] font-sans text-[#77736C]">
                 <li>
                   <Link href="/" className="hover:text-[#B08A52] transition-colors duration-200">
@@ -200,39 +199,57 @@ export default function InteriorDesignPage() {
               </ol>
             </nav>
 
-            <p className="font-sans text-[11px] tracking-[0.28em] uppercase font-semibold text-[#B08A52] mb-4 flex items-center gap-3">
-              <span className="inline-block w-8 h-px bg-[#B08A52]" aria-hidden="true" />
+            <p className="font-sans text-[11px] sm:text-[12px] tracking-[0.26em] uppercase font-semibold text-[#B08A52] mb-4 sm:mb-5 flex items-center gap-2.5">
+              <span className="inline-block w-6 sm:w-8 h-px bg-[#B08A52]" aria-hidden="true" />
               SMS Construction • Interior Studio
             </p>
 
             <h1
-              className="text-[#171614] font-serif leading-[1.05] tracking-[-0.02em] mb-5 max-w-4xl"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+              className="intro-elem text-[#171614] leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 max-w-4xl"
+              style={{ fontSize: "clamp(2.15rem, 4.5vw, 3.8rem)" }}
             >
               Interior Design in Nagercoil &amp; Across Kanyakumari<span className="text-[#B08A52]">.</span>
             </h1>
 
-            <p className="font-sans text-[16px] md:text-[18px] leading-[1.7] text-[#55524D] max-w-2xl mb-8 md:mb-10">
+            <p className="font-sans text-[15.5px] sm:text-[16px] md:text-[17px] leading-[1.75] text-[#55524D] max-w-2xl mb-8 sm:mb-10">
               Bespoke residential interiors crafted around your family&apos;s daily routines — blending thoughtful space planning, custom millwork, ambient illumination, and direct on-site execution.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 sm:gap-5">
+            <div className="flex flex-row items-center gap-2.5 sm:gap-4 w-full sm:w-auto max-w-md sm:max-w-none">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2.5 min-h-[52px] sm:min-h-[56px] px-8 py-3.5 rounded-full bg-[#171614] text-white font-sans font-semibold text-[15px] hover:bg-[#B08A52] hover:shadow-lg hover:shadow-[#B08A52]/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300"
+                className="group relative overflow-hidden flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-3 min-h-[46px] sm:min-h-[52px] px-4 sm:px-8 py-2.5 sm:py-3 rounded-full bg-[#171614] text-white font-sans font-semibold text-[13px] sm:text-[15px] hover:bg-[#B08A52] hover:shadow-lg hover:shadow-[#B08A52]/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center whitespace-nowrap shadow-sm transform-gpu"
               >
-                <span>Start Your Interior Project</span>
-                <ArrowRight size={17} />
+                {/* High performance GPU shimmer sweep */}
+                <span
+                  className="pointer-events-none absolute inset-0 -translate-x-full rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+                  aria-hidden="true"
+                />
+                <span className="relative z-10">
+                  <span className="sm:hidden">Start Project</span>
+                  <span className="hidden sm:inline">Start Your Interior Project</span>
+                </span>
+                <span className="relative z-10 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors duration-300 shrink-0">
+                  <ArrowRight
+                    size={13}
+                    className="transition-transform duration-300 ease-out group-hover:translate-x-0.5"
+                  />
+                </span>
               </Link>
 
               <a
                 href="#bedroom"
-                className="group inline-flex items-center justify-center gap-2.5 min-h-[52px] sm:min-h-[56px] px-7 py-3.5 rounded-full bg-white text-[#171614] border border-[#E7E0D4] font-sans font-semibold text-[15px] hover:border-[#B08A52] hover:text-[#B08A52] hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+                className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-3 min-h-[46px] sm:min-h-[52px] px-3.5 sm:px-7 py-2.5 sm:py-3 rounded-full bg-white text-[#171614] border border-[#E7E0D4] font-sans font-semibold text-[13px] sm:text-[15px] hover:border-[#B08A52] hover:text-[#B08A52] hover:bg-[#FAF8F5] hover:shadow-md hover:shadow-[#B08A52]/15 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center whitespace-nowrap shadow-xs transform-gpu"
               >
-                <span>Explore 6 Living Spaces</span>
-                <span className="text-[#B08A52] transition-transform duration-300 group-hover:translate-y-0.5">
-                  ↓
+                <span>
+                  <span className="sm:hidden">Explore Spaces</span>
+                  <span className="hidden sm:inline">Explore 6 Living Spaces</span>
+                </span>
+                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FAF8F3] group-hover:bg-[#B08A52]/15 flex items-center justify-center transition-colors duration-300 shrink-0">
+                  <span className="text-[#B08A52] text-[12px] sm:text-[13px] transition-transform duration-300 ease-out group-hover:translate-y-0.5 font-medium leading-none">
+                    ↓
+                  </span>
                 </span>
               </a>
             </div>
@@ -241,7 +258,7 @@ export default function InteriorDesignPage() {
           {/* ══════════════════════════════════════════════════════
               2. INFINITE MARQUEE TICKER
           ══════════════════════════════════════════════════════ */}
-          <div className="mt-auto">
+          <div className="mt-auto shrink-0 w-full">
             <LocationMarquee />
           </div>
         </div>
@@ -256,7 +273,7 @@ export default function InteriorDesignPage() {
                 <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
                   DESIGNED AROUND YOU
                 </span>
-                <h2 className="font-serif text-[32px] sm:text-[44px] lg:text-[50px] font-bold text-[#171614] leading-[1.16] tracking-tight">
+                <h2 className="text-[32px] sm:text-[44px] lg:text-[50px] font-semibold text-[#171614] leading-[1.16] tracking-tight">
                   Interiors that work beautifully in everyday life.
                 </h2>
               </div>
@@ -280,39 +297,19 @@ export default function InteriorDesignPage() {
         {/* ===================================================================
             SECTION 3: CATEGORY QUICK JUMP NAVIGATION
         =================================================================== */}
-        <nav
-          aria-label="Interior Categories Navigation"
-          className="sticky top-20 z-30 bg-[#FAF8F3]/95 backdrop-blur-md border-b border-[#E7E0D4] py-3.5 transition-colors"
-        >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar py-1 text-[13px] font-sans">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#B08A52] shrink-0 mr-2 hidden sm:inline">
-                Jump To:
-              </span>
-              {interiorCategories.map((cat) => (
-                <a
-                  key={cat.anchorId}
-                  href={`#${cat.anchorId}`}
-                  className="shrink-0 px-4 py-2 rounded-full bg-white hover:bg-[#171614] hover:text-white border border-[#E7E0D4] text-[#171614] font-medium transition-all duration-200 shadow-sm"
-                >
-                  {cat.title}
-                </a>
-              ))}
-            </div>
-          </div>
-        </nav>
+        <CategoryJumpNav categories={interiorCategories} />
 
         {/* ===================================================================
             SECTION 4: SPACES WE DESIGN (CORE EDITORIAL CATALOG EXPERIENCE)
         =================================================================== */}
-        <section className="py-20 sm:py-28 lg:py-32 border-b border-[#E7E0D4]">
+        <section className="pt-8 sm:pt-12 lg:pt-14 pb-20 sm:pb-28 lg:pb-32 border-b border-[#E7E0D4]">
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             {/* Master Section Header */}
-            <div className="max-w-[760px] mb-16 sm:mb-24">
+            <div className="max-w-[760px] mx-auto text-center mb-12 sm:mb-16 lg:mb-20">
               <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
                 SERVICE &amp; CATEGORY SHOWCASE
               </span>
-              <h2 className="font-serif text-[32px] sm:text-[44px] lg:text-[52px] font-bold text-[#171614] leading-[1.16] tracking-tight mb-4">
+              <h2 className="text-[32px] sm:text-[44px] lg:text-[52px] text-[#171614] leading-[1.16] tracking-tight mb-4">
                 Spaces We Design
               </h2>
               <p className="text-[17px] sm:text-[18px] text-[#68645D] leading-relaxed">
@@ -321,10 +318,10 @@ export default function InteriorDesignPage() {
               </p>
             </div>
 
-            <div className="space-y-28 sm:space-y-40">
+            <div className="space-y-10 sm:space-y-14 lg:space-y-16">
               {/* -------------------------------------------------------------
                   01 BEDROOM SECTION (#bedroom)
-                  Asymmetric feature + supporting frames + optional video block
+                  Asymmetric feature + supporting frames
               ------------------------------------------------------------- */}
               <article
                 id="bedroom"
@@ -335,7 +332,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {bedroom.eyebrow}
                     </span>
-                    <h3 className="font-serif text-[30px] sm:text-[40px] font-bold text-[#171614] tracking-tight">
+                    <h3 className="text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
                       {bedroom.title}
                     </h3>
                     <p className="text-[16px] text-[#68645D] max-w-xl mt-2">
@@ -343,7 +340,8 @@ export default function InteriorDesignPage() {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-3">
+                  {/* Laptop / Desktop Top Trigger Button */}
+                  <div className="hidden lg:block shrink-0">
                     <CatalogGalleryDrawer
                       categoryTitle={bedroom.title}
                       images={bedroom.extraImages}
@@ -351,94 +349,51 @@ export default function InteriorDesignPage() {
                   </div>
                 </div>
 
-                {/* Asymmetric Composition */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start mb-8">
-                  {/* Large Primary Image (7 cols) */}
-                  <div className="lg:col-span-7 relative aspect-[4/3] rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
-                    <Image
-                      src={bedroom.primaryImage.src}
-                      alt={bedroom.primaryImage.alt}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 58vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-[#171614]/80 backdrop-blur-sm text-white font-sans text-[12px]">
-                      Primary Catalog Composition
-                    </div>
-                  </div>
-
-                  {/* Right: 2 Supporting Images Stacked (5 cols) */}
-                  <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-                    <div className="relative aspect-[16/10] rounded-[20px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group">
+                {/* Composition: Left Large Feature + Right 4 Supporting Images in 2x2 Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center mb-8">
+                  {/* Left: Large Primary Feature (6 cols) */}
+                  <div className="lg:col-span-6">
+                    <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
                       <Image
-                        src={bedroom.supportingImages[0].src}
-                        alt={bedroom.supportingImages[0].alt}
+                        src={bedroom.primaryImage.src}
+                        alt={bedroom.primaryImage.alt}
                         fill
-                        sizes="(max-width: 1024px) 100vw, 42vw"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                       />
+                      <div className="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-[#171614]/80 backdrop-blur-sm text-white font-sans text-[12px]">
+                        Primary Bedroom Composition
+                      </div>
                     </div>
-                    <div className="relative aspect-[16/10] rounded-[20px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group">
-                      <Image
-                        src={bedroom.supportingImages[1].src}
-                        alt={bedroom.supportingImages[1].alt}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 42vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    </div>
+                  </div>
+
+                  {/* Right: 4 Supporting Images in 2x2 Grid (6 cols) */}
+                  <div className="lg:col-span-6 grid grid-cols-2 gap-4 sm:gap-5">
+                    {bedroom.supportingImages.map((img, idx) => (
+                      <div
+                        key={idx}
+                        className="relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group"
+                      >
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          fill
+                          sizes="(max-width: 1024px) 50vw, 25vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Secondary Row: 2 Supporting Images + Media Block */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-[#E7E0D4]">
-                  <div className="relative aspect-[16/10] rounded-[20px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group">
-                    <Image
-                      src={bedroom.supportingImages[2].src}
-                      alt={bedroom.supportingImages[2].alt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="relative aspect-[16/10] rounded-[20px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group">
-                    <Image
-                      src={bedroom.supportingImages[3].src}
-                      alt={bedroom.supportingImages[3].alt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  {/* Optional Video Block */}
-                  {bedroom.video && (
-                    <BedroomVideoPlayer
-                      src={bedroom.video.src}
-                      poster={bedroom.video.poster}
-                      title={bedroom.video.title}
-                    />
-                  )}
-                </div>
-
-                {/* Highlights Strip */}
-                <div className="mt-8 pt-6 border-t border-[#E7E0D4] flex flex-wrap items-center gap-3">
-                  <span className="text-[12px] font-mono uppercase tracking-wider text-[#77736C]">
-                    Key Capabilities:
-                  </span>
-                  {bedroom.highlights.map((item) => (
-                    <span
-                      key={item}
-                      className="px-3.5 py-1.5 rounded-full bg-[#FAF8F3] border border-[#E7E0D4] text-[12px] font-sans font-medium text-[#171614]"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                {/* Mobile View: Bottom Trigger Button */}
+                <div className="block lg:hidden mt-6 pt-6 border-t border-[#E7E0D4]">
+                  <CatalogGalleryDrawer
+                    categoryTitle={bedroom.title}
+                    images={bedroom.extraImages}
+                  />
                 </div>
               </article>
 
@@ -455,7 +410,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {kitchen.eyebrow}
                     </span>
-                    <h3 className="font-serif text-[30px] sm:text-[40px] font-bold text-[#171614] tracking-tight">
+                    <h3 className="text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
                       {kitchen.title}
                     </h3>
                     <p className="text-[16px] text-[#68645D] max-w-xl mt-2">
@@ -463,7 +418,8 @@ export default function InteriorDesignPage() {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-3">
+                  {/* Laptop / Desktop Top Trigger Button */}
+                  <div className="hidden lg:block shrink-0">
                     <CatalogGalleryDrawer
                       categoryTitle={kitchen.title}
                       images={kitchen.extraImages}
@@ -510,19 +466,12 @@ export default function InteriorDesignPage() {
                   </div>
                 </div>
 
-                {/* Highlights Strip */}
-                <div className="mt-8 pt-6 border-t border-[#E7E0D4] flex flex-wrap items-center gap-3">
-                  <span className="text-[12px] font-mono uppercase tracking-wider text-[#77736C]">
-                    Key Capabilities:
-                  </span>
-                  {kitchen.highlights.map((item) => (
-                    <span
-                      key={item}
-                      className="px-3.5 py-1.5 rounded-full bg-[#FAF8F3] border border-[#E7E0D4] text-[12px] font-sans font-medium text-[#171614]"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                {/* Mobile View: Bottom Trigger Button */}
+                <div className="block lg:hidden mt-6 pt-6 border-t border-[#E7E0D4]">
+                  <CatalogGalleryDrawer
+                    categoryTitle={kitchen.title}
+                    images={kitchen.extraImages}
+                  />
                 </div>
               </article>
 
@@ -539,7 +488,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {falseCeiling.eyebrow}
                     </span>
-                    <h3 className="font-serif text-[30px] sm:text-[40px] font-bold text-[#171614] tracking-tight">
+                    <h3 className="text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
                       {falseCeiling.title}
                     </h3>
                     <p className="text-[16px] text-[#68645D] max-w-xl mt-2">
@@ -547,7 +496,8 @@ export default function InteriorDesignPage() {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-3">
+                  {/* Laptop / Desktop Top Trigger Button */}
+                  <div className="hidden lg:block shrink-0">
                     <CatalogGalleryDrawer
                       categoryTitle={falseCeiling.title}
                       images={falseCeiling.extraImages}
@@ -590,19 +540,12 @@ export default function InteriorDesignPage() {
                   </div>
                 </div>
 
-                {/* Highlights Strip */}
-                <div className="mt-8 pt-6 border-t border-[#E7E0D4] flex flex-wrap items-center gap-3">
-                  <span className="text-[12px] font-mono uppercase tracking-wider text-[#77736C]">
-                    Key Capabilities:
-                  </span>
-                  {falseCeiling.highlights.map((item) => (
-                    <span
-                      key={item}
-                      className="px-3.5 py-1.5 rounded-full bg-[#FAF8F3] border border-[#E7E0D4] text-[12px] font-sans font-medium text-[#171614]"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                {/* Mobile View: Bottom Trigger Button */}
+                <div className="block lg:hidden mt-6 pt-6 border-t border-[#E7E0D4]">
+                  <CatalogGalleryDrawer
+                    categoryTitle={falseCeiling.title}
+                    images={falseCeiling.extraImages}
+                  />
                 </div>
               </article>
 
@@ -619,7 +562,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {tvUnit.eyebrow}
                     </span>
-                    <h3 className="font-serif text-[30px] sm:text-[40px] font-bold text-[#171614] tracking-tight">
+                    <h3 className="text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
                       {tvUnit.title}
                     </h3>
                     <p className="text-[16px] text-[#68645D] max-w-xl mt-2">
@@ -627,7 +570,8 @@ export default function InteriorDesignPage() {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-3">
+                  {/* Laptop / Desktop Top Trigger Button */}
+                  <div className="hidden lg:block shrink-0">
                     <CatalogGalleryDrawer
                       categoryTitle={tvUnit.title}
                       images={tvUnit.extraImages}
@@ -635,36 +579,58 @@ export default function InteriorDesignPage() {
                   </div>
                 </div>
 
-                {/* High Impact Editorial Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start mb-8">
-                  {/* Large Square Hero (6 cols) */}
-                  <div className="lg:col-span-6 relative aspect-square rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
-                    <Image
-                      src={tvUnit.primaryImage.src}
-                      alt={tvUnit.primaryImage.alt}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-[#171614]/80 backdrop-blur-sm text-white font-sans text-[12px]">
-                      Signature Media Wall
+                {/* Grand Editorial Feature + 5 Detail Frames Composition */}
+                <div className="space-y-4 sm:space-y-6 mb-8">
+                  {/* Top Row: Grand Feature (8 cols) + 2 Stacked Details (4 cols) */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
+                    {/* Grand Feature (8 cols) */}
+                    <div className="lg:col-span-8 relative aspect-[16/10] rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
+                      <Image
+                        src={tvUnit.primaryImage.src}
+                        alt={tvUnit.primaryImage.alt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 66vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-[#171614]/80 backdrop-blur-sm text-white font-sans text-[12px]">
+                        Signature Media Wall
+                      </div>
+                    </div>
+
+                    {/* Right: 2 Stacked Detail Cards (4 cols) */}
+                    <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4 sm:gap-6">
+                      {tvUnit.supportingImages.slice(0, 2).map((img, idx) => (
+                        <div
+                          key={idx}
+                          className="relative aspect-[16/10] rounded-[20px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group shadow-sm"
+                        >
+                          <Image
+                            src={img.src}
+                            alt={img.alt}
+                            fill
+                            sizes="(max-width: 1024px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
 
-                  {/* 5 Smaller Detail Images (6 cols) */}
-                  <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5">
-                    {tvUnit.supportingImages.map((img, idx) => (
+                  {/* Bottom Row: 3 Detail Cards in Balanced Grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+                    {tvUnit.supportingImages.slice(2, 5).map((img, idx) => (
                       <div
                         key={idx}
-                        className={`relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group ${idx === 4 ? "col-span-2 sm:col-span-2 aspect-[16/9]" : ""
+                        className={`relative aspect-[4/3] sm:aspect-[16/10] rounded-[20px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group shadow-sm ${idx === 2 ? "col-span-2 sm:col-span-1" : ""
                           }`}
                       >
                         <Image
                           src={img.src}
                           alt={img.alt}
                           fill
-                          sizes="(max-width: 768px) 50vw, 25vw"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                         />
@@ -673,19 +639,12 @@ export default function InteriorDesignPage() {
                   </div>
                 </div>
 
-                {/* Highlights Strip */}
-                <div className="mt-8 pt-6 border-t border-[#E7E0D4] flex flex-wrap items-center gap-3">
-                  <span className="text-[12px] font-mono uppercase tracking-wider text-[#77736C]">
-                    Key Capabilities:
-                  </span>
-                  {tvUnit.highlights.map((item) => (
-                    <span
-                      key={item}
-                      className="px-3.5 py-1.5 rounded-full bg-[#FAF8F3] border border-[#E7E0D4] text-[12px] font-sans font-medium text-[#171614]"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                {/* Mobile View: Bottom Trigger Button */}
+                <div className="block lg:hidden mt-6 pt-6 border-t border-[#E7E0D4]">
+                  <CatalogGalleryDrawer
+                    categoryTitle={tvUnit.title}
+                    images={tvUnit.extraImages}
+                  />
                 </div>
               </article>
 
@@ -702,7 +661,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {terraceGarden.eyebrow}
                     </span>
-                    <h3 className="font-serif text-[30px] sm:text-[40px] font-bold text-[#171614] tracking-tight">
+                    <h3 className="text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
                       {terraceGarden.title}
                     </h3>
                     <p className="text-[16px] text-[#68645D] max-w-xl mt-2">
@@ -710,7 +669,8 @@ export default function InteriorDesignPage() {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-3">
+                  {/* Laptop / Desktop Top Trigger Button */}
+                  <div className="hidden lg:block shrink-0">
                     <CatalogGalleryDrawer
                       categoryTitle={terraceGarden.title}
                       images={terraceGarden.extraImages}
@@ -753,19 +713,12 @@ export default function InteriorDesignPage() {
                   </div>
                 </div>
 
-                {/* Highlights Strip */}
-                <div className="mt-8 pt-6 border-t border-[#E7E0D4] flex flex-wrap items-center gap-3">
-                  <span className="text-[12px] font-mono uppercase tracking-wider text-[#77736C]">
-                    Key Capabilities:
-                  </span>
-                  {terraceGarden.highlights.map((item) => (
-                    <span
-                      key={item}
-                      className="px-3.5 py-1.5 rounded-full bg-[#FAF8F3] border border-[#E7E0D4] text-[12px] font-sans font-medium text-[#171614]"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                {/* Mobile View: Bottom Trigger Button */}
+                <div className="block lg:hidden mt-6 pt-6 border-t border-[#E7E0D4]">
+                  <CatalogGalleryDrawer
+                    categoryTitle={terraceGarden.title}
+                    images={terraceGarden.extraImages}
+                  />
                 </div>
               </article>
 
@@ -800,7 +753,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {wallDecor.eyebrow}
                     </span>
-                    <h3 className="font-serif text-[32px] sm:text-[42px] font-bold text-[#171614] leading-[1.14] mb-4">
+                    <h3 className="text-[32px] sm:text-[42px] text-[#171614] leading-[1.14] mb-4">
                       {wallDecor.title}
                     </h3>
                     <p className="text-[17px] text-[#68645D] leading-relaxed mb-6 font-sans">
@@ -838,84 +791,36 @@ export default function InteriorDesignPage() {
         {/* ===================================================================
             SECTION 5: OUR APPROACH (PROCESS)
         =================================================================== */}
-        <section className="py-20 sm:py-28 lg:py-32 bg-[#F6F3EB] border-b border-[#E7E0D4]">
+        <section className="pt-8 sm:pt-12 lg:pt-16 pb-14 sm:pb-20 lg:pb-24 bg-[#F6F3EB] border-b border-[#E7E0D4]">
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="max-w-2xl mb-14 sm:mb-20">
+            <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-12">
               <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                OUR APPROACH
+                WORKFLOW &amp; METHODOLOGY
               </span>
-              <h2 className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171614] leading-[1.18] tracking-tight mb-4">
-                From your idea to a considered interior.
+              <h2 className="text-[32px] sm:text-[44px] lg:text-[52px] text-[#171614] leading-[1.16] tracking-tight mb-4">
+                Our Approach
               </h2>
-              <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
-                A disciplined six-stage methodology connecting initial discovery through precise
-                on-site joinery execution.
+              <p className="text-[16px] sm:text-[17px] text-[#68645D] leading-relaxed">
+                From your idea to a considered interior — a disciplined six-stage methodology connecting
+                initial discovery through precise on-site joinery execution.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 lg:gap-5">
               {approachSteps.map((step) => (
                 <div
                   key={step.step}
-                  className="p-8 rounded-[24px] bg-white border border-[#E7E0D4] shadow-sm flex flex-col justify-between"
+                  className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#E7E0D4] hover:border-[#B08A52]/50 hover:shadow-xs transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
-                    <span className="font-mono text-[14px] font-bold text-[#B08A52] block mb-4">
+                    <span className="font-mono text-[20px] sm:text-[22px] font-bold text-[#B08A52] tracking-tight block mb-2.5">
                       {step.step}
                     </span>
-                    <h3 className="font-serif text-[22px] font-bold text-[#171614] mb-3">
+                    <h3 className="text-[17px] sm:text-[18px] font-semibold text-[#171614] mb-2 tracking-tight group-hover:text-[#B08A52] transition-colors">
                       {step.title}
                     </h3>
-                    <p className="text-[15px] text-[#68645D] leading-relaxed">
+                    <p className="text-[13px] sm:text-[13.5px] text-[#68645D] leading-relaxed font-sans">
                       {step.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ===================================================================
-            SECTION 6: DETAILS MATTER (CRAFT & DETAIL)
-        =================================================================== */}
-        <section className="py-20 sm:py-28 lg:py-32 bg-white border-b border-[#E7E0D4]">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="max-w-2xl mb-14 sm:mb-20">
-              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                DETAILS MATTER
-              </span>
-              <h2 className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171614] leading-[1.18] tracking-tight mb-4">
-                The small decisions shape the whole space.
-              </h2>
-              <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
-                Our workshop standards prioritize material integrity, shadow lines, hardware
-                longevity, and lighting calibration.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-              {craftDetails.map((detail) => (
-                <div
-                  key={detail.title}
-                  className="group bg-[#FAF8F3] rounded-[24px] overflow-hidden border border-[#E7E0D4] shadow-sm flex flex-col justify-between"
-                >
-                  <div className="relative aspect-[4/3] bg-[#171614] overflow-hidden">
-                    <Image
-                      src={detail.image}
-                      alt={detail.alt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-serif text-[19px] font-bold text-[#171614] mb-2">
-                      {detail.title}
-                    </h3>
-                    <p className="text-[14px] text-[#68645D] leading-relaxed">
-                      {detail.description}
                     </p>
                   </div>
                 </div>
@@ -928,14 +833,14 @@ export default function InteriorDesignPage() {
             SECTION 7: REAL PROJECT PROOF (GROUP B - NAGARAJAN RESIDENCE)
             Note: Explicitly separated from the catalog above!
         =================================================================== */}
-        <section className="py-20 sm:py-28 lg:py-32 bg-[#FAF8F3] border-b border-[#E7E0D4]">
+        <section className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-24 lg:pb-28 bg-[#FAF8F3] border-b border-[#E7E0D4]">
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8 sm:mb-12">
               <div className="max-w-[700px]">
                 <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
                   FROM OUR PROJECTS
                 </span>
-                <h2 className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171614] leading-[1.18] tracking-tight mb-3">
+                <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] text-[#171614] leading-[1.16] tracking-tight mb-3">
                   See Interior Design in Real Spaces
                 </h2>
                 <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
@@ -979,7 +884,7 @@ export default function InteriorDesignPage() {
                       <span>{realProjectShowcase.scale}</span>
                     </div>
 
-                    <h3 className="font-serif text-[28px] sm:text-[34px] font-bold text-[#171614] mb-4">
+                    <h3 className="text-[24px] sm:text-[30px] font-bold text-[#171614] tracking-tight mb-4">
                       {realProjectShowcase.title}
                     </h3>
 
@@ -1025,7 +930,7 @@ export default function InteriorDesignPage() {
                 <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                   BASED IN NAGERCOIL
                 </span>
-                <h2 className="font-serif text-[26px] sm:text-[34px] font-bold text-[#171614] leading-[1.2] mb-3">
+                <h2 className="text-[26px] sm:text-[34px] text-[#171614] leading-[1.2] mb-3">
                   Interior Design in Nagercoil and Surrounding Areas
                 </h2>
                 <p className="text-[16px] text-[#68645D] leading-relaxed max-w-2xl font-sans">
@@ -1038,7 +943,7 @@ export default function InteriorDesignPage() {
               <div className="lg:col-span-4 flex flex-col gap-3 p-6 rounded-[22px] bg-[#FAF8F3] border border-[#E7E0D4]">
                 <div className="flex items-center gap-2 text-[13px] text-[#171614] font-medium">
                   <MapPin size={16} className="text-[#B08A52]" />
-                  <span>25/1 Muthamizh St, Near Court Road, Nagercoil</span>
+                  <span>25/1 Muthamizh St, Near Court Road, Nagercoil, Tamil Nadu 629001, India</span>
                 </div>
                 <div className="flex items-center gap-2 text-[13px] text-[#171614] font-medium">
                   <Phone size={16} className="text-[#B08A52]" />
@@ -1056,31 +961,35 @@ export default function InteriorDesignPage() {
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
               <div className="lg:col-span-5">
-                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                  COMMON QUESTIONS
-                </span>
-                <h2 className="font-serif text-[30px] sm:text-[42px] lg:text-[46px] font-bold text-[#171614] leading-[1.18] tracking-tight mb-4">
-                  Frequently Asked Questions
-                </h2>
-                <p className="text-[16px] text-[#68645D] leading-relaxed mb-8">
-                  Clear answers regarding our interior design process, room specialties, Nagercoil
-                  coverage, pricing quotations, and turnkey execution.
-                </p>
+                <div className="lg:sticky lg:top-28 xl:top-32 space-y-6">
+                  <div>
+                    <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
+                      COMMON QUESTIONS
+                    </span>
+                    <h2 className="text-[30px] sm:text-[42px] lg:text-[46px] text-[#171614] leading-[1.18] tracking-tight mb-4">
+                      Frequently Asked Questions
+                    </h2>
+                    <p className="text-[16px] text-[#68645D] leading-relaxed">
+                      Clear answers regarding our interior design process, room specialties, Nagercoil
+                      coverage, pricing quotations, and turnkey execution.
+                    </p>
+                  </div>
 
-                <div className="p-6 rounded-[22px] bg-white border border-[#E7E0D4] shadow-sm">
-                  <h3 className="font-serif text-[18px] font-bold text-[#171614] mb-2">
-                    Planning an interior renovation or new build?
-                  </h3>
-                  <p className="text-[14px] text-[#68645D] mb-4">
-                    Visit our studio or invite our engineers for a preliminary on-site spatial review.
-                  </p>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 font-sans font-semibold text-[14px] text-[#B08A52] hover:text-[#80633D] transition-colors"
-                  >
-                    <span>Schedule an Interior Consultation</span>
-                    <ArrowRight size={15} />
-                  </Link>
+                  <div className="p-6 rounded-[22px] bg-white border border-[#E7E0D4] shadow-sm">
+                    <h3 className="text-[18px] font-semibold text-[#171614] mb-2">
+                      Planning an interior renovation or new build?
+                    </h3>
+                    <p className="text-[14px] text-[#68645D] mb-4">
+                      Visit our studio or invite our engineers for a preliminary on-site spatial review.
+                    </p>
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2 font-sans font-semibold text-[14px] text-[#B08A52] hover:text-[#80633D] transition-colors"
+                    >
+                      <span>Schedule an Interior Consultation</span>
+                      <ArrowRight size={15} />
+                    </Link>
+                  </div>
                 </div>
               </div>
 
@@ -1101,7 +1010,7 @@ export default function InteriorDesignPage() {
                 <p className="text-[11px] font-sans font-semibold uppercase tracking-wider text-[#B08A52]">
                   Explore Architecture &amp; Construction Disciplines
                 </p>
-                <p className="font-serif text-[18px] font-bold text-[#171614]">
+                <p className="text-[18px] text-[#171614]">
                   Complementary Services by SMS Construction
                 </p>
               </div>
@@ -1145,55 +1054,18 @@ export default function InteriorDesignPage() {
         {/* ===================================================================
             SECTION 11: FINAL LEAD CONVERSION CTA
         =================================================================== */}
-        <section className="relative overflow-hidden py-24 sm:py-32 bg-[#171614] text-white">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#B08A52]/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="relative max-w-[980px] mx-auto px-5 sm:px-8 text-center">
-            <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.25em] uppercase text-[#FBE18D] mb-4">
-              START YOUR INTERIOR PROJECT
-            </span>
-
-            <h2 className="font-serif text-[34px] sm:text-[48px] lg:text-[56px] font-bold text-[#FAF8F3] leading-[1.14] tracking-tight mb-6">
-              Ready to transform your space?
-            </h2>
-
-            <p className="text-[17px] sm:text-[19px] leading-relaxed text-[#FAF8F3]/80 max-w-[680px] mx-auto mb-10 font-sans">
-              Tell us about your home, the spaces you want to improve, and what you have in mind.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#FBE18D] hover:bg-[#FCD372] text-[#171614] font-sans font-semibold text-[15px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]"
-              >
-                <span>Get a Free Quote</span>
-                <ArrowRight size={17} />
-              </Link>
-
-              <a
-                href={`tel:${phoneNumber}`}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/30 hover:border-white text-white font-sans font-medium text-[15px] hover:bg-white/10 transition-all duration-300 active:scale-[0.98]"
-              >
-                <Phone size={16} />
-                <span>Call {formattedPhone}</span>
-              </a>
-
-              <a
-                href={`https://wa.me/${whatsappNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full text-white/80 hover:text-white font-sans text-[15px] hover:underline underline-offset-4 transition-colors duration-200"
-              >
-                <MessageSquare size={16} />
-                <span>WhatsApp</span>
-              </a>
-            </div>
-
-            <p className="mt-10 text-[13px] text-white/50 tracking-wide font-sans">
-              SMS Construction • Interior Design &amp; Joinery Studio • Nagercoil, Tamil Nadu
-            </p>
-          </div>
-        </section>
+        <ConversionCTA
+          badge="START YOUR INTERIOR PROJECT"
+          title="Ready to transform your space?"
+          description="Tell us about your home, the spaces you want to improve, and what you have in mind. Our team will prepare a tailored interior consultation and quotation."
+          primaryBtnText="Get a Free Quote"
+          primaryBtnHref="/contact"
+          phoneNumber={phoneNumber}
+          formattedPhone={formattedPhone}
+          whatsappNumber={whatsappNumber}
+          whatsappMessage="Hello SMS Construction, I am interested in interior design services for my property."
+          subtext="SMS Construction • Interior Design & Joinery Studio • Nagercoil, Tamil Nadu"
+        />
       </main>
     </>
   );

@@ -37,7 +37,7 @@ export default function ServiceFaqAccordion({ items }: ServiceFaqAccordionProps)
                 className="group flex w-full items-center justify-between gap-6 py-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52] focus-visible:ring-offset-2 min-h-[64px]"
               >
                 <span
-                  className={`font-serif text-[18px] sm:text-[21px] font-semibold transition-colors duration-200 ${
+                  className={`text-[18px] sm:text-[21px] transition-colors duration-200 ${
                     isOpen ? "text-[#B08A52]" : "text-[#171714] group-hover:text-[#B08A52]"
                   }`}
                 >

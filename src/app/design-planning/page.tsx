@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Phone, MessageSquare, CheckCircle2, MapPin, Compass, Draft, Lightbulb, Ruler } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Phone, MessageSquare, CheckCircle2, MapPin, Compass, Lightbulb, Ruler } from "lucide-react";
 import {
   planningScopes,
   planningProcessSteps,

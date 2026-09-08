@@ -86,7 +86,7 @@ export default function CategoryJumpNav({ categories }: CategoryJumpNavProps) {
     setActiveId(anchorId);
     const el = document.getElementById(anchorId);
     if (el) {
-      const yOffset = el.getBoundingClientRect().top + window.scrollY - 140;
+      const yOffset = el.getBoundingClientRect().top + window.scrollY - 150;
       window.scrollTo({
         top: yOffset,
         behavior: "smooth",
@@ -98,10 +98,10 @@ export default function CategoryJumpNav({ categories }: CategoryJumpNavProps) {
   return (
     <nav
       aria-label="Interior Categories Navigation"
-      className="sticky top-20 z-30 bg-[#FAF8F3]/95 backdrop-blur-md border-b border-[#E7E0D4] py-3 transition-colors shadow-xs"
+      className="sticky top-[87px] sm:top-[88px] z-30 bg-[#FAF8F3]/95 backdrop-blur-md border-b border-[#E7E0D4] py-2 sm:py-2.5 transition-colors shadow-xs w-full max-w-full"
     >
-      <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-        <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-0.5 text-[13px] font-sans">
+      <div className="max-w-[1360px] mx-auto px-3 sm:px-8 lg:px-12 w-full">
+        <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-1 text-[13px] font-sans w-full max-w-full">
           <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-[#B08A52] shrink-0 mr-1 hidden sm:inline">
             Jump To:
           </span>
@@ -116,7 +116,7 @@ export default function CategoryJumpNav({ categories }: CategoryJumpNavProps) {
                   pillRefs.current[cat.anchorId] = el;
                 }}
                 onClick={(e) => handleClick(e, cat.anchorId)}
-                className={`shrink-0 relative px-4 py-2 rounded-full font-medium text-[13px] flex items-center gap-2 transition-all duration-300 ease-out cursor-pointer select-none ${
+                className={`shrink-0 relative px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium text-[12.5px] sm:text-[13px] flex items-center gap-1.5 sm:gap-2 transition-all duration-300 ease-out cursor-pointer select-none whitespace-nowrap ${
                   isActive
                     ? "bg-[#171614] text-white border border-[#171614] shadow-sm scale-[1.02]"
                     : "bg-white text-[#555] hover:text-[#171614] hover:bg-[#FAF8F5] border border-[#E7E0D4] hover:border-[#B08A52]/50 shadow-xs"
@@ -129,6 +129,8 @@ export default function CategoryJumpNav({ categories }: CategoryJumpNavProps) {
               </a>
             );
           })}
+          {/* Spacer so the last pill can be scrolled completely into view on narrow screens */}
+          <div className="shrink-0 w-3 sm:hidden" aria-hidden="true" />
         </div>
       </div>
     </nav>

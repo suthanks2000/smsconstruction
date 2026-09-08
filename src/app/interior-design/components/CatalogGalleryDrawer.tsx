@@ -310,14 +310,14 @@ export default function CatalogGalleryDrawer({
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-full border border-[#E7E0D4] bg-white hover:bg-[#171614] hover:text-white text-[#171614] font-sans text-[13px] font-medium transition-all duration-300 shadow-sm hover:shadow group cursor-pointer"
+        className="inline-flex items-center justify-center gap-2 w-full sm:w-auto max-w-full px-4 sm:px-5 py-2.5 rounded-full border border-[#E7E0D4] bg-white hover:bg-[#171614] hover:text-white text-[#171614] font-sans text-[12.5px] sm:text-[13px] font-medium transition-all duration-300 shadow-sm hover:shadow group cursor-pointer text-center"
         aria-label={`Explore ${images.length} more ${categoryTitle} catalog photos`}
       >
-        <Images size={15} className="text-[#B08A52] group-hover:text-white transition-colors" />
-        <span>Explore More ({images.length} Additional Designs)</span>
+        <Images size={15} className="text-[#B08A52] group-hover:text-white transition-colors shrink-0" />
+        <span className="truncate">Explore More ({images.length} Additional Designs)</span>
         <ArrowUpRight
           size={14}
-          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0"
         />
       </button>
 

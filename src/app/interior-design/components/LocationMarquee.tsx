@@ -72,7 +72,7 @@ export default function LocationMarquee() {
   return (
     <div
       ref={containerRef}
-      className="relative bg-[#171614] border-t border-b border-[#2A2928] overflow-hidden py-4 select-none"
+      className="relative bg-[#171614] border-t border-b border-[#2A2928] overflow-hidden py-3.5 sm:py-4 select-none w-full max-w-full"
     >
       <div
         aria-hidden="true"

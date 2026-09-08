@@ -165,14 +165,14 @@ export default function InteriorDesignPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <main className="bg-[#FAF8F3] text-[#171614] selection:bg-[#B08A52] selection:text-white min-h-screen">
+      <main className="bg-[#FAF8F3] text-[#171614] selection:bg-[#B08A52] selection:text-white min-h-screen w-full max-w-full overflow-x-clip">
         {/* ══════════════════════════════════════════════════════
             1. COMPACT EDITORIAL HERO (100dvh)
         ══════════════════════════════════════════════════════ */}
-        <div className="h-[100dvh] min-h-[560px] flex flex-col pt-[64px] sm:pt-[80px] bg-[#FAF8F3] relative overflow-hidden">
+        <div className="min-h-[100dvh] lg:h-[100dvh] flex flex-col pt-[70px] sm:pt-[80px] bg-[#FAF8F3] relative w-full max-w-full overflow-hidden">
           <section
             data-header-theme="light"
-            className="flex-1 flex flex-col justify-center -mt-4 sm:mt-0 px-5 sm:px-8 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full py-4 sm:py-8 lg:py-10"
+            className="flex-1 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full py-6 sm:py-8 lg:py-10"
           >
             {/* Breadcrumb Navigation */}
             <nav aria-label="Breadcrumb" className="mb-4 sm:mb-5">
@@ -199,27 +199,27 @@ export default function InteriorDesignPage() {
               </ol>
             </nav>
 
-            <p className="font-sans text-[11px] sm:text-[12px] tracking-[0.26em] uppercase font-semibold text-[#B08A52] mb-4 sm:mb-5 flex items-center gap-2.5">
+            <p className="font-sans text-[11px] sm:text-[12px] tracking-[0.26em] uppercase font-semibold text-[#B08A52] mb-3 sm:mb-5 flex items-center gap-2.5">
               <span className="inline-block w-6 sm:w-8 h-px bg-[#B08A52]" aria-hidden="true" />
               SMS Construction • Interior Studio
             </p>
 
             <h1
-              className="intro-elem text-[#171614] leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 max-w-4xl"
-              style={{ fontSize: "clamp(2.15rem, 4.5vw, 3.8rem)" }}
+              className="intro-elem text-[#171614] leading-[1.1] sm:leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 max-w-4xl break-words"
+              style={{ fontSize: "clamp(1.95rem, 4.5vw, 3.8rem)" }}
             >
               Interior Design in Nagercoil &amp; Across Kanyakumari<span className="text-[#B08A52]">.</span>
             </h1>
 
-            <p className="font-sans text-[15.5px] sm:text-[16px] md:text-[17px] leading-[1.75] text-[#55524D] max-w-2xl mb-8 sm:mb-10">
+            <p className="font-sans text-[15px] sm:text-[16px] md:text-[17px] leading-[1.7] text-[#55524D] max-w-2xl mb-7 sm:mb-10">
               Bespoke residential interiors crafted around your family&apos;s daily routines — blending thoughtful space planning, custom millwork, ambient illumination, and direct on-site execution.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-row items-center gap-2.5 sm:gap-4 w-full sm:w-auto max-w-md sm:max-w-none">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-md sm:max-w-none">
               <Link
                 href="/contact"
-                className="group relative overflow-hidden flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-3 min-h-[46px] sm:min-h-[52px] px-4 sm:px-8 py-2.5 sm:py-3 rounded-full bg-[#171614] text-white font-sans font-semibold text-[13px] sm:text-[15px] hover:bg-[#B08A52] hover:shadow-lg hover:shadow-[#B08A52]/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center whitespace-nowrap shadow-sm transform-gpu"
+                className="group relative overflow-hidden flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-3 min-h-[48px] sm:min-h-[52px] px-5 sm:px-8 py-3 rounded-full bg-[#171614] text-white font-sans font-semibold text-[14px] sm:text-[15px] hover:bg-[#B08A52] hover:shadow-lg hover:shadow-[#B08A52]/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center shadow-sm transform-gpu"
               >
                 {/* High performance GPU shimmer sweep */}
                 <span
@@ -240,7 +240,7 @@ export default function InteriorDesignPage() {
 
               <a
                 href="#bedroom"
-                className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-3 min-h-[46px] sm:min-h-[52px] px-3.5 sm:px-7 py-2.5 sm:py-3 rounded-full bg-white text-[#171614] border border-[#E7E0D4] font-sans font-semibold text-[13px] sm:text-[15px] hover:border-[#B08A52] hover:text-[#B08A52] hover:bg-[#FAF8F5] hover:shadow-md hover:shadow-[#B08A52]/15 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center whitespace-nowrap shadow-xs transform-gpu"
+                className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-3 min-h-[48px] sm:min-h-[52px] px-5 sm:px-7 py-3 rounded-full bg-white text-[#171614] border border-[#E7E0D4] font-sans font-semibold text-[14px] sm:text-[15px] hover:border-[#B08A52] hover:text-[#B08A52] hover:bg-[#FAF8F5] hover:shadow-md hover:shadow-[#B08A52]/15 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center shadow-xs transform-gpu"
               >
                 <span>
                   <span className="sm:hidden">Explore Spaces</span>
@@ -258,7 +258,7 @@ export default function InteriorDesignPage() {
           {/* ══════════════════════════════════════════════════════
               2. INFINITE MARQUEE TICKER
           ══════════════════════════════════════════════════════ */}
-          <div className="mt-auto shrink-0 w-full">
+          <div className="mt-auto shrink-0 w-full max-w-full overflow-hidden">
             <LocationMarquee />
           </div>
         </div>
@@ -266,8 +266,8 @@ export default function InteriorDesignPage() {
         {/* ===================================================================
             SECTION 2: INTRO SECTION (SPLIT EDITORIAL)
         =================================================================== */}
-        <section className="py-20 sm:py-28 border-b border-[#E7E0D4] bg-white">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+        <section className="py-14 sm:py-28 border-b border-[#E7E0D4] bg-white w-full max-w-full overflow-hidden">
+          <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
               <div className="lg:col-span-5">
                 <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
@@ -302,30 +302,30 @@ export default function InteriorDesignPage() {
         {/* ===================================================================
             SECTION 4: SPACES WE DESIGN (CORE EDITORIAL CATALOG EXPERIENCE)
         =================================================================== */}
-        <section className="pt-8 sm:pt-12 lg:pt-14 pb-20 sm:pb-28 lg:pb-32 border-b border-[#E7E0D4]">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+        <section className="pt-8 sm:pt-12 lg:pt-14 pb-16 sm:pb-28 lg:pb-32 border-b border-[#E7E0D4] w-full max-w-full overflow-hidden">
+          <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12">
             {/* Master Section Header */}
-            <div className="max-w-[760px] mx-auto text-center mb-12 sm:mb-16 lg:mb-20">
+            <div className="max-w-[760px] mx-auto text-center mb-10 sm:mb-16 lg:mb-20">
               <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
                 SERVICE &amp; CATEGORY SHOWCASE
               </span>
-              <h2 className="text-[32px] sm:text-[44px] lg:text-[52px] text-[#171614] leading-[1.16] tracking-tight mb-4">
+              <h2 className="text-[30px] sm:text-[44px] lg:text-[52px] text-[#171614] leading-[1.16] tracking-tight mb-4">
                 Spaces We Design
               </h2>
-              <p className="text-[17px] sm:text-[18px] text-[#68645D] leading-relaxed">
+              <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
                 Explore our curated interior design catalog. Each category showcases distinct
                 capabilities, bespoke joinery solutions, and architectural finishes.
               </p>
             </div>
 
-            <div className="space-y-10 sm:space-y-14 lg:space-y-16">
+            <div className="space-y-8 sm:space-y-14 lg:space-y-16">
               {/* -------------------------------------------------------------
                   01 BEDROOM SECTION (#bedroom)
                   Asymmetric feature + supporting frames
               ------------------------------------------------------------- */}
               <article
                 id="bedroom"
-                className="scroll-mt-36 p-6 sm:p-10 lg:p-12 rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm"
+                className="scroll-mt-36 p-4 sm:p-8 lg:p-12 rounded-[24px] sm:rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm w-full max-w-full overflow-hidden"
               >
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-[#E7E0D4] mb-10">
                   <div>
@@ -403,7 +403,7 @@ export default function InteriorDesignPage() {
               ------------------------------------------------------------- */}
               <article
                 id="kitchen"
-                className="scroll-mt-36 p-6 sm:p-10 lg:p-12 rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm"
+                className="scroll-mt-36 p-4 sm:p-8 lg:p-12 rounded-[24px] sm:rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm w-full max-w-full overflow-hidden"
               >
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-[#E7E0D4] mb-10">
                   <div>
@@ -481,7 +481,7 @@ export default function InteriorDesignPage() {
               ------------------------------------------------------------- */}
               <article
                 id="false-ceiling"
-                className="scroll-mt-36 p-6 sm:p-10 lg:p-12 rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm"
+                className="scroll-mt-36 p-4 sm:p-8 lg:p-12 rounded-[24px] sm:rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm w-full max-w-full overflow-hidden"
               >
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-[#E7E0D4] mb-10">
                   <div>
@@ -559,7 +559,7 @@ export default function InteriorDesignPage() {
               ------------------------------------------------------------- */}
               <article
                 id="tv-unit"
-                className="scroll-mt-36 p-6 sm:p-10 lg:p-12 rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm"
+                className="scroll-mt-36 p-4 sm:p-8 lg:p-12 rounded-[24px] sm:rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm w-full max-w-full overflow-hidden"
               >
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-[#E7E0D4] mb-10">
                   <div>
@@ -658,7 +658,7 @@ export default function InteriorDesignPage() {
               ------------------------------------------------------------- */}
               <article
                 id="terrace-garden"
-                className="scroll-mt-36 p-6 sm:p-10 lg:p-12 rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm"
+                className="scroll-mt-36 p-4 sm:p-8 lg:p-12 rounded-[24px] sm:rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm w-full max-w-full overflow-hidden"
               >
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-[#E7E0D4] mb-10">
                   <div>
@@ -732,12 +732,12 @@ export default function InteriorDesignPage() {
               ------------------------------------------------------------- */}
               <article
                 id="wall-decor"
-                className="scroll-mt-36 p-6 sm:p-10 lg:p-12 rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm"
+                className="scroll-mt-36 p-4 sm:p-8 lg:p-12 rounded-[24px] sm:rounded-[32px] bg-white border border-[#E7E0D4] shadow-sm w-full max-w-full overflow-hidden"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
                   {/* Left: Large Portrait Image (5 cols) */}
-                  <div className="lg:col-span-5">
-                    <div className="relative aspect-[3/4] rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
+                  <div className="lg:col-span-5 w-full">
+                    <div className="relative aspect-[3/4] rounded-[24px] overflow-hidden bg-[#171614] shadow-md group w-full">
                       <Image
                         src={wallDecor.primaryImage.src}
                         alt={wallDecor.primaryImage.alt}
@@ -753,17 +753,17 @@ export default function InteriorDesignPage() {
                   </div>
 
                   {/* Right: Short Editorial Copy + CTA (7 cols) */}
-                  <div className="lg:col-span-7 flex flex-col justify-center">
+                  <div className="lg:col-span-7 flex flex-col justify-center w-full">
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {wallDecor.eyebrow}
                     </span>
-                    <h3 className="text-[32px] sm:text-[42px] text-[#171614] leading-[1.14] mb-4">
+                    <h3 className="text-[28px] sm:text-[42px] text-[#171614] leading-[1.14] mb-4">
                       {wallDecor.title}
                     </h3>
-                    <p className="text-[17px] text-[#68645D] leading-relaxed mb-6 font-sans">
+                    <p className="text-[16px] sm:text-[17px] text-[#68645D] leading-relaxed mb-6 font-sans">
                       {wallDecor.description}
                     </p>
-                    <p className="text-[15px] text-[#68645D] leading-relaxed mb-8 font-sans">
+                    <p className="text-[14px] sm:text-[15px] text-[#68645D] leading-relaxed mb-8 font-sans">
                       From open-slat timber foyer dividers and recessed display niches to textured
                       lime plasters, our custom wall treatments provide focal depth and elegant
                       spatial separation without closing off daylight.
@@ -795,16 +795,16 @@ export default function InteriorDesignPage() {
         {/* ===================================================================
             SECTION 5: OUR APPROACH (PROCESS)
         =================================================================== */}
-        <section className="pt-8 sm:pt-12 lg:pt-16 pb-14 sm:pb-20 lg:pb-24 bg-[#F6F3EB] border-b border-[#E7E0D4]">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+        <section className="pt-8 sm:pt-12 lg:pt-16 pb-14 sm:pb-20 lg:pb-24 bg-[#F6F3EB] border-b border-[#E7E0D4] w-full max-w-full overflow-hidden">
+          <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12 w-full max-w-full">
             <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-12">
               <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
                 WORKFLOW &amp; METHODOLOGY
               </span>
-              <h2 className="text-[32px] sm:text-[44px] lg:text-[52px] text-[#171614] leading-[1.16] tracking-tight mb-4">
+              <h2 className="text-[30px] sm:text-[44px] lg:text-[52px] text-[#171614] leading-[1.16] tracking-tight mb-4">
                 Our Approach
               </h2>
-              <p className="text-[16px] sm:text-[17px] text-[#68645D] leading-relaxed">
+              <p className="text-[15px] sm:text-[17px] text-[#68645D] leading-relaxed">
                 From your idea to a considered interior — a disciplined six-stage methodology connecting
                 initial discovery through precise on-site joinery execution.
               </p>
@@ -814,13 +814,13 @@ export default function InteriorDesignPage() {
               {approachSteps.map((step) => (
                 <div
                   key={step.step}
-                  className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#E7E0D4] hover:border-[#B08A52]/50 hover:shadow-xs transition-all duration-300 flex flex-col justify-between"
+                  className="group p-4 sm:p-6 rounded-2xl bg-white border border-[#E7E0D4] hover:border-[#B08A52]/50 hover:shadow-xs transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
-                    <span className="font-mono text-[20px] sm:text-[22px] font-bold text-[#B08A52] tracking-tight block mb-2.5">
+                    <span className="font-mono text-[18px] sm:text-[22px] font-bold text-[#B08A52] tracking-tight block mb-2.5">
                       {step.step}
                     </span>
-                    <h3 className="text-[17px] sm:text-[18px] font-semibold text-[#171614] mb-2 tracking-tight group-hover:text-[#B08A52] transition-colors">
+                    <h3 className="text-[16px] sm:text-[18px] font-semibold text-[#171614] mb-2 tracking-tight group-hover:text-[#B08A52] transition-colors">
                       {step.title}
                     </h3>
                     <p className="text-[13px] sm:text-[13.5px] text-[#68645D] leading-relaxed font-sans">
@@ -837,17 +837,17 @@ export default function InteriorDesignPage() {
             SECTION 7: REAL PROJECT PROOF (GROUP B - NAGARAJAN RESIDENCE)
             Note: Explicitly separated from the catalog above!
         =================================================================== */}
-        <section className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-24 lg:pb-28 bg-[#FAF8F3] border-b border-[#E7E0D4]">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+        <section className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-24 lg:pb-28 bg-[#FAF8F3] border-b border-[#E7E0D4] w-full max-w-full overflow-hidden">
+          <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12 w-full max-w-full">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8 sm:mb-12">
               <div className="max-w-[700px]">
                 <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
                   FROM OUR PROJECTS
                 </span>
-                <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] text-[#171614] leading-[1.16] tracking-tight mb-3">
+                <h2 className="text-[30px] sm:text-[42px] lg:text-[48px] text-[#171614] leading-[1.16] tracking-tight mb-3">
                   See Interior Design in Real Spaces
                 </h2>
-                <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
+                <p className="text-[15px] sm:text-[18px] text-[#68645D] leading-relaxed">
                   Real residential executions demonstrate how our spatial planning, joinery crafting,
                   and finish coordination come together in actual homes.
                 </p>
@@ -855,7 +855,7 @@ export default function InteriorDesignPage() {
 
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 font-sans font-semibold text-[15px] text-[#171614] hover:text-[#B08A52] transition-colors pb-1 border-b border-[#171614] hover:border-[#B08A52] shrink-0"
+                className="inline-flex items-center gap-2 font-sans font-semibold text-[15px] text-[#171614] hover:text-[#B08A52] transition-colors pb-1 border-b border-[#171614] hover:border-[#B08A52] shrink-0 self-start sm:self-auto"
               >
                 <span>View All Projects</span>
                 <ArrowRight size={16} />
@@ -863,10 +863,10 @@ export default function InteriorDesignPage() {
             </div>
 
             {/* Featured Project Showcase Card */}
-            <div className="bg-white rounded-[32px] overflow-hidden border border-[#E7E0D4] shadow-sm">
+            <div className="bg-white rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#E7E0D4] shadow-sm w-full max-w-full">
               <div className="grid grid-cols-1 lg:grid-cols-12">
                 {/* Media Side */}
-                <div className="lg:col-span-7 relative min-h-[360px] sm:min-h-[460px] bg-[#171614]">
+                <div className="lg:col-span-7 relative min-h-[280px] sm:min-h-[460px] bg-[#171614] w-full">
                   <Image
                     src={realProjectShowcase.image}
                     alt={realProjectShowcase.alt}
@@ -875,24 +875,24 @@ export default function InteriorDesignPage() {
                     className="object-cover object-center"
                     loading="lazy"
                   />
-                  <div className="absolute bottom-5 left-5 px-3.5 py-1.5 rounded-full bg-[#171614]/85 backdrop-blur-sm text-white text-[12px] font-medium tracking-wide">
+                  <div className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 px-3 py-1.5 rounded-full bg-[#171614]/85 backdrop-blur-sm text-white text-[11px] sm:text-[12px] font-medium tracking-wide">
                     Real Project Proof • {realProjectShowcase.location}
                   </div>
                 </div>
 
                 {/* Editorial Information Side */}
-                <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between">
+                <div className="lg:col-span-5 p-5 sm:p-8 lg:p-12 flex flex-col justify-between w-full">
                   <div>
-                    <div className="flex items-center justify-between gap-2 text-[13px] text-[#B08A52] font-semibold tracking-wider uppercase mb-2">
+                    <div className="flex items-center justify-between gap-2 text-[12px] sm:text-[13px] text-[#B08A52] font-semibold tracking-wider uppercase mb-2">
                       <span>{realProjectShowcase.location}</span>
                       <span>{realProjectShowcase.scale}</span>
                     </div>
 
-                    <h3 className="text-[24px] sm:text-[30px] font-bold text-[#171614] tracking-tight mb-4">
+                    <h3 className="text-[22px] sm:text-[30px] font-bold text-[#171614] tracking-tight mb-3 sm:mb-4">
                       {realProjectShowcase.title}
                     </h3>
 
-                    <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed mb-6 font-sans">
+                    <p className="text-[14px] sm:text-[16px] text-[#68645D] leading-relaxed mb-6 font-sans">
                       {realProjectShowcase.description}
                     </p>
 
@@ -900,7 +900,7 @@ export default function InteriorDesignPage() {
                       <p className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#171614]">
                         Executed Interior Features:
                       </p>
-                      <ul className="space-y-2 text-[14px] text-[#68645D]">
+                      <ul className="space-y-2 text-[13px] sm:text-[14px] text-[#68645D]">
                         {realProjectShowcase.highlights.map((item) => (
                           <li key={item} className="flex items-center gap-2">
                             <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
@@ -913,10 +913,10 @@ export default function InteriorDesignPage() {
 
                   <Link
                     href={realProjectShowcase.href}
-                    className="inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-full bg-[#FAF8F3] hover:bg-[#171614] text-[#171614] hover:text-white border border-[#E7E0D4] font-sans font-semibold text-[14px] transition-all duration-300 shadow-sm"
+                    className="inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-full bg-[#FAF8F3] hover:bg-[#171614] text-[#171614] hover:text-white border border-[#E7E0D4] font-sans font-semibold text-[13px] sm:text-[14px] transition-all duration-300 shadow-sm text-center"
                   >
                     <span>Read Full Nagarajan Residence Case Study</span>
-                    <ArrowRight size={16} />
+                    <ArrowRight size={16} className="shrink-0" />
                   </Link>
                 </div>
               </div>
@@ -927,30 +927,30 @@ export default function InteriorDesignPage() {
         {/* ===================================================================
             SECTION 8: SERVICE AREA (LOCAL SEO & COVERAGE)
         =================================================================== */}
-        <section className="py-16 sm:py-20 bg-white border-b border-[#E7E0D4]">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+        <section className="py-14 sm:py-20 bg-white border-b border-[#E7E0D4] w-full max-w-full overflow-hidden">
+          <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12 w-full max-w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               <div className="lg:col-span-8">
                 <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                   BASED IN NAGERCOIL
                 </span>
-                <h2 className="text-[26px] sm:text-[34px] text-[#171614] leading-[1.2] mb-3">
+                <h2 className="text-[24px] sm:text-[34px] text-[#171614] leading-[1.2] mb-3">
                   Interior Design in Nagercoil and Surrounding Areas
                 </h2>
-                <p className="text-[16px] text-[#68645D] leading-relaxed max-w-2xl font-sans">
+                <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed max-w-2xl font-sans">
                   SMS Construction is based in Nagercoil, Tamil Nadu, helping clients plan and
                   create interior spaces suited to their homes and project requirements across
                   Nagercoil, Suchindram, Theroor, and Kanyakumari District.
                 </p>
               </div>
 
-              <div className="lg:col-span-4 flex flex-col gap-3 p-6 rounded-[22px] bg-[#FAF8F3] border border-[#E7E0D4]">
-                <div className="flex items-center gap-2 text-[13px] text-[#171614] font-medium">
-                  <MapPin size={16} className="text-[#B08A52]" />
+              <div className="lg:col-span-4 flex flex-col gap-3 p-4 sm:p-6 rounded-[20px] sm:rounded-[22px] bg-[#FAF8F3] border border-[#E7E0D4] w-full max-w-full break-words">
+                <div className="flex items-start gap-2.5 text-[13px] text-[#171614] font-medium">
+                  <MapPin size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
                   <span>25/1 Muthamizh St, Near Court Road, Nagercoil, Tamil Nadu 629001, India</span>
                 </div>
-                <div className="flex items-center gap-2 text-[13px] text-[#171614] font-medium">
-                  <Phone size={16} className="text-[#B08A52]" />
+                <div className="flex items-center gap-2.5 text-[13px] text-[#171614] font-medium">
+                  <Phone size={16} className="text-[#B08A52] shrink-0" />
                   <span>{formattedPhone}</span>
                 </div>
               </div>
@@ -961,8 +961,8 @@ export default function InteriorDesignPage() {
         {/* ===================================================================
             SECTION 9: FREQUENTLY ASKED QUESTIONS
         =================================================================== */}
-        <section className="py-20 sm:py-28 lg:py-32 bg-[#F6F3EB] border-b border-[#E7E0D4]">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+        <section className="py-16 sm:py-28 lg:py-32 bg-[#F6F3EB] border-b border-[#E7E0D4] w-full max-w-full overflow-hidden">
+          <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12 w-full max-w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
               <div className="lg:col-span-5">
                 <div className="lg:sticky lg:top-28 xl:top-32 space-y-6">
@@ -970,20 +970,20 @@ export default function InteriorDesignPage() {
                     <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
                       COMMON QUESTIONS
                     </span>
-                    <h2 className="text-[30px] sm:text-[42px] lg:text-[46px] text-[#171614] leading-[1.18] tracking-tight mb-4">
+                    <h2 className="text-[28px] sm:text-[42px] lg:text-[46px] text-[#171614] leading-[1.18] tracking-tight mb-4">
                       Frequently Asked Questions
                     </h2>
-                    <p className="text-[16px] text-[#68645D] leading-relaxed">
+                    <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed">
                       Clear answers regarding our interior design process, room specialties, Nagercoil
                       coverage, pricing quotations, and turnkey execution.
                     </p>
                   </div>
 
-                  <div className="p-6 rounded-[22px] bg-white border border-[#E7E0D4] shadow-sm">
-                    <h3 className="text-[18px] font-semibold text-[#171614] mb-2">
+                  <div className="p-5 sm:p-6 rounded-[20px] sm:rounded-[22px] bg-white border border-[#E7E0D4] shadow-sm">
+                    <h3 className="text-[17px] sm:text-[18px] font-semibold text-[#171614] mb-2">
                       Planning an interior renovation or new build?
                     </h3>
-                    <p className="text-[14px] text-[#68645D] mb-4">
+                    <p className="text-[13.5px] sm:text-[14px] text-[#68645D] mb-4">
                       Visit our studio or invite our engineers for a preliminary on-site spatial review.
                     </p>
                     <Link
@@ -997,7 +997,7 @@ export default function InteriorDesignPage() {
                 </div>
               </div>
 
-              <div className="lg:col-span-7 bg-white rounded-[24px] p-6 sm:p-8 lg:p-10 border border-[#E7E0D4] shadow-sm">
+              <div className="lg:col-span-7 bg-white rounded-[20px] sm:rounded-[24px] p-4 sm:p-8 lg:p-10 border border-[#E7E0D4] shadow-sm w-full max-w-full overflow-hidden">
                 <ServiceFaqAccordion items={interiorFaqs} />
               </div>
             </div>
@@ -1007,19 +1007,19 @@ export default function InteriorDesignPage() {
         {/* ===================================================================
             SECTION 10: DISCIPLINE HUB BAR (COMPLEMENTARY SERVICES)
         =================================================================== */}
-        <section className="py-12 bg-white border-b border-[#E7E0D4]">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+        <section className="py-10 sm:py-12 bg-white border-b border-[#E7E0D4] w-full max-w-full overflow-hidden">
+          <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12 w-full max-w-full">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>
                 <p className="text-[11px] font-sans font-semibold uppercase tracking-wider text-[#B08A52]">
                   Explore Architecture &amp; Construction Disciplines
                 </p>
-                <p className="text-[18px] text-[#171614]">
+                <p className="text-[17px] sm:text-[18px] text-[#171614]">
                   Complementary Services by SMS Construction
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-[13px] font-sans">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-4 text-[13px] font-sans">
                 <Link
                   href="/services"
                   className="px-4 py-2 rounded-full bg-[#FAF8F3] hover:bg-[#B08A52] hover:text-white border border-[#E7E0D4] text-[#171614] font-medium transition-colors"

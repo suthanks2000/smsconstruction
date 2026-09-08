@@ -505,34 +505,38 @@ export default function InteriorDesignPage() {
                   </div>
                 </div>
 
-                {/* Architectural Grid: Wide Top Feature + 4-Column Bottom Strip */}
-                <div className="space-y-6 sm:space-y-8">
-                  <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
-                    <Image
-                      src={falseCeiling.primaryImage.src}
-                      alt={falseCeiling.primaryImage.alt}
-                      fill
-                      sizes="(max-width: 1360px) 100vw, 1360px"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-[#171614]/80 backdrop-blur-sm text-white font-sans text-[12px]">
-                      Perimeter Cove &amp; Spot Scheme
+                {/* Architectural Grid: Left Prominent Ceiling Feature (7 cols) + Right 2x2 Supporting Details (5 cols) */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch mb-8">
+                  {/* Left: Large Primary Feature (7 cols) with generous height & object-top so the entire ceiling is fully visible */}
+                  <div className="lg:col-span-7">
+                    <div className="relative h-full min-h-[380px] sm:min-h-[480px] lg:min-h-[540px] aspect-[4/3] sm:aspect-[16/11] lg:aspect-auto rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
+                      <Image
+                        src={falseCeiling.primaryImage.src}
+                        alt={falseCeiling.primaryImage.alt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 58vw"
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute bottom-4 left-4 px-3.5 py-1.5 rounded-full bg-[#171614]/80 backdrop-blur-sm text-white font-sans text-[12px] border border-white/10">
+                        Perimeter Cove &amp; Spot Scheme
+                      </div>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                  {/* Right: 4 Supporting Images in 2x2 Grid (5 cols) with object-top */}
+                  <div className="lg:col-span-5 grid grid-cols-2 gap-4 sm:gap-5">
                     {falseCeiling.supportingImages.map((img, idx) => (
                       <div
                         key={idx}
-                        className="relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group"
+                        className="relative aspect-[3/4] sm:aspect-[4/3] lg:aspect-[4/5] rounded-[18px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group shadow-xs"
                       >
                         <Image
                           src={img.src}
                           alt={img.alt}
                           fill
-                          sizes="(max-width: 768px) 50vw, 25vw"
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          sizes="(max-width: 1024px) 50vw, 25vw"
+                          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                         />
                       </div>

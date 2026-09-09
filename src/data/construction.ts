@@ -1,28 +1,22 @@
-export interface BuildingCategory {
-  id: string;
+export interface ConstructionService {
   number: string;
+  title: string;
+  category: string;
+  description: string;
+  icon: string;
+  points: string[];
+}
+
+export interface ApproachStep {
+  step: string;
   title: string;
   subtitle: string;
   description: string;
-  image: string;
-  alt: string;
-  tags: string[];
 }
 
-export interface ConstructionProcessStep {
-  step: string;
+export interface WhyChoosePillar {
   title: string;
-  description: string;
-}
-
-export interface SitePriority {
-  title: string;
-  description: string;
-  icon: string;
-}
-
-export interface ConstructionTrustPillar {
-  title: string;
+  subtitle: string;
   description: string;
   icon: string;
 }
@@ -32,223 +26,234 @@ export interface ConstructionFaq {
   answer: string;
 }
 
-export const buildingCategories: BuildingCategory[] = [
+// 6 Comprehensive Construction Sectors & Disciplines (Residential, Commercial, Industrial, Structural, Renovation, Turnkey)
+export const constructionServices: ConstructionService[] = [
   {
-    id: "residential-construction",
     number: "01",
     title: "Residential Construction",
-    subtitle: "Bespoke Homes & Villas",
+    category: "Homes, Villas & Duplexes",
     description:
-      "Independent residences, multi-generational villas, and bespoke homes planned around natural daylight, coastal cross-ventilation, and durable structural masonry.",
-    image: "/images/projects/modern-edge-residence.jpg",
-    alt: "Bespoke residential villa construction by SMS Construction in Nagercoil",
-    tags: [
-      "Independent Villas",
-      "Multi-Storey Residences",
-      "Turnkey Civil Shell",
-      "Site-Adapted Foundations",
+      "Turnkey construction of bespoke residential homes, luxury villas, duplex residences, and row houses across Nagercoil. Optimized for natural light, coastal cross-ventilation, functional living, and long-term structural endurance.",
+    icon: "home",
+    points: [
+      "Custom architectural layouts & Vastu compliance",
+      "Monolithic RCC column framing & anti-damp plinth beams",
+      "Wire-cut red brickwork or precision AAC block masonry",
+      "Concealed electrical, plumbing & modular interior integration",
     ],
   },
   {
-    id: "new-build-projects",
     number: "02",
-    title: "New Build Projects",
-    subtitle: "Ground-Up Execution",
+    title: "Commercial & Retail Buildings",
+    category: "Showrooms, Offices & Complexes",
     description:
-      "Full-lifecycle construction from initial soil assessment, excavation, and RCC framework to brick masonry, slab casting, and exterior weatherproofing.",
-    image: "/images/services/construction.jpg",
-    alt: "Ground-up construction site engineering by SMS Construction",
-    tags: [
-      "Earthwork & Grading",
-      "RCC Frame Engineering",
-      "Brick & Block Masonry",
-      "Weather-Shield Envelopes",
+      "Engineering and construction of high-footfall commercial complexes, retail showrooms, corporate offices, diagnostic clinics, and multi-tenancy business plazas built to commercial fire and DTCP safety norms.",
+    icon: "business",
+    points: [
+      "Wide-span pillar-free floor plates for flexible layouts",
+      "High-load commercial grade RCC slab engineering",
+      "Glass facade, ACP cladding & exterior elevation works",
+      "Dedicated utility shafts, fire exits & commercial parking layout",
     ],
   },
   {
-    id: "renovation-improvements",
     number: "03",
-    title: "Renovation & Structural Improvements",
-    subtitle: "Remodeling & Expansion",
+    title: "Industrial & Warehouse Infrastructure",
+    category: "Factory Sheds & Storage Godowns",
     description:
-      "Structural additions, floor expansions, wall relocations, and comprehensive structural upgrades designed to modernize and extend the life of existing properties.",
-    image: "/images/projects/courtyard-house.jpg",
-    alt: "Residential expansion and structural renovation in Nagercoil",
-    tags: [
-      "Floor Level Additions",
-      "Structural Wall Alterations",
-      "Facade Modernization",
-      "Waterproofing & Retrofits",
+      "Durable industrial civil works including heavy equipment foundation pads, Pre-Engineered Steel Buildings (PEB), factory workshops, storage warehouses, cold-storage civil frameworks, and industrial logistics facilities.",
+    icon: "warehouse",
+    points: [
+      "Heavy load-bearing industrial grade VDF flooring",
+      "Pre-engineered steel truss and metal roofing integration",
+      "High-capacity storm drainage & rainwater harvesting basins",
+      "Loading dock civil works & heavy vehicle access paving",
     ],
   },
   {
-    id: "commercial-construction",
     number: "04",
-    title: "Commercial Construction",
-    subtitle: "Business & Retail Premises",
+    title: "Structural RCC & Civil Works",
+    category: "Foundations, Columns & Roof Slabs",
     description:
-      "High-durability commercial building shells, retail spaces, and corporate offices planned for efficient circulation, heavy foot-traffic resilience, and clean utility distribution.",
-    image: "/images/screen2_exterior.jpg",
-    alt: "Commercial building construction and structural execution in Nagercoil",
-    tags: [
-      "Retail & Office Shells",
-      "Heavy-Duty Flooring Bases",
-      "High-Volume MEP Conduits",
-      "Façade & Glazing Prep",
+      "Ground-up heavy civil structural execution adhering strictly to IS 456, IS 875, and IS 1893 codes. From soil bearing capacity testing to deep footing excavation, certified Fe550D TMT reinforcement, and monolithic concrete batching.",
+    icon: "engineering",
+    points: [
+      "Isolated, strap, or raft foundations tailored to site soil",
+      "Certified Fe550D primary steel (Tata Tiscon / JSW Neosteel)",
+      "High-strength 53-grade OPC/PPC concrete mixes",
+      "Mandatory 21-day continuous pond curing cycle for all slabs",
+    ],
+  },
+  {
+    number: "05",
+    title: "Renovation & Vertical Expansion",
+    category: "Strengthening & Floor Additions",
+    description:
+      "Comprehensive structural rehabilitation, vertical upper-floor additions, column jacketing, load-bearing re-engineering, structural retrofitting, and modern exterior elevation makeovers for existing properties.",
+    icon: "domain_add",
+    points: [
+      "Structural stability evaluation of existing foundations",
+      "Micro-concrete column jacketing & beam strengthening",
+      "Leakage rectification & chemical polymer damp proofing",
+      "Seamless plumbing & electrical extension into new floors",
+    ],
+  },
+  {
+    number: "06",
+    title: "Turnkey Planning, Approvals & Handover",
+    category: "Full Project Delivery",
+    description:
+      "Complete hassle-free project delivery covering site feasibility, architectural CAD designs, structural engineering validation, municipal corporation and DTCP plan approvals, bill of quantities (BOQ), and guaranteed handover.",
+    icon: "task_alt",
+    points: [
+      "100% transparent itemized BOQ with zero hidden rate shocks",
+      "Nagercoil Corporation & Panchayat building sanction handling",
+      "Strict quality audits and pressure-tested MEP commissioning",
+      "Formal key handover with complete as-built documentation",
     ],
   },
 ];
 
-export const constructionProcessSteps: ConstructionProcessStep[] = [
+// Alias for backward compatibility if any legacy reference exists
+export const residentialServices = constructionServices;
+
+// 4-Step Engineering Approach ("Building Step By Step")
+export const constructionApproachSteps: ApproachStep[] = [
   {
     step: "01",
-    title: "Understand",
+    title: "Discover & Assess",
+    subtitle: "Site Feasibility & Brief",
     description:
-      "Thorough site assessment, plot orientation, soil characteristics, and architectural brief definition in Nagercoil.",
+      "We evaluate your site topography, soil bearing strata, boundary setbacks, local DTCP zoning regulations, building purpose (residential, commercial, or industrial), and long-term functional requirements before drafting.",
   },
   {
     step: "02",
-    title: "Plan",
+    title: "Design & Sanction",
+    subtitle: "Engineering & Approvals",
     description:
-      "Structural schematics, detailed material quantity estimation, timeline milestone mapping, and municipal alignment.",
+      "Our architects and structural engineers create optimized floor layouts, 3D elevations, STAAD.Pro structural models, itemized transparent BOQs, and submit statutory drawings for municipal plan sanctions.",
   },
   {
     step: "03",
-    title: "Coordinate",
+    title: "Execute & Supervise",
+    subtitle: "On-Site Civil Construction",
     description:
-      "Procurement scheduling, bar-bending alignment, shuttering inspections, and MEP conduit integration before any casting.",
+      "Civil engineers oversee physical execution on-site daily: soil excavation, reinforcement bar-bending, concrete batching, brick masonry, water curing, and concealed MEP conduit casting with scheduled digital client updates.",
   },
   {
     step: "04",
-    title: "Execute",
+    title: "Audit & Commission",
+    subtitle: "Quality Testing & Handover",
     description:
-      "Disciplined civil execution — footing, column casting, brick masonry, slab curing, and exterior plastering.",
-  },
-  {
-    step: "05",
-    title: "Check",
-    description:
-      "Multi-stage quality audits testing concrete compaction, surface plumb lines, structural curing periods, and waterproofing integrity.",
-  },
-  {
-    step: "06",
-    title: "Handover",
-    description:
-      "Utility pressure testing, comprehensive site clearance, documentation package, and formal key handover.",
+      "We conduct multi-point quality audits: hydrostatic plumbing line pressure testing, electrical megger insulation testing, terrace flood waterproofing checks, and site clearance for a turnkey key handover ready for occupancy.",
   },
 ];
 
-export const sitePriorities: SitePriority[] = [
+// 4 Value Pillars ("Why Choose SMS Construction")
+export const whyChoosePillars: WhyChoosePillar[] = [
   {
-    title: "Project Coordination",
+    title: "All-Sector Civil Engineering",
+    subtitle: "Residential, Commercial & Industrial",
     description:
-      "Aligning masons, bar benders, electricians, and plumbers so MEP runs smoothly inside concrete and walls without post-pour hacking.",
-    icon: "hub",
+      "Unified contracting capability covering independent villas, high-footfall commercial buildings, industrial sheds, and structural retrofitting under one responsible engineering desk.",
+    icon: "apartment",
   },
   {
-    title: "Site Understanding",
+    title: "Strict IS Code Compliance",
+    subtitle: "Engineered for Decades",
     description:
-      "Adapting foundation depths, plinth levels, and retaining walls to local soil depth, water table, and natural drainage patterns in Kanyakumari district.",
-    icon: "terrain",
-  },
-  {
-    title: "Material Planning",
-    description:
-      "Calculating batch requirements, concrete grades, and reinforcement steel early to maintain continuous workflow without job-site idling.",
-    icon: "inventory",
-  },
-  {
-    title: "Execution Sequencing",
-    description:
-      "Enforcing mandatory curing cycles for slabs and columns before advancing to subsequent structural loading stages.",
-    icon: "schedule",
-  },
-  {
-    title: "Quality Checks",
-    description:
-      "Regular plumb-line verification, structural alignment audits, and multi-point moisture barrier inspections at each milestone.",
+      "Every structural member is designed and cast in accordance with Indian Standards: IS 456 (Concrete), IS 875 (Wind Loads), and IS 1893 (Earthquake Resistance) with primary Fe550D TMT steel.",
     icon: "verified",
   },
   {
-    title: "Clear Communication",
+    title: "Itemized Transparent BOQ",
+    subtitle: "Zero Hidden Rate Shocks",
     description:
-      "Transparent milestone updates and scheduled site walkthroughs keeping homeowners fully informed throughout the build.",
-    icon: "chat",
+      "Clear, itemized Bill of Quantities outlining exact material brands, specifications, cubic volumes, and payment milestones linked strictly to verified physical work stages.",
+    icon: "receipt_long",
+  },
+  {
+    title: "Monsoon-Ready Weatherproofing",
+    subtitle: "Coastal Climate Engineered",
+    description:
+      "Specialized 4-tier moisture barrier engineered for Kanyakumari's heavy coastal rainfall: crystalline concrete admixtures, chemical plinth barriers, and polymer terrace waterproofing.",
+    icon: "shield",
   },
 ];
 
-export const constructionTrustPillars: ConstructionTrustPillar[] = [
-  {
-    title: "Clear Project Communication",
-    description:
-      "Regular site progress updates, scheduled walkthroughs, and single-point accountability from foundation to roof slab.",
-    icon: "forum",
-  },
-  {
-    title: "Structured Planning",
-    description:
-      "Detailed quantity estimates, defined construction milestones, and transparent scope tracking with zero guesswork.",
-    icon: "draw",
-  },
-  {
-    title: "Coordinated Execution",
-    description:
-      "Civil masonry and internal utility trades operate in lockstep without subcontractor conflict or buck-passing.",
-    icon: "engineering",
-  },
-  {
-    title: "Attention to Details",
-    description:
-      "Disciplined formwork, proper vibration compaction, and strict curing timeframes observed on every concrete pour.",
-    icon: "architecture",
-  },
-  {
-    title: "Design-to-Build Continuity",
-    description:
-      "The architectural intent drafted on drawings is faithfully executed on site by the same unified team.",
-    icon: "handshake",
-  },
-];
-
+// High-Density AEO / Local FAQ covering ALL Construction
 export const constructionFaqs: ConstructionFaq[] = [
   {
-    question: "What construction services does SMS Construction provide?",
+    question: "What types of construction projects does SMS Construction undertake in Nagercoil?",
     answer:
-      "SMS Construction provides complete residential and commercial construction services in Nagercoil, including new home builds, structural expansions, RCC framed construction, brick masonry, turnkey shell execution, and integrated interior fit-out coordination.",
+      "SMS Construction undertakes all types of civil building construction in Nagercoil and across Kanyakumari District. This includes residential buildings (independent villas, family houses, duplexes), commercial projects (retail showrooms, corporate offices, commercial complexes), industrial civil infrastructure (factory sheds, warehouses, workshops), and structural renovations or vertical floor additions.",
   },
   {
-    question: "Do you undertake residential construction in Nagercoil?",
+    question: "What is the typical civil construction cost per sq.ft in Nagercoil?",
     answer:
-      "Yes. Residential construction is our primary discipline. We build independent villas, duplex homes, multi-generational family residences, and custom modern homes across Nagercoil and Kanyakumari District.",
+      "In Nagercoil and Kanyakumari District, civil structural construction (framing shell) ranges from ₹1,850 to ₹2,150 per sq.ft. Complete turnkey residential construction typically ranges between ₹2,200 and ₹3,000+ per sq.ft depending on flooring, joinery, and sanitary fittings chosen. Commercial and industrial projects are quoted based on specific span requirements, floor loads, and structural specifications via an itemized Bill of Quantities (BOQ).",
   },
   {
-    question: "Can you help with project planning before construction begins?",
+    question: "Which steel, cement, and raw materials do you use for civil construction?",
     answer:
-      "Absolutely. We offer complete pre-construction planning services, including site evaluation, plot layout schematics, architectural drawings, quantity estimation, and municipal approval guidance before any physical work starts on site.",
+      "We strictly deploy primary Fe550D TMT steel bars (Tata Tiscon or JSW Neosteel) and high-strength 53-grade OPC/PPC cement (UltraTech or Ramco). We never use secondary or re-rolled steel. Stone aggregates and M-sand/P-sand are lab-tested for silt content and gradation to guarantee maximum structural compression strength and coastal anti-corrosion durability.",
   },
   {
-    question: "Do you handle construction execution and coordination?",
+    question: "Does SMS Construction construct commercial complexes and retail showrooms?",
     answer:
-      "Yes. We operate as a full-service builder. Our in-house engineering team manages on-site excavation, foundation casting, reinforcement steel placement, brick masonry, slab curing, and direct subcontractor coordination under unified supervision.",
+      "Yes. We specialize in commercial building construction featuring wide-span pillar-free floor plates, high-ceiling retail showroom floors, reinforced parking basements, glass and ACP facade integration, lift shafts, fire exit stairwells, and municipal DTCP commercial compliance.",
   },
   {
-    question: "Can construction and interior design be planned together?",
+    question: "Do you construct industrial sheds, warehouses, and factories?",
     answer:
-      "Yes, and we strongly recommend it. When structural construction and interior design are coordinated from day one, electrical conduits, plumbing drops, ceiling pockets, and partition anchors are cast into the shell, eliminating unnecessary wall cutting and rework later.",
+      "Yes. We construct heavy-duty industrial civil infrastructure including vacuum dewatered flooring (VDF / Tremix) capable of supporting heavy machinery and forklift movement, pre-engineered building (PEB) foundations, metal roofing sheds, loading docks, and industrial storage godowns.",
   },
   {
-    question: "What is the construction process from start to handover?",
+    question: "Do you handle building plan approvals, DTCP permissions, and municipal sanctions?",
     answer:
-      "Our process follows six structured phases: Site assessment and brief understanding, structural planning and estimation, procurement and trade coordination, civil execution and masonry, rigorous quality audits with curing checks, and final testing and handover.",
+      "Yes. Our engineering desk coordinates all statutory drawings and documentation required for approvals from the Nagercoil City Municipal Corporation, Directorate of Town and Country Planning (DTCP), and local village/town panchayats across Kanyakumari District, including structural stability certification.",
   },
   {
-    question: "Do you work outside Nagercoil?",
+    question: "How do you safeguard buildings against heavy coastal monsoon rains in Kanyakumari?",
     answer:
-      "Yes. While headquartered in Nagercoil, we actively construct residential and commercial buildings throughout Kanyakumari District, including Suchindram, Theroor, Kanyakumari, Marthandam, Colachel, and neighboring areas.",
+      "Kanyakumari experiences both South-West and North-East monsoons with high coastal humidity. We deploy a 4-tier moisture shield: chemical plinth beam anti-capillary barriers, integral crystalline waterproofing admixtures in all RCC mixes, double-coat exterior sand-face plastering with micro-fibers, and polymer brick-bat coba waterproofing for open roof terraces.",
   },
   {
-    question: "How can I request a construction quotation?",
+    question: "Can existing commercial or residential buildings be expanded with additional floors?",
     answer:
-      "You can contact us via our website inquiry form, call our studio directly, or message us on WhatsApp. We will arrange an initial site evaluation or blueprint review to understand your requirements and prepare an itemized estimate.",
+      "Yes. We perform structural audits of existing footings and columns. Where necessary, we implement micro-concrete column jacketing and beam strengthening to safely construct vertical floor extensions while maintaining complete structural stability and building safety standards.",
   },
+  {
+    question: "How long does it take to construct a residential or commercial building?",
+    answer:
+      "An independent residential home (2,000 to 3,000 sq.ft) typically takes 7 to 9 months from foundation to key handover. Commercial complexes vary between 8 and 14 months depending on total square footage, basement depth, and facade requirements. Every project is governed by a defined milestone schedule with guaranteed timeline milestones.",
+  },
+  {
+    question: "How can clients living abroad (NRIs) or outside Nagercoil monitor on-site progress?",
+    answer:
+      "We provide remote clients and NRI property owners with daily high-definition photo and video logs via a dedicated project WhatsApp group, weekly drone/site footage, and bi-weekly milestone verification reports. Payments are linked strictly to verified milestone completion.",
+  },
+];
+
+// Local Geotargeting Areas across Kanyakumari District
+export const geoLocalities: string[] = [
+  "Nagercoil City",
+  "Vadasery",
+  "Kottar",
+  "Ozhuginasery",
+  "Parvathipuram",
+  "Asaripallam",
+  "Chettikulam",
+  "Suchindram",
+  "Theroor",
+  "Kanyakumari",
+  "Marthandam",
+  "Thuckalay",
+  "Colachel",
+  "Karungal",
+  "Kulasekharam",
+  "Villukuri",
+  "Eraniel",
+  "Monday Market",
+  "Kuzhithurai",
 ];

@@ -1,35 +1,59 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Phone, MessageSquare, CheckCircle2, MapPin, Layers, Hammer, ShieldCheck } from "lucide-react";
 import {
-  buildingCategories,
-  constructionProcessSteps,
-  sitePriorities,
-  constructionTrustPillars,
+  ArrowRight,
+  Phone,
+  MessageSquare,
+  CheckCircle2,
+  MapPin,
+  Hammer,
+  Layers,
+  Building2,
+  HardHat,
+  ShieldCheck,
+} from "lucide-react";
+import {
+  constructionServices,
+  constructionApproachSteps,
+  whyChoosePillars,
   constructionFaqs,
+  geoLocalities,
 } from "@/data/construction";
 import ServiceFaqAccordion from "../services/components/ServiceFaqAccordion";
 
 export const metadata: Metadata = {
-  title: "Construction Services in Nagercoil | SMS Construction",
+  title: "Civil & Building Construction Contractors in Nagercoil | Residential, Commercial & Industrial | SMS Construction",
   description:
-    "Explore construction services from SMS Construction in Nagercoil, Tamil Nadu, with planning, execution, quality coordination and project handover.",
+    "Premier civil construction contractors in Nagercoil & Kanyakumari District. Expert builders for residential homes, commercial complexes, industrial sheds, structural RCC framing, DTCP approvals, and turnkey delivery.",
+  keywords: [
+    "Civil Construction Contractors Nagercoil",
+    "Building Construction Company Nagercoil",
+    "Commercial Building Contractors Kanyakumari",
+    "Residential House Construction Nagercoil",
+    "Industrial Shed Builders Kanyakumari",
+    "Turnkey Civil Contractors Tamil Nadu",
+    "RCC Framed Structure Contractors Nagercoil",
+    "DTCP Building Plan Approvals Nagercoil",
+    "Structural Renovation Contractors Kanyakumari",
+    "Best Civil Engineers in Nagercoil",
+    "SMS Construction Nagercoil",
+  ],
   alternates: {
-    canonical: "/construction",
+    canonical: "https://smsconstruction.in/construction",
   },
   openGraph: {
-    title: "Construction Services in Nagercoil | SMS Construction",
+    title: "Civil & Building Construction Contractors in Nagercoil | SMS Construction",
     description:
-      "Explore construction services from SMS Construction in Nagercoil, Tamil Nadu, with planning, execution, quality coordination and project handover.",
+      "All-sector civil construction in Nagercoil: residential villas, commercial complexes, industrial sheds, RCC framing, and turnkey handover by SMS Construction.",
     url: "https://smsconstruction.in/construction",
     siteName: "SMS Construction",
     images: [
       {
-        url: "/images/services/construction.jpg",
+        url: "/images/services/civil-construction-hero.jpg",
         width: 1200,
-        height: 630,
-        alt: "Construction Services in Nagercoil by SMS Construction",
+        height: 675,
+        alt: "Civil building construction site in Nagercoil by SMS Construction",
       },
     ],
     locale: "en_IN",
@@ -37,10 +61,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Construction Services in Nagercoil | SMS Construction",
+    title: "Civil & Building Construction in Nagercoil | SMS Construction",
     description:
-      "Explore construction services from SMS Construction in Nagercoil, Tamil Nadu, with planning, execution, quality coordination and project handover.",
-    images: ["/images/services/construction.jpg"],
+      "Turnkey residential, commercial, and industrial civil construction in Nagercoil & Kanyakumari District. Quality materials, IS code compliance, transparent BOQ.",
+    images: ["/images/services/civil-construction-hero.jpg"],
+  },
+  other: {
+    "geo.region": "IN-TN",
+    "geo.placename": "Nagercoil",
+    "geo.position": "8.1833;77.4119",
+    ICBM: "8.1833, 77.4119",
   },
 };
 
@@ -49,7 +79,7 @@ export default function ConstructionPage() {
   const formattedPhone = "+91 94880 21183";
   const whatsappNumber = "919488021183";
 
-  // Structured Data Schemas
+  // Structured Data 1: BreadcrumbList
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -75,52 +105,82 @@ export default function ConstructionPage() {
     ],
   };
 
+  // Structured Data 2: HomeAndConstructionBusiness & GeneralContractor
+  const businessSchema = {
+    "@context": "https://schema.org",
+    "@type": ["HomeAndConstructionBusiness", "GeneralContractor"],
+    name: "SMS Construction",
+    description:
+      "Premier civil, commercial, and residential building construction contractor in Nagercoil, Tamil Nadu. Ground-up construction, RCC structural works, industrial sheds, and turnkey delivery.",
+    url: "https://smsconstruction.in/construction",
+    telephone: phoneNumber,
+    image: "https://smsconstruction.in/images/services/civil-construction-hero.jpg",
+    priceRange: "₹₹",
+    openingHours: "Mo-Sa 08:30-19:30",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "25/1 Muthamizh St, Near Court Road",
+      addressLocality: "Nagercoil",
+      addressRegion: "Tamil Nadu",
+      postalCode: "629001",
+      addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 8.1833,
+      longitude: 77.4119,
+    },
+    areaServed: geoLocalities.map((loc) => ({
+      "@type": "Place",
+      name: `${loc}, Kanyakumari District, Tamil Nadu`,
+    })),
+  };
+
+  // Structured Data 3: Service Schema
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Construction Services",
-    serviceType: "Building and Residential Construction",
-    description:
-      "Comprehensive residential and commercial construction services in Nagercoil, including new builds, structural masonry, RCC framing, and turnkey execution.",
-    url: "https://smsconstruction.in/construction",
+    name: "Civil & Building Construction Services",
+    serviceType: "Civil, Residential, Commercial & Industrial Construction",
     provider: {
       "@type": "HomeAndConstructionBusiness",
       name: "SMS Construction",
       telephone: phoneNumber,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "25/1 Muthamizh St, Near Court Road",
-        addressLocality: "Nagercoil",
-        addressRegion: "Tamil Nadu",
-        postalCode: "629001",
-        addressCountry: "IN",
-      },
     },
-    areaServed: [
-      {
-        "@type": "City",
-        name: "Nagercoil",
-      },
-      {
-        "@type": "AdministrativeArea",
-        name: "Kanyakumari District",
-      },
-    ],
+    description:
+      "End-to-end civil building construction across Nagercoil and Kanyakumari: residential homes, commercial plazas, industrial facilities, structural RCC framing, and turnkey execution.",
+    url: "https://smsconstruction.in/construction",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Construction Building Capabilities",
-      itemListElement: buildingCategories.map((c, idx) => ({
+      name: "Comprehensive Construction Sectors",
+      itemListElement: constructionServices.map((service, idx) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: c.title,
-          description: c.description,
+          name: `${service.title} (${service.category})`,
+          description: service.description,
         },
         position: idx + 1,
       })),
     },
   };
 
+  // Structured Data 4: HowTo Schema for the 4-Step Approach
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Our Approach: 4-Stage Construction Execution Methodology",
+    description:
+      "A structured 4-step civil construction methodology deployed by SMS Construction in Nagercoil across residential, commercial, and industrial builds.",
+    step: constructionApproachSteps.map((step, idx) => ({
+      "@type": "HowToStep",
+      position: idx + 1,
+      name: `${step.step} ${step.title}: ${step.subtitle}`,
+      text: step.description,
+    })),
+  };
+
+  // Structured Data 5: FAQPage Schema for AEO
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -136,14 +196,22 @@ export default function ConstructionPage() {
 
   return (
     <>
-      {/* Structured Data Scripts */}
+      {/* 5 Structured Data Schemas */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <script
         type="application/ld+json"
@@ -152,137 +220,139 @@ export default function ConstructionPage() {
 
       <main className="bg-[#FAF8F3] text-[#171714] selection:bg-[#B08A52] selection:text-white">
         {/* ===================================================================
-            SECTION 1: HERO
+            SECTION 1: HERO (100dvh - EDITORIAL HERO OVER FULL-BLEED IMAGE)
         =================================================================== */}
         <section
-          data-header-theme="light"
-          className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 border-b border-[#E7E0D4]"
+          data-header-theme="dark"
+          aria-label="Civil Construction Hero"
+          className="relative w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-between pt-20 pb-4 sm:pt-22 sm:pb-5 lg:pt-22 lg:pb-4 bg-[#171714] text-white overflow-hidden border-b border-[#2A2925]"
         >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            {/* Breadcrumb Navigation & Hub Link */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6 sm:mb-8">
-              <nav aria-label="Breadcrumb">
-                <ol className="flex items-center gap-2 text-[13px] font-sans text-[#77736C]">
-                  <li>
-                    <Link
-                      href="/"
-                      className="hover:text-[#B08A52] transition-colors duration-200"
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  <li aria-hidden="true" className="text-[#B08A52]/60">
-                    /
-                  </li>
-                  <li>
-                    <Link
-                      href="/services"
-                      className="hover:text-[#B08A52] transition-colors duration-200"
-                    >
-                      Services
-                    </Link>
-                  </li>
-                  <li aria-hidden="true" className="text-[#B08A52]/60">
-                    /
-                  </li>
-                  <li aria-current="page" className="text-[#171714] font-medium">
-                    Construction
-                  </li>
-                </ol>
-              </nav>
+          {/* Full-Bleed Civil Construction Background Image */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <Image
+              src="/images/services/civil-construction-hero.jpg"
+              alt="Civil RCC residential and commercial building construction site in Nagercoil by SMS Construction"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-right lg:object-[center_35%]"
+            />
+            {/* Overlay - Restored to the elegant soft style */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/80 via-[#171714]/40 to-[#171714]/10" />
+          </div>
 
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-1.5 text-[12px] font-mono uppercase tracking-widest text-[#77736C] hover:text-[#B08A52] transition-colors duration-200"
+          {/* Main Content Area */}
+          <div className="relative z-10 max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12 w-full flex-1 flex flex-col justify-between">
+            {/* Top / Middle Area: Breadcrumbs, Editorial Copy & CTAs */}
+            <div className="flex-1 flex flex-col justify-center max-w-3xl my-auto py-3 sm:py-5 lg:py-6">
+              {/* Breadcrumb Navigation */}
+              <div className="flex flex-wrap items-center justify-between gap-4 mb-3.5 sm:mb-4.5">
+                <nav aria-label="Breadcrumb">
+                  <ol className="flex items-center gap-2 text-[12px] sm:text-[12.5px] font-sans text-white/75">
+                    <li>
+                      <Link
+                        href="/"
+                        className="hover:text-[#e3c381] transition-colors duration-200"
+                      >
+                        Home
+                      </Link>
+                    </li>
+                    <li aria-hidden="true" className="text-[#C89A47]/70">
+                      /
+                    </li>
+                    <li>
+                      <Link
+                        href="/services"
+                        className="hover:text-[#e3c381] transition-colors duration-200"
+                      >
+                        Services
+                      </Link>
+                    </li>
+                    <li aria-hidden="true" className="text-[#C89A47]/70">
+                      /
+                    </li>
+                    <li aria-current="page" className="text-white font-medium">
+                      Construction
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+
+              {/* Editorial Copy */}
+              <div className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#e3c381] mb-2.5 sm:mb-3.5">
+                <Hammer size={13} />
+                <span>SMS CONSTRUCTION • CIVIL, COMMERCIAL &amp; RESIDENTIAL CONTRACTORS</span>
+              </div>
+              <h1
+                className="intro-elem text-white leading-[1.1] tracking-[-0.02em] mb-3.5 sm:mb-4.5"
+                style={{ fontSize: "clamp(1.95rem, 3.6vw, 3.35rem)" }}
               >
-                <span>&larr; Services</span>
-              </Link>
+                Civil &amp; Building Construction in Nagercoil<span className="text-[#e3c381]">.</span>
+              </h1>
+
+              <p className="text-[14.5px] sm:text-[15.5px] lg:text-[16px] leading-relaxed text-white/90 max-w-2xl mb-6 sm:mb-7 font-sans">
+                Professional turnkey civil construction across Nagercoil and Kanyakumari District.
+                From bespoke residential homes and commercial complexes to industrial sheds, heavy RCC
+                framing, and municipal approvals—engineered for decades of structural excellence.
+              </p>
+
+              {/* Primary & Secondary CTAs */}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <Link
+                  href="/contact"
+                  className="group relative overflow-hidden inline-flex items-center justify-center gap-2.5 min-h-[48px] sm:min-h-[50px] px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#e3c381] to-[#C89A47] text-[#171714] font-sans font-semibold text-[13.5px] sm:text-[14.5px] hover:shadow-lg hover:shadow-[#C89A47]/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center shadow-md"
+                >
+                  <span>Discuss Your Project</span>
+                  <ArrowRight size={15} />
+                </Link>
+
+                <a
+                  href={`tel:${phoneNumber}`}
+                  className="inline-flex items-center justify-center gap-2.5 min-h-[48px] sm:min-h-[50px] px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm text-white font-sans font-medium text-[13.5px] sm:text-[14.5px] hover:bg-white hover:text-[#171714] transition-all duration-300 active:scale-[0.98]"
+                >
+                  <Phone size={14} className="text-[#e3c381] group-hover:text-[#171714]" />
+                  <span>Call {formattedPhone}</span>
+                </a>
+
+                <a
+                  href={`https://wa.me/${whatsappNumber}?text=Hello%2C%20I%20would%20like%20to%20consult%20regarding%20construction%20in%20Nagercoil.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2.5 min-h-[48px] sm:min-h-[50px] px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-[#25D366] bg-[#25D366]/10 backdrop-blur-sm text-[#25D366] hover:bg-[#25D366] hover:text-white font-sans font-medium text-[13.5px] sm:text-[14.5px] transition-all duration-300 active:scale-[0.98]"
+                >
+                  <MessageSquare size={15} className="text-[#25D366] group-hover:text-white transition-colors" />
+                  <span>WhatsApp</span>
+                </a>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-              {/* Left Column: Structural Editorial Copy */}
-              <div className="lg:col-span-7 flex flex-col justify-center">
-                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3.5">
-                  CONSTRUCTION
-                </span>
-
-                <h1 className="font-serif text-[34px] sm:text-[48px] lg:text-[60px] font-bold text-[#171714] leading-[1.12] tracking-tight mb-5 sm:mb-6">
-                  Construction Services in Nagercoil
-                </h1>
-
-                <p className="text-[17px] sm:text-[19px] leading-relaxed text-[#68645D] max-w-[600px] mb-8 sm:mb-10 font-sans">
-                  From project planning and site understanding to execution and handover, SMS
-                  Construction approaches each build with a clear, coordinated process.
-                </p>
-
-                {/* Primary & Secondary CTAs */}
-                <div className="flex flex-wrap items-center gap-4 sm:gap-5">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-2.5 min-h-[52px] px-7 py-3.5 rounded-full bg-[#171714] text-white font-sans font-medium text-[15px] hover:bg-[#B08A52] transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98]"
-                  >
-                    <span>Discuss Your Project</span>
-                    <ArrowRight size={16} />
-                  </Link>
-
-                  <Link
-                    href="/projects"
-                    className="inline-flex items-center justify-center min-h-[52px] px-7 py-3.5 rounded-full border border-[#B08A52] text-[#B08A52] font-sans font-medium text-[15px] hover:bg-[#B08A52] hover:text-white transition-all duration-300 active:scale-[0.98]"
-                  >
-                    View Our Projects
-                  </Link>
-                </div>
-
-                {/* Engineering Spec Footnote */}
-                <div className="mt-8 sm:mt-12 pt-6 border-t border-[#E7E0D4]/70 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-[#77736C]">
-                  <span className="flex items-center gap-1.5 font-medium text-[#171714]">
-                    <span className="h-2 w-2 rounded-full bg-[#B08A52]" />
-                    Site-to-Handover Execution
-                  </span>
-                  <span>Engineered Masonry &amp; Framing</span>
-                  <span>Nagercoil &amp; Kanyakumari District</span>
-                </div>
-              </div>
-
-              {/* Right Column: Architectural Construction Visual Frame */}
-              <div className="lg:col-span-5">
-                <div className="relative mx-auto max-w-[500px] lg:max-w-none">
-                  <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden border border-[#E7E0D4] bg-[#F2EDE3] shadow-md">
-                    <Image
-                      src="/images/services/construction.jpg"
-                      alt="Architectural residential construction in Nagercoil by SMS Construction"
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 100vw, 42vw"
-                      className="object-cover object-center transition-transform duration-700 hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
-
-                    {/* Bottom Floating Technical Badge */}
-                    <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-white/95 backdrop-blur-sm border border-[#E7E0D4] text-[#171714] shadow-sm">
-                      <div className="flex items-center justify-between gap-3">
-                        <div>
-                          <p className="text-[11px] uppercase tracking-wider text-[#B08A52] font-semibold">
-                            Engineering Practice
-                          </p>
-                          <p className="font-serif text-[15px] font-semibold text-[#171714]">
-                            Ground-Up Civil Execution
-                          </p>
-                        </div>
-                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#FAF8F3] text-[#B08A52]">
-                          <Hammer size={15} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Engineering Spec Footnote */}
+            <div className="w-full pt-3 sm:pt-3.5 pb-1 border-t border-white/15 grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-wrap sm:items-center sm:justify-start sm:gap-x-5 lg:gap-x-6 sm:gap-y-2 text-[11.5px] sm:text-[12px] lg:text-[12.5px] mt-auto">
+              <span className="flex items-center gap-1.5 font-medium text-white">
+                <CheckCircle2 size={13.5} className="text-[#e3c381] shrink-0" />
+                <span>Turnkey Civil &amp; Structural Execution</span>
+              </span>
+              <span className="hidden sm:inline text-white/25">•</span>
+              <span className="flex items-center gap-1.5 font-medium text-white">
+                <CheckCircle2 size={13.5} className="text-[#e3c381] shrink-0" />
+                <span>IS 456 &amp; 1893 RCC Standards</span>
+              </span>
+              <span className="hidden sm:inline text-white/25">•</span>
+              <span className="flex items-center gap-1.5 font-medium text-white">
+                <CheckCircle2 size={13.5} className="text-[#e3c381] shrink-0" />
+                <span>DTCP &amp; Municipal Clearances</span>
+              </span>
+              <span className="hidden sm:inline text-white/25">•</span>
+              <span className="flex items-center gap-1.5 font-medium text-white">
+                <CheckCircle2 size={13.5} className="text-[#e3c381] shrink-0" />
+                <span>Nagercoil &amp; Kanyakumari District</span>
+              </span>
             </div>
           </div>
         </section>
 
         {/* ===================================================================
-            SECTION 2: CONSTRUCTION INTRO (BUILT WITH INTENT)
+            SECTION 2: EDITORIAL INTRO (ALL-SECTOR CIVIL CONSTRUCTION)
         =================================================================== */}
         <section className="py-20 sm:py-28 border-b border-[#E7E0D4]">
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
@@ -290,26 +360,28 @@ export default function ConstructionPage() {
               {/* Left Column: Heading */}
               <div className="lg:col-span-5">
                 <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                  BUILT WITH INTENT
+                  ALL-SECTOR CIVIL CONSTRUCTION / 01
                 </span>
-                <h2 className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight">
-                  A clear path from plan to finished space.
+                <h2 className="font text-[30px] sm:text-[42px] lg:text-[48px] text-[#171714] leading-[1.18] tracking-tight">
+                  Every structure requires engineering discipline, structural integrity, and purpose-driven execution.
                 </h2>
               </div>
 
-              {/* Right Column: 2 Concise Structural Paragraphs */}
+              {/* Right Column: 2 Concise Paragraphs */}
               <div className="lg:col-span-7 flex flex-col gap-6 text-[17px] sm:text-[18px] text-[#68645D] leading-relaxed font-sans">
                 <p>
-                  Every successful construction project begins with a thorough understanding of the site
-                  conditions, soil characteristics, and architectural requirements. We carefully
-                  evaluate plot boundaries, orientation for natural cross-ventilation, and structural
-                  load distributions before physical work commences on ground in Nagercoil.
+                  Whether developing an independent family villa, a multi-storey commercial retail
+                  complex, or an expansive industrial warehouse, a successful build requires deep
+                  structural expertise, soil-specific foundation engineering, high-grade certified
+                  materials, and disciplined on-site execution. At SMS Construction, we manage projects
+                  end-to-end from initial plot contour survey to architectural design, municipal approvals,
+                  and complete turnkey delivery.
                 </p>
                 <p>
-                  From site grading and foundation engineering through masonry, slab casting, and
-                  service conduit integration, our team manages the sequence with structured
-                  discipline. Daily on-site supervision and clear milestone checks ensure structural
-                  durability, timeline control, and a seamless handover without fragmented trades.
+                  Based in Nagercoil, our civil engineers combine practical spatial planning with
+                  certified Fe550D TMT reinforcement, high-strength concrete batching, and coastal weather
+                  protection. We build spaces that deliver long-term commercial productivity, residential
+                  comfort, and unwavering structural safety across Kanyakumari District.
                 </p>
               </div>
             </div>
@@ -317,142 +389,79 @@ export default function ConstructionPage() {
         </section>
 
         {/* ===================================================================
-            SECTION 3: WHAT WE BUILD
+            SECTION 3: CONSTRUCTION CAPABILITIES & SECTORS (6 Core Disciplines)
         =================================================================== */}
-        <section className="py-20 sm:py-28 lg:py-32 bg-[#F6F3EB] border-b border-[#E7E0D4]">
+        <section
+          aria-labelledby="services-heading"
+          className="py-20 sm:py-28 lg:py-32 bg-[#F6F3EB] border-b border-[#E7E0D4]"
+        >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            {/* Section Header */}
+            {/* Header */}
             <div className="max-w-[760px] mb-14 sm:mb-20">
               <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                BUILDING SCOPES
+                CONSTRUCTION CAPABILITIES &amp; SECTORS
               </span>
-              <h2 className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4">
-                Construction for Spaces That Last
+              <h2
+                id="services-heading"
+                className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
+              >
+                Comprehensive Civil Construction Across All Sectors
               </h2>
               <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
-                Whether creating an independent family residence, executing a ground-up build, or
-                modernizing an existing structure, our team applies rigorous site coordination across
-                every scope.
+                From luxury residential homes to high-footfall commercial spaces and heavy industrial
+                sheds, our civil contracting services cover every technical, statutory, and structural
+                milestone.
               </p>
             </div>
 
-            {/* Asymmetrical Structural Grid (Not 4 identical cards!) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              {/* Category 1: Residential Construction - Large Feature Display */}
-              <div className="lg:col-span-12 bg-white rounded-[28px] overflow-hidden border border-[#E7E0D4] shadow-sm">
-                <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-                  <div className="lg:col-span-7 relative min-h-[340px] sm:min-h-[440px] bg-[#171714]">
-                    <Image
-                      src={buildingCategories[0].image}
-                      alt={buildingCategories[0].alt}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 58vw"
-                      className="object-cover object-center transition-transform duration-700 hover:scale-105"
-                    />
-                    <div className="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-[#171714]/85 backdrop-blur-sm text-white text-[12px] font-medium tracking-wide">
-                      Core Discipline
-                    </div>
-                  </div>
-
-                  <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="font-serif text-[24px] font-semibold text-[#B08A52]">
-                          {buildingCategories[0].number}
-                        </span>
-                        <span className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#77736C]">
-                          {buildingCategories[0].subtitle}
-                        </span>
-                      </div>
-
-                      <h3 className="font-serif text-[28px] sm:text-[34px] font-bold text-[#171714] mb-4">
-                        {buildingCategories[0].title}
-                      </h3>
-
-                      <p className="text-[16px] text-[#68645D] leading-relaxed mb-6">
-                        {buildingCategories[0].description}
-                      </p>
-
-                      <div className="space-y-2 mb-8">
-                        <p className="text-[11px] font-sans font-semibold uppercase tracking-wider text-[#171714]">
-                          Structural Capabilities:
-                        </p>
-                        <div className="flex flex-wrap gap-2 pt-1">
-                          {buildingCategories[0].tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-3 py-1 text-[13px] font-sans rounded-md bg-[#FAF8F3] text-[#171714] border border-[#E7E0D4]"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#171714] text-white hover:bg-[#B08A52] font-sans font-medium text-[14px] transition-colors duration-200"
-                    >
-                      <span>Discuss Residential Build</span>
-                      <ArrowRight size={15} />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* Categories 2, 3, 4 - Structured Triplet Display */}
-              {buildingCategories.slice(1).map((category) => (
+            {/* 6 Core Service Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {constructionServices.map((service) => (
                 <div
-                  key={category.id}
-                  className="lg:col-span-4 bg-white rounded-[24px] overflow-hidden border border-[#E7E0D4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300"
+                  key={service.number}
+                  className="p-8 sm:p-9 rounded-[24px] bg-white border border-[#E7E0D4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300"
                 >
                   <div>
-                    <div className="relative aspect-[16/10] bg-[#171714] overflow-hidden">
-                      <Image
-                        src={category.image}
-                        alt={category.alt}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 33vw"
-                        className="object-cover transition-transform duration-500 hover:scale-105"
-                      />
-                      <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#171714]/80 backdrop-blur-sm text-white text-[11px] font-medium">
-                        {category.number}
-                      </div>
-                    </div>
-
-                    <div className="p-7">
-                      <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-[#B08A52] block mb-1.5">
-                        {category.subtitle}
+                    <div className="flex items-center justify-between gap-4 mb-4 pb-4 border-b border-[#E7E0D4]/70">
+                      <span className="font-serif text-[26px] font-semibold text-[#B08A52]">
+                        {service.number}
                       </span>
-                      <h3 className="font-serif text-[22px] font-bold text-[#171714] mb-3">
-                        {category.title}
-                      </h3>
-                      <p className="text-[14px] text-[#68645D] leading-relaxed mb-6">
-                        {category.description}
-                      </p>
-
-                      <div className="space-y-2 pt-2 border-t border-[#E7E0D4]/70">
-                        <div className="flex flex-wrap gap-1.5">
-                          {category.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-2 py-0.5 text-[11px] font-sans rounded bg-[#FAF8F3] text-[#68645D] border border-[#E7E0D4]"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
+                      <div className="h-10 w-10 rounded-xl bg-[#FAF8F3] border border-[#E7E0D4] flex items-center justify-center text-[#B08A52]">
+                        <span className="material-symbols-outlined text-[22px]">
+                          {service.icon}
+                        </span>
                       </div>
                     </div>
+
+                    <div className="mb-3">
+                      <span className="inline-block text-[11px] font-sans font-semibold uppercase tracking-wider text-[#B08A52] mb-1">
+                        {service.category}
+                      </span>
+                      <h3 className="font-serif text-[22px] font-bold text-[#171714] leading-snug">
+                        {service.title}
+                      </h3>
+                    </div>
+
+                    <p className="text-[15px] text-[#68645D] leading-relaxed mb-6 font-sans">
+                      {service.description}
+                    </p>
+
+                    <ul className="space-y-2 pt-2 border-t border-[#E7E0D4]/70 text-[13px] text-[#68645D]">
+                      {service.points.map((pt) => (
+                        <li key={pt} className="flex items-start gap-2">
+                          <CheckCircle2 size={15} className="text-[#B08A52] shrink-0 mt-0.5" />
+                          <span>{pt}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <div className="p-7 pt-0">
+                  <div className="pt-6 mt-6 border-t border-[#E7E0D4]/70">
                     <Link
                       href="/contact"
                       className="inline-flex items-center gap-1.5 text-[13px] font-sans font-semibold text-[#171714] hover:text-[#B08A52] transition-colors"
                     >
-                      <span>Inquire regarding {category.title}</span>
+                      <span>Inquire regarding {service.title}</span>
                       <ArrowRight size={14} className="text-[#B08A52]" />
                     </Link>
                   </div>
@@ -463,30 +472,36 @@ export default function ConstructionPage() {
         </section>
 
         {/* ===================================================================
-            SECTION 4: OUR CONSTRUCTION PROCESS (EDITORIAL TIMELINE)
+            SECTION 4: OUR APPROACH ("Building Step By Step")
         =================================================================== */}
-        <section className="py-20 sm:py-28 lg:py-32 border-b border-[#E7E0D4]">
+        <section
+          aria-labelledby="approach-heading"
+          className="py-20 sm:py-28 lg:py-32 border-b border-[#E7E0D4]"
+        >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             {/* Header */}
             <div className="max-w-[760px] mb-14 sm:mb-20">
               <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                OUR PROCESS
+                ENGINEERING ROADMAP
               </span>
-              <h2 className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4">
-                From Site to Handover.
+              <h2
+                id="approach-heading"
+                className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
+              >
+                Structured Construction From Foundation To Handover
               </h2>
               <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
-                A structured, six-stage engineering sequence that brings transparency to project
-                timelines, material batching, structural casting, and final building delivery.
+                A disciplined 4-stage civil engineering process that guarantees structural accuracy,
+                cost transparency, and on-time milestone delivery across residential and commercial builds.
               </p>
             </div>
 
-            {/* Continuous Architectural Timeline */}
-            <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-              {constructionProcessSteps.map((step, idx) => (
+            {/* 4-Step Editorial Process Grid */}
+            <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 list-none">
+              {constructionApproachSteps.map((step, idx) => (
                 <li
                   key={step.step}
-                  className="p-7 sm:p-8 rounded-[20px] bg-white border border-[#E7E0D4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300"
+                  className="p-7 sm:p-8 rounded-[24px] bg-white border border-[#E7E0D4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-4 mb-4 pb-4 border-b border-[#E7E0D4]/70">
@@ -494,15 +509,19 @@ export default function ConstructionPage() {
                         {step.step}
                       </span>
                       <span className="text-[11px] font-sans font-medium uppercase tracking-wider text-[#77736C]">
-                        Stage {idx + 1} of 6
+                        Stage {idx + 1} of 4
                       </span>
                     </div>
 
-                    <h3 className="font-serif text-[21px] font-bold text-[#171714] mb-2.5">
+                    <h3 className="font-serif text-[22px] font-bold text-[#171714] mb-1.5">
                       {step.title}
                     </h3>
 
-                    <p className="text-[15px] leading-relaxed text-[#68645D]">
+                    <p className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#B08A52] mb-3">
+                      {step.subtitle}
+                    </p>
+
+                    <p className="text-[14px] leading-relaxed text-[#68645D] font-sans">
                       {step.description}
                     </p>
                   </div>
@@ -513,44 +532,54 @@ export default function ConstructionPage() {
         </section>
 
         {/* ===================================================================
-            SECTION 5: WHAT MATTERS ON SITE
+            SECTION 5: WHY CHOOSE SMS CONSTRUCTION
         =================================================================== */}
-        <section className="py-20 sm:py-28 lg:py-32 bg-[#F6F3EB] border-b border-[#E7E0D4]">
+        <section
+          aria-labelledby="why-choose-heading"
+          className="py-20 sm:py-28 lg:py-32 bg-[#F6F3EB] border-b border-[#E7E0D4]"
+        >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             {/* Header */}
             <div className="max-w-[760px] mb-14 sm:mb-18">
               <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                SITE DISCIPLINE
+                WHY WORK WITH US
               </span>
-              <h2 className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4">
-                The Details Behind a Good Build.
+              <h2
+                id="why-choose-heading"
+                className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
+              >
+                Engineered With Integrity. Delivered With Certainty.
               </h2>
               <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
-                Practical engineering realities that separate long-lasting structural shells from
-                short-lived builds.
+                Why homeowners, commercial enterprises, and industrial developers across Kanyakumari
+                trust SMS Construction for critical building projects.
               </p>
             </div>
 
-            {/* 6 Practical On-Site Priorities Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {sitePriorities.map((priority) => (
+            {/* 4 Value Proposition Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              {whyChoosePillars.map((pillar) => (
                 <div
-                  key={priority.title}
-                  className="p-7 sm:p-8 rounded-[20px] bg-white border border-[#E7E0D4] shadow-sm flex flex-col justify-between"
+                  key={pillar.title}
+                  className="p-7 sm:p-8 rounded-[24px] bg-white border border-[#E7E0D4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300"
                 >
                   <div>
                     <div className="h-11 w-11 rounded-xl bg-[#FAF8F3] border border-[#E7E0D4] flex items-center justify-center text-[#B08A52] mb-5">
                       <span className="material-symbols-outlined text-[24px]">
-                        {priority.icon}
+                        {pillar.icon}
                       </span>
                     </div>
 
-                    <h3 className="font-serif text-[20px] sm:text-[22px] font-bold text-[#171714] mb-2.5">
-                      {priority.title}
+                    <h3 className="font-serif text-[20px] font-bold text-[#171714] mb-1.5">
+                      {pillar.title}
                     </h3>
 
-                    <p className="text-[15px] text-[#68645D] leading-relaxed">
-                      {priority.description}
+                    <p className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#B08A52] mb-3">
+                      {pillar.subtitle}
+                    </p>
+
+                    <p className="text-[14px] text-[#68645D] leading-relaxed font-sans">
+                      {pillar.description}
                     </p>
                   </div>
                 </div>
@@ -560,131 +589,29 @@ export default function ConstructionPage() {
         </section>
 
         {/* ===================================================================
-            SECTION 6: REAL PROJECT PROOF
+            SECTION 6: INTEGRATED ARCHITECTURE & SYNERGY
         =================================================================== */}
-        <section className="py-20 sm:py-28 lg:py-32 border-b border-[#E7E0D4]">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
-              <div className="max-w-[700px]">
-                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                  OUR WORK
-                </span>
-                <h2 className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-3">
-                  Construction in Real Spaces
-                </h2>
-                <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
-                  Real projects illustrate how structural masonry, concrete frame engineering, and
-                  finish coordination operate in physical reality.
-                </p>
-              </div>
-
-              <Link
-                href="/projects"
-                className="inline-flex items-center gap-2 font-sans font-semibold text-[15px] text-[#171714] hover:text-[#B08A52] transition-colors pb-1 border-b border-[#171714] hover:border-[#B08A52] shrink-0 self-start sm:self-auto"
-              >
-                <span>View All Projects</span>
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-
-            {/* Featured Project Showcase */}
-            <div className="bg-white rounded-[28px] overflow-hidden border border-[#E7E0D4] shadow-sm">
-              <div className="grid grid-cols-1 lg:grid-cols-12">
-                {/* Visual Imagery */}
-                <div className="lg:col-span-7 relative min-h-[340px] sm:min-h-[460px] bg-[#171714]">
-                  <Image
-                    src="/images/projects/modern-edge-residence.jpg"
-                    alt="Modern residential villa construction in Nagercoil by SMS Construction"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-[#171714]/85 backdrop-blur-sm text-white text-[12px] font-medium tracking-wide">
-                    Residential Execution
-                  </div>
-                </div>
-
-                {/* Editorial Details */}
-                <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between gap-2 text-[13px] text-[#B08A52] font-semibold tracking-wider uppercase mb-2">
-                      <span>Nagercoil (Theroor)</span>
-                      <span>3,500 Sq. Ft.</span>
-                    </div>
-
-                    <h3 className="font-serif text-[28px] sm:text-[34px] font-bold text-[#171714] mb-4">
-                      Nagarajan Residence
-                    </h3>
-
-                    <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed mb-6">
-                      A bespoke residential build where structural space planning, multi-level ceiling
-                      framing, and utility conduits were engineered to integrate seamlessly with custom
-                      interior wood joinery.
-                    </p>
-
-                    <div className="space-y-2.5 mb-8">
-                      <p className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#171714]">
-                        Construction Scopes Managed:
-                      </p>
-                      <ul className="space-y-1.5 text-[14px] text-[#68645D]">
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
-                          <span>Detailed Site Evaluation &amp; Layout Schematics</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
-                          <span>RCC Structural Coordination &amp; Masonry Work</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
-                          <span>Embedded MEP Conduits &amp; Wall Niche Preparation</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
-                          <span>Turnkey Execution to Final Key Handover</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <Link
-                    href="/projects/nagarajan-residence-nagercoil-theroor"
-                    className="inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-xl bg-[#FAF8F3] hover:bg-[#B08A52] text-[#171714] hover:text-white border border-[#E7E0D4] hover:border-[#B08A52] font-sans font-semibold text-[14px] transition-all duration-300"
-                  >
-                    <span>View Project Case Study</span>
-                    <ArrowRight size={16} />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ===================================================================
-            SECTION 7: CONSTRUCTION + INTERIOR CONNECTION
-        =================================================================== */}
-        <section className="py-20 sm:py-28 bg-[#F6F3EB] border-b border-[#E7E0D4]">
+        <section className="py-20 sm:py-28 border-b border-[#E7E0D4]">
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
               {/* Left Column: Cross-Discipline Message */}
               <div className="lg:col-span-7">
                 <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                  INTEGRATED ARCHITECTURE
+                  INTEGRATED CIVIL &amp; INTERIOR PRACTICE
                 </span>
                 <h2 className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-5">
-                  From Building the Space to Shaping the Interior.
+                  From Groundwork &amp; Structural Framing to Commercial &amp; Living Interiors.
                 </h2>
                 <p className="text-[17px] leading-relaxed text-[#68645D] mb-6 font-sans">
-                  When structural construction and interior design are considered together from day
-                  one, electrical points, recessed ceiling pockets, plumbing drops, and partition
-                  anchors are engineered into the concrete shell—eliminating wall-breaking, patching,
-                  and budget waste later.
+                  When civil construction, structural engineering, and interior fitouts are handled
+                  under one responsible roof, electrical conduits, recessed lighting junction boxes,
+                  commercial HVAC sleeves, and plumbing drops are cast directly into the concrete
+                  shell—eliminating wall breaking, structural patching, and budget waste later.
                 </p>
                 <p className="text-[16px] leading-relaxed text-[#68645D] mb-8 font-sans">
-                  Whether you engage SMS Construction for civil construction alone or complete
-                  turnkey design-and-build, our engineers ensure every phase remains aligned with the
-                  intended spatial experience.
+                  Whether building a high-profile retail showroom, a medical clinic, or an independent
+                  residence, our unified team ensures structural precision matches architectural aesthetics
+                  throughout the build cycle.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4">
@@ -708,34 +635,34 @@ export default function ConstructionPage() {
 
               {/* Right Column: Visual Synergy Card */}
               <div className="lg:col-span-5">
-                <div className="p-8 sm:p-10 rounded-[24px] bg-white border border-[#E7E0D4] shadow-sm space-y-6">
+                <div className="p-8 sm:p-10 rounded-[24px] bg-[#F6F3EB] border border-[#E7E0D4] shadow-sm space-y-6">
                   <div className="flex items-center gap-3 text-[#B08A52]">
                     <Layers size={22} />
                     <span className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#171714]">
-                      Design-Build Synergy
+                      Turnkey Civil Synergy
                     </span>
                   </div>
 
                   <h3 className="font-serif text-[22px] font-bold text-[#171714]">
-                    No Disjointed Handoffs
+                    Zero Inter-Contractor Friction
                   </h3>
 
                   <ul className="space-y-3 text-[14px] text-[#68645D]">
                     <li className="flex items-start gap-2.5">
                       <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
-                      <span>Conduits cast directly into RCC slabs for false ceiling lighting</span>
+                      <span>Commercial floor plates engineered for flexible partition reconfigurations</span>
                     </li>
                     <li className="flex items-start gap-2.5">
                       <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
-                      <span>Plumbing inlet/outlet heights aligned with modular kitchen cabinetry</span>
+                      <span>Plumbing drops and drainage cores aligned with sanitary layouts</span>
                     </li>
                     <li className="flex items-start gap-2.5">
                       <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
-                      <span>Window lintel elevations calibrated to match interior drapery pockets</span>
+                      <span>Concealed electrical lines and 3-phase commercial wiring cast into slabs</span>
                     </li>
                     <li className="flex items-start gap-2.5">
                       <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
-                      <span>Single point of communication from foundation to final paint finish</span>
+                      <span>Single responsible engineering desk from excavation to final painting</span>
                     </li>
                   </ul>
                 </div>
@@ -745,58 +672,12 @@ export default function ConstructionPage() {
         </section>
 
         {/* ===================================================================
-            SECTION 8: WHY WORK WITH SMS CONSTRUCTION
+            SECTION 7: LOCAL SERVICE AREA (GEO / LOCAL SEO)
         =================================================================== */}
-        <section className="py-20 sm:py-28 lg:py-32 border-b border-[#E7E0D4]">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            {/* Header */}
-            <div className="max-w-[760px] mb-14 sm:mb-18">
-              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                THE STUDIO ADVANTAGE
-              </span>
-              <h2 className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4">
-                A More Connected Way to Build.
-              </h2>
-              <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
-                Practical, factual value propositions that protect your budget, timeline, and
-                architectural vision on site.
-              </p>
-            </div>
-
-            {/* 5 Value Proposition Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {constructionTrustPillars.map((pillar, index) => (
-                <div
-                  key={pillar.title}
-                  className={`p-7 sm:p-8 rounded-[20px] bg-white border border-[#E7E0D4] shadow-sm flex flex-col justify-between ${
-                    index === 3 ? "lg:col-span-1" : index === 4 ? "md:col-span-2 lg:col-span-2" : ""
-                  }`}
-                >
-                  <div>
-                    <div className="h-11 w-11 rounded-xl bg-[#FAF8F3] border border-[#E7E0D4] flex items-center justify-center text-[#B08A52] mb-5">
-                      <span className="material-symbols-outlined text-[24px]">
-                        {pillar.icon}
-                      </span>
-                    </div>
-
-                    <h3 className="font-serif text-[20px] sm:text-[22px] font-bold text-[#171714] mb-2.5">
-                      {pillar.title}
-                    </h3>
-
-                    <p className="text-[15px] text-[#68645D] leading-relaxed">
-                      {pillar.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ===================================================================
-            SECTION 9: LOCAL SERVICE AREA (GEO / LOCAL SEO)
-        =================================================================== */}
-        <section className="py-20 sm:py-28 bg-[#F6F3EB] border-b border-[#E7E0D4]">
+        <section
+          aria-labelledby="local-geo-heading"
+          className="py-20 sm:py-28 bg-[#F6F3EB] border-b border-[#E7E0D4]"
+        >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
               {/* Left Column: Local Context */}
@@ -804,30 +685,27 @@ export default function ConstructionPage() {
                 <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
                   BASED IN NAGERCOIL
                 </span>
-                <h2 className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-5">
-                  Construction Services in Nagercoil and Surrounding Areas
+                <h2
+                  id="local-geo-heading"
+                  className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-5"
+                >
+                  Civil &amp; Commercial Construction Across Nagercoil and Kanyakumari District
                 </h2>
                 <p className="text-[17px] leading-relaxed text-[#68645D] mb-6">
-                  SMS Construction is based in Nagercoil, Tamil Nadu, and works on residential,
-                  commercial, and structural projects throughout Kanyakumari District. Having our
-                  permanent engineering presence in Nagercoil ensures timely site inspections, daily
-                  workforce coordination, and strict material auditing.
+                  SMS Construction is centrally located in Nagercoil, Tamil Nadu, providing complete
+                  civil construction, commercial contracting, and structural development across the
+                  entire Kanyakumari District. Having our permanent engineering presence in Nagercoil
+                  ensures immediate site mobilization, daily quality supervision, and reliable local
+                  material sourcing.
                 </p>
                 <p className="text-[16px] leading-relaxed text-[#68645D] mb-8">
-                  We actively manage builds in Nagercoil, Suchindram, Theroor, Kanyakumari, Marthandam,
-                  and neighboring regional localities.
+                  We actively manage projects in Nagercoil City, Vadasery, Kottar, Ozhuginasery,
+                  Parvathipuram, Suchindram, Theroor, Kanyakumari, Marthandam, Thuckalay, Colachel,
+                  Karungal, Kulasekharam, and surrounding regional business centers.
                 </p>
 
                 <div className="flex flex-wrap gap-2.5">
-                  {[
-                    "Nagercoil City",
-                    "Theroor",
-                    "Suchindram",
-                    "Kanyakumari",
-                    "Marthandam",
-                    "Colachel",
-                    "Villukuri",
-                  ].map((place) => (
+                  {geoLocalities.map((place) => (
                     <span
                       key={place}
                       className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-[#E7E0D4] text-[13px] font-sans text-[#68645D]"
@@ -851,6 +729,9 @@ export default function ConstructionPage() {
                   <address className="not-italic text-[15px] text-[#68645D] leading-relaxed mb-6 space-y-1">
                     <p>25/1 Muthamizh Street, Near Court Road</p>
                     <p>Nagercoil, Tamil Nadu 629001, India</p>
+                    <p className="text-[12px] font-mono text-[#B08A52] pt-1">
+                      GPS: 8.1833° N, 77.4119° E
+                    </p>
                   </address>
 
                   <div className="pt-6 border-t border-[#E7E0D4] space-y-3 text-[14px]">
@@ -873,7 +754,7 @@ export default function ConstructionPage() {
                       </a>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-[#77736C]">Site Visits:</span>
+                      <span className="text-[#77736C]">Site Consultations:</span>
                       <span className="font-medium text-[#171714]">Monday – Saturday</span>
                     </div>
                   </div>
@@ -884,42 +765,50 @@ export default function ConstructionPage() {
         </section>
 
         {/* ===================================================================
-            SECTION 10: FAQ
+            SECTION 8: FAQ (AEO & DIRECT ANSWER KNOWLEDGE BASE)
         =================================================================== */}
-        <section className="py-20 sm:py-28 lg:py-32 border-b border-[#E7E0D4]">
+        <section
+          aria-labelledby="faq-heading"
+          className="py-20 sm:py-28 lg:py-32 border-b border-[#E7E0D4]"
+        >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
               {/* Left Column: Context & Contact Prompt */}
               <div className="lg:col-span-5">
                 <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                  COMMON QUESTIONS
+                  DIRECT ANSWERS &bull; AEO KNOWLEDGE
                 </span>
-                <h2 className="font-serif text-[30px] sm:text-[42px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4">
-                  Frequently Asked Questions
+                <h2
+                  id="faq-heading"
+                  className="font-serif text-[30px] sm:text-[42px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
+                >
+                  Frequently Asked Questions on Construction
                 </h2>
                 <p className="text-[16px] sm:text-[17px] text-[#68645D] leading-relaxed mb-8">
-                  Direct answers regarding our residential building process, site planning, Nagercoil
-                  service boundaries, and quotation reviews.
+                  Authoritative engineering answers regarding our residential, commercial, and
+                  industrial building capabilities, DTCP permissions, material standards, and costs in
+                  Nagercoil.
                 </p>
 
                 <div className="p-6 rounded-[20px] bg-[#F6F3EB] border border-[#E7E0D4] shadow-sm">
                   <h3 className="font-serif text-[18px] font-bold text-[#171714] mb-2">
-                    Have architectural drawings or a plot ready?
+                    Have architectural drawings or an empty plot ready?
                   </h3>
                   <p className="text-[14px] text-[#68645D] mb-4">
-                    Our engineering team is available for on-site plot reviews and structural feasibility consultations.
+                    Our structural engineering team is available for on-site plot inspections, soil
+                    evaluations, and structural feasibility reviews in Nagercoil.
                   </p>
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-2 font-sans font-semibold text-[14px] text-[#B08A52] hover:text-[#80633D] transition-colors"
                   >
-                    <span>Schedule a Site Consultation</span>
+                    <span>Schedule an On-Site Consultation</span>
                     <ArrowRight size={15} />
                   </Link>
                 </div>
               </div>
 
-              {/* Right Column: Accessible Accordion */}
+              {/* Right Column: Accessible Light Accordion */}
               <div className="lg:col-span-7 bg-white rounded-[24px] p-6 sm:p-8 lg:p-10 border border-[#E7E0D4] shadow-sm">
                 <ServiceFaqAccordion items={constructionFaqs} />
               </div>
@@ -979,23 +868,30 @@ export default function ConstructionPage() {
         </section>
 
         {/* ===================================================================
-            SECTION 11: FINAL LEAD CTA
+            SECTION 9: FINAL LEAD CTA
         =================================================================== */}
-        <section className="relative overflow-hidden py-24 sm:py-32 bg-[#171614] text-white">
+        <section
+          aria-label="Start Your Construction Project"
+          className="relative overflow-hidden py-24 sm:py-32 bg-[#171614] text-white"
+        >
           {/* Subtle Ambient Radial Accent */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#B08A52]/10 rounded-full blur-3xl pointer-events-none" />
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#B08A52]/10 rounded-full blur-3xl pointer-events-none"
+            aria-hidden="true"
+          />
 
           <div className="relative max-w-[980px] mx-auto px-5 sm:px-8 text-center">
             <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.25em] uppercase text-[#FBE18D] mb-4">
-              START YOUR PROJECT
+              START YOUR CONSTRUCTION PROJECT
             </span>
 
             <h2 className="font-serif text-[34px] sm:text-[48px] lg:text-[56px] font-bold text-[#FAF8F3] leading-[1.14] tracking-tight mb-6">
-              Planning a new build or construction project?
+              Planning a residential, commercial, or civil build in Nagercoil?
             </h2>
 
             <p className="text-[17px] sm:text-[19px] leading-relaxed text-[#FAF8F3]/80 max-w-[680px] mx-auto mb-10 font-sans">
-              Tell us about your project, site, requirements and what you are planning to build.
+              Connect with our senior civil engineering team to review your plot, discuss requirements,
+              and receive a transparent, itemized Bill of Quantities (BOQ).
             </p>
 
             {/* CTAs */}
@@ -1004,7 +900,7 @@ export default function ConstructionPage() {
                 href="/contact"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#FBE18D] hover:bg-[#FCD372] text-[#171614] font-sans font-semibold text-[15px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]"
               >
-                <span>Get a Free Quote</span>
+                <span>Get a Free Quote &amp; BOQ</span>
                 <ArrowRight size={17} />
               </Link>
 
@@ -1017,10 +913,10 @@ export default function ConstructionPage() {
               </a>
 
               <a
-                href={`https://wa.me/${whatsappNumber}`}
+                href={`https://wa.me/${whatsappNumber}?text=Hello%2C%20I%20would%20like%20to%20consult%20regarding%20construction%20in%20Nagercoil.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full text-white/80 hover:text-white font-sans text-[15px] hover:underline underline-offset-4 transition-colors duration-200"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-[#25D366] bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white font-sans text-[15px] transition-all duration-200"
               >
                 <MessageSquare size={16} />
                 <span>WhatsApp</span>
@@ -1028,7 +924,7 @@ export default function ConstructionPage() {
             </div>
 
             <p className="mt-10 text-[13px] text-white/50 tracking-wide font-sans">
-              SMS Construction • Civil Engineering &amp; Building Studio • Nagercoil, Tamil Nadu
+              SMS Construction &bull; Civil Engineering &amp; Building Contractors &bull; Nagercoil, Tamil Nadu
             </p>
           </div>
         </section>

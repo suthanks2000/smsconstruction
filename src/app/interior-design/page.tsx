@@ -4,7 +4,9 @@ import Link from "next/link";
 import {
   ArrowRight,
   Phone,
+  MessageSquare,
   CheckCircle2,
+  Sparkles,
   MapPin,
 } from "lucide-react";
 import {
@@ -166,102 +168,82 @@ export default function InteriorDesignPage() {
       />
 
       <main className="bg-[#FAF8F3] text-[#171614] selection:bg-[#B08A52] selection:text-white min-h-screen w-full max-w-full overflow-x-clip">
-        {/* ══════════════════════════════════════════════════════
-            1. COMPACT EDITORIAL HERO (100dvh)
-        ══════════════════════════════════════════════════════ */}
-        <div className="min-h-[100dvh] lg:h-[100dvh] flex flex-col pt-[70px] sm:pt-[80px] bg-[#FAF8F3] relative w-full max-w-full overflow-hidden">
-          <section
-            data-header-theme="light"
-            className="flex-1 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full py-6 sm:py-8 lg:py-10"
-          >
-            {/* Breadcrumb Navigation */}
-            <nav aria-label="Breadcrumb" className="mb-4 sm:mb-5">
-              <ol className="flex items-center gap-2 text-[12px] sm:text-[13px] font-sans text-[#77736C]">
-                <li>
-                  <Link href="/" className="hover:text-[#B08A52] transition-colors duration-200">
-                    Home
-                  </Link>
-                </li>
-                <li aria-hidden="true" className="text-[#B08A52]/60">
-                  /
-                </li>
-                <li>
-                  <Link href="/services" className="hover:text-[#B08A52] transition-colors duration-200">
-                    Services
-                  </Link>
-                </li>
-                <li aria-hidden="true" className="text-[#B08A52]/60">
-                  /
-                </li>
-                <li aria-current="page" className="text-[#171614] font-medium">
-                  Interior Design
-                </li>
-              </ol>
-            </nav>
+        {/* ===================================================================
+            SECTION 1: HERO (100dvh - EDITORIAL HERO OVER FULL-BLEED IMAGE)
+        =================================================================== */}
+        <section
+          data-header-theme="dark"
+          aria-label="Interior Design Hero"
+          className="relative w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-between pt-20 sm:pt-22 lg:pt-22 pb-0 bg-[#171714] text-white overflow-hidden border-b border-[#2A2925]"
+        >
+          {/* Full-Bleed Realistic Interior Background Image */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <Image
+              src="/images/services/interior.jpg"
+              alt="Contemporary luxury residential interior design in Nagercoil by SMS Construction"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center lg:object-[center_40%]"
+            />
+            {/* Elegant gradient overlay ensuring high contrast readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/85 via-[#171714]/50 to-[#171714]/20 lg:from-[#171714]/85 lg:via-[#171714]/45 lg:to-[#171714]/15" />
+          </div>
 
-            <p className="font-sans text-[11px] sm:text-[12px] tracking-[0.26em] uppercase font-semibold text-[#B08A52] mb-3 sm:mb-5 flex items-center gap-2.5">
-              <span className="inline-block w-6 sm:w-8 h-px bg-[#B08A52]" aria-hidden="true" />
-              SMS Construction • Interior Studio
-            </p>
+          {/* Main Content Area */}
+          <div className="relative z-10 max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12 w-full flex-1 flex flex-col justify-center">
+            {/* Editorial Copy & CTAs */}
+            <div className="max-w-3xl py-3 sm:py-5 lg:py-6">
+              {/* Eyebrow / Kicker */}
+              <div className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#e3c381] mb-6 sm:mb-3.5">
+                <Sparkles size={13} />
+                <span>SMS CONSTRUCTION • BESPOKE RESIDENTIAL &amp; COMMERCIAL INTERIORS</span>
+              </div>
 
-            <h1
-              className="intro-elem text-[#171614] leading-[1.1] sm:leading-[1.08] tracking-[-0.02em] mb-4 sm:mb-5 max-w-4xl break-words"
-              style={{ fontSize: "clamp(1.95rem, 4.5vw, 3.8rem)" }}
-            >
-              Interior Design in Nagercoil &amp; Across Kanyakumari<span className="text-[#B08A52]">.</span>
-            </h1>
-
-            <p className="font-sans text-[15px] sm:text-[16px] md:text-[17px] leading-[1.7] text-[#55524D] max-w-2xl mb-7 sm:mb-10">
-              Bespoke residential interiors crafted around your family&apos;s daily routines — blending thoughtful space planning, custom millwork, ambient illumination, and direct on-site execution.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-md sm:max-w-none">
-              <Link
-                href="/contact"
-                className="group relative overflow-hidden flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-3 min-h-[48px] sm:min-h-[52px] px-5 sm:px-8 py-3 rounded-full bg-[#171614] text-white font-sans font-semibold text-[14px] sm:text-[15px] hover:bg-[#B08A52] hover:shadow-lg hover:shadow-[#B08A52]/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center shadow-sm transform-gpu"
+              <h1
+                className="intro-elem text-white leading-[1.1] tracking-[-0.02em] mb-3.5 sm:mb-4.5"
+                style={{ fontSize: "clamp(1.95rem, 3.6vw, 3.35rem)" }}
               >
-                {/* High performance GPU shimmer sweep */}
-                <span
-                  className="pointer-events-none absolute inset-0 -translate-x-full rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
-                  aria-hidden="true"
-                />
-                <span className="relative z-10">
-                  <span className="sm:hidden">Start Project</span>
-                  <span className="hidden sm:inline">Start Your Interior Project</span>
-                </span>
-                <span className="relative z-10 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors duration-300 shrink-0">
-                  <ArrowRight
-                    size={13}
-                    className="transition-transform duration-300 ease-out group-hover:translate-x-0.5"
-                  />
-                </span>
-              </Link>
+                Interior Design in Nagercoil &amp; Across Kanyakumari<span className="text-[#e3c381]">.</span>
+              </h1>
 
-              <a
-                href="#bedroom"
-                className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-3 min-h-[48px] sm:min-h-[52px] px-5 sm:px-7 py-3 rounded-full bg-white text-[#171614] border border-[#E7E0D4] font-sans font-semibold text-[14px] sm:text-[15px] hover:border-[#B08A52] hover:text-[#B08A52] hover:bg-[#FAF8F5] hover:shadow-md hover:shadow-[#B08A52]/15 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center shadow-xs transform-gpu"
-              >
-                <span>
-                  <span className="sm:hidden">Explore Spaces</span>
-                  <span className="hidden sm:inline">Explore 6 Living Spaces</span>
-                </span>
-                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#FAF8F3] group-hover:bg-[#B08A52]/15 flex items-center justify-center transition-colors duration-300 shrink-0">
-                  <span className="text-[#B08A52] text-[12px] sm:text-[13px] transition-transform duration-300 ease-out group-hover:translate-y-0.5 font-medium leading-none">
-                    ↓
+              <p className="text-[14.5px] sm:text-[15.5px] lg:text-[16px] leading-relaxed text-white/90 max-w-2xl mb-6 sm:mb-7 font-sans">
+                Bespoke residential interiors crafted around your family&apos;s daily routines — blending thoughtful space planning, custom millwork, ambient illumination, and direct on-site execution across Nagercoil and Kanyakumari District.
+              </p>
+
+              {/* Primary & Secondary CTAs */}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <Link
+                  href="/contact"
+                  className="group relative overflow-hidden inline-flex items-center justify-center gap-2.5 min-h-[48px] sm:min-h-[50px] px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#e3c381] to-[#C89A47] text-[#171714] font-sans font-semibold text-[13.5px] sm:text-[14.5px] hover:shadow-lg hover:shadow-[#C89A47]/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center shadow-md"
+                >
+                  <span>Start Your Interior Project</span>
+                  <ArrowRight size={15} />
+                </Link>
+
+                <a
+                  href="#bedroom"
+                  className="group inline-flex items-center justify-center gap-2 sm:gap-3 min-h-[48px] sm:min-h-[50px] px-5 sm:px-7 py-2.5 sm:py-3 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm text-white font-sans font-medium text-[13.5px] sm:text-[14.5px] hover:bg-white hover:text-[#171714] transition-all duration-300 active:scale-[0.98]"
+                >
+                  <span>
+                    <span className="sm:hidden">Explore Spaces</span>
+                    <span className="hidden sm:inline">Explore 6 Living Spaces</span>
                   </span>
-                </span>
-              </a>
+                  <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/10 group-hover:bg-[#171714]/10 flex items-center justify-center transition-colors duration-300 shrink-0">
+                    <span className="text-[#e3c381] group-hover:text-[#171714] text-[12px] sm:text-[13px] transition-transform duration-300 ease-out group-hover:translate-y-0.5 font-medium leading-none">
+                      ↓
+                    </span>
+                  </span>
+                </a>
+              </div>
             </div>
-          </section>
+          </div>
 
-          {/* ══════════════════════════════════════════════════════
-              2. INFINITE MARQUEE TICKER
-          ══════════════════════════════════════════════════════ */}
-          <div className="mt-auto shrink-0 w-full max-w-full overflow-hidden">
+          {/* Location Marquee Ticker at bottom of 100dvh */}
+          <div className="relative z-10 mt-auto shrink-0 w-full max-w-full overflow-hidden">
             <LocationMarquee />
           </div>
-        </div>
+        </section>
 
         {/* ===================================================================
             SECTION 2: INTRO SECTION (SPLIT EDITORIAL)

@@ -243,43 +243,10 @@ export default function ConstructionPage() {
 
           {/* Main Content Area */}
           <div className="relative z-10 max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12 w-full flex-1 flex flex-col justify-between">
-            {/* Top / Middle Area: Breadcrumbs, Editorial Copy & CTAs */}
+            {/* Top / Middle Area: Editorial Copy & CTAs */}
             <div className="flex-1 flex flex-col justify-center max-w-3xl my-auto py-3 sm:py-5 lg:py-6">
-              {/* Breadcrumb Navigation */}
-              <div className="flex flex-wrap items-center justify-between gap-4 mb-3.5 sm:mb-4.5">
-                <nav aria-label="Breadcrumb">
-                  <ol className="flex items-center gap-2 text-[12px] sm:text-[12.5px] font-sans text-white/75">
-                    <li>
-                      <Link
-                        href="/"
-                        className="hover:text-[#e3c381] transition-colors duration-200"
-                      >
-                        Home
-                      </Link>
-                    </li>
-                    <li aria-hidden="true" className="text-[#C89A47]/70">
-                      /
-                    </li>
-                    <li>
-                      <Link
-                        href="/services"
-                        className="hover:text-[#e3c381] transition-colors duration-200"
-                      >
-                        Services
-                      </Link>
-                    </li>
-                    <li aria-hidden="true" className="text-[#C89A47]/70">
-                      /
-                    </li>
-                    <li aria-current="page" className="text-white font-medium">
-                      Construction
-                    </li>
-                  </ol>
-                </nav>
-              </div>
-
               {/* Editorial Copy */}
-              <div className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#e3c381] mb-2.5 sm:mb-3.5">
+              <div className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#e3c381] mb-6 sm:mb-3.5">
                 <Hammer size={13} />
                 <span>SMS CONSTRUCTION • CIVIL, COMMERCIAL &amp; RESIDENTIAL CONTRACTORS</span>
               </div>

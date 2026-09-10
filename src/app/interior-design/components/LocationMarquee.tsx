@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { MapPin } from "lucide-react";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const locationItems = [
@@ -72,17 +74,17 @@ export default function LocationMarquee() {
   return (
     <div
       ref={containerRef}
-      className="relative bg-[#171614] border-t border-b border-[#2A2928] overflow-hidden py-3.5 sm:py-4 select-none w-full max-w-full"
+      className="relative bg-[#141311]/85 backdrop-blur-md border-t border-white/10 overflow-hidden py-3 sm:py-3.5 select-none w-full max-w-full"
     >
       <div
         aria-hidden="true"
-        className="absolute inset-y-0 left-0 w-20 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to right, #171614, transparent)" }}
+        className="absolute inset-y-0 left-0 w-16 sm:w-28 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(to right, #141311 25%, transparent)" }}
       />
       <div
         aria-hidden="true"
-        className="absolute inset-y-0 right-0 w-20 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to left, #171614, transparent)" }}
+        className="absolute inset-y-0 right-0 w-16 sm:w-28 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(to left, #141311 25%, transparent)" }}
       />
 
       <div
@@ -92,11 +94,11 @@ export default function LocationMarquee() {
         style={{ willChange: "transform" }}
       >
         {repeated.map((item, i) => (
-          <span key={i} className="inline-flex items-center gap-5 px-2">
-            <span className="font-sans text-[12px] tracking-[0.22em] uppercase font-semibold text-[#B08A52]">
+          <span key={i} className="inline-flex items-center gap-2 px-4 sm:px-5 group/loc">
+            <MapPin size={20} className="text-[#e3c381] shrink-0 opacity-80 group-hover/loc:opacity-100 transition-opacity" />
+            <span className="font-sans text-[11.5px] sm:text-[12px] tracking-[0.22em] uppercase font-medium text-white/85 group-hover/loc:text-[#e3c381] transition-colors">
               {item}
             </span>
-            <span className="w-1 h-1 rounded-full bg-[#B08A52] shrink-0" />
           </span>
         ))}
       </div>

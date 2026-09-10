@@ -21,6 +21,7 @@ import {
   geoLocalities,
 } from "@/data/construction";
 import ServiceFaqAccordion from "../services/components/ServiceFaqAccordion";
+import ConstructionSectorsConsole from "./components/ConstructionSectorsConsole";
 
 export const metadata: Metadata = {
   title: "Civil & Building Construction Contractors in Nagercoil | Residential, Commercial & Industrial | SMS Construction",
@@ -72,6 +73,15 @@ export const metadata: Metadata = {
     "geo.position": "8.1833;77.4119",
     ICBM: "8.1833, 77.4119",
   },
+};
+
+const serviceTags: Record<string, string[]> = {
+  "01": ["Individual Villas", "Duplex Homes", "Row Houses"],
+  "02": ["Retail Showrooms", "Office Complexes", "Clinics & Plazas"],
+  "03": ["PEB Steel Sheds", "Warehouses", "Factory Units"],
+  "04": ["Deep Foundations", "Fe550D TMT", "Monolithic Slabs"],
+  "05": ["Floor Additions", "Column Jacketing", "Retrofitting"],
+  "06": ["DTCP Approvals", "Itemized BOQ", "Key Handover"],
 };
 
 export default function ConstructionPage() {
@@ -251,7 +261,7 @@ export default function ConstructionPage() {
                 <span>SMS CONSTRUCTION • CIVIL, COMMERCIAL &amp; RESIDENTIAL CONTRACTORS</span>
               </div>
               <h1
-                className="intro-elem text-white leading-[1.1] tracking-[-0.02em] mb-3.5 sm:mb-4.5"
+                className="font-bold intro-elem text-white leading-[1.1] tracking-[-0.02em] mb-3.5 sm:mb-4.5"
                 style={{ fontSize: "clamp(1.95rem, 3.6vw, 3.35rem)" }}
               >
                 Civil &amp; Building Construction in Nagercoil<span className="text-[#e3c381]">.</span>
@@ -329,7 +339,7 @@ export default function ConstructionPage() {
                 <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
                   ALL-SECTOR CIVIL CONSTRUCTION / 01
                 </span>
-                <h2 className="font text-[30px] sm:text-[42px] lg:text-[48px] text-[#171714] leading-[1.18] tracking-tight">
+                <h2 className="text-[30px] sm:text-[42px] lg:text-[48px] text-[#171714] leading-[1.18] tracking-tight">
                   Every structure requires engineering discipline, structural integrity, and purpose-driven execution.
                 </h2>
               </div>
@@ -357,200 +367,320 @@ export default function ConstructionPage() {
 
         {/* ===================================================================
             SECTION 3: CONSTRUCTION CAPABILITIES & SECTORS (6 Core Disciplines)
+            Theme: Sculpted Architectural Cards with Notch Cutout & Action Hubs
         =================================================================== */}
         <section
           aria-labelledby="services-heading"
-          className="py-20 sm:py-28 lg:py-32 bg-[#F6F3EB] border-b border-[#E7E0D4]"
+          className="py-20 sm:py-28 lg:py-32 bg-[#FAF8F5] border-b border-[#E7E0D4]"
         >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             {/* Header */}
-            <div className="max-w-[760px] mb-14 sm:mb-20">
-              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                CONSTRUCTION CAPABILITIES &amp; SECTORS
+            <div className="max-w-[760px] mx-auto text-center mb-12 sm:mb-16">
+              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                CORE CIVIL SECTORS • 03
               </span>
               <h2
                 id="services-heading"
-                className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
+                className="text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
               >
-                Comprehensive Civil Construction Across All Sectors
+                Comprehensive Civil Contracting Across 6 Core Disciplines
               </h2>
-              <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
-                From luxury residential homes to high-footfall commercial spaces and heavy industrial
-                sheds, our civil contracting services cover every technical, statutory, and structural
-                milestone.
+              <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed max-w-2xl mx-auto font-sans">
+                Turnkey civil engineering, structural framing, and specialized contracting across residential, commercial, and industrial sectors in Nagercoil.
               </p>
             </div>
 
-            {/* 6 Core Service Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {constructionServices.map((service) => (
-                <div
-                  key={service.number}
-                  className="p-8 sm:p-9 rounded-[24px] bg-white border border-[#E7E0D4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300"
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-4 mb-4 pb-4 border-b border-[#E7E0D4]/70">
-                      <span className="font-serif text-[26px] font-semibold text-[#B08A52]">
-                        {service.number}
-                      </span>
-                      <div className="h-10 w-10 rounded-xl bg-[#FAF8F3] border border-[#E7E0D4] flex items-center justify-center text-[#B08A52]">
-                        <span className="material-symbols-outlined text-[22px]">
-                          {service.icon}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="mb-3">
-                      <span className="inline-block text-[11px] font-sans font-semibold uppercase tracking-wider text-[#B08A52] mb-1">
-                        {service.category}
-                      </span>
-                      <h3 className="font-serif text-[22px] font-bold text-[#171714] leading-snug">
-                        {service.title}
-                      </h3>
-                    </div>
-
-                    <p className="text-[15px] text-[#68645D] leading-relaxed mb-6 font-sans">
-                      {service.description}
-                    </p>
-
-                    <ul className="space-y-2 pt-2 border-t border-[#E7E0D4]/70 text-[13px] text-[#68645D]">
-                      {service.points.map((pt) => (
-                        <li key={pt} className="flex items-start gap-2">
-                          <CheckCircle2 size={15} className="text-[#B08A52] shrink-0 mt-0.5" />
-                          <span>{pt}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="pt-6 mt-6 border-t border-[#E7E0D4]/70">
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center gap-1.5 text-[13px] font-sans font-semibold text-[#171714] hover:text-[#B08A52] transition-colors"
-                    >
-                      <span>Inquire regarding {service.title}</span>
-                      <ArrowRight size={14} className="text-[#B08A52]" />
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {/* 6 Civil Construction Service Cards */}
+            <ConstructionSectorsConsole
+              phoneNumber={phoneNumber}
+              formattedPhone={formattedPhone}
+            />
           </div>
         </section>
 
         {/* ===================================================================
             SECTION 4: OUR APPROACH ("Building Step By Step")
+            Theme: Deep Dark Blueprint Engineering Pipeline & Track
         =================================================================== */}
         <section
+          data-header-theme="dark"
           aria-labelledby="approach-heading"
-          className="py-20 sm:py-28 lg:py-32 border-b border-[#E7E0D4]"
+          className="py-20 sm:py-28 lg:py-32 bg-[#111110] text-white border-b border-[#262522] relative overflow-hidden"
         >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+          {/* Blueprint subtle background grid */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.035] pointer-events-none"
+            style={{
+              backgroundImage: "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+
+          <div className="relative z-10 max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             {/* Header */}
-            <div className="max-w-[760px] mb-14 sm:mb-20">
-              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                ENGINEERING ROADMAP
-              </span>
+            <div className="max-w-[760px] mx-auto text-center mb-16 sm:mb-20">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#e3c381] mb-4">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#e3c381] animate-pulse" />
+                <span>4-PHASE EXECUTION METHODOLOGY • 04</span>
+              </div>
               <h2
                 id="approach-heading"
-                className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
+                className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-white leading-[1.15] tracking-tight mb-4"
               >
-                Structured Construction From Foundation To Handover
+                Disciplined Civil Execution From Soil Survey To Handover<span className="text-[#e3c381]">.</span>
               </h2>
-              <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
-                A disciplined 4-stage civil engineering process that guarantees structural accuracy,
-                cost transparency, and on-time milestone delivery across residential and commercial builds.
+              <p className="text-[15.5px] sm:text-[17px] text-white/75 leading-relaxed max-w-2xl mx-auto font-sans">
+                Every milestone is governed by structural calculations, certified material batching, and daily in-house civil engineer supervision.
               </p>
             </div>
 
-            {/* 4-Step Editorial Process Grid */}
-            <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 list-none">
-              {constructionApproachSteps.map((step, idx) => (
-                <li
-                  key={step.step}
-                  className="p-7 sm:p-8 rounded-[24px] bg-white border border-[#E7E0D4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300"
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-4 mb-4 pb-4 border-b border-[#E7E0D4]/70">
-                      <span className="font-serif text-[28px] font-semibold text-[#B08A52]">
-                        {step.step}
+            {/* Desktop: Horizontal Continuous Pipeline Track */}
+            <div className="hidden lg:block relative">
+              {/* Continuous Luminous Rail Connecting All 4 Stations */}
+              <div
+                aria-hidden="true"
+                className="absolute top-[28px] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#e3c381]/20 via-[#e3c381]/50 to-[#e3c381]/20 z-0"
+              />
+
+              <div className="grid grid-cols-4 gap-8 relative z-10">
+                {constructionApproachSteps.map((step, idx) => {
+                  const milestones = [
+                    "Soil SBC Report & DTCP Clearance",
+                    "STAAD.Pro 3D & Sanction Blueprints",
+                    "Fe550D Reinforcement & 21-Day Curing",
+                    "Pressure Tests & Key Handover",
+                  ];
+                  return (
+                    <div key={step.step} className="flex flex-col">
+                      {/* Station Circular Hub on Track */}
+                      <div className="flex items-center gap-3 mb-8">
+                        <div className="h-14 w-14 rounded-2xl bg-[#171714] border-2 border-[#e3c381] flex items-center justify-center text-[#e3c381] font-mono text-[18px] font-bold shadow-[0_0_20px_rgba(227,195,129,0.2)] shrink-0">
+                          {step.step}
+                        </div>
+                        <span className="font-mono text-[11px] uppercase tracking-widest text-[#e3c381]/80 px-2.5 py-1 rounded-md bg-white/[0.05] border border-white/10">
+                          PHASE 0{idx + 1}
+                        </span>
+                      </div>
+
+                      {/* Station Content (Open Typographic Hierarchy - No Box Borders) */}
+                      <div>
+                        <h3 className="text-[21px] font-bold text-white mb-1.5 leading-snug">
+                          {step.title}
+                        </h3>
+                        <p className="text-[12.5px] font-mono text-[#e3c381] tracking-wide mb-3">
+                          {step.subtitle}
+                        </p>
+                        <p className="text-[14px] leading-relaxed text-white/70 font-sans mb-6">
+                          {step.description}
+                        </p>
+                      </div>
+
+                      {/* Milestone Checkpoint Tag */}
+                      <div className="mt-auto pt-4 border-t border-white/10 flex items-center gap-2 text-[12px] text-white/60 font-mono">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#e3c381]" />
+                        <span>{milestones[idx]}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Mobile / Tablet: Vertical Subway Track & Engineering Spine */}
+            <div className="lg:hidden relative pl-8 sm:pl-10 border-l-2 border-[#e3c381]/40 ml-4 sm:ml-6 space-y-12">
+              {constructionApproachSteps.map((step, idx) => {
+                const milestones = [
+                  "Soil SBC Report & DTCP Clearance",
+                  "STAAD.Pro 3D & Sanction Blueprints",
+                  "Fe550D Reinforcement & 21-Day Curing",
+                  "Pressure Tests & Key Handover",
+                ];
+                return (
+                  <div key={step.step} className="relative">
+                    {/* Node on Vertical Track Line */}
+                    <div className="absolute -left-[45px] sm:-left-[49px] top-0 h-8 w-8 rounded-full bg-[#111110] border-2 border-[#e3c381] flex items-center justify-center font-mono text-[12px] font-bold text-[#e3c381] shadow-[0_0_12px_rgba(227,195,129,0.35)]">
+                      {step.step}
+                    </div>
+
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="font-mono text-[11px] uppercase tracking-widest text-[#e3c381] px-2 py-0.5 rounded bg-white/[0.05] border border-white/10">
+                        PHASE 0{idx + 1}
                       </span>
-                      <span className="text-[11px] font-sans font-medium uppercase tracking-wider text-[#77736C]">
-                        Stage {idx + 1} of 4
+                      <span className="text-[12px] font-mono text-white/50">
+                        {step.subtitle}
                       </span>
                     </div>
 
-                    <h3 className="font-serif text-[22px] font-bold text-[#171714] mb-1.5">
+                    <h3 className="text-[20px] font-bold text-white mb-2 leading-snug">
                       {step.title}
                     </h3>
 
-                    <p className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#B08A52] mb-3">
-                      {step.subtitle}
-                    </p>
-
-                    <p className="text-[14px] leading-relaxed text-[#68645D] font-sans">
+                    <p className="text-[14px] leading-relaxed text-white/70 font-sans mb-4">
                       {step.description}
                     </p>
+
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-[12px] text-[#e3c381] font-mono">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#e3c381]" />
+                      <span>{milestones[idx]}</span>
+                    </div>
                   </div>
-                </li>
-              ))}
-            </ol>
+                );
+              })}
+            </div>
           </div>
         </section>
 
         {/* ===================================================================
             SECTION 5: WHY CHOOSE SMS CONSTRUCTION
+            Theme: Pure White Studio & Split Architectural Ledger
         =================================================================== */}
         <section
           aria-labelledby="why-choose-heading"
-          className="py-20 sm:py-28 lg:py-32 bg-[#F6F3EB] border-b border-[#E7E0D4]"
+          className="py-20 sm:py-28 lg:py-32 bg-white border-b border-[#E7E0D4]"
         >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            {/* Header */}
-            <div className="max-w-[760px] mb-14 sm:mb-18">
-              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                WHY WORK WITH US
-              </span>
-              <h2
-                id="why-choose-heading"
-                className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
-              >
-                Engineered With Integrity. Delivered With Certainty.
-              </h2>
-              <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
-                Why homeowners, commercial enterprises, and industrial developers across Kanyakumari
-                trust SMS Construction for critical building projects.
-              </p>
+            {/* Top Proof Statistics Ribbon (Spans Full Width) */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 pb-14 sm:pb-18 mb-14 sm:mb-18 border-b border-[#E7E0D4]">
+              <div className="flex flex-col">
+                <span className="font-mono text-[36px] sm:text-[44px] font-bold text-[#171714] leading-none mb-2">
+                  18<span className="text-[#B08A52]">+</span>
+                </span>
+                <span className="text-[14px] font-bold text-[#171714] mb-0.5">
+                  Years Civil Excellence
+                </span>
+                <span className="text-[12px] text-[#68645D]">
+                  Proven builds across Nagercoil
+                </span>
+              </div>
+
+              <div className="flex flex-col">
+                <span className="font-mono text-[36px] sm:text-[44px] font-bold text-[#171714] leading-none mb-2">
+                  100<span className="text-[#B08A52]">%</span>
+                </span>
+                <span className="text-[14px] font-bold text-[#171714] mb-0.5">
+                  In-House Supervision
+                </span>
+                <span className="text-[12px] text-[#68645D]">
+                  Zero sub-contracting policy
+                </span>
+              </div>
+
+              <div className="flex flex-col">
+                <span className="font-mono text-[32px] sm:text-[40px] font-bold text-[#171714] leading-none mb-2 tracking-tight">
+                  IS 456
+                </span>
+                <span className="text-[14px] font-bold text-[#171714] mb-0.5">
+                  Structural Codes
+                </span>
+                <span className="text-[12px] text-[#68645D]">
+                  IS 875 wind &amp; IS 1893 seismic
+                </span>
+              </div>
+
+              <div className="flex flex-col">
+                <span className="font-mono text-[36px] sm:text-[44px] font-bold text-[#171714] leading-none mb-2">
+                  0<span className="text-[#B08A52]">%</span>
+                </span>
+                <span className="text-[14px] font-bold text-[#171714] mb-0.5">
+                  Hidden Cost Surprises
+                </span>
+                <span className="text-[12px] text-[#68645D]">
+                  Itemized BOQ milestone billing
+                </span>
+              </div>
             </div>
 
-            {/* 4 Value Proposition Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-              {whyChoosePillars.map((pillar) => (
-                <div
-                  key={pillar.title}
-                  className="p-7 sm:p-8 rounded-[24px] bg-white border border-[#E7E0D4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300"
+            {/* Main Asymmetric Split: Left Editorial Anchor + Right Stacked Ledger Rows */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+              {/* Left Column: Authoritative Editorial Anchor & Guarantee Box */}
+              <div className="lg:col-span-5 lg:sticky lg:top-28">
+                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                  STRUCTURAL INTEGRITY &amp; CERTAINTY • 05
+                </span>
+                <h2
+                  id="why-choose-heading"
+                  className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-5"
                 >
-                  <div>
-                    <div className="h-11 w-11 rounded-xl bg-[#FAF8F3] border border-[#E7E0D4] flex items-center justify-center text-[#B08A52] mb-5">
-                      <span className="material-symbols-outlined text-[24px]">
-                        {pillar.icon}
-                      </span>
+                  Engineered With Integrity. Delivered With Certainty<span className="text-[#B08A52]">.</span>
+                </h2>
+                <p className="text-[15.5px] sm:text-[16.5px] text-[#68645D] leading-relaxed mb-7 font-sans">
+                  In civil construction, quality is sealed permanently under concrete and plaster. Shortcuts in foundation depth, cement grade, or steel reinforcement cannot be fixed after casting. We eliminate that risk through direct engineering oversight and certified materials.
+                </p>
+
+                {/* Trust Guarantee Box */}
+                <div className="p-5 sm:p-6 rounded-2xl bg-[#FAF8F5] border border-[#E7E0D4] mb-8 space-y-3">
+                  <div className="text-[12px] font-mono uppercase tracking-wider text-[#B08A52] font-semibold">
+                    THE SMS ASSURANCE
+                  </div>
+                  <div className="space-y-2 text-[13px] text-[#171714] font-medium">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 size={15} className="text-[#B08A52] shrink-0" />
+                      <span>Licensed civil engineers on-site daily</span>
                     </div>
-
-                    <h3 className="font-serif text-[20px] font-bold text-[#171714] mb-1.5">
-                      {pillar.title}
-                    </h3>
-
-                    <p className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#B08A52] mb-3">
-                      {pillar.subtitle}
-                    </p>
-
-                    <p className="text-[14px] text-[#68645D] leading-relaxed font-sans">
-                      {pillar.description}
-                    </p>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 size={15} className="text-[#B08A52] shrink-0" />
+                      <span>Tata Tiscon &amp; JSW Neosteel Fe550D primary steel</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 size={15} className="text-[#B08A52] shrink-0" />
+                      <span>Mandatory 21-day water pond curing for all slabs</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 size={15} className="text-[#B08A52] shrink-0" />
+                      <span>Coastal anti-corrosion barrier for Kanyakumari soil</span>
+                    </div>
                   </div>
                 </div>
-              ))}
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#171714] text-white font-sans font-semibold text-[13.5px] hover:bg-[#B08A52] transition-colors duration-300 shadow-sm"
+                >
+                  <span>Schedule Site Consultation</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+
+              {/* Right Column: Open Architectural Ledger Rows (Horizontal Stacked Dividers - NO Box Cards!) */}
+              <div className="lg:col-span-7 flex flex-col divide-y divide-[#E7E0D4] border-y border-[#E7E0D4]">
+                {whyChoosePillars.map((pillar, idx) => {
+                  const chips = [
+                    "Unified Contracting Desk",
+                    "IS 456, 875 & 1893 Standards",
+                    "Milestone Payment BOQ",
+                    "4-Tier Coastal Moisture Barrier",
+                  ];
+                  return (
+                    <div
+                      key={pillar.title}
+                      className="py-7 sm:py-8 group hover:bg-[#FAF8F5]/60 transition-colors -mx-4 px-4 sm:mx-0 sm:px-4 rounded-xl"
+                    >
+                      <div className="flex items-start justify-between gap-4 mb-3">
+                        <div className="flex items-center gap-3">
+                          <span className="font-mono text-[13px] font-bold text-[#B08A52]">
+                            PILLAR / 0{idx + 1}
+                          </span>
+                          <h3 className="text-[20px] sm:text-[22px] font-bold text-[#171714] leading-snug group-hover:text-[#B08A52] transition-colors">
+                            {pillar.title}
+                          </h3>
+                        </div>
+                        <span className="shrink-0 text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-[#FAF8F5] border border-[#E7E0D4] text-[#171714]/80">
+                          {chips[idx]}
+                        </span>
+                      </div>
+
+                      <p className="text-[12.5px] font-sans font-semibold uppercase tracking-wider text-[#B08A52] mb-2.5">
+                        {pillar.subtitle}
+                      </p>
+
+                      <p className="text-[14.5px] sm:text-[15px] text-[#68645D] leading-relaxed font-sans max-w-2xl">
+                        {pillar.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>

@@ -437,49 +437,38 @@ export default function ConstructionPage() {
 
             {/* Desktop: Horizontal Continuous Pipeline Track */}
             <div className="hidden lg:block relative">
-              {/* Continuous Luminous Rail Connecting All 4 Stations */}
-              <div
-                aria-hidden="true"
-                className="absolute top-[28px] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#e3c381]/20 via-[#e3c381]/50 to-[#e3c381]/20 z-0"
-              />
-
-              <div className="grid grid-cols-4 gap-8 relative z-10">
+              <div className="grid grid-cols-4 gap-6 relative">
                 {constructionApproachSteps.map((step, idx) => {
-                  const milestones = [
-                    "Soil SBC Report & DTCP Clearance",
-                    "STAAD.Pro 3D & Sanction Blueprints",
-                    "Fe550D Reinforcement & 21-Day Curing",
-                    "Pressure Tests & Key Handover",
-                  ];
+                  const isLast = idx === constructionApproachSteps.length - 1;
                   return (
-                    <div key={step.step} className="flex flex-col">
-                      {/* Station Circular Hub on Track */}
-                      <div className="flex items-center gap-3 mb-8">
-                        <div className="h-14 w-14 rounded-2xl bg-[#171714] border-2 border-[#e3c381] flex items-center justify-center text-[#e3c381] font-mono text-[18px] font-bold shadow-[0_0_20px_rgba(227,195,129,0.2)] shrink-0">
+                    <div key={step.step} className="relative flex flex-col group">
+                      {/* Station Hub on Track (Centered over Card) */}
+                      <div className="relative flex items-center justify-center mb-8">
+                        {/* Node Hub */}
+                        <div className="h-12 w-12 rounded-full bg-[#111110] border-2 border-[#e3c381] flex items-center justify-center text-[#e3c381] font-mono text-[16px] font-bold shadow-[0_0_16px_rgba(227,195,129,0.25)] shrink-0 z-10 transition-all duration-300 group-hover:scale-105 group-hover:border-white group-hover:text-white group-hover:shadow-[0_0_24px_rgba(227,195,129,0.5)]">
                           {step.step}
                         </div>
-                        <span className="font-mono text-[11px] uppercase tracking-widest text-[#e3c381]/80 px-2.5 py-1 rounded-md bg-white/[0.05] border border-white/10">
-                          PHASE 0{idx + 1}
-                        </span>
+
+                        {/* Continuous Precision Rail to Next Node Center */}
+                        {!isLast && (
+                          <div
+                            aria-hidden="true"
+                            className="absolute left-1/2 right-[calc(-50%-24px)] h-[2px] bg-gradient-to-r from-[#e3c381]/50 to-[#e3c381]/30 z-0 pointer-events-none"
+                          />
+                        )}
                       </div>
 
-                      {/* Station Content (Open Typographic Hierarchy - No Box Borders) */}
-                      <div>
-                        <h3 className="text-[21px] font-bold text-white mb-1.5 leading-snug">
+                      {/* Station Minimal Content Card */}
+                      <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-[#e3c381]/35 hover:bg-white/[0.035] transition-all duration-300 flex-1 flex flex-col text-center">
+                        <span className="text-[11px] font-mono uppercase tracking-widest text-[#e3c381]/90 block mb-2">
+                          {step.subtitle}
+                        </span>
+                        <h3 className="text-[20px] font-bold text-white mb-2.5 leading-snug group-hover:text-[#e3c381] transition-colors duration-200">
                           {step.title}
                         </h3>
-                        <p className="text-[12.5px] font-mono text-[#e3c381] tracking-wide mb-3">
-                          {step.subtitle}
-                        </p>
-                        <p className="text-[14px] leading-relaxed text-white/70 font-sans mb-6">
+                        <p className="text-[13.5px] leading-relaxed text-white/65 font-sans">
                           {step.description}
                         </p>
-                      </div>
-
-                      {/* Milestone Checkpoint Tag */}
-                      <div className="mt-auto pt-4 border-t border-white/10 flex items-center gap-2 text-[12px] text-white/60 font-mono">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#e3c381]" />
-                        <span>{milestones[idx]}</span>
                       </div>
                     </div>
                   );
@@ -488,41 +477,32 @@ export default function ConstructionPage() {
             </div>
 
             {/* Mobile / Tablet: Vertical Subway Track & Engineering Spine */}
-            <div className="lg:hidden relative pl-8 sm:pl-10 border-l-2 border-[#e3c381]/40 ml-4 sm:ml-6 space-y-12">
-              {constructionApproachSteps.map((step, idx) => {
-                const milestones = [
-                  "Soil SBC Report & DTCP Clearance",
-                  "STAAD.Pro 3D & Sanction Blueprints",
-                  "Fe550D Reinforcement & 21-Day Curing",
-                  "Pressure Tests & Key Handover",
-                ];
+            <div className="lg:hidden relative ml-2 sm:ml-4 space-y-8">
+              {/* Vertical Track Line connecting all nodes */}
+              <div
+                aria-hidden="true"
+                className="absolute top-4 bottom-4 left-4 w-0.5 bg-gradient-to-b from-[#e3c381]/40 via-[#e3c381]/30 to-[#e3c381]/10 z-0"
+              />
+
+              {constructionApproachSteps.map((step) => {
                 return (
-                  <div key={step.step} className="relative">
+                  <div key={step.step} className="relative flex items-start gap-4 sm:gap-5 z-10">
                     {/* Node on Vertical Track Line */}
-                    <div className="absolute -left-[45px] sm:-left-[49px] top-0 h-8 w-8 rounded-full bg-[#111110] border-2 border-[#e3c381] flex items-center justify-center font-mono text-[12px] font-bold text-[#e3c381] shadow-[0_0_12px_rgba(227,195,129,0.35)]">
+                    <div className="h-8 w-8 rounded-full bg-[#111110] border-2 border-[#e3c381] flex items-center justify-center font-mono text-[12px] font-bold text-[#e3c381] shadow-[0_0_12px_rgba(227,195,129,0.35)] shrink-0 mt-1">
                       {step.step}
                     </div>
 
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="font-mono text-[11px] uppercase tracking-widest text-[#e3c381] px-2 py-0.5 rounded bg-white/[0.05] border border-white/10">
-                        PHASE 0{idx + 1}
-                      </span>
-                      <span className="text-[12px] font-mono text-white/50">
+                    {/* Content Card */}
+                    <div className="flex-1 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                      <span className="text-[11px] font-mono uppercase tracking-widest text-[#e3c381]/90 block mb-1.5">
                         {step.subtitle}
                       </span>
-                    </div>
-
-                    <h3 className="text-[20px] font-bold text-white mb-2 leading-snug">
-                      {step.title}
-                    </h3>
-
-                    <p className="text-[14px] leading-relaxed text-white/70 font-sans mb-4">
-                      {step.description}
-                    </p>
-
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-[12px] text-[#e3c381] font-mono">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#e3c381]" />
-                      <span>{milestones[idx]}</span>
+                      <h3 className="text-[18px] font-bold text-white mb-2 leading-snug">
+                        {step.title}
+                      </h3>
+                      <p className="text-[13.5px] leading-relaxed text-white/65 font-sans">
+                        {step.description}
+                      </p>
                     </div>
                   </div>
                 );

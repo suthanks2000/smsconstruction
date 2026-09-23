@@ -15,7 +15,7 @@ import {
   approachSteps,
   interiorFaqs,
 } from "@/data/interiorDesign";
-import ServiceFaqAccordion from "../services/components/ServiceFaqAccordion";
+import ModernFaq from "@/components/ModernFaq";
 import CatalogGalleryDrawer from "./components/CatalogGalleryDrawer";
 import LocationMarquee from "./components/LocationMarquee";
 import CategoryJumpNav from "./components/CategoryJumpNav";
@@ -943,48 +943,20 @@ export default function InteriorDesignPage() {
         {/* ===================================================================
             SECTION 9: FREQUENTLY ASKED QUESTIONS
         =================================================================== */}
-        <section className="py-16 sm:py-28 lg:py-32 bg-[#F6F3EB] border-b border-[#E7E0D4] w-full max-w-full overflow-hidden">
-          <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12 w-full max-w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-              <div className="lg:col-span-5">
-                <div className="lg:sticky lg:top-28 xl:top-32 space-y-6">
-                  <div>
-                    <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                      COMMON QUESTIONS
-                    </span>
-                    <h2 className="text-[28px] sm:text-[42px] lg:text-[46px] text-[#171614] leading-[1.18] tracking-tight mb-4">
-                      Frequently Asked Questions
-                    </h2>
-                    <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed">
-                      Clear answers regarding our interior design process, room specialties, Nagercoil
-                      coverage, pricing quotations, and turnkey execution.
-                    </p>
-                  </div>
-
-                  <div className="p-5 sm:p-6 rounded-[20px] sm:rounded-[22px] bg-white border border-[#E7E0D4] shadow-sm">
-                    <h3 className="text-[17px] sm:text-[18px] font-semibold text-[#171614] mb-2">
-                      Planning an interior renovation or new build?
-                    </h3>
-                    <p className="text-[13.5px] sm:text-[14px] text-[#68645D] mb-4">
-                      Visit our studio or invite our engineers for a preliminary on-site spatial review.
-                    </p>
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center gap-2 font-sans font-semibold text-[14px] text-[#B08A52] hover:text-[#80633D] transition-colors"
-                    >
-                      <span>Schedule an Interior Consultation</span>
-                      <ArrowRight size={15} />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              <div className="lg:col-span-7 bg-white rounded-[20px] sm:rounded-[24px] p-4 sm:p-8 lg:p-10 border border-[#E7E0D4] shadow-sm w-full max-w-full overflow-hidden">
-                <ServiceFaqAccordion items={interiorFaqs} />
-              </div>
-            </div>
-          </div>
-        </section>
+        <ModernFaq
+          sectionId="interior-faq-section"
+          badgeText="COMMON QUESTIONS"
+          title="Frequently Asked Questions"
+          titleAccent="."
+          subtitle="Everything you need to know about our interior practice"
+          description="Clear answers regarding our interior design process, room specialties, Nagercoil coverage, pricing quotations, and turnkey execution."
+          consultationHeading="Planning an interior renovation or new build?"
+          consultationDesc="Visit our studio or invite our engineers for a preliminary on-site spatial review."
+          consultationLinkText="Schedule an Interior Consultation"
+          consultationHref="/contact"
+          items={interiorFaqs}
+          className="py-16 md:py-24 bg-[#FAFAFA] border-b border-[#E7E0D4] relative"
+        />
 
         {/* ===================================================================
             SECTION 10: DISCIPLINE HUB BAR (COMPLEMENTARY SERVICES)

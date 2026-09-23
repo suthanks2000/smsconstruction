@@ -7,21 +7,17 @@ import {
   MessageSquare,
   CheckCircle2,
   MapPin,
-  Hammer,
-  Layers,
-  Building2,
-  HardHat,
-  ShieldCheck,
+  Hammer
 } from "lucide-react";
 import {
   constructionServices,
   constructionApproachSteps,
-  whyChoosePillars,
   constructionFaqs,
   geoLocalities,
 } from "@/data/construction";
-import ServiceFaqAccordion from "../services/components/ServiceFaqAccordion";
+import ModernFaq from "@/components/ModernFaq";
 import ConstructionSectorsConsole from "./components/ConstructionSectorsConsole";
+import ConstructionStatsRibbon from "./components/ConstructionStatsRibbon";
 
 export const metadata: Metadata = {
   title: "Civil & Building Construction Contractors in Nagercoil | Residential, Commercial & Industrial | SMS Construction",
@@ -405,7 +401,7 @@ export default function ConstructionPage() {
         <section
           data-header-theme="dark"
           aria-labelledby="approach-heading"
-          className="py-20 sm:py-28 lg:py-32 bg-[#111110] text-white border-b border-[#262522] relative overflow-hidden"
+          className="py-12 sm:py-16 lg:py-16 bg-[#111110] text-white border-b border-[#262522] relative overflow-hidden"
         >
           {/* Blueprint subtle background grid */}
           <div
@@ -419,10 +415,9 @@ export default function ConstructionPage() {
 
           <div className="relative z-10 max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             {/* Header */}
-            <div className="max-w-[760px] mx-auto text-center mb-16 sm:mb-20">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#e3c381] mb-4">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#e3c381] animate-pulse" />
-                <span>4-PHASE EXECUTION METHODOLOGY • 04</span>
+            <div className="max-w-[760px] mx-auto text-center mb-10 sm:mb-12">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#e3c381] mb-4">
+                <span>EXECUTION METHODOLOGY</span>
               </div>
               <h2
                 id="approach-heading"
@@ -516,235 +511,12 @@ export default function ConstructionPage() {
             Theme: Pure White Studio & Split Architectural Ledger
         =================================================================== */}
         <section
-          aria-labelledby="why-choose-heading"
-          className="py-20 sm:py-28 lg:py-32 bg-white border-b border-[#E7E0D4]"
+          aria-label="Civil Construction Key Metrics"
+          className="py-14 sm:py-18 bg-white border-b border-[#E7E0D4]"
         >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
             {/* Top Proof Statistics Ribbon (Spans Full Width) */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 pb-14 sm:pb-18 mb-14 sm:mb-18 border-b border-[#E7E0D4]">
-              <div className="flex flex-col">
-                <span className="font-mono text-[36px] sm:text-[44px] font-bold text-[#171714] leading-none mb-2">
-                  18<span className="text-[#B08A52]">+</span>
-                </span>
-                <span className="text-[14px] font-bold text-[#171714] mb-0.5">
-                  Years Civil Excellence
-                </span>
-                <span className="text-[12px] text-[#68645D]">
-                  Proven builds across Nagercoil
-                </span>
-              </div>
-
-              <div className="flex flex-col">
-                <span className="font-mono text-[36px] sm:text-[44px] font-bold text-[#171714] leading-none mb-2">
-                  100<span className="text-[#B08A52]">%</span>
-                </span>
-                <span className="text-[14px] font-bold text-[#171714] mb-0.5">
-                  In-House Supervision
-                </span>
-                <span className="text-[12px] text-[#68645D]">
-                  Zero sub-contracting policy
-                </span>
-              </div>
-
-              <div className="flex flex-col">
-                <span className="font-mono text-[32px] sm:text-[40px] font-bold text-[#171714] leading-none mb-2 tracking-tight">
-                  IS 456
-                </span>
-                <span className="text-[14px] font-bold text-[#171714] mb-0.5">
-                  Structural Codes
-                </span>
-                <span className="text-[12px] text-[#68645D]">
-                  IS 875 wind &amp; IS 1893 seismic
-                </span>
-              </div>
-
-              <div className="flex flex-col">
-                <span className="font-mono text-[36px] sm:text-[44px] font-bold text-[#171714] leading-none mb-2">
-                  0<span className="text-[#B08A52]">%</span>
-                </span>
-                <span className="text-[14px] font-bold text-[#171714] mb-0.5">
-                  Hidden Cost Surprises
-                </span>
-                <span className="text-[12px] text-[#68645D]">
-                  Itemized BOQ milestone billing
-                </span>
-              </div>
-            </div>
-
-            {/* Main Asymmetric Split: Left Editorial Anchor + Right Stacked Ledger Rows */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              {/* Left Column: Authoritative Editorial Anchor & Guarantee Box */}
-              <div className="lg:col-span-5 lg:sticky lg:top-28">
-                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                  STRUCTURAL INTEGRITY &amp; CERTAINTY • 05
-                </span>
-                <h2
-                  id="why-choose-heading"
-                  className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-5"
-                >
-                  Engineered With Integrity. Delivered With Certainty<span className="text-[#B08A52]">.</span>
-                </h2>
-                <p className="text-[15.5px] sm:text-[16.5px] text-[#68645D] leading-relaxed mb-7 font-sans">
-                  In civil construction, quality is sealed permanently under concrete and plaster. Shortcuts in foundation depth, cement grade, or steel reinforcement cannot be fixed after casting. We eliminate that risk through direct engineering oversight and certified materials.
-                </p>
-
-                {/* Trust Guarantee Box */}
-                <div className="p-5 sm:p-6 rounded-2xl bg-[#FAF8F5] border border-[#E7E0D4] mb-8 space-y-3">
-                  <div className="text-[12px] font-mono uppercase tracking-wider text-[#B08A52] font-semibold">
-                    THE SMS ASSURANCE
-                  </div>
-                  <div className="space-y-2 text-[13px] text-[#171714] font-medium">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 size={15} className="text-[#B08A52] shrink-0" />
-                      <span>Licensed civil engineers on-site daily</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 size={15} className="text-[#B08A52] shrink-0" />
-                      <span>Tata Tiscon &amp; JSW Neosteel Fe550D primary steel</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 size={15} className="text-[#B08A52] shrink-0" />
-                      <span>Mandatory 21-day water pond curing for all slabs</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 size={15} className="text-[#B08A52] shrink-0" />
-                      <span>Coastal anti-corrosion barrier for Kanyakumari soil</span>
-                    </div>
-                  </div>
-                </div>
-
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#171714] text-white font-sans font-semibold text-[13.5px] hover:bg-[#B08A52] transition-colors duration-300 shadow-sm"
-                >
-                  <span>Schedule Site Consultation</span>
-                  <ArrowRight size={14} />
-                </Link>
-              </div>
-
-              {/* Right Column: Open Architectural Ledger Rows (Horizontal Stacked Dividers - NO Box Cards!) */}
-              <div className="lg:col-span-7 flex flex-col divide-y divide-[#E7E0D4] border-y border-[#E7E0D4]">
-                {whyChoosePillars.map((pillar, idx) => {
-                  const chips = [
-                    "Unified Contracting Desk",
-                    "IS 456, 875 & 1893 Standards",
-                    "Milestone Payment BOQ",
-                    "4-Tier Coastal Moisture Barrier",
-                  ];
-                  return (
-                    <div
-                      key={pillar.title}
-                      className="py-7 sm:py-8 group hover:bg-[#FAF8F5]/60 transition-colors -mx-4 px-4 sm:mx-0 sm:px-4 rounded-xl"
-                    >
-                      <div className="flex items-start justify-between gap-4 mb-3">
-                        <div className="flex items-center gap-3">
-                          <span className="font-mono text-[13px] font-bold text-[#B08A52]">
-                            PILLAR / 0{idx + 1}
-                          </span>
-                          <h3 className="text-[20px] sm:text-[22px] font-bold text-[#171714] leading-snug group-hover:text-[#B08A52] transition-colors">
-                            {pillar.title}
-                          </h3>
-                        </div>
-                        <span className="shrink-0 text-[11px] font-mono font-medium px-2.5 py-1 rounded-md bg-[#FAF8F5] border border-[#E7E0D4] text-[#171714]/80">
-                          {chips[idx]}
-                        </span>
-                      </div>
-
-                      <p className="text-[12.5px] font-sans font-semibold uppercase tracking-wider text-[#B08A52] mb-2.5">
-                        {pillar.subtitle}
-                      </p>
-
-                      <p className="text-[14.5px] sm:text-[15px] text-[#68645D] leading-relaxed font-sans max-w-2xl">
-                        {pillar.description}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ===================================================================
-            SECTION 6: INTEGRATED ARCHITECTURE & SYNERGY
-        =================================================================== */}
-        <section className="py-20 sm:py-28 border-b border-[#E7E0D4]">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-              {/* Left Column: Cross-Discipline Message */}
-              <div className="lg:col-span-7">
-                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                  INTEGRATED CIVIL &amp; INTERIOR PRACTICE
-                </span>
-                <h2 className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-5">
-                  From Groundwork &amp; Structural Framing to Commercial &amp; Living Interiors.
-                </h2>
-                <p className="text-[17px] leading-relaxed text-[#68645D] mb-6 font-sans">
-                  When civil construction, structural engineering, and interior fitouts are handled
-                  under one responsible roof, electrical conduits, recessed lighting junction boxes,
-                  commercial HVAC sleeves, and plumbing drops are cast directly into the concrete
-                  shell—eliminating wall breaking, structural patching, and budget waste later.
-                </p>
-                <p className="text-[16px] leading-relaxed text-[#68645D] mb-8 font-sans">
-                  Whether building a high-profile retail showroom, a medical clinic, or an independent
-                  residence, our unified team ensures structural precision matches architectural aesthetics
-                  throughout the build cycle.
-                </p>
-
-                <div className="flex flex-wrap items-center gap-4">
-                  <Link
-                    href="/interior-design"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#171714] text-white hover:bg-[#B08A52] font-sans font-medium text-[14px] transition-colors"
-                  >
-                    <span>Explore Interior Design</span>
-                    <ArrowRight size={15} />
-                  </Link>
-
-                  <Link
-                    href="/design-planning"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[#B08A52] text-[#B08A52] hover:bg-[#B08A52] hover:text-white font-sans font-medium text-[14px] transition-colors"
-                  >
-                    <span>Design &amp; Planning</span>
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right Column: Visual Synergy Card */}
-              <div className="lg:col-span-5">
-                <div className="p-8 sm:p-10 rounded-[24px] bg-[#F6F3EB] border border-[#E7E0D4] shadow-sm space-y-6">
-                  <div className="flex items-center gap-3 text-[#B08A52]">
-                    <Layers size={22} />
-                    <span className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#171714]">
-                      Turnkey Civil Synergy
-                    </span>
-                  </div>
-
-                  <h3 className="font-serif text-[22px] font-bold text-[#171714]">
-                    Zero Inter-Contractor Friction
-                  </h3>
-
-                  <ul className="space-y-3 text-[14px] text-[#68645D]">
-                    <li className="flex items-start gap-2.5">
-                      <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
-                      <span>Commercial floor plates engineered for flexible partition reconfigurations</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
-                      <span>Plumbing drops and drainage cores aligned with sanitary layouts</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
-                      <span>Concealed electrical lines and 3-phase commercial wiring cast into slabs</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
-                      <span>Single responsible engineering desk from excavation to final painting</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <ConstructionStatsRibbon />
           </div>
         </section>
 
@@ -764,7 +536,7 @@ export default function ConstructionPage() {
                 </span>
                 <h2
                   id="local-geo-heading"
-                  className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-5"
+                  className="text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-5"
                 >
                   Civil &amp; Commercial Construction Across Nagercoil and Kanyakumari District
                 </h2>
@@ -844,54 +616,20 @@ export default function ConstructionPage() {
         {/* ===================================================================
             SECTION 8: FAQ (AEO & DIRECT ANSWER KNOWLEDGE BASE)
         =================================================================== */}
-        <section
-          aria-labelledby="faq-heading"
-          className="py-20 sm:py-28 lg:py-32 border-b border-[#E7E0D4]"
-        >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-              {/* Left Column: Context & Contact Prompt */}
-              <div className="lg:col-span-5">
-                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                  DIRECT ANSWERS &bull; AEO KNOWLEDGE
-                </span>
-                <h2
-                  id="faq-heading"
-                  className="font-serif text-[30px] sm:text-[42px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
-                >
-                  Frequently Asked Questions on Construction
-                </h2>
-                <p className="text-[16px] sm:text-[17px] text-[#68645D] leading-relaxed mb-8">
-                  Authoritative engineering answers regarding our residential, commercial, and
-                  industrial building capabilities, DTCP permissions, material standards, and costs in
-                  Nagercoil.
-                </p>
-
-                <div className="p-6 rounded-[20px] bg-[#F6F3EB] border border-[#E7E0D4] shadow-sm">
-                  <h3 className="font-serif text-[18px] font-bold text-[#171714] mb-2">
-                    Have architectural drawings or an empty plot ready?
-                  </h3>
-                  <p className="text-[14px] text-[#68645D] mb-4">
-                    Our structural engineering team is available for on-site plot inspections, soil
-                    evaluations, and structural feasibility reviews in Nagercoil.
-                  </p>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 font-sans font-semibold text-[14px] text-[#B08A52] hover:text-[#80633D] transition-colors"
-                  >
-                    <span>Schedule an On-Site Consultation</span>
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right Column: Accessible Light Accordion */}
-              <div className="lg:col-span-7 bg-white rounded-[24px] p-6 sm:p-8 lg:p-10 border border-[#E7E0D4] shadow-sm">
-                <ServiceFaqAccordion items={constructionFaqs} />
-              </div>
-            </div>
-          </div>
-        </section>
+        <ModernFaq
+          sectionId="faq-heading"
+          badgeText="DIRECT ANSWERS • AEO KNOWLEDGE"
+          title="Frequently Asked Questions on Construction"
+          titleAccent="."
+          subtitle="Everything you need to know about building in Nagercoil"
+          description="Authoritative engineering answers regarding our residential, commercial, and industrial building capabilities, DTCP permissions, material standards, and costs in Nagercoil."
+          consultationHeading="Have architectural drawings or an empty plot ready?"
+          consultationDesc="Our structural engineering team is available for on-site plot inspections, soil evaluations, and structural feasibility reviews in Nagercoil."
+          consultationLinkText="Schedule an On-Site Consultation"
+          consultationHref="/contact"
+          items={constructionFaqs}
+          className="py-16 md:py-24 bg-[#FAFAFA] border-b border-[#E7E0D4] relative"
+        />
 
         {/* ===================================================================
             INTERNAL ARCHITECTURE HUB BAR (OTHER DISCIPLINES)

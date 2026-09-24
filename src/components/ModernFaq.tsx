@@ -88,51 +88,15 @@ export default function ModernFaq({
     <section ref={sectionRef} id={sectionId} className={className}>
       <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-24">
-          {/* Left: Heading & Context */}
-          <div className="lg:w-[38%] shrink-0">
-            <div className="lg:sticky lg:top-32 faq-heading">
-              {badgeText && (
-                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                  {badgeText}
-                </span>
-              )}
-              <h2 className="text-[34px] sm:text-[44px] lg:text-[clamp(2.6rem,4.5vw,4.5rem)] font-serif font-bold leading-[1.05] tracking-[-0.03em] text-[#171614] mb-3">
-                {title}
-                {titleAccent && (
-                  <span className="text-[#B08A52]">{titleAccent}</span>
-                )}
+          {/* Left: Heading */}
+          <div className="lg:w-[35%] shrink-0">
+            <div className="sticky top-32 faq-heading">
+              <h2 className="text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-4">
+                Frequently Asked Questions<span className="text-[#B08A52]">.</span>
               </h2>
-              {subtitle && (
-                <span className="text-[17px] sm:text-[19px] text-[#C89A47] font-medium block mb-4">
-                  {subtitle}
-                </span>
-              )}
-              {description && (
-                <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed mb-6 font-sans">
-                  {description}
-                </p>
-              )}
-
-              {/* Consultation / Contact Card */}
-              {consultationHeading && (
-                <div className="p-6 rounded-[22px] bg-white border border-[#E7E0D4] shadow-sm mt-6">
-                  <h3 className="font-serif text-[17px] sm:text-[18px] font-bold text-[#171614] mb-2 leading-snug">
-                    {consultationHeading}
-                  </h3>
-                  {consultationDesc && (
-                    <p className="text-[13.5px] sm:text-[14px] text-[#68645D] mb-4 font-sans leading-relaxed">
-                      {consultationDesc}
-                    </p>
-                  )}
-                  <Link
-                    href={consultationHref}
-                    className="inline-flex items-center gap-2 font-sans font-semibold text-[13.5px] sm:text-[14px] text-[#B08A52] hover:text-[#80633D] transition-colors"
-                  >
-                    <span>{consultationLinkText}</span>
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
-              )}
+              <span className="text-lg md:text-xl text-[#C89A47] block">
+                Everything you need to know
+              </span>
             </div>
           </div>
 

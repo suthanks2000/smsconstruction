@@ -18,6 +18,7 @@ import {
 import ModernFaq from "@/components/ModernFaq";
 import ConstructionSectorsConsole from "./components/ConstructionSectorsConsole";
 import ConstructionStatsRibbon from "./components/ConstructionStatsRibbon";
+import ConversionCTA from "@/components/ConversionCTA";
 
 export const metadata: Metadata = {
   title: "Civil & Building Construction Contractors in Nagercoil | Residential, Commercial & Industrial | SMS Construction",
@@ -373,7 +374,7 @@ export default function ConstructionPage() {
             {/* Header */}
             <div className="max-w-[760px] mx-auto text-center mb-12 sm:mb-16">
               <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                CORE CIVIL SECTORS • 03
+                CORE CIVIL SECTORS
               </span>
               <h2
                 id="services-heading"
@@ -421,7 +422,7 @@ export default function ConstructionPage() {
               </div>
               <h2
                 id="approach-heading"
-                className="font-serif text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-white leading-[1.15] tracking-tight mb-4"
+                className="text-[30px] sm:text-[42px] lg:text-[48px] font-bold text-white leading-[1.15] tracking-tight mb-4"
               >
                 Disciplined Civil Execution From Soil Survey To Handover<span className="text-[#e3c381]">.</span>
               </h2>
@@ -578,9 +579,6 @@ export default function ConstructionPage() {
                   <address className="not-italic text-[15px] text-[#68645D] leading-relaxed mb-6 space-y-1">
                     <p>25/1 Muthamizh Street, Near Court Road</p>
                     <p>Nagercoil, Tamil Nadu 629001, India</p>
-                    <p className="text-[12px] font-mono text-[#B08A52] pt-1">
-                      GPS: 8.1833° N, 77.4119° E
-                    </p>
                   </address>
 
                   <div className="pt-6 border-t border-[#E7E0D4] space-y-3 text-[14px]">
@@ -618,15 +616,9 @@ export default function ConstructionPage() {
         =================================================================== */}
         <ModernFaq
           sectionId="faq-heading"
-          badgeText="DIRECT ANSWERS • AEO KNOWLEDGE"
-          title="Frequently Asked Questions on Construction"
+          title="Frequently Asked Questions"
           titleAccent="."
-          subtitle="Everything you need to know about building in Nagercoil"
-          description="Authoritative engineering answers regarding our residential, commercial, and industrial building capabilities, DTCP permissions, material standards, and costs in Nagercoil."
-          consultationHeading="Have architectural drawings or an empty plot ready?"
-          consultationDesc="Our structural engineering team is available for on-site plot inspections, soil evaluations, and structural feasibility reviews in Nagercoil."
-          consultationLinkText="Schedule an On-Site Consultation"
-          consultationHref="/contact"
+          subtitle="Everything you need to know"
           items={constructionFaqs}
           className="py-16 md:py-24 bg-[#FAFAFA] border-b border-[#E7E0D4] relative"
         />
@@ -641,7 +633,7 @@ export default function ConstructionPage() {
                 <p className="text-[11px] font-sans font-semibold uppercase tracking-wider text-[#B08A52]">
                   Explore Full Service Architecture
                 </p>
-                <p className="font-serif text-[18px] font-bold text-[#171714]">
+                <p className="text-[18px] font-semibold text-[#171714]">
                   Complementary Disciplines by SMS Construction
                 </p>
               </div>
@@ -685,64 +677,19 @@ export default function ConstructionPage() {
         {/* ===================================================================
             SECTION 9: FINAL LEAD CTA
         =================================================================== */}
-        <section
-          aria-label="Start Your Construction Project"
-          className="relative overflow-hidden py-24 sm:py-32 bg-[#171614] text-white"
-        >
-          {/* Subtle Ambient Radial Accent */}
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#B08A52]/10 rounded-full blur-3xl pointer-events-none"
-            aria-hidden="true"
-          />
-
-          <div className="relative max-w-[980px] mx-auto px-5 sm:px-8 text-center">
-            <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.25em] uppercase text-[#FBE18D] mb-4">
-              START YOUR CONSTRUCTION PROJECT
-            </span>
-
-            <h2 className="font-serif text-[34px] sm:text-[48px] lg:text-[56px] font-bold text-[#FAF8F3] leading-[1.14] tracking-tight mb-6">
-              Planning a residential, commercial, or civil build in Nagercoil?
-            </h2>
-
-            <p className="text-[17px] sm:text-[19px] leading-relaxed text-[#FAF8F3]/80 max-w-[680px] mx-auto mb-10 font-sans">
-              Connect with our senior civil engineering team to review your plot, discuss requirements,
-              and receive a transparent, itemized Bill of Quantities (BOQ).
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#FBE18D] hover:bg-[#FCD372] text-[#171614] font-sans font-semibold text-[15px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]"
-              >
-                <span>Get a Free Quote &amp; BOQ</span>
-                <ArrowRight size={17} />
-              </Link>
-
-              <a
-                href={`tel:${phoneNumber}`}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/30 hover:border-white text-white font-sans font-medium text-[15px] hover:bg-white/10 transition-all duration-300 active:scale-[0.98]"
-              >
-                <Phone size={16} />
-                <span>Call {formattedPhone}</span>
-              </a>
-
-              <a
-                href={`https://wa.me/${whatsappNumber}?text=Hello%2C%20I%20would%20like%20to%20consult%20regarding%20construction%20in%20Nagercoil.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-[#25D366] bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white font-sans text-[15px] transition-all duration-200"
-              >
-                <MessageSquare size={16} />
-                <span>WhatsApp</span>
-              </a>
-            </div>
-
-            <p className="mt-10 text-[13px] text-white/50 tracking-wide font-sans">
-              SMS Construction &bull; Civil Engineering &amp; Building Contractors &bull; Nagercoil, Tamil Nadu
-            </p>
-          </div>
-        </section>
+        <ConversionCTA
+          theme="light"
+          badge="START YOUR CONSTRUCTION PROJECT"
+          title="Planning a residential, commercial, or civil build in Nagercoil?"
+          description="Connect with our senior civil engineering team to review your plot, discuss requirements, and receive a transparent, itemized Bill of Quantities (BOQ)."
+          primaryBtnText="Get a Free Quote & BOQ"
+          primaryBtnHref="/contact"
+          phoneNumber={phoneNumber}
+          formattedPhone={formattedPhone}
+          whatsappNumber={whatsappNumber}
+          whatsappMessage="Hello, I would like to consult regarding construction in Nagercoil."
+          subtext="SMS Construction • Civil Engineering & Building Contractors • Nagercoil, Tamil Nadu"
+        />
       </main>
     </>
   );

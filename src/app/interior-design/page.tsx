@@ -945,15 +945,9 @@ export default function InteriorDesignPage() {
         =================================================================== */}
         <ModernFaq
           sectionId="interior-faq-section"
-          badgeText="COMMON QUESTIONS"
           title="Frequently Asked Questions"
           titleAccent="."
-          subtitle="Everything you need to know about our interior practice"
-          description="Clear answers regarding our interior design process, room specialties, Nagercoil coverage, pricing quotations, and turnkey execution."
-          consultationHeading="Planning an interior renovation or new build?"
-          consultationDesc="Visit our studio or invite our engineers for a preliminary on-site spatial review."
-          consultationLinkText="Schedule an Interior Consultation"
-          consultationHref="/contact"
+          subtitle="Everything you need to know"
           items={interiorFaqs}
           className="py-16 md:py-24 bg-[#FAFAFA] border-b border-[#E7E0D4] relative"
         />

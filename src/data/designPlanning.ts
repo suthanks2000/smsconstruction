@@ -1,220 +1,261 @@
-export interface PlanningScope {
-  id: string;
+export interface DesignServiceItem {
+  number: string;
+  id: string; // anchor id, e.g. "3d-elevation"
+  title: string;
+  subtitle: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  link?: string;
+  linkText?: string;
+  deliverables?: string[];
+}
+
+export interface PlanningServiceItem {
+  number: string;
+  id: string; // anchor id, e.g. "approval-drawings"
+  title: string;
+  shortDescription: string;
+  detail: string;
+  scopeTags: string[];
+}
+
+export interface DeliverableItem {
+  number: string;
+  title: string;
+  category: "Design" | "Planning";
+}
+
+export interface UseCaseScenario {
   number: string;
   title: string;
   description: string;
-  tags: string[];
 }
 
-export interface PlanningProcessStep {
-  step: string;
-  title: string;
-  description: string;
-}
-
-export interface PlanningAudienceItem {
-  title: string;
-  description: string;
-  icon: string;
-}
-
-export interface PlanningFaq {
+export interface DesignPlanningFaq {
   question: string;
   answer: string;
 }
 
-export const planningScopes: PlanningScope[] = [
+export const designServices: DesignServiceItem[] = [
   {
-    id: "project-brief",
     number: "01",
-    title: "Project Brief & Requirements",
+    id: "3d-elevation",
+    title: "3D Elevation",
+    subtitle: "Exterior Architectural Form",
     description:
-      "Translating your initial thoughts, family lifestyle, room requirements, and budget expectations into an actionable architectural brief.",
-    tags: [
-      "Lifestyle Discovery",
-      "Spatial Needs Assessment",
-      "Budget Alignment",
-      "Functional Scope Definition",
-    ],
+      "Visualize the exterior form, surface finishes, window openings, and architectural character of your residential or commercial project before construction begins.",
+    image: "/images/projects/modern-edge-residence.jpg",
+    imageAlt: "3D architectural elevation visual for a modern residential project",
+    deliverables: ["Exterior Facade Views", "Material & Color Study", "Daylight Perspective"],
   },
   {
-    id: "site-understanding",
     number: "02",
-    title: "Site Understanding & Context",
+    id: "interior-design",
+    title: "Interior Design",
+    subtitle: "Space, Function & Visual Direction",
     description:
-      "Evaluating plot boundaries, sun angles, wind directions, surrounding buildings, and local topography to ground the project in its environment.",
-    tags: [
-      "Plot Orientation",
-      "Solar & Wind Analysis",
-      "Topography & Drainage Review",
-      "Access & Setback Mapping",
-    ],
+      "Shape interior living spaces around everyday function, comfort, lighting, and aesthetic direction. Coordinated early with civil structures to avoid on-site rework.",
+    image: "/images/services/interior.jpg",
+    imageAlt: "Interior design and space planning visualization",
+    link: "/interior-design",
+    linkText: "Explore Interior Design",
+    deliverables: ["Room Layouts & Zoning", "False Ceiling Schematics", "Joinery & Finishes"],
   },
   {
-    id: "space-planning",
     number: "03",
-    title: "Space Planning & Layouts",
+    id: "walkthrough-videos",
+    title: "Walkthrough Videos",
+    subtitle: "Spatial Experience Visualization",
     description:
-      "Structuring room-to-room relationships, internal circulation pathways, functional zoning, and natural light optimization across all levels.",
-    tags: [
-      "Functional Zoning",
-      "Circulation Corridors",
-      "Natural Daylight Mapping",
-      "Ventilation Flow",
-    ],
+      "Experience the proposed space through walkthrough-style visual presentation. Understand spatial flow, room transitions, and sightlines before ground is broken.",
+    image: "/images/services/planning.jpg",
+    imageAlt: "3D architectural walkthrough perspective and spatial presentation",
+    deliverables: ["Continuous Spatial Flow", "Room-to-Room Transitions", "Perspective Comprehension"],
   },
   {
-    id: "design-direction",
     number: "04",
-    title: "Architectural & Interior Direction",
+    id: "structural-designing",
+    title: "Structural Designing",
+    subtitle: "Practical Engineering Alignment",
     description:
-      "Developing the overarching visual and structural character—balancing massing, window proportions, ceiling heights, and cohesive spatial volumes.",
-    tags: [
-      "Volumetric Massing",
-      "Proportion Calibrations",
-      "Ceiling Drop Schematics",
-      "Visual Cohesion",
-    ],
+      "Support the structural direction of the project where applicable. We coordinate load paths, column positions, and slab layouts with the architectural plan.",
+    image: "/images/services/civil-construction-hero.jpg",
+    imageAlt: "Structural engineering layout and civil coordination",
+    deliverables: ["Column & Beam Layout Alignment", "Load Path Coordination", "Civil-to-Design Interface"],
+  },
+];
+
+export const planningServices: PlanningServiceItem[] = [
+  {
+    number: "01",
+    id: "approval-drawings",
+    title: "Approval Drawings",
+    shortDescription:
+      "Drawings prepared to support the project's applicable approval and documentation requirements, depending on the project and authority involved.",
+    detail:
+      "Plan sketches, elevations, and setback layouts prepared systematically to meet municipal and local documentation needs for submission.",
+    scopeTags: ["Site Layout", "Floor Plans", "Setback Verification", "Authority Documentation"],
   },
   {
-    id: "material-finish",
+    number: "02",
+    id: "vastu-plan",
+    title: "Vastu Plan",
+    shortDescription:
+      "A planning layer that considers the client's Vastu-related requirements where requested.",
+    detail:
+      "Aligning key rooms, entrances, kitchens, and water bodies with directional Vastu principles without compromising modern living utility.",
+    scopeTags: ["Directional Alignment", "Room Orientation", "Entrance Positioning", "Custom Harmonization"],
+  },
+  {
+    number: "03",
+    id: "3d-plan",
+    title: "3D Plan",
+    shortDescription:
+      "A three-dimensional planning view that helps clients understand spatial arrangement and proportions.",
+    detail:
+      "Isometric and perspective cut-section views showing room volumes, internal wall heights, and circulation clearance at a glance.",
+    scopeTags: ["Isometric Cut-Sections", "Proportion Visualization", "Circulation Mapping", "Volume Comprehension"],
+  },
+  {
+    number: "04",
+    id: "electrical-plan",
+    title: "Electrical Plan",
+    shortDescription:
+      "Planning of electrical points and related layout requirements based on the project scope.",
+    detail:
+      "Detailed mapping of switchboards, power outlets, appliance points, lighting circuits, and conduit paths before masonry work finishes.",
+    scopeTags: ["Switchboard Locations", "Appliance Drops", "Lighting Circuits", "Conduit Layouts"],
+  },
+  {
     number: "05",
-    title: "Material & Finish Strategy",
-    description:
-      "Curating resilient structural and surface materials—hardwoods, natural stones, concrete formulations, and coatings suited to coastal weather.",
-    tags: [
-      "Hardwood & Veneer Specs",
-      "Stone & Tile Selections",
-      "Moisture-Resistant Surfaces",
-      "Tactile Texture Boards",
-    ],
+    id: "plumbing-plan",
+    title: "Plumbing Plan",
+    shortDescription:
+      "Planning for plumbing points and layout requirements based on the project scope.",
+    detail:
+      "Coordinate water supply pipelines, sanitary drainage lines, bathroom fixtures, and external inspection chambers for long-term serviceability.",
+    scopeTags: ["Water Supply Lines", "Sanitary Drain Drops", "Fixture Alignment", "Chamber Placement"],
   },
   {
-    id: "execution-planning",
     number: "06",
-    title: "Execution & Services Planning",
-    description:
-      "Pre-planning MEP conduit pathways, plumbing drops, structural load points, and construction sequencing before on-site ground is broken.",
-    tags: [
-      "MEP Conduits Mapping",
-      "Civil-to-Interior Interface",
-      "Construction Sequencing",
-      "Milestone Phasing",
-    ],
+    id: "landscape-plan",
+    title: "Landscape Plan",
+    shortDescription:
+      "Planning of outdoor areas, greenery and landscape elements where included in the project.",
+    detail:
+      "Integrating garden patches, perimeter walkways, exterior lighting points, and driveway paving into a cohesive outdoor environment.",
+    scopeTags: ["Garden Layouts", "Walkway Paving", "Exterior Drainage", "Outdoor Ambience"],
   },
 ];
 
-export const planningProcessSteps: PlanningProcessStep[] = [
-  {
-    step: "01",
-    title: "Understand",
-    description:
-      "Initial discovery conversation to unpack your spatial intentions, lifestyle patterns, and project parameters in Nagercoil.",
-  },
-  {
-    step: "02",
-    title: "Assess",
-    description:
-      "Evaluating the physical plot, boundary setbacks, natural lighting angles, and regional environmental considerations.",
-  },
-  {
-    step: "03",
-    title: "Plan",
-    description:
-      "Developing functional layout options, zoning private and public spaces, and optimizing internal circulation.",
-  },
-  {
-    step: "04",
-    title: "Develop",
-    description:
-      "Translating 2D schematics into 3D volumetric visualizations, defining proportions and architectural features.",
-  },
-  {
-    step: "05",
-    title: "Refine",
-    description:
-      "Collaboratively reviewing iterations, testing material pairings, and adjusting layout nuances with practical clarity.",
-  },
-  {
-    step: "06",
-    title: "Prepare",
-    description:
-      "Finalizing documentation, service conduit schematics, and execution roadmaps for a seamless transition into civil build.",
-  },
+export const planningDeliverables: DeliverableItem[] = [
+  { number: "01", title: "3D Visualisation", category: "Design" },
+  { number: "02", title: "Interior Design Direction", category: "Design" },
+  { number: "03", title: "Walkthrough Presentation", category: "Design" },
+  { number: "04", title: "Structural Design", category: "Design" },
+  { number: "05", title: "Approval Drawings", category: "Planning" },
+  { number: "06", title: "Vastu Plan", category: "Planning" },
+  { number: "07", title: "3D Plan", category: "Planning" },
+  { number: "08", title: "Electrical Plan", category: "Planning" },
+  { number: "09", title: "Plumbing Plan", category: "Planning" },
+  { number: "10", title: "Landscape Plan", category: "Planning" },
 ];
 
-export const planningAudienceItems: PlanningAudienceItem[] = [
+export const planningUseCases: UseCaseScenario[] = [
   {
+    number: "01",
     title: "Planning a New Home",
     description:
       "Before purchasing materials or hiring builders, establish clear space zoning, floor plans, and architectural direction to build with confidence.",
-    icon: "home",
   },
   {
-    title: "Considering a Major Renovation",
+    number: "02",
+    title: "Preparing for Construction",
     description:
-      "Understand structural feasibility, wall modification impacts, and layout potential before commencing disruptive demolition work.",
-    icon: "auto_fix_high",
+      "Eliminate costly trial-and-error on site by resolving design ambiguities, structural heights, and service layouts on coordinated drawings first.",
   },
   {
-    title: "Unsure How to Use Available Space",
+    number: "03",
+    title: "Designing a New Interior",
     description:
-      "Transform awkward plot shapes, narrow footprints, or dark internal corners into purposeful, naturally lit living environments.",
-    icon: "space_dashboard",
+      "Ensure wardrobe depths, kitchen counters, false ceiling drops, and TV units are integrated into the civil shell before brickwork finishes.",
   },
   {
-    title: "Wanting Interior & Construction to Align",
+    number: "04",
+    title: "Wanting to Visualize the Finished Space",
     description:
-      "Coordinate plumbing, electrical switchboards, and false ceilings early so no concrete or brick walls are hacked after casting.",
-    icon: "layers",
+      "Experience realistic 3D exterior elevations and walkthrough previews so you know exactly how the project will look and feel before committing.",
   },
   {
-    title: "Preparing Before Execution",
+    number: "05",
+    title: "Planning Electrical and Plumbing Requirements",
     description:
-      "Eliminate costly trial-and-error on site by resolving design ambiguities, structural heights, and material finishes on drawings first.",
-    icon: "checklist",
+      "Map switch points, AC conduits, drainage slopes, and fixture lines early so no finished concrete or brick wall needs hacking later.",
+  },
+  {
+    number: "06",
+    title: "Preparing Project Drawings",
+    description:
+      "Organize accurate dimensioned drawings, authority documentation, and site layouts that guide engineering contractors without ambiguity.",
+  },
+  {
+    number: "07",
+    title: "Coordinating Multiple Design Requirements",
+    description:
+      "Harmonize family lifestyle needs, Vastu directions, budget parameters, and climate factors into one cohesive, workable plan.",
   },
 ];
 
-export const planningFaqs: PlanningFaq[] = [
+export const designPlanningFaqs: DesignPlanningFaq[] = [
   {
-    question: "What does design and planning include?",
+    question: "What design services does SMS Construction provide?",
     answer:
-      "Design & Planning encompasses project brief definition, site and environmental evaluation, functional space zoning, 2D architectural layouts, 3D volumetric visualizations, material direction, and MEP conduit pre-planning prior to civil construction.",
+      "SMS Construction provides four core design services: 3D Elevation modeling, Interior Design planning, Walkthrough Video visualization, and Structural Designing coordination.",
   },
   {
-    question: "Why is planning important before construction?",
+    question: "What is a 3D elevation?",
     answer:
-      "Planning establishes spatial clarity, functional room sizes, and accurate quantity requirements before breaking ground. It prevents costly on-site structural modifications, delays from undecided layouts, and mismatched plumbing or electrical placements.",
+      "A 3D elevation is an architectural digital visualization that shows the exterior facade of a building with realistic materials, textures, window openings, colors, and lighting proportions before physical construction begins.",
   },
   {
-    question: "Can SMS Construction help plan a project before execution?",
+    question: "What is included in interior design?",
     answer:
-      "Yes. We regularly work with homeowners during the exploratory stage. Whether you plan to build immediately or in the future, our team helps clarify plot potential, architectural schematics, and budget estimates.",
+      "Interior design includes functional room space planning, furniture layout, false ceiling schematics, lighting concepts, modular kitchen design, wardrobe detailing, and material finish curation tailored to your lifestyle.",
   },
   {
-    question: "Can design planning include interior requirements?",
+    question: "What are walkthrough videos used for?",
     answer:
-      "Yes. We advocate for simultaneous architectural and interior planning. Mapping out wardrobe depths, kitchen counters, false ceiling lights, and TV units during the planning stage ensures electrical conduits and structural recesses are integrated into the civil shell.",
+      "Walkthrough videos provide an animated, moving visual tour of the proposed space. They help clients understand spatial flow, ceiling heights, room connections, and real-world proportions in a way static 2D plans cannot convey.",
   },
   {
-    question: "Can I discuss my project before deciding to build?",
+    question: "What is structural designing?",
     answer:
-      "Certainly. We welcome clients for initial discovery meetings where we examine your plot dimensions, explore family requirements, and discuss feasible spatial approaches without any immediate obligation to proceed.",
+      "Structural designing coordinates column placements, beam depths, slab layouts, and load paths to support the architectural layout safely and practically based on project requirements.",
   },
   {
-    question: "What information should I prepare before a planning consultation?",
+    question: "What are approval drawings?",
     answer:
-      "It helps to bring your plot dimensions or survey sketch, any approximate room wishlists, personal design preferences or photos of styles you appreciate, and your tentative budget range. If you don't have all of these, we can guide you through the process.",
+      "Approval drawings are technical architectural drawings prepared to support the project's documentation and municipal submission requirements, including site plans, floor plans, sections, and setback compliance based on local rules.",
+  },
+  {
+    question: "What is included in a 3D plan?",
+    answer:
+      "A 3D plan is an isometric or perspective three-dimensional view of the floor layout. It displays interior room arrangements, door swings, wall heights, and room-to-room circulation clearly from above.",
+  },
+  {
+    question: "Do you provide electrical and plumbing plans?",
+    answer:
+      "Yes. We prepare dedicated electrical point layout plans (switches, light circuits, AC points, conduits) and plumbing plans (water inlet, drain lines, sanitary fixtures) based on the agreed project scope.",
+  },
+  {
+    question: "Can Vastu requirements be included in the planning stage?",
+    answer:
+      "Yes. Where requested by the client, we incorporate Vastu planning principles into room placement, entrance positioning, kitchen direction, and room zoning while preserving modern architectural functionality.",
   },
   {
     question: "Do you provide design and planning services in Nagercoil?",
     answer:
-      "Yes. Our design studio is centrally located in Nagercoil, and we actively plan residential and commercial projects across Nagercoil, Suchindram, Theroor, Kanyakumari, Marthandam, and surrounding areas in Kanyakumari District.",
-  },
-  {
-    question: "How can I request a consultation?",
-    answer:
-      "You can submit a project inquiry through our contact form, call our office directly at +91 94880 21183, or message us on WhatsApp. We will schedule a dedicated meeting at our Nagercoil studio or directly on your plot.",
+      "Yes. SMS Construction is based in Nagercoil, Tamil Nadu, and provides design and planning services across Nagercoil, Suchindram, Theroor, Kanyakumari, Marthandam, and surrounding locations in Kanyakumari District.",
   },
 ];

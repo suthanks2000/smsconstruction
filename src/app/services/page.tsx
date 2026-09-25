@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "SMS Construction",
     images: [
       {
-        url: "/images/services/interior.jpg",
+        url: "/images/services/interior.webp",
         width: 1200,
         height: 630,
         alt: "SMS Construction Services Hub in Nagercoil",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Construction & Interior Design Services in Nagercoil | SMS Construction",
     description:
       "Explore construction, interior design, planning, survey support, and fabrication services from SMS Construction in Nagercoil, Tamil Nadu.",
-    images: ["/images/services/interior.jpg"],
+    images: ["/images/services/interior.webp"],
   },
 };
 
@@ -310,6 +310,7 @@ export default function ServicesPage() {
                           src={service.image}
                           alt={service.alt}
                           fill
+                          loading="lazy"
                           sizes="(max-width: 640px) 96px, 128px"
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />
@@ -370,6 +371,7 @@ export default function ServicesPage() {
                   src={interiorSpecialties[0].image}
                   alt={interiorSpecialties[0].alt}
                   fill
+                  loading="lazy"
                   sizes="(max-width: 1024px) 100vw, 58vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
@@ -402,6 +404,7 @@ export default function ServicesPage() {
                   src={interiorSpecialties[1].image}
                   alt={interiorSpecialties[1].alt}
                   fill
+                  loading="lazy"
                   sizes="(max-width: 1024px) 100vw, 42vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
@@ -434,6 +437,7 @@ export default function ServicesPage() {
                   src={interiorSpecialties[2].image}
                   alt={interiorSpecialties[2].alt}
                   fill
+                  loading="lazy"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
@@ -466,6 +470,7 @@ export default function ServicesPage() {
                   src={interiorSpecialties[3].image}
                   alt={interiorSpecialties[3].alt}
                   fill
+                  loading="lazy"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
@@ -498,6 +503,7 @@ export default function ServicesPage() {
                   src={interiorSpecialties[4].image}
                   alt={interiorSpecialties[4].alt}
                   fill
+                  loading="lazy"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
@@ -530,6 +536,7 @@ export default function ServicesPage() {
                   src={interiorSpecialties[5].image}
                   alt={interiorSpecialties[5].alt}
                   fill
+                  loading="lazy"
                   sizes="100vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
@@ -646,6 +653,7 @@ export default function ServicesPage() {
                     src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room.webp"
                     alt="Living room interior design at Nagarajan Residence in Theroor, Nagercoil by SMS Construction"
                     fill
+                    loading="lazy"
                     sizes="(max-width: 1024px) 100vw, 58vw"
                     className="object-cover object-center"
                   />

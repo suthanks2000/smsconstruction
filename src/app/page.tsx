@@ -296,7 +296,7 @@ const servicesData = [
     category: "Interior Design",
     desc: "Bespoke design solutions that transform your residential spaces into tranquil, luxurious havens tailored to your lifestyle.",
     href: "/interior-design",
-    img: "/images/services/interior.jpg",
+    img: "/images/services/interior.webp",
   },
   {
     category: "Construction",
@@ -308,13 +308,13 @@ const servicesData = [
     category: "Design & Planning",
     desc: "Comprehensive architectural blueprints and spatial planning to visualize your dream project before it begins.",
     href: "/design-planning",
-    img: "/images/services/planning.jpg",
+    img: "/images/services/planning.webp",
   },
   {
     category: "Survey & Approvals",
     desc: "Supporting site understanding, documentation review, and project coordination before construction begins.",
     href: "/survey-approvals",
-    img: "/images/services/survey.jpg",
+    img: "/images/services/survey.webp",
   },
   {
     category: "Fabrication Works",
@@ -670,6 +670,7 @@ function Services() {
                       src={svc.img}
                       alt={svc.category}
                       fill
+                      loading="lazy"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 1200px) 30vw, 360px"
                     />

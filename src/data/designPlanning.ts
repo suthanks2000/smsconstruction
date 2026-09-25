@@ -24,6 +24,8 @@ export interface DeliverableItem {
   number: string;
   title: string;
   category: "Design" | "Planning";
+  tag?: string;
+  description?: string;
 }
 
 export interface UseCaseScenario {
@@ -56,7 +58,7 @@ export const designServices: DesignServiceItem[] = [
     subtitle: "Space, Function & Visual Direction",
     description:
       "Shape interior living spaces around everyday function, comfort, lighting, and aesthetic direction. Coordinated early with civil structures to avoid on-site rework.",
-    image: "/images/services/interior.jpg",
+    image: "/images/services/interior.webp",
     imageAlt: "Interior design and space planning visualization",
     link: "/interior-design",
     linkText: "Explore Interior Design",
@@ -69,7 +71,7 @@ export const designServices: DesignServiceItem[] = [
     subtitle: "Spatial Experience Visualization",
     description:
       "Experience the proposed space through walkthrough-style visual presentation. Understand spatial flow, room transitions, and sightlines before ground is broken.",
-    image: "/images/services/planning.jpg",
+    image: "/images/services/planning.webp",
     imageAlt: "3D architectural walkthrough perspective and spatial presentation",
     deliverables: ["Continuous Spatial Flow", "Room-to-Room Transitions", "Perspective Comprehension"],
   },
@@ -80,7 +82,7 @@ export const designServices: DesignServiceItem[] = [
     subtitle: "Practical Engineering Alignment",
     description:
       "Support the structural direction of the project where applicable. We coordinate load paths, column positions, and slab layouts with the architectural plan.",
-    image: "/images/services/civil-construction-hero.jpg",
+    image: "/images/services/civil-construction-hero.webp",
     imageAlt: "Structural engineering layout and civil coordination",
     deliverables: ["Column & Beam Layout Alignment", "Load Path Coordination", "Civil-to-Design Interface"],
   },
@@ -150,16 +152,76 @@ export const planningServices: PlanningServiceItem[] = [
 ];
 
 export const planningDeliverables: DeliverableItem[] = [
-  { number: "01", title: "3D Visualisation", category: "Design" },
-  { number: "02", title: "Interior Design Direction", category: "Design" },
-  { number: "03", title: "Walkthrough Presentation", category: "Design" },
-  { number: "04", title: "Structural Design", category: "Design" },
-  { number: "05", title: "Approval Drawings", category: "Planning" },
-  { number: "06", title: "Vastu Plan", category: "Planning" },
-  { number: "07", title: "3D Plan", category: "Planning" },
-  { number: "08", title: "Electrical Plan", category: "Planning" },
-  { number: "09", title: "Plumbing Plan", category: "Planning" },
-  { number: "10", title: "Landscape Plan", category: "Planning" },
+  {
+    number: "01",
+    title: "3D Visualisation",
+    category: "Design",
+    tag: "Architectural Form",
+    description: "Visualize exterior massing, surface finishes, window openings, and daylight textures with clarity before construction begins.",
+  },
+  {
+    number: "02",
+    title: "Interior Design Direction",
+    category: "Design",
+    tag: "Spatial Comfort",
+    description: "Curated interior themes, modular joinery alignments, ergonomic room planning, and false ceiling lighting concepts.",
+  },
+  {
+    number: "03",
+    title: "Walkthrough Presentation",
+    category: "Design",
+    tag: "Spatial Motion",
+    description: "Experience spatial flow, room transitions, and ceiling heights through immersive walkthrough-style visual presentation.",
+  },
+  {
+    number: "04",
+    title: "Structural Design",
+    category: "Design",
+    tag: "Engineering Alignment",
+    description: "Coordinate column placements, beam depths, and slab spans with architectural floor plans to ensure structural safety.",
+  },
+  {
+    number: "05",
+    title: "Approval Drawings",
+    category: "Planning",
+    tag: "Statutory Documentation",
+    description: "Dimensioned plan sets, boundary setbacks, and authority drawings prepared for local Panchayat and DTCP clearance.",
+  },
+  {
+    number: "06",
+    title: "Vastu Plan",
+    category: "Planning",
+    tag: "Directional Harmonization",
+    description: "Aligning room zoning, entrances, and key zones with directional Vastu principles without compromising modern utility.",
+  },
+  {
+    number: "07",
+    title: "3D Plan",
+    category: "Planning",
+    tag: "Proportion Mapping",
+    description: "Isometric and perspective 3D floor cut-sections showing room volumes, internal wall heights, and circulation clearance.",
+  },
+  {
+    number: "08",
+    title: "Electrical Plan",
+    category: "Planning",
+    tag: "Services Mapping",
+    description: "Pre-mapping switchboards, power outlets, appliance points, lighting circuits, and conduit paths before masonry finishes.",
+  },
+  {
+    number: "09",
+    title: "Plumbing Plan",
+    category: "Planning",
+    tag: "Sanitary Networks",
+    description: "Coordinating water supply lines, sanitary drainage drops, bathroom fixtures, and external inspection chamber locations.",
+  },
+  {
+    number: "10",
+    title: "Landscape Plan",
+    category: "Planning",
+    tag: "Outdoor Environment",
+    description: "Integrating garden patches, perimeter walkways, exterior drainage, and ambient illumination into a cohesive outdoor retreat.",
+  },
 ];
 
 export const planningUseCases: UseCaseScenario[] = [

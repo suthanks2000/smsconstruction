@@ -6,7 +6,6 @@ import {
   Phone,
   MessageSquare,
   CheckCircle2,
-  MapPin,
   Hammer
 } from "lucide-react";
 import {
@@ -16,6 +15,7 @@ import {
   geoLocalities,
 } from "@/data/construction";
 import ModernFaq from "@/components/ModernFaq";
+import LocalServiceArea from "@/components/LocalServiceArea";
 import ConstructionSectorsConsole from "./components/ConstructionSectorsConsole";
 import ConstructionStatsRibbon from "./components/ConstructionStatsRibbon";
 import ConversionCTA from "@/components/ConversionCTA";
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     siteName: "SMS Construction",
     images: [
       {
-        url: "/images/services/civil-construction-hero.jpg",
+        url: "/images/services/civil-construction-hero.webp",
         width: 1200,
         height: 675,
         alt: "Civil building construction site in Nagercoil by SMS Construction",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     title: "Civil & Building Construction in Nagercoil | SMS Construction",
     description:
       "Turnkey residential, commercial, and industrial civil construction in Nagercoil & Kanyakumari District. Quality materials, IS code compliance, transparent BOQ.",
-    images: ["/images/services/civil-construction-hero.jpg"],
+    images: ["/images/services/civil-construction-hero.webp"],
   },
   other: {
     "geo.region": "IN-TN",
@@ -121,7 +121,7 @@ export default function ConstructionPage() {
       "Premier civil, commercial, and residential building construction contractor in Nagercoil, Tamil Nadu. Ground-up construction, RCC structural works, industrial sheds, and turnkey delivery.",
     url: "https://smsconstruction.in/construction",
     telephone: phoneNumber,
-    image: "https://smsconstruction.in/images/services/civil-construction-hero.jpg",
+    image: "https://smsconstruction.in/images/services/civil-construction-hero.webp",
     priceRange: "₹₹",
     openingHours: "Mo-Sa 08:30-19:30",
     address: {
@@ -237,10 +237,10 @@ export default function ConstructionPage() {
           {/* Full-Bleed Civil Construction Background Image */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <Image
-              src="/images/services/civil-construction-hero.jpg"
+              src="/images/services/civil-construction-hero.webp"
               alt="Civil RCC residential and commercial building construction site in Nagercoil by SMS Construction"
               fill
-              priority
+              loading="lazy"
               sizes="100vw"
               className="object-cover object-right lg:object-[center_35%]"
             />
@@ -524,92 +524,24 @@ export default function ConstructionPage() {
         {/* ===================================================================
             SECTION 7: LOCAL SERVICE AREA (GEO / LOCAL SEO)
         =================================================================== */}
-        <section
-          aria-labelledby="local-geo-heading"
+        <LocalServiceArea
+          badge="BASED IN NAGERCOIL"
+          title="Civil & Commercial Construction Across Nagercoil and Kanyakumari District"
+          description={[
+            "SMS Construction is centrally located in Nagercoil, Tamil Nadu, providing complete civil construction, commercial contracting, and structural development across the entire Kanyakumari District. Having our permanent engineering presence in Nagercoil ensures immediate site mobilization, daily quality supervision, and reliable local material sourcing.",
+            "We actively manage projects in Nagercoil City, Vadasery, Kottar, Ozhuginasery, Parvathipuram, Suchindram, Theroor, Kanyakumari, Marthandam, Thuckalay, Colachel, Karungal, Kulasekharam, and surrounding regional business centers.",
+          ]}
+          localities={geoLocalities}
+          deskTitle="Head Office & Engineering Desk"
+          companyName="SMS Construction"
+          phoneNumber={phoneNumber}
+          formattedPhone={formattedPhone}
+          email="smsconstructionngl@gmail.com"
+          emailLabel="Inquiries:"
+          hours="Monday – Saturday"
           className="py-20 sm:py-28 bg-[#F6F3EB] border-b border-[#E7E0D4]"
-        >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-              {/* Left Column: Local Context */}
-              <div className="lg:col-span-7">
-                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
-                  BASED IN NAGERCOIL
-                </span>
-                <h2
-                  id="local-geo-heading"
-                  className="text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-5"
-                >
-                  Civil &amp; Commercial Construction Across Nagercoil and Kanyakumari District
-                </h2>
-                <p className="text-[17px] leading-relaxed text-[#68645D] mb-6">
-                  SMS Construction is centrally located in Nagercoil, Tamil Nadu, providing complete
-                  civil construction, commercial contracting, and structural development across the
-                  entire Kanyakumari District. Having our permanent engineering presence in Nagercoil
-                  ensures immediate site mobilization, daily quality supervision, and reliable local
-                  material sourcing.
-                </p>
-                <p className="text-[16px] leading-relaxed text-[#68645D] mb-8">
-                  We actively manage projects in Nagercoil City, Vadasery, Kottar, Ozhuginasery,
-                  Parvathipuram, Suchindram, Theroor, Kanyakumari, Marthandam, Thuckalay, Colachel,
-                  Karungal, Kulasekharam, and surrounding regional business centers.
-                </p>
-
-                <div className="flex flex-wrap gap-2.5">
-                  {geoLocalities.map((place) => (
-                    <span
-                      key={place}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-[#E7E0D4] text-[13px] font-sans text-[#68645D]"
-                    >
-                      <MapPin size={13} className="text-[#B08A52]" />
-                      <span>{place}</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Column: Studio Coordinates Card */}
-              <div className="lg:col-span-5">
-                <div className="p-8 sm:p-10 rounded-[24px] bg-white border border-[#E7E0D4] shadow-sm">
-                  <span className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#B08A52] block mb-2">
-                    Head Office &amp; Engineering Desk
-                  </span>
-                  <h3 className="font-serif text-[24px] font-bold text-[#171714] mb-3">
-                    SMS Construction
-                  </h3>
-                  <address className="not-italic text-[15px] text-[#68645D] leading-relaxed mb-6 space-y-1">
-                    <p>25/1 Muthamizh Street, Near Court Road</p>
-                    <p>Nagercoil, Tamil Nadu 629001, India</p>
-                  </address>
-
-                  <div className="pt-6 border-t border-[#E7E0D4] space-y-3 text-[14px]">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#77736C]">Direct Line:</span>
-                      <a
-                        href={`tel:${phoneNumber}`}
-                        className="font-medium text-[#171714] hover:text-[#B08A52] transition-colors"
-                      >
-                        {formattedPhone}
-                      </a>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#77736C]">Inquiries:</span>
-                      <a
-                        href="mailto:smsconstructionngl@gmail.com"
-                        className="font-medium text-[#171714] hover:text-[#B08A52] transition-colors"
-                      >
-                        smsconstructionngl@gmail.com
-                      </a>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#77736C]">Site Consultations:</span>
-                      <span className="font-medium text-[#171714]">Monday – Saturday</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+          cardBgClassName="bg-white"
+        />
 
         {/* ===================================================================
             SECTION 8: FAQ (AEO & DIRECT ANSWER KNOWLEDGE BASE)

@@ -236,24 +236,4 @@ export const constructionFaqs: ConstructionFaq[] = [
 ];
 
 // Local Geotargeting Areas across Kanyakumari District
-export const geoLocalities: string[] = [
-  "Nagercoil City",
-  "Vadasery",
-  "Kottar",
-  "Ozhuginasery",
-  "Parvathipuram",
-  "Asaripallam",
-  "Chettikulam",
-  "Suchindram",
-  "Theroor",
-  "Kanyakumari",
-  "Marthandam",
-  "Thuckalay",
-  "Colachel",
-  "Karungal",
-  "Kulasekharam",
-  "Villukuri",
-  "Eraniel",
-  "Monday Market",
-  "Kuzhithurai",
-];
+export { geoLocalities } from "./geo";

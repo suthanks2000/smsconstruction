@@ -179,10 +179,10 @@ export default function InteriorDesignPage() {
           {/* Full-Bleed Realistic Interior Background Image */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <Image
-              src="/images/services/interior.jpg"
+              src="/images/services/interior.webp"
               alt="Contemporary luxury residential interior design in Nagercoil by SMS Construction"
               fill
-              priority
+              loading="lazy"
               sizes="100vw"
               className="object-cover object-center lg:object-[center_40%]"
             />

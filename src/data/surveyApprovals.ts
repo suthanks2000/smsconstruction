@@ -1,296 +1,292 @@
-export interface SurveyScope {
+export interface SurveyServiceItem {
   id: string;
   number: string;
   title: string;
   category: string;
   description: string;
-  details: string[];
+  summary: string;
+  application: string;
+  icon: string;
+}
+
+export interface PreparationServiceItem {
+  id: string;
+  number: string;
+  title: string;
+  category: string;
+  description: string;
+  note: string;
   deliverable: string;
 }
 
-export interface SurveyProcessStep {
+export interface SurveyDecisionItem {
   number: string;
-  step: string;
-  title: string;
-  action: string;
+  service: string;
+  method: string;
+  bestFit: string;
   description: string;
-  focus: string;
 }
 
-export interface ClientPreparationItem {
-  number: string;
-  title: string;
-  description: string;
-  tip: string;
-  iconName: string;
-}
-
-export interface SurveyAudienceItem {
+export interface ClientChecklistItem {
   number: string;
   title: string;
   description: string;
-  benefit: string;
+  note?: string;
 }
 
-export interface SurveyFaq {
+export interface SurveyFaqItem {
   question: string;
   answer: string;
 }
 
-export const surveyScopes: SurveyScope[] = [
+// 01 to 06: Survey Services (Editorial Service Directory)
+export const surveyServices: SurveyServiceItem[] = [
   {
-    id: "site-understanding",
+    id: "tape-survey",
     number: "01",
-    title: "Site Understanding",
-    category: "Site & Environmental Context",
+    title: "Tape Survey",
+    category: "Linear Ground Measurement",
+    summary: "Basic site measurement using appropriate tape-based methods.",
     description:
-      "Assessing the physical conditions of your plot, boundary orientations, access roads, natural grade levels, and surrounding context before any drawings or structural plans are committed.",
-    details: [
-      "Physical plot orientation and solar exposure review",
-      "Approach road width, accessibility, and material staging assessment",
-      "Surrounding built structures and shared boundary conditions",
-      "Natural slope, rainwater drainage tendencies, and ground observations",
-    ],
-    deliverable: "Initial Site Assessment & Context Overview",
+      "Basic site measurement using appropriate tape-based methods to capture boundary lengths, accessible road frontages, and baseline plot dimensions for straightforward sites.",
+    application: "Straightforward plots, simple boundary cross-checks, and preliminary site reconnaissance.",
+    icon: "straighten",
   },
   {
-    id: "project-requirement-review",
+    id: "digital-survey",
     number: "02",
-    title: "Project Requirement Review",
-    category: "Scope Definition & Feasibility",
+    title: "Digital Survey",
+    category: "Electronic Data Acquisition",
+    summary: "Digital measurement and site data capture, depending on project requirements.",
     description:
-      "Clarifying your intended built area, functional room distribution, family lifestyle requirements, and spatial priorities against the practical physical limits of the site.",
-    details: [
-      "Room counts, multi-storey requirements, and circulation wishlists",
-      "Vehicle parking and setback space allocation review",
-      "Floor-area feasibility against physical plot dimensions",
-      "Budget expectations aligned with realistic structural scopes",
-    ],
-    deliverable: "Project Scope & Requirement Outline",
+      "Digital measurement and site data capture, depending on project requirements. Captures coordinated digital points to establish perimeter geometry for computer-aided drafting and spatial analysis.",
+    application: "Plots requiring digital CAD coordinates, irregular road edges, and multi-sided parcels.",
+    icon: "radar",
   },
   {
-    id: "documentation-coordination",
+    id: "total-station-survey",
     number: "03",
-    title: "Documentation Coordination",
-    category: "Drawings & Paperwork Preparation",
+    title: "Total Station Survey",
+    category: "High-Precision Electro-Optical Measurement",
+    summary: "Survey measurement using total station equipment where applicable to the project.",
     description:
-      "Organizing existing property documents, title survey sketches, boundary drawings, and layout schematics into a structured dossier required for planning and engineering discussions.",
-    details: [
-      "Reviewing available site survey sketches and dimensional boundaries",
-      "Compiling base drawings required for architectural planning",
-      "Identifying missing dimensions or boundary ambiguities early",
-      "Structuring project drawings for structural engineering coordination",
-    ],
-    deliverable: "Coordinated Project Drawing Dossier",
+      "Survey measurement using total station equipment where applicable to the project. Employs electronic theodolite and EDM technology to record exact angles, long distances, and three-dimensional spatial coordinates.",
+    application: "Medium-to-large plots, commercial layouts, multi-level ground features, and complex perimeters.",
+    icon: "filter_center_focus",
   },
   {
-    id: "approval-related-coordination",
+    id: "building-marking-survey",
     number: "04",
-    title: "Approval-Related Coordination",
-    category: "Preparation & Liaison Support",
+    title: "Building Marking Survey",
+    category: "On-Site Layout Demarcation",
+    summary: "Site marking to help establish relevant building/layout positions based on project requirements.",
     description:
-      "Assisting clients with drawing preparation, submission checklists, and coordinating with qualified local liaisons and consultants according to project-specific requirements.",
-    details: [
-      "Preparing clean architectural drawings aligned with local submission norms",
-      "Verifying drawing annotations, setback clearances, and title sheet data",
-      "Coordinating with external consultants and documentation specialists",
-      "Clarifying typical submission prerequisites based on project location",
-    ],
-    deliverable: "Submission-Ready Drawing Pack & Checklist",
+      "Site marking to help establish relevant building/layout positions based on project requirements. Translates approved architectural gridlines, foundation centerlines, and setback alignments physically onto the ground.",
+    application: "Foundation excavation staging, column footing alignments, and statutory setback verification.",
+    icon: "architecture",
   },
   {
-    id: "pre-construction-preparation",
+    id: "topographical-survey",
     number: "05",
-    title: "Pre-Construction Preparation",
-    category: "Site Readiness & Logistics",
+    title: "Topographical Survey",
+    category: "Terrain & Feature Mapping",
+    summary: "Capture of site-level information to understand terrain and existing ground conditions.",
     description:
-      "Bridging the crucial gap between approved schematics and physical groundbreaking—coordinating site clearances, utility connections, and access logistics in Nagercoil.",
-    details: [
-      "Temporary power and water supply feasibility for site works",
-      "Site demarcation and temporary boundary protection planning",
-      "Material delivery routing and heavy vehicle access coordination",
-      "Execution timeline alignment before site mobilization",
-    ],
-    deliverable: "Pre-Construction Readiness Checklist",
+      "Capture of site-level information to understand terrain and existing ground conditions. Documents physical site features, existing permanent structures, trees, access thresholds, and natural ground formations.",
+    application: "Undulating land, master planning, landscape integration, and structural retaining wall engineering.",
+    icon: "landscape",
+  },
+  {
+    id: "contour-survey",
+    number: "06",
+    title: "Contour Survey",
+    category: "Vertical Elevation Mapping",
+    summary: "Survey information representing changes in ground elevation across the site.",
+    description:
+      "Survey information representing changes in ground elevation across the site. Maps relative spot heights and contour lines to evaluate slope direction, cut-and-fill earthwork volumes, and natural storm runoff patterns.",
+    application: "Sloped terrains, hillside residential sites, earthwork balancing, and stormwater gradient planning.",
+    icon: "altitude",
   },
 ];
 
-export const surveyProcessSteps: SurveyProcessStep[] = [
+// 07 to 08: Site / Document Preparation Services
+export const preparationServices: PreparationServiceItem[] = [
   {
-    number: "01",
-    step: "Stage 1 of 5",
-    title: "Understand the Site",
-    action: "On-Ground Observation",
+    id: "layout-preparation",
+    number: "07",
+    title: "Layout Preparation",
+    category: "Spatial Conversion & CAD Synthesis",
+    summary: "Translating site measurements into a clear layout direction for planning and execution.",
     description:
-      "We begin by examining the physical plot in person in Nagercoil, observing boundary marks, approach access, existing trees, slope conditions, and adjacent structures.",
-    focus: "Physical plot reality and boundary context",
+      "Site measurements and project requirements can be translated into a clearer layout direction for the next stages of planning and execution. We synthesize measured site boundaries, setback corridors, and orientation vectors into clear working drawings.",
+    note: "Connects field measurements directly to subsequent architectural floor plans and structural coordination.",
+    deliverable: "Dimensioned site layout schematic and baseline boundary plot CAD file.",
   },
   {
-    number: "02",
-    step: "Stage 2 of 5",
-    title: "Clarify Requirements",
-    action: "Brief Alignment",
+    id: "fmb",
+    number: "08",
+    title: "FMB (Field Measurement Book)",
+    category: "Site Documentation Support",
+    summary: "FMB refers to Field Measurement Book information used in land and site-related contexts.",
     description:
-      "A structured consultation to map your family's spatial wishlist, preferred layout style, room dimensions, and future expansion possibilities against site constraints.",
-    focus: "Built-up area expectations and functional scope",
-  },
-  {
-    number: "03",
-    step: "Stage 3 of 5",
-    title: "Prepare the Next Steps",
-    action: "Documentation Setup",
-    description:
-      "Gathering existing survey sketches, property title copies, and drafting preliminary schematic floor plans that adhere to good architectural and setback practices.",
-    focus: "Base drawing preparation and document readiness",
-  },
-  {
-    number: "04",
-    step: "Stage 4 of 5",
-    title: "Coordinate Where Needed",
-    action: "Consultant & Filing Alignment",
-    description:
-      "Connecting drawings with qualified local consultants, structural engineers, and filing representatives as required by your project's jurisdiction and scope.",
-    focus: "Drawing compliance and submission coordination",
-  },
-  {
-    number: "05",
-    step: "Stage 5 of 5",
-    title: "Move Towards Execution",
-    action: "Civil Build Transition",
-    description:
-      "With site parameters and documentation aligned, we seamlessly transition the project into detailed architectural design, structural drawings, and civil construction.",
-    focus: "Smooth handover into site execution",
+      "FMB refers to Field Measurement Book information used in land and site-related contexts. FMB-related information may be relevant when understanding land measurements and site documentation. Requirements and records can depend on the property and applicable authorities.",
+    note: "SMS Construction provides measurement verification and documentation support to help clients understand site dimensions in relation to available records. We do not act as an official government issuer.",
+    deliverable: "On-site dimensional cross-referencing and site verification review report.",
   },
 ];
 
-export const clientPreparationItems: ClientPreparationItem[] = [
+// Section 8: Which Survey Is Right for Your Project? (AEO Decision Matrix)
+export const surveyDecisionGuide: SurveyDecisionItem[] = [
   {
     number: "01",
-    title: "Project Location & Plot Address",
+    service: "Tape Survey",
+    method: "Manual Tape Measurement",
+    bestFit: "Straightforward linear plots & simple boundary checks",
     description:
-      "The specific locality or landmark in Nagercoil or Kanyakumari district so we can assess neighborhood context, road widths, and terrain characteristics.",
-    tip: "A Google Maps pin or nearby landmark helps our team prepare for site visits.",
-    iconName: "MapPin",
+      "Useful for straightforward measurement requirements depending on the site. Well-suited for regular rectangular plots where preliminary dimensional verification is needed.",
   },
   {
     number: "02",
-    title: "Basic Site Information",
+    service: "Digital Survey",
+    method: "Digital Coordinate Capture",
+    bestFit: "Irregular parcels & CAD planning integration",
     description:
-      "Approximate plot dimensions (e.g., 40' x 60'), corner plot orientation, boundary wall status, and whether the land is vacant, agricultural, or previously built on.",
-    tip: "Rough measurements are completely fine for initial exploratory discussions.",
-    iconName: "Ruler",
+      "Useful when digital measurement/data capture is appropriate. Ideal for converting field point clouds and vectors directly into 2D/3D CAD drafting systems.",
   },
   {
     number: "03",
-    title: "Intended Project Type",
+    service: "Total Station Survey",
+    method: "Electro-Optical Coordinate Measurement",
+    bestFit: "Medium-to-large plots, complex angles & high precision",
     description:
-      "Whether you are planning a standalone residential villa, an independent family bungalow, a commercial shop floor, or a multi-storey rental property.",
-    tip: "Knowing your occupancy plans helps clarify required setbacks and parking spaces.",
-    iconName: "Building2",
+      "Useful when higher-detail survey equipment is required for the project. Accurately maps millimeter-level coordinates across challenging site sightlines.",
   },
   {
     number: "04",
-    title: "Approximate Space Requirements",
+    service: "Building Marking Survey",
+    method: "On-Site Physical Peg & Thread Demarcation",
+    bestFit: "Immediate pre-construction foundation setting",
     description:
-      "Your desired bedroom count (e.g., 3BHK or 4BHK), number of floors (G+1 or G+2), dedicated pooja space, home office, or vehicle parking counts.",
-    tip: "A simple handwritten room wishlist is an excellent starting point.",
-    iconName: "FileSpreadsheet",
+      "Useful when site positions need to be established for construction-related requirements. Transfers column axes, footing pits, and setbacks from drawing to ground.",
   },
   {
     number: "05",
-    title: "Existing Drawings or Documents (If Available)",
+    service: "Topographical Survey",
+    method: "Feature & Surface Coordinate Mapping",
+    bestFit: "Sites with existing trees, structures & natural gradients",
     description:
-      "Any prior survey sketch, land deed boundary description, or previous architectural concept sketches you may have in your possession.",
-    tip: "If you don't have existing drawings, we guide you on how to obtain base site measurements.",
-    iconName: "FileText",
+      "Useful when understanding terrain and ground-level variation is important. Gives architects the real physical context to design around natural site assets.",
   },
   {
     number: "06",
-    title: "Key Priorities, Timelines & Concerns",
+    service: "Contour Survey",
+    method: "Spot Height & Elevation Grid Mapping",
+    bestFit: "Sloped land, cut-and-fill planning & drainage engineering",
     description:
-      "Any specific preferences regarding Vastu direction, natural ventilation, tentative groundbreaking target dates, or construction budget parameters.",
-    tip: "Sharing your budget and preferred start timeline ensures practical planning right from day one.",
-    iconName: "Clock",
+      "Useful when elevation/level variation across the site needs to be represented. Critical for calculating grading volumes and ensuring positive stormwater drainage.",
   },
 ];
 
-export const surveyAudienceItems: SurveyAudienceItem[] = [
+// Section 9: What Clients Should Prepare (Checklist)
+export const clientPreparationChecklist: ClientChecklistItem[] = [
   {
     number: "01",
-    title: "Planning a New Build",
+    title: "Site Location & Access",
     description:
-      "Homeowners who own a plot in Nagercoil or Kanyakumari district and want to understand site potential, building setbacks, and documentation prerequisites before commissioning builders.",
-    benefit: "Enter construction with complete clarity on site boundaries and project scope.",
+      "Specific plot address, approach road width, gate access, and clear physical pathways for surveying personnel and optical tripods.",
   },
   {
     number: "02",
-    title: "Preparing a Major Renovation",
+    title: "Project Type & Scale",
     description:
-      "Property owners planning structural extensions, additional floors, or compound wall modifications who need to evaluate existing load-bearing conditions and local setback norms.",
-    benefit: "Ensure new additions integrate safely with existing structural footprints.",
+      "Whether the upcoming project is an independent residential home, commercial complex, villa, or renovation footprint.",
   },
   {
     number: "03",
-    title: "Starting a Residential Project",
+    title: "Available Property Documents",
     description:
-      "Families looking for end-to-end design-and-build guidance who prefer having site survey, architectural drawings, and civil construction coordinated under one cohesive team.",
-    benefit: "Eliminates the traditional disconnect between survey consultants and building contractors.",
+      "Copies of purchase deeds, prior survey sketches, patta details, or approved layout copies if previously documented.",
   },
   {
     number: "04",
-    title: "Clarifying Site Requirements",
+    title: "Existing Drawings (If Available)",
     description:
-      "Clients dealing with sloping plots, narrow access lanes, corner properties, or unique boundary angles who need on-ground technical assessment before deciding on floor plans.",
-    benefit: "Avoid designing layouts that cannot be physically or practically built on the plot.",
+      "Preliminary architectural concept sketches, floor count requirements, or earlier draft schematics from your family or designers.",
   },
   {
     number: "05",
-    title: "Preparing Before Construction",
+    title: "Known Boundaries & Physical Markers",
     description:
-      "Investors and families who want all drawings, utility arrangements, and documentation checklists in place well in advance of mobilizing labor and equipment on site.",
-    benefit: "Prevents idle site delays, work stoppages, and mid-construction redesign costs.",
+      "Identification of known boundary corner stones, survey pegs, compound walls, neighboring fences, or street reference alignments.",
+  },
+  {
+    number: "06",
+    title: "Specific Planning Requirements",
+    description:
+      "Intended built footprint, Vastu orientation priorities, compound setback considerations, or specific drainage discharge points.",
   },
 ];
 
-export const surveyFaqs: SurveyFaq[] = [
+// Section 12: Frequently Asked Questions (8–10 concise questions matching AEO)
+export const surveyFaqs: SurveyFaqItem[] = [
   {
-    question: "What does survey and approvals support include?",
+    question: "What survey services does SMS Construction provide?",
     answer:
-      "Survey & approvals support at SMS Construction focuses on practical pre-construction preparation. This includes physical site context evaluation, boundary and setback orientation review, project requirement analysis, architectural submission drawing preparation, organizing documentation dossiers, and coordinating with qualified local consultants and liaisons according to your project's jurisdiction in Nagercoil.",
+      "SMS Construction provides a structured range of site survey and project-preparation services across Nagercoil and Kanyakumari District. These include Tape Survey, Digital Survey, Total Station Survey, Building Marking Survey, Topographical Survey, Contour Survey, Layout Preparation, and FMB-related documentation coordination.",
   },
   {
-    question: "Why is site understanding important before construction?",
+    question: "What is a Tape Survey?",
     answer:
-      "A thorough understanding of the site—including boundary dimensions, road access width, solar path, slope, soil nature, and adjacent buildings—ensures your architectural plans fit reality. It prevents costly on-site surprises such as delivery vehicles being unable to enter narrow access roads, structural foundations hitting unexpected water levels, or rooms lacking natural coastal ventilation.",
+      "A Tape Survey is a foundational measurement method using calibrated measuring tapes to establish basic boundary lengths, accessible road frontages, and simple rectangular plot dimensions. It is useful for initial site checks where complex electro-optical equipment is not strictly necessary.",
   },
   {
-    question: "Can SMS Construction help me prepare before starting a project?",
+    question: "What is a Digital Survey?",
     answer:
-      "Yes. Many clients visit our Nagercoil studio months before they intend to start digging. We examine your plot details, review room wishlists, explain necessary pre-construction preparation steps, and establish a realistic timeline and budget outline so you can move forward with confidence when ready.",
+      "A Digital Survey utilizes electronic measuring instruments to capture site boundaries and key features as digital point data. This data is transferred directly into computer-aided design (CAD) software, giving architects an exact digital base file for floor plan planning and dimensional verification.",
   },
   {
-    question: "What information should I have before a project consultation?",
+    question: "What is a Total Station Survey?",
     answer:
-      "Having your approximate plot location or address, rough plot dimensions, intended building type (e.g., 3BHK villa, G+1 independent house), and any existing survey sketches or property papers is very helpful. However, even if you only have a plot and a general idea, our team can guide you through the necessary steps.",
+      "A Total Station Survey uses an electronic theodolite integrated with an electronic distance meter (EDM) to measure precise horizontal and vertical angles and slope distances. It is well-suited for medium-to-large plots, irregular angles, commercial building sites, and projects requiring high geometric accuracy.",
   },
   {
-    question: "Do I need drawings or documents before discussing my project?",
+    question: "What is a Building Marking Survey?",
     answer:
-      "No. You do not need finished architectural drawings to have an initial discussion with SMS Construction. If you have documents or rough hand sketches, we review them; if not, our team helps clarify what measurements and drawings will be needed based on your project goals.",
+      "A Building Marking Survey involves physically marking building gridlines, column centerlines, foundation excavation pits, and statutory setback boundaries directly onto the ground. This bridges architectural floor plans to actual construction execution, ensuring the structure is built exactly where designed.",
   },
   {
-    question: "Can survey and approvals support be combined with design planning?",
+    question: "What is a Topographical Survey?",
     answer:
-      "Yes, and we highly recommend it. Integrating site understanding with architectural design and planning ensures your floor plans, window placements, and structural columns are directly tailored to your plot's physical environment, setbacks, and local building norms.",
+      "A Topographical Survey maps the natural and man-made surface features of a property, including trees, existing boundary walls, nearby structures, road levels, and physical surface variations. It helps engineers and architects understand ground conditions before committing to foundation design.",
   },
   {
-    question: "Do you provide this service in Nagercoil?",
+    question: "What is a Contour Survey?",
     answer:
-      "Yes. SMS Construction is based in Nagercoil, Tamil Nadu, and actively provides project preparation, site assessment, and construction coordination services across Nagercoil and nearby localities throughout Kanyakumari district.",
+      "A Contour Survey records ground elevation variations and maps lines connecting points of equal height across a property. It is essential for sloped plots, calculating earth cut-and-fill volumes, and designing gravity-based rainwater and sewer drainage paths.",
   },
   {
-    question: "How can I discuss my project with SMS Construction?",
+    question: "What is Layout Preparation?",
     answer:
-      "You can contact us by submitting an inquiry through our website contact form, calling our office directly at +91 94880 21183, or sending us a message on WhatsApp. We can arrange an introductory consultation at our Nagercoil office or schedule an on-site visit to your plot.",
+      "Layout Preparation is the process of translating field survey measurements and client spatial requirements into a clear, dimensioned site layout plan. It incorporates building footprint zoning, access driveways, compound setbacks, and utility staging paths for upcoming planning stages.",
+  },
+  {
+    question: "What does FMB (Field Measurement Book) mean?",
+    answer:
+      "FMB refers to Field Measurement Book information used in land and site-related documentation. It contains property sketches and survey number boundaries recorded in revenue contexts. SMS Construction helps clients verify their physical site dimensions against available FMB information for planning clarity; we do not act as an official government issuing authority.",
+  },
+  {
+    question: "How do I know which survey is suitable for my project?",
+    answer:
+      "The appropriate survey method depends on your plot size, terrain slope, boundary complexity, and the stage of your project. Simple flat plots may only need tape or basic digital measurements, while uneven terrain requires contour or total station surveys. You can contact SMS Construction to evaluate your site and recommend the right approach.",
+  },
+  {
+    question: "Do you provide survey services in Nagercoil?",
+    answer:
+      "Yes. SMS Construction is based in Nagercoil, Tamil Nadu, and actively provides survey, marking, and layout preparation services across Nagercoil City, Vadasery, Kottar, Suchindram, Theroor, Kanyakumari, Marthandam, and surrounding areas in Kanyakumari District.",
+  },
+  {
+    question: "How can I discuss my site requirements?",
+    answer:
+      "You can discuss your site requirements by contacting SMS Construction directly at +91 94880 21183, reaching out on WhatsApp, or visiting our office at 25/1 Muthamizh Street, Near Court Road, Nagercoil. Our team will review your site location and guide you on the necessary survey preparation.",
   },
 ];

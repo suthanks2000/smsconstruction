@@ -3,51 +3,44 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  ArrowUpRight,
   Phone,
   MessageSquare,
   CheckCircle2,
-  MapPin,
-  Compass,
-  FileText,
-  Building2,
   Ruler,
-  Clock,
-  Layers,
-  FileSpreadsheet,
-  CheckSquare,
-  ShieldCheck,
-  Calendar,
-  AlertCircle,
+  MapPin,
+  Navigation,
+  Crosshair,
+  Info,
 } from "lucide-react";
 import {
-  surveyScopes,
-  surveyProcessSteps,
-  clientPreparationItems,
-  surveyAudienceItems,
+  surveyServices,
+  preparationServices,
   surveyFaqs,
 } from "@/data/surveyApprovals";
-import ServiceFaqAccordion from "../services/components/ServiceFaqAccordion";
+import { geoLocalities } from "@/data/geo";
+import ModernFaq from "@/components/ModernFaq";
+import LocalServiceArea from "@/components/LocalServiceArea";
+import ConversionCTA from "@/components/ConversionCTA";
 
 export const metadata: Metadata = {
-  title: "Survey & Approvals Support in Nagercoil | SMS Construction",
+  title: "Land Survey & Approval Support in Nagercoil | SMS Construction",
   description:
-    "Explore survey and approvals support from SMS Construction in Nagercoil, helping clients understand site, project and pre-construction requirements.",
+    "Explore land and site survey services from SMS Construction in Nagercoil, including tape, digital, total station, building marking, topographical and contour surveys, layout preparation and FMB-related support.",
   alternates: {
     canonical: "/survey-approvals",
   },
   openGraph: {
-    title: "Survey & Approvals Support in Nagercoil | SMS Construction",
+    title: "Land Survey & Approval Support in Nagercoil | SMS Construction",
     description:
-      "Explore survey and approvals support from SMS Construction in Nagercoil, helping clients understand site, project and pre-construction requirements.",
+      "Explore land and site survey services from SMS Construction in Nagercoil, including tape, digital, total station, building marking, topographical and contour surveys, layout preparation and FMB-related support.",
     url: "https://smsconstruction.in/survey-approvals",
     siteName: "SMS Construction",
     images: [
       {
-        url: "/images/services/survey.jpg",
+        url: "/images/services/survey.webp",
         width: 1200,
         height: 630,
-        alt: "Site analysis and project documentation review in Nagercoil by SMS Construction",
+        alt: "Land survey and site measurement services in Nagercoil by SMS Construction",
       },
     ],
     locale: "en_IN",
@@ -55,10 +48,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Survey & Approvals Support in Nagercoil | SMS Construction",
+    title: "Land Survey & Approval Support in Nagercoil | SMS Construction",
     description:
-      "Explore survey and approvals support from SMS Construction in Nagercoil, helping clients understand site, project and pre-construction requirements.",
-    images: ["/images/services/survey.jpg"],
+      "Explore land and site survey services from SMS Construction in Nagercoil, including tape, digital, total station, building marking, topographical and contour surveys, layout preparation and FMB-related support.",
+    images: ["/images/services/survey.webp"],
   },
 };
 
@@ -67,7 +60,7 @@ export default function SurveyApprovalsPage() {
   const formattedPhone = "+91 94880 21183";
   const whatsappNumber = "919488021183";
 
-  // Structured Data Schemas
+  // Structured Data Schemas (JSON-LD)
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -96,11 +89,12 @@ export default function SurveyApprovalsPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Survey & Approvals Support",
-    serviceType: "Pre-Construction & Site Planning Support",
+    name: "Land Survey & Site Preparation Services",
+    serviceType: "Pre-Construction Land Surveying & Layout Planning",
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "HomeAndConstructionBusiness",
       name: "SMS Construction",
+      telephone: phoneNumber,
       address: {
         "@type": "PostalAddress",
         streetAddress: "25/1 Muthamizh Street, Near Court Road",
@@ -109,27 +103,34 @@ export default function SurveyApprovalsPage() {
         postalCode: "629001",
         addressCountry: "IN",
       },
-      telephone: "+919488021183",
-      url: "https://smsconstruction.in",
     },
-    areaServed: {
+    areaServed: geoLocalities.map((loc) => ({
       "@type": "City",
-      name: "Nagercoil",
-    },
-    description:
-      "Pre-construction site assessment, project requirement review, documentation coordination, and approval-related preparation support in Nagercoil.",
+      name: loc,
+    })),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Survey & Approvals Offerings",
-      itemListElement: surveyScopes.map((scope, index) => ({
-        "@type": "Offer",
-        position: index + 1,
-        itemOffered: {
-          "@type": "Service",
-          name: scope.title,
-          description: scope.description,
-        },
-      })),
+      name: "Survey & Site Preparation Services",
+      itemListElement: [
+        ...surveyServices.map((service, index) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: service.title,
+            description: service.description,
+          },
+          position: index + 1,
+        })),
+        ...preparationServices.map((service, index) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: service.title,
+            description: service.description,
+          },
+          position: surveyServices.length + index + 1,
+        })),
+      ],
     },
   };
 
@@ -147,8 +148,8 @@ export default function SurveyApprovalsPage() {
   };
 
   return (
-    <div className="bg-[#FAF8F3] text-[#171614] min-h-screen selection:bg-[#B08A52]/20 selection:text-[#171614]">
-      {/* Schema Injection */}
+    <>
+      {/* 3 Structured Data Schemas */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -162,852 +163,648 @@ export default function SurveyApprovalsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* SECTION 1: HERO */}
-      <section className="relative pt-32 pb-16 lg:pt-36 lg:pb-24 border-b border-[#E7E0D4] overflow-hidden bg-gradient-to-b from-[#FFFFFF] to-[#FAF8F3]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Breadcrumb Navigation & Hub Link */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <nav aria-label="Breadcrumb">
-              <ol className="flex items-center flex-wrap gap-2 text-xs uppercase tracking-widest text-[#77736C]">
-                <li>
-                  <Link
-                    href="/"
-                    className="hover:text-[#B08A52] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#B08A52]"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li aria-hidden="true" className="text-[#E7E0D4]">
-                  /
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className="hover:text-[#B08A52] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#B08A52]"
-                  >
-                    Services
-                  </Link>
-                </li>
-                <li aria-hidden="true" className="text-[#E7E0D4]">
-                  /
-                </li>
-                <li className="text-[#171614] font-medium" aria-current="page">
-                  Survey &amp; Approvals
-                </li>
-              </ol>
-            </nav>
-
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-[#77736C] hover:text-[#B08A52] transition-colors duration-200"
-            >
-              <span>&larr; Services</span>
-            </Link>
+      <main className="bg-[#FAF8F3] text-[#171714] selection:bg-[#B08A52] selection:text-white">
+        {/* ===================================================================
+            SECTION 1: HERO (EDITORIAL HERO OVER FULL-BLEED REAL WEBP IMAGE)
+            Style ref: construction & design-planning hero
+        =================================================================== */}
+        <section
+          data-header-theme="dark"
+          aria-label="Survey & Approvals Hero"
+          className="relative w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-between pt-20 pb-4 sm:pt-22 sm:pb-5 lg:pt-22 lg:pb-4 bg-[#171714] text-white overflow-hidden border-b border-[#2A2925]"
+        >
+          {/* Full-Bleed Real Survey WebP Background Image */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <Image
+              src="/images/services/survey.webp"
+              alt="Professional site survey and land measurement on a residential project site in Nagercoil by SMS Construction"
+              fill
+              loading="lazy"
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+            {/* Soft architectural gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/92 via-[#171714]/70 to-[#171714]/35" />
           </div>
 
-          {/* Hero Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div className="lg:col-span-7 flex flex-col justify-between">
-              <div>
-                {/* Eyebrow */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#171614]/5 border border-[#E7E0D4] mb-6">
-                  <Compass className="w-3.5 h-3.5 text-[#B08A52]" />
-                  <span className="text-[11px] font-mono tracking-[0.2em] uppercase text-[#77736C]">
-                    SURVEY &amp; APPROVALS
-                  </span>
-                </div>
+          {/* Main Content Container */}
+          <div className="relative z-10 max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12 w-full flex-1 flex flex-col justify-between pt-4 sm:pt-6 pb-2 sm:pb-3">
 
-                {/* H1 */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-[#171614] tracking-tight leading-[1.1] mb-6">
-                  Survey &amp; Approvals Support for Your Project
-                </h1>
-
-                {/* Supporting Copy */}
-                <p className="text-lg sm:text-xl text-[#77736C] font-light leading-relaxed max-w-2xl mb-8">
-                  Before construction begins, understanding the site, documentation and project
-                  requirements can help create a clearer path forward.
-                </p>
-
-                {/* Primary & Secondary CTAs */}
-                <div className="flex flex-wrap items-center gap-4 pt-2">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#171614] text-[#FAF8F3] text-sm uppercase tracking-widest font-medium rounded-sm hover:bg-[#B08A52] transition-colors duration-300 shadow-sm group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52]"
-                  >
-                    <span>Discuss Your Project</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-transparent text-[#171614] border border-[#E7E0D4] text-sm uppercase tracking-widest font-medium rounded-sm hover:border-[#171614] hover:bg-[#171614]/5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52]"
-                  >
-                    <span>Explore Services</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Technical Indicator Badges */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-12 mt-12 border-t border-[#E7E0D4]">
-                <div>
-                  <span className="block text-[11px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Discipline
-                  </span>
-                  <p className="text-sm font-medium text-[#171614]">Pre-Construction Setup</p>
-                </div>
-                <div>
-                  <span className="block text-[11px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Primary Hub
-                  </span>
-                  <p className="text-sm font-medium text-[#171614]">Nagercoil, Tamil Nadu</p>
-                </div>
-                <div className="col-span-2 sm:col-span-1">
-                  <span className="block text-[11px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Coordination Focus
-                  </span>
-                  <p className="text-sm font-medium text-[#171614]">Site &amp; Documentation</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Visual */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/5] rounded-sm overflow-hidden border border-[#E7E0D4] bg-[#E7E0D4]/30 shadow-md group">
-                <Image
-                  src="/images/services/survey.jpg"
-                  alt="Site analysis and project documentation review in Nagercoil"
-                  width={800}
-                  height={1000}
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                  className="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#171614]/70 via-transparent to-transparent opacity-90" />
-                
-                {/* Visual Label */}
-                <div className="absolute bottom-6 left-6 right-6 text-[#FAF8F3]">
-                  <p className="text-xs font-mono uppercase tracking-widest text-[#B08A52] mb-1">
-                    Site &amp; Document Review
-                  </p>
-                  <p className="text-sm font-light text-[#FAF8F3]/90">
-                    Evaluating boundaries, access widths, and drawing requirements in Nagercoil.
-                  </p>
-                </div>
-
-                {/* Technical Grid Accent */}
-                <div className="absolute top-4 right-4 bg-[#171614]/80 backdrop-blur-sm border border-[#FAF8F3]/10 px-3 py-1.5 rounded-sm">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#FAF8F3]/90">
-                    Phase 00 / Verification
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: WHY THIS STAGE MATTERS */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-4">
-              BEFORE WORK BEGINS
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight leading-tight mb-8">
-              Start with a clear understanding of the project.
-            </h2>
-            <div className="space-y-6 text-base sm:text-lg text-[#77736C] font-light leading-relaxed">
-              <p>
-                Every plot brings physical conditions that directly shape what can be built—from
-                road access widths and boundary setbacks to natural drainage lines and neighbor
-                proximities. Taking time to assess these conditions alongside your project scope and
-                existing documentation helps establish practical parameters before any earth is moved
-                or structural plans are committed.
-              </p>
-              <p>
-                Early coordination also ensures drawing requirements and pre-construction logistics
-                are resolved methodically. By clarifying site realities, room expectations, and
-                documentary readiness early, you avoid the misaligned assumptions and costly on-site
-                adjustments that frequently occur when construction begins in haste.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3: WHAT WE HELP WITH (PROJECT PREPARATION SUPPORT) */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FAF8F3]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-            <div>
-              <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-                PRACTICAL CAPABILITIES
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight">
-                Project Preparation Support
-              </h2>
-            </div>
-            <p className="text-sm text-[#77736C] max-w-md font-light">
-              A structured editorial framework covering site assessment, documentation organization,
-              and pre-build logistics before civil mobilization.
-            </p>
-          </div>
-
-          {/* Editorial Split Row Layout (Not generic cards) */}
-          <div className="divide-y divide-[#E7E0D4] border-y border-[#E7E0D4]">
-            {surveyScopes.map((scope) => (
-              <div
-                key={scope.id}
-                className="py-10 lg:py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group hover:bg-[#FFFFFF]/60 transition-colors duration-300 px-4 -mx-4 rounded-sm"
+            {/* Middle Area: Editorial Copy & CTAs */}
+            <div className="flex-1 flex flex-col justify-center max-w-3xl my-auto py-6 sm:py-8 lg:py-10">
+              {/* H1 Heading */}
+              <h1
+                className="font-bold text-white leading-[1.12] sm:leading-[1.1] tracking-[-0.025em] mb-4 sm:mb-5 lg:mb-6"
+                style={{ fontSize: "clamp(2.1rem, 3.9vw, 3.6rem)" }}
               >
-                {/* Number & Category */}
-                <div className="lg:col-span-3">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xl font-mono text-[#B08A52] font-normal">
-                      {scope.number}
-                    </span>
-                    <span className="text-xs font-mono uppercase tracking-widest text-[#77736C]">
-                      {scope.category}
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-light text-[#171614] group-hover:text-[#B08A52] transition-colors">
-                    {scope.title}
-                  </h3>
-                </div>
+                Land &amp; Site Survey Services in Nagercoil<span className="text-[#e3c381]">.</span>
+              </h1>
 
-                {/* Description */}
-                <div className="lg:col-span-5">
-                  <p className="text-base text-[#77736C] font-light leading-relaxed mb-4">
-                    {scope.description}
-                  </p>
-                  <div className="inline-flex items-center gap-2 text-xs font-mono text-[#171614] bg-[#E7E0D4]/40 px-3 py-1.5 rounded-sm">
-                    <span className="text-[#B08A52]">Outcome:</span>
-                    <span>{scope.deliverable}</span>
-                  </div>
-                </div>
-
-                {/* Details Breakdown */}
-                <div className="lg:col-span-4 bg-[#FFFFFF] p-5 rounded-sm border border-[#E7E0D4]/70">
-                  <span className="block text-[11px] font-mono uppercase tracking-wider text-[#77736C] mb-3">
-                    Specific Review Elements
-                  </span>
-                  <ul className="space-y-2">
-                    {scope.details.map((detail, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-xs text-[#171614]/80 font-light">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#B08A52] shrink-0 mt-0.5" />
-                        <span>{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4: SITE TO START (CONCEPTUAL VISUAL PROCESS) */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-              A CLEARER START
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight mb-4">
-              Understand. Prepare. Coordinate.
-            </h2>
-            <p className="text-base text-[#77736C] font-light leading-relaxed">
-              A progressive 5-stage workflow designed to clarify boundaries, documentation, and
-              consultant coordination so your project transitions confidently into design and build.
-            </p>
-          </div>
-
-          {/* Process Timeline Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {surveyProcessSteps.map((step, index) => (
-              <div
-                key={step.number}
-                className="relative p-6 rounded-sm border border-[#E7E0D4] bg-[#FAF8F3] hover:border-[#B08A52] transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-mono text-[#B08A52] font-light">
-                      {step.number}
-                    </span>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#77736C]">
-                      {step.step}
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-normal text-[#171614] mb-2 group-hover:text-[#B08A52] transition-colors">
-                    {step.title}
-                  </h3>
-
-                  <div className="inline-block text-[11px] font-mono text-[#B08A52] uppercase tracking-wider mb-3">
-                    {step.action}
-                  </div>
-
-                  <p className="text-xs text-[#77736C] font-light leading-relaxed mb-4">
-                    {step.description}
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-[#E7E0D4]/70 mt-auto">
-                  <span className="block text-[10px] font-mono uppercase tracking-wider text-[#77736C] mb-1">
-                    Key Focus
-                  </span>
-                  <span className="text-xs font-medium text-[#171614]">{step.focus}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Practical Disclaimer Note */}
-          <div className="mt-12 p-5 rounded-sm bg-[#FAF8F3] border border-[#E7E0D4] flex items-start gap-4">
-            <AlertCircle className="w-5 h-5 text-[#B08A52] shrink-0 mt-0.5" />
-            <p className="text-xs text-[#77736C] font-light leading-relaxed">
-              <strong className="font-medium text-[#171614]">Coordination Note:</strong> Specific
-              filing requirements, statutory reviews, and submission documentation vary depending on
-              local municipal authority rules, zoning parameters, and property jurisdiction in
-              Nagercoil. SMS Construction assists with drawing setup, documentation coordination, and
-              consultant alignment suited to your specific project needs.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 5: WHAT CLIENTS SHOULD PREPARE (AEO-FOCUSED) */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FAF8F3]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-              CONSULTATION CHECKLIST
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight mb-4">
-              What Should You Have Before Starting?
-            </h2>
-            <p className="text-base text-[#77736C] font-light leading-relaxed">
-              Gathering basic site details before our initial discussion helps us provide more
-              practical, actionable guidance. Exact requirements naturally depend on whether your
-              project is a new villa, a renovation, or an exploratory plot review.
-            </p>
-          </div>
-
-          {/* Checklist 2-Column Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {clientPreparationItems.map((item) => (
-              <div
-                key={item.number}
-                className="bg-[#FFFFFF] p-6 rounded-sm border border-[#E7E0D4] hover:shadow-sm transition-shadow flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono text-[#B08A52] uppercase tracking-widest">
-                      Item {item.number}
-                    </span>
-                    <CheckSquare className="w-4 h-4 text-[#77736C]/40" />
-                  </div>
-
-                  <h3 className="text-lg font-medium text-[#171614] mb-2">{item.title}</h3>
-                  <p className="text-xs text-[#77736C] font-light leading-relaxed mb-4">
-                    {item.description}
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-[#E7E0D4]/70 bg-[#FAF8F3] -mx-6 -mb-6 p-4 rounded-b-sm">
-                  <span className="block text-[10px] font-mono uppercase tracking-wider text-[#B08A52] mb-0.5">
-                    Practical Tip
-                  </span>
-                  <p className="text-xs text-[#171614]/80 font-light">{item.tip}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Helpful callout banner */}
-          <div className="mt-10 p-6 rounded-sm bg-[#FFFFFF] border border-[#E7E0D4] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <h4 className="text-sm font-medium text-[#171614] mb-1">
-                Don&apos;t have all of these details right now?
-              </h4>
-              <p className="text-xs text-[#77736C] font-light">
-                That is completely fine. We regularly help homeowners gather base plot measurements
-                and clarify wishlists during our initial studio consultation.
-              </p>
-            </div>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-[#B08A52] hover:text-[#171614] transition-colors shrink-0"
-            >
-              <span>Schedule a Meeting</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 6: CONNECTED SERVICES (CROSS-SERVICE ARCHITECTURE) */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-              END-TO-END CONTINUITY
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight mb-4">
-              A Better Start Connects the Whole Project.
-            </h2>
-            <p className="text-base text-[#77736C] font-light leading-relaxed">
-              Survey and pre-construction preparation do not exist in isolation. Resolving site
-              conditions and document readiness early establishes the technical foundation for
-              architectural design, civil engineering, interior joinery, and custom fabrication.
-            </p>
-          </div>
-
-          {/* Line-based visual process chain */}
-          <div className="relative">
-            {/* Connecting horizontal line for desktop */}
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-[1px] bg-[#E7E0D4] -translate-y-6 z-0" />
-
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
-              {/* Step 1: Active Page */}
-              <div className="bg-[#171614] text-[#FAF8F3] p-6 rounded-sm border border-[#171614] shadow-md flex flex-col justify-between">
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#B08A52] block mb-2">
-                    Step 01 / Active
-                  </span>
-                  <h3 className="text-lg font-light text-[#FAF8F3] mb-2">Survey &amp; Requirements</h3>
-                  <p className="text-xs text-[#FAF8F3]/70 font-light leading-relaxed mb-4">
-                    Site dimensions, road access, and project scope clarified.
-                  </p>
-                </div>
-                <span className="text-[11px] font-mono text-[#B08A52] uppercase tracking-wider">
-                  Current Stage
-                </span>
-              </div>
-
-              {/* Step 2: Design & Planning */}
-              <Link
-                href="/design-planning"
-                className="bg-[#FAF8F3] p-6 rounded-sm border border-[#E7E0D4] hover:border-[#B08A52] hover:bg-[#FFFFFF] transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#77736C] block mb-2">
-                    Step 02 &rarr;
-                  </span>
-                  <h3 className="text-lg font-light text-[#171614] group-hover:text-[#B08A52] transition-colors mb-2">
-                    Design &amp; Planning
-                  </h3>
-                  <p className="text-xs text-[#77736C] font-light leading-relaxed mb-4">
-                    Translating site data into 2D layouts and 3D architectural schematics.
-                  </p>
-                </div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[#B08A52] uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                  <span>Explore Planning</span>
-                  <ArrowRight className="w-3 h-3" />
-                </div>
-              </Link>
-
-              {/* Step 3: Construction */}
-              <Link
-                href="/construction"
-                className="bg-[#FAF8F3] p-6 rounded-sm border border-[#E7E0D4] hover:border-[#B08A52] hover:bg-[#FFFFFF] transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#77736C] block mb-2">
-                    Step 03 &rarr;
-                  </span>
-                  <h3 className="text-lg font-light text-[#171614] group-hover:text-[#B08A52] transition-colors mb-2">
-                    Construction
-                  </h3>
-                  <p className="text-xs text-[#77736C] font-light leading-relaxed mb-4">
-                    Civil execution, RCC structural frame, masonry, and site trade supervision.
-                  </p>
-                </div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[#B08A52] uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                  <span>Explore Build</span>
-                  <ArrowRight className="w-3 h-3" />
-                </div>
-              </Link>
-
-              {/* Step 4: Interior Design */}
-              <Link
-                href="/interior-design"
-                className="bg-[#FAF8F3] p-6 rounded-sm border border-[#E7E0D4] hover:border-[#B08A52] hover:bg-[#FFFFFF] transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#77736C] block mb-2">
-                    Step 04 &rarr;
-                  </span>
-                  <h3 className="text-lg font-light text-[#171614] group-hover:text-[#B08A52] transition-colors mb-2">
-                    Interior Design
-                  </h3>
-                  <p className="text-xs text-[#77736C] font-light leading-relaxed mb-4">
-                    Joinery, lighting, false ceiling planes, and bespoke room treatments.
-                  </p>
-                </div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[#B08A52] uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                  <span>Explore Interiors</span>
-                  <ArrowRight className="w-3 h-3" />
-                </div>
-              </Link>
-
-              {/* Step 5: Fabrication Works */}
-              <Link
-                href="/fabrication-works"
-                className="bg-[#FAF8F3] p-6 rounded-sm border border-[#E7E0D4] hover:border-[#B08A52] hover:bg-[#FFFFFF] transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#77736C] block mb-2">
-                    Step 05 &rarr;
-                  </span>
-                  <h3 className="text-lg font-light text-[#171614] group-hover:text-[#B08A52] transition-colors mb-2">
-                    Fabrication Works
-                  </h3>
-                  <p className="text-xs text-[#77736C] font-light leading-relaxed mb-4">
-                    Architectural metalwork, gates, railings, and custom structural elements.
-                  </p>
-                </div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[#B08A52] uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                  <span>Explore Metalwork</span>
-                  <ArrowRight className="w-3 h-3" />
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 7: REAL PROJECT CONTEXT */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FAF8F3]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Visual Column */}
-            <div className="lg:col-span-6">
-              <div className="relative aspect-[4/3] rounded-sm overflow-hidden border border-[#E7E0D4] bg-[#FFFFFF] shadow-sm group">
-                <Image
-                  src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-entrance.webp"
-                  alt="Site entrance and setback alignment at Nagarajan Residence in Theroor, Nagercoil"
-                  width={800}
-                  height={600}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#171614]/60 via-transparent to-transparent opacity-80" />
-                
-                <div className="absolute bottom-5 left-5 right-5 text-[#FAF8F3]">
-                  <p className="text-xs font-mono uppercase tracking-widest text-[#B08A52] mb-1">
-                    Featured Project Case Study
-                  </p>
-                  <p className="text-sm font-light text-[#FAF8F3]">
-                    Nagarajan Residence &mdash; Theroor, Nagercoil
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Narrative Column */}
-            <div className="lg:col-span-6">
-              <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-                PROJECT CONTEXT
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight leading-tight mb-6">
-                Planning Starts With the Real Site
-              </h2>
-              <p className="text-base sm:text-lg text-[#77736C] font-light leading-relaxed mb-6">
-                Before the foundation was excavated at the Nagarajan Residence in Theroor, our team
-                conducted an on-ground site review to evaluate access road approach angles, property
-                boundary lines, and daylight exposure patterns.
-              </p>
-              <p className="text-sm sm:text-base text-[#77736C] font-light leading-relaxed mb-8">
-                Evaluating physical site parameters prior to drafting the architectural layout
-                ensured the entrance foyer, perimeter setbacks, and vehicle parking were coordinated
-                effortlessly with the site&apos;s real-world conditions.
+              {/* Supporting Copy */}
+              <p className="text-[14.5px] sm:text-[15.5px] lg:text-[16.5px] leading-[1.65] sm:leading-[1.7] text-white/90 max-w-2xl mb-7 sm:mb-8 lg:mb-9 font-sans">
+                Accurate site understanding starts with the right measurements. SMS Construction
+                provides survey and project-preparation services that help establish a clearer
+                foundation for planning and construction.
               </p>
 
-              {/* Verified Project Attributes */}
-              <div className="grid grid-cols-2 gap-4 pt-6 border-t border-[#E7E0D4] mb-8">
-                <div>
-                  <span className="block text-[11px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Location
-                  </span>
-                  <p className="text-sm font-medium text-[#171614]">Theroor, Nagercoil</p>
-                </div>
-                <div>
-                  <span className="block text-[11px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Project Typology
-                  </span>
-                  <p className="text-sm font-medium text-[#171614]">Residential Architecture &amp; Interior</p>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-4">
+              {/* Primary & Secondary CTAs */}
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-3.5 lg:gap-4">
                 <Link
-                  href="/projects/nagarajan-residence-nagercoil-theroor"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#171614] text-[#FAF8F3] text-xs uppercase tracking-widest font-medium rounded-sm hover:bg-[#B08A52] transition-colors group"
+                  href="/contact"
+                  className="w-full sm:w-auto group relative overflow-hidden inline-flex items-center justify-center gap-2.5 min-h-[48px] sm:min-h-[50px] px-7 py-3 rounded-full bg-gradient-to-r from-[#e3c381] to-[#C89A47] text-[#171714] font-sans font-semibold text-[13.5px] sm:text-[14.5px] hover:shadow-lg hover:shadow-[#C89A47]/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center shadow-md"
                 >
-                  <span>View Project Case Study</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <span>Discuss Your Site</span>
+                  <ArrowRight size={15} />
                 </Link>
-
-                <Link
-                  href="/projects"
-                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-medium text-[#171614] hover:text-[#B08A52] transition-colors px-4 py-3.5"
-                >
-                  <span>All Projects</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 8: WHO THIS SERVICE IS FOR */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-              TARGET SCENARIOS
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight mb-4">
-              When This Support Can Help
-            </h2>
-            <p className="text-base text-[#77736C] font-light leading-relaxed">
-              Practical scenarios where early site assessment and structured pre-construction
-              preparation provide the greatest value for property owners.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {surveyAudienceItems.map((item) => (
-              <div
-                key={item.number}
-                className="p-6 rounded-sm border border-[#E7E0D4] bg-[#FAF8F3] hover:border-[#B08A52] transition-colors flex flex-col justify-between"
-              >
-                <div>
-                  <span className="text-xs font-mono text-[#B08A52] uppercase tracking-widest block mb-2">
-                    Scenario {item.number}
-                  </span>
-                  <h3 className="text-lg font-light text-[#171614] mb-3">{item.title}</h3>
-                  <p className="text-xs text-[#77736C] font-light leading-relaxed mb-6">
-                    {item.description}
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-[#E7E0D4]/70">
-                  <span className="block text-[10px] font-mono uppercase tracking-wider text-[#77736C] mb-1">
-                    Key Value
-                  </span>
-                  <p className="text-xs font-medium text-[#171614]">{item.benefit}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 9: LOCAL SEO (BASED IN NAGERCOIL) */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FAF8F3]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7">
-              <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-                BASED IN NAGERCOIL
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight leading-tight mb-6">
-                Survey &amp; Approvals Support in Nagercoil
-              </h2>
-              <div className="space-y-4 text-base text-[#77736C] font-light leading-relaxed max-w-2xl mb-8">
-                <p>
-                  SMS Construction is based in Nagercoil, Tamil Nadu, providing project planning and
-                  construction-related support within its actual service area across Kanyakumari district.
-                </p>
-                <p>
-                  Having our studio situated in central Nagercoil allows our engineers and planners to
-                  conveniently inspect physical plot boundaries, evaluate approach roads, and discuss
-                  site-specific requirements directly with clients before structural commitments are made.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-4 bg-[#FFFFFF] rounded-sm border border-[#E7E0D4]">
-                  <span className="block text-[10px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Studio Location
-                  </span>
-                  <p className="text-xs text-[#171614] font-medium leading-relaxed">
-                    25/1 Muthamizh Street, Near Court Road, Nagercoil, Tamil Nadu 629001
-                  </p>
-                </div>
-                <div className="p-4 bg-[#FFFFFF] rounded-sm border border-[#E7E0D4]">
-                  <span className="block text-[10px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Direct Contact
-                  </span>
+                <div className="flex items-center gap-2.5 w-full sm:w-auto">
                   <a
                     href={`tel:${phoneNumber}`}
-                    className="text-xs text-[#171614] font-medium hover:text-[#B08A52] transition-colors block"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 min-h-[48px] sm:min-h-[50px] px-4 sm:px-5 py-2.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-white font-sans font-medium text-[12.5px] sm:text-[13.5px] hover:bg-white hover:text-[#171714] transition-all duration-300"
                   >
-                    {formattedPhone}
+                    <Phone size={13} className="text-[#e3c381]" />
+                    <span>Call {formattedPhone}</span>
                   </a>
+
                   <a
-                    href="mailto:smsconstructionngl@gmail.com"
-                    className="text-xs text-[#77736C] hover:text-[#B08A52] transition-colors block mt-0.5"
+                    href={`https://wa.me/${whatsappNumber}?text=Hello%20SMS%20Construction%2C%20I%20would%20like%20to%20discuss%20a%20site%20survey%20for%20my%20property%20in%20Nagercoil.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 min-h-[48px] sm:min-h-[50px] px-4 sm:px-5 py-2.5 rounded-full border border-[#25D366] bg-[#25D366]/10 backdrop-blur-sm text-[#25D366] hover:bg-[#25D366] hover:text-white font-sans font-medium text-[12.5px] sm:text-[13.5px] transition-all duration-300"
                   >
-                    smsconstructionngl@gmail.com
+                    <MessageSquare size={14} />
+                    <span>WhatsApp</span>
                   </a>
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-[#FFFFFF] p-8 rounded-sm border border-[#E7E0D4] shadow-sm">
-              <span className="text-xs font-mono tracking-widest uppercase text-[#B08A52] block mb-2">
-                In-Person Consultation
+            {/* Architectural Survey Spec Footnote */}
+            <div className="w-full pt-3.5 sm:pt-4 pb-1 border-t border-white/15 grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-wrap sm:items-center sm:justify-start sm:gap-x-5 lg:gap-x-6 sm:gap-y-2 text-[11.5px] sm:text-[12px] lg:text-[12.5px] mt-auto">
+              <span className="flex items-center gap-1.5 font-medium text-white">
+                <Crosshair size={13} className="text-[#e3c381] shrink-0" />
+                <span>Total Station &amp; Digital Precision</span>
               </span>
-              <h3 className="text-xl font-light text-[#171614] mb-4">
-                Discuss Your Plot With Our Team
-              </h3>
-              <p className="text-xs text-[#77736C] font-light leading-relaxed mb-6">
-                Bring your plot sketch, title documents, or tentative space wishlist to our Nagercoil
-                studio for an open, practical review of what is possible on your site.
-              </p>
+              <span className="hidden sm:inline-block text-white/30">•</span>
+              <span className="flex items-center gap-1.5 text-white/80">
+                <Navigation size={13} className="text-[#e3c381] shrink-0" />
+                <span>Boundary &amp; Contour Mapping</span>
+              </span>
+              <span className="hidden sm:inline-block text-white/30">•</span>
+              <span className="flex items-center gap-1.5 text-white/80">
+                <Ruler size={13} className="text-[#e3c381] shrink-0" />
+                <span>On-Site Building Marking</span>
+              </span>
+              <span className="hidden sm:inline-block text-white/30">•</span>
+              <span className="flex items-center gap-1.5 text-white/80">
+                <MapPin size={13} className="text-[#e3c381] shrink-0" />
+                <span>Serving All Kanyakumari District</span>
+              </span>
+            </div>
+          </div>
+        </section>
 
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-2 text-xs text-[#171614]">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B08A52]" />
-                  <span>On-ground physical plot assessments</span>
+        {/* ===================================================================
+            SECTION 2: INTRODUCTION
+            Editorial Two-Column Clarity Narrative
+        =================================================================== */}
+        <section
+          aria-labelledby="intro-heading"
+          className="py-12 sm:py-16 lg:py-20 bg-white border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+              {/* Left Column: Eyebrow + H2 */}
+              <div className="lg:col-span-5">
+                <div className="inline-flex items-center gap-2 text-[11.5px] sm:text-[12px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                  <span>START WITH THE SITE</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-[#171614]">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B08A52]" />
-                  <span>Clear boundary &amp; setback feasibility</span>
+                <h2
+                  id="intro-heading"
+                  className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.15] tracking-tight"
+                >
+                  Measure first. Plan with clarity<span className="text-[#B08A52]">.</span>
+                </h2>
+              </div>
+
+              {/* Right Column: 2 Concise Paragraphs */}
+              <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-[15.5px] sm:text-[16.5px] leading-relaxed text-[#68645D] font-sans pt-1">
+                <p>
+                  Every site in Nagercoil and across Kanyakumari District has its own natural grade,
+                  access limits, and boundary characteristics. Physical measurement helps uncover
+                  real spatial dimensions, orientation vectors, and adjacent property interfaces
+                  before committing to architectural sketches or engineering plans.
+                </p>
+                <p>
+                  Different survey methods serve specific project needs—from quick linear checks to
+                  rigorous electro-optical total station coordinates. Accurate site documentation
+                  translates directly into realistic layout preparation, reducing boundary doubts
+                  and providing a dependable baseline for subsequent structural and construction
+                  decisions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===================================================================
+            SECTION 3 & 4: SURVEY SERVICES (INTERACTIVE EXPANDING HOVER CARDS)
+            Cards with expanding circle hover effect & corner arrow
+        =================================================================== */}
+        <section
+          id="survey-services"
+          aria-labelledby="survey-services-heading"
+          className="py-16 sm:py-24 lg:py-28 bg-[#FAF8F3] border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            {/* Section Header */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+              <div className="max-w-2xl">
+                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                  SURVEY SERVICES
+                </span>
+                <h2
+                  id="survey-services-heading"
+                  className="text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.14] tracking-tight"
+                >
+                  The Right Survey for the Site<span className="text-[#B08A52]">.</span>
+                </h2>
+              </div>
+              <p className="text-[15px] sm:text-[16px] text-[#68645D] max-w-md font-sans leading-relaxed">
+                Six dedicated survey disciplines structured for residential, commercial, and
+                irregular land parcels across Nagercoil and Kanyakumari District.
+              </p>
+            </div>
+
+            {/* 6 Interactive Cards Grid (2 cols on tablet, 3 cols on desktop) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8 auto-rows-fr">
+              {surveyServices.map((service) => (
+                <article
+                  key={service.id}
+                  id={service.id}
+                  className="h-full relative overflow-hidden bg-white rounded-[20px] p-5 sm:p-6 md:p-8 border border-[#E7E0D4] hover:shadow-[0_24px_48px_rgba(23,23,20,0.08)] hover:-translate-y-2 transition-all duration-500 group flex flex-col items-start text-left z-0 scroll-mt-28"
+                >
+                  {/* Expanding Background Circle */}
+                  <div className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-[#C89A47] -z-10 transform scale-100 origin-center transition-transform duration-[600ms] ease-out group-hover:scale-[45]" />
+
+                  {/* Top Right Corner Arrow */}
+                  <div className="absolute top-0 right-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-[#C89A47] text-white rounded-bl-[20px] sm:rounded-bl-[24px] overflow-hidden pointer-events-none">
+                    <span className="material-symbols-outlined text-[14px] sm:text-[16px] -mt-1 -mr-1 font-bold">
+                      arrow_forward
+                    </span>
+                  </div>
+
+                  {/* Header Row: Icon + Title */}
+                  <div className="relative z-10 flex items-center gap-2 sm:gap-4 mb-3 sm:mb-4 pr-4">
+                    <div className="shrink-0 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#F8F4EE] flex items-center justify-center group-hover:bg-white/20 transition-colors duration-500">
+                      <span className="material-symbols-outlined text-[#C89A47] group-hover:text-white transition-colors duration-500 text-[16px] sm:text-[24px]">
+                        {service.icon}
+                      </span>
+                    </div>
+                    <h3 className="font-sans font-semibold text-[14px] sm:text-[18px] md:text-[20px] text-[#171714] group-hover:text-white transition-colors duration-300 leading-tight">
+                      {service.title}
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <p className="relative z-10 font-sans text-[11px] sm:text-[14px] text-[#68645D] leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                    {service.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===================================================================
+            SECTION 5: LAYOUT PREPARATION
+            Distinct Architectural Line UI: Measurements to Usable Layout
+        =================================================================== */}
+        <section
+          id="layout-preparation"
+          aria-labelledby="layout-prep-heading"
+          className="py-16 sm:py-20 lg:py-24 bg-white border-b border-[#E7E0D4] scroll-mt-28"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-stretch">
+              {/* Left Column: Eyebrow, H2, Narrative & Feature Rows */}
+              <div className="lg:col-span-7 flex flex-col justify-between">
+                <div>
+                  <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                   SITE &amp; LAYOUT PREPARATION
+                  </span>
+                  <h2
+                    id="layout-prep-heading"
+                    className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
+                  >
+                    From measurements to a usable layout<span className="text-[#B08A52]">.</span>
+                  </h2>
+                  <p className="text-[15.5px] sm:text-[16.5px] leading-relaxed text-[#171714] font-sans font-medium mb-3">
+                    Site measurements and project requirements can be translated into a clearer layout
+                    direction for the next stages of planning and execution.
+                  </p>
+                  <p className="text-[14.5px] sm:text-[15px] leading-relaxed text-[#68645D] mb-6 font-sans">
+                    Our layout preparation service bridges field survey points with architectural CAD
+                    drafting, accounting for access road widths, compound wall alignments, and planned
+                    structural zones so that architects and engineers work from verified ground realities.
+                  </p>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-[#171614]">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B08A52]" />
-                  <span>Preparation for architectural drawings</span>
+
+                {/* Architectural Feature Rows */}
+                <div className="space-y-3 pt-1">
+                  {[
+                    {
+                      title: "Dimensioned Boundary Vectors",
+                      desc: "Clear physical boundary CAD lines with statutory setback corridors.",
+                      icon: "square_foot",
+                    },
+                    {
+                      title: "Orientation & Solar Corridors",
+                      desc: "Markers aligned to true north, prevailing wind, and solar movement.",
+                      icon: "explore",
+                    },
+                    {
+                      title: "CAD & Structural Readiness",
+                      desc: "Seamless handoff into 2D architectural drafting and 3D elevations.",
+                      icon: "design_services",
+                    },
+                  ].map((feat) => (
+                    <div
+                      key={feat.title}
+                      className="p-3.5 sm:p-4 rounded-xl bg-[#FAF8F3] border border-[#E7E0D4] flex items-center gap-3.5 hover:border-[#B08A52]/40 transition-colors"
+                    >
+                      <div className="w-9 h-9 rounded-lg bg-white border border-[#E7E0D4] flex items-center justify-center shrink-0 text-[#B08A52] shadow-2xs">
+                        <span className="material-symbols-outlined text-[19px]">{feat.icon}</span>
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-sans font-bold text-[14px] text-[#171714] leading-snug">
+                          {feat.title}
+                        </h4>
+                        <p className="font-sans text-[12.5px] sm:text-[13px] text-[#68645D] leading-relaxed mt-0.5">
+                          {feat.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <Link
-                href="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#171614] text-[#FAF8F3] text-xs uppercase tracking-widest font-medium rounded-sm hover:bg-[#B08A52] transition-colors"
-              >
-                <span>Request a Consultation</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              {/* Right Column: Premium Deliverable Card */}
+              <div className="lg:col-span-5 flex flex-col mt-6 lg:mt-0">
+                <div className="h-full p-7 sm:p-9 lg:p-10 rounded-[24px] bg-[#171714] text-white border border-[#2A2925] shadow-sm flex flex-col justify-between relative overflow-hidden group">
+                  {/* Subtle top-right ambient gold glow */}
+                  <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#C89A47]/10 rounded-full blur-3xl pointer-events-none" />
+
+                  <div>
+                    {/* Header Badge & Icon */}
+                    <div className="flex items-center justify-between gap-3 mb-5">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] font-mono font-medium text-[#e3c381] uppercase tracking-wider">
+                        DELIVERABLE 07
+                      </span>
+                      <span className="material-symbols-outlined text-white/40 text-[22px] group-hover:text-[#e3c381] transition-colors">
+                        architecture
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-[22px] sm:text-[25px] font-bold text-white mb-3">
+                      Dimensioned CAD Baseline
+                    </h3>
+                    <p className="text-[13.5px] sm:text-[14px] text-white/75 leading-relaxed mb-6 font-sans">
+                      A clean, layered vector drawing of your plot dimensions and physical boundaries,
+                      ready for the architect, structural engineer, and construction team.
+                    </p>
+
+                    {/* Specification Specs List */}
+                    <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 space-y-2.5 mb-6 text-[12.5px] sm:text-[13px] font-sans">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-white/60">Drawing Format:</span>
+                        <span className="text-white font-medium">DWG / DXF / Vector PDF</span>
+                      </div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-white/60">Boundary Model:</span>
+                        <span className="text-white font-medium">Dimensioned Cadastral Line</span>
+                      </div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-white/60">Coordination:</span>
+                        <span className="text-white font-medium">True North &amp; Setbacks</span>
+                      </div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-white/60">Readiness:</span>
+                        <span className="text-[#e3c381] font-medium">Arch &amp; Structural Ready</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-between w-full py-3.5 px-6 rounded-full bg-gradient-to-r from-[#e3c381] to-[#C89A47] text-[#171714] font-sans font-semibold text-[13.5px] hover:shadow-lg hover:shadow-[#C89A47]/20 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+                  >
+                    <span>Request Layout Preparation</span>
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SECTION 10: FAQ */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FFFFFF]">
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-16">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-              ANSWERS &amp; CLARITY
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-base text-[#77736C] font-light max-w-xl mx-auto">
-              Practical guidance regarding site assessments, drawing preparation, and project
-              coordination in Nagercoil.
-            </p>
-          </div>
+        {/* ===================================================================
+            SECTION 6: FMB (FIELD MEASUREMENT BOOK)
+            Educates with Careful, Accurate Framing (No Government Authority Claims)
+        =================================================================== */}
+        <section
+          id="fmb"
+          aria-labelledby="fmb-heading"
+          className="py-16 sm:py-24 bg-[#FAF8F3] border-b border-[#E7E0D4] scroll-mt-28"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+              <div className="lg:col-span-7">
+                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                  DOCUMENTATION
+                </span>
+                <h2
+                  id="fmb-heading"
+                  className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-5"
+                >
+                  FMB (Field Measurement Book)<span className="text-[#B08A52]">.</span>
+                </h2>
+                <p className="text-[16px] sm:text-[17px] leading-relaxed text-[#68645D] mb-5 font-sans">
+                  FMB refers to Field Measurement Book information used in land and site-related
+                  contexts. FMB-related information may be relevant when understanding land
+                  measurements and site documentation. Requirements and records can depend on the
+                  property and applicable authorities.
+                </p>
+                <p className="text-[15px] sm:text-[16px] leading-relaxed text-[#68645D] mb-6 font-sans">
+                  When planning a new residential or commercial construction, cross-referencing
+                  physical on-ground measurements with available registered document dimensions and
+                  FMB sketches helps identify discrepancies early before any foundation trench is dug.
+                </p>
 
-          <ServiceFaqAccordion items={surveyFaqs} />
-        </div>
-      </section>
+                {/* Important Advisory Callout Box */}
+                <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E7E0D4] flex items-start gap-3.5">
+                  <Info size={18} className="text-[#B08A52] shrink-0 mt-0.5" />
+                  <p className="text-[13.5px] sm:text-[14px] leading-relaxed text-[#68645D] font-sans">
+                    <strong className="text-[#171714] font-semibold">Please Note:</strong> SMS
+                    Construction provides dimensional measurement support and documentation review
+                    for project planning clarity. We do not act as an official government land-records
+                    authority or issue statutory FMB certificates.
+                  </p>
+                </div>
+              </div>
 
-      {/* SECTION 11: FINAL CONVERSION CTA */}
-      <section className="py-20 lg:py-28 bg-[#171614] text-[#FAF8F3] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-          <div className="max-w-3xl">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-4">
-              READY TO GET STARTED?
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-light text-[#FAF8F3] tracking-tight leading-tight mb-6">
-              Let&apos;s understand your project first.
-            </h2>
-            <p className="text-base sm:text-lg text-[#FAF8F3]/70 font-light leading-relaxed mb-10 max-w-2xl">
-              Tell us about your site, project requirements and what you are planning to build or
-              transform.
-            </p>
+              {/* FMB Support Checklist Card */}
+              <div className="lg:col-span-5">
+                <div className="p-7 sm:p-9 rounded-[24px] bg-white border border-[#E7E0D4] shadow-xs">
+                  <span className="text-[11.5px] font-mono font-semibold uppercase tracking-wider text-[#B08A52] block mb-2">
+                    08 / Documentation Coordination
+                  </span>
+                  <h3 className="text-[22px] font-bold text-[#171714] mb-4">
+                    Site Verification &amp; Cross-Checks
+                  </h3>
+                  <div className="space-y-3.5 text-[14px] text-[#68645D] font-sans mb-7">
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
+                      <span>Verifying on-site fence / wall lines against recorded dimensional figures</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
+                      <span>Identifying diagonal variations or corner angle shifts across the plot</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
+                      <span>Structuring clean dimensional summaries for your architectural designer</span>
+                    </div>
+                  </div>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#B08A52] text-[#FAF8F3] text-xs uppercase tracking-widest font-medium rounded-sm hover:bg-[#FFFFFF] hover:text-[#171614] transition-colors duration-300"
-              >
-                <span>Get a Free Quote</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-
-              <a
-                href={`tel:${phoneNumber}`}
-                className="inline-flex items-center gap-2 px-6 py-4 bg-transparent border border-[#FAF8F3]/20 text-[#FAF8F3] text-xs uppercase tracking-widest font-medium rounded-sm hover:border-[#FAF8F3] hover:bg-[#FAF8F3]/10 transition-colors"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#B08A52]" />
-                <span>Call {formattedPhone}</span>
-              </a>
-
-              <a
-                href={`https://wa.me/${whatsappNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-4 bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] text-xs uppercase tracking-widest font-medium rounded-sm hover:bg-[#25D366]/20 transition-colors"
-              >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>WhatsApp</span>
-              </a>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-full bg-[#171714] hover:bg-[#B08A52] text-white font-sans font-semibold text-[13.5px] transition-colors duration-200"
+                  >
+                    <span>Discuss Your Site Documentation</span>
+                    <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* DISCIPLINE HUB BAR (Cross-service architecture navigation) */}
-      <section className="py-8 bg-[#FAF8F3] border-t border-[#E7E0D4]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#77736C]">
-              Service Architecture:
-            </span>
-            <div className="flex items-center flex-wrap gap-4 sm:gap-6 text-xs uppercase tracking-wider font-medium">
-              <Link
-                href="/services"
-                className="text-[#77736C] hover:text-[#B08A52] transition-colors"
+        {/* ===================================================================
+            SECTION 7: HOW THE SERVICES CONNECT
+            Visual Progressive Flow from Site Measurement to Project Planning
+        =================================================================== */}
+        <section
+          aria-labelledby="flow-heading"
+          className="py-12 sm:py-16 lg:py-20 bg-white border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            {/* Centered Section Header */}
+            <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
+              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                INTEGRATED ECOSYSTEM
+              </span>
+              <h2
+                id="flow-heading"
+                className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
               >
-                Services Hub
-              </Link>
-              <span className="text-[#E7E0D4]">&bull;</span>
-              <Link
-                href="/interior-design"
-                className="text-[#77736C] hover:text-[#B08A52] transition-colors"
-              >
-                Interior Design
-              </Link>
-              <span className="text-[#E7E0D4]">&bull;</span>
-              <Link
-                href="/construction"
-                className="text-[#77736C] hover:text-[#B08A52] transition-colors"
-              >
-                Construction
-              </Link>
-              <span className="text-[#E7E0D4]">&bull;</span>
-              <Link
-                href="/design-planning"
-                className="text-[#77736C] hover:text-[#B08A52] transition-colors"
-              >
-                Design &amp; Planning
-              </Link>
-              <span className="text-[#E7E0D4]">&bull;</span>
-              <Link
-                href="/fabrication-works"
-                className="text-[#77736C] hover:text-[#B08A52] transition-colors"
-              >
-                Fabrication Works
-              </Link>
+                From site measurement to project planning<span className="text-[#B08A52]">.</span>
+              </h2>
+              <p className="text-[15.5px] sm:text-[16.5px] text-[#68645D] font-sans leading-relaxed max-w-2xl mx-auto">
+                Survey is never an isolated exercise. It feeds directly into spatial design,
+                statutory drawings, and turnkey civil construction.
+              </p>
+            </div>
+
+            {/* Progressive Horizontal Step Flow (Clean Editorial Line Design) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 lg:gap-x-8 gap-y-10 sm:gap-y-12">
+              {[
+                {
+                  step: "1",
+                  title: "Site Assessment",
+                  desc: "Understanding physical boundaries, access roads, and existing terrain.",
+                },
+                {
+                  step: "2",
+                  title: "Precision Survey",
+                  desc: "Capturing ground coordinates via tape, digital, or total station.",
+                },
+                {
+                  step: "3",
+                  title: "Data Verification",
+                  desc: "Cross-referencing recorded deeds, diagonal lengths, and ground lines.",
+                },
+                {
+                  step: "4",
+                  title: "CAD Layout",
+                  desc: "Synthesizing vector boundary plots with statutory setback corridors.",
+                },
+                {
+                  step: "5",
+                  title: "Design & Planning",
+                  desc: "Architectural floor plans, structural layouts, and approval drawings.",
+                },
+                {
+                  step: "6",
+                  title: "Civil Construction",
+                  desc: "On-site foundation marking, column setting, and turnkey build.",
+                },
+              ].map((item, idx, arr) => (
+                <div key={item.step} className="group flex flex-col">
+                  {/* Step Number + Connecting Line */}
+                  <div className="flex items-center gap-3.5 mb-4">
+                    <span className="font-bold text-[30px] sm:text-[36px] lg:text-[40px] text-[#171714] leading-none shrink-0 group-hover:text-[#B08A52] transition-colors duration-300">
+                      {item.step}
+                    </span>
+                    {idx !== arr.length - 1 ? (
+                      <div className="flex-1 h-[1.5px] bg-[#E7E0D4] group-hover:bg-[#B08A52]/60 transition-colors duration-300" />
+                    ) : (
+                      <div className="hidden lg:block flex-1 h-[1.5px] bg-transparent" />
+                    )}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-sans font-bold text-[15px] sm:text-[16px] text-[#171714] mb-1.5 tracking-tight group-hover:text-[#B08A52] transition-colors duration-200">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="font-sans text-[13px] sm:text-[13.5px] text-[#68645D] leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        {/* ===================================================================
+            SECTION 10: REAL PROJECT CONTEXT
+            Nagarajan Residence, Nagercoil (Theroor)
+        =================================================================== */}
+        <section
+          aria-labelledby="case-study-heading"
+          className="py-16 sm:py-24 lg:py-28 bg-[#FAF8F3] border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+              {/* Project Real Photography */}
+              <div className="lg:col-span-6 relative rounded-[28px] overflow-hidden border border-[#E7E0D4] aspect-[4/3] bg-white shadow-xs">
+                <Image
+                  src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-entrance.webp"
+                  alt="Nagarajan Residence in Theroor, Nagercoil — Site boundary and orientation executed by SMS Construction"
+                  fill
+                  loading="lazy"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#171714]/80 backdrop-blur-md text-white text-[12.5px] font-sans">
+                  <span className="font-semibold block text-[#e3c381]">Nagarajan Residence</span>
+                  <span className="text-white/80">Theroor, Nagercoil • Site Verification &amp; Turnkey Execution</span>
+                </div>
+              </div>
+
+              {/* Project Editorial Context */}
+              <div className="lg:col-span-6">
+                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                  FROM SITE TO SPACE
+                </span>
+                <h2
+                  id="case-study-heading"
+                  className="text-[28px] sm:text-[38px] lg:text-[42px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
+                >
+                  Where Site Understanding Becomes the Starting Point<span className="text-[#B08A52]">.</span>
+                </h2>
+                <p className="text-[15.5px] sm:text-[16.5px] leading-relaxed text-[#68645D] mb-5 font-sans">
+                  At the Nagarajan Residence project in Theroor (Nagercoil), accurate site
+                  understanding formed the very first milestone. Physical verification of plot
+                  boundaries, solar angles, and road access helped establish compound setbacks and
+                  footing alignments prior to foundation excavation.
+                </p>
+                <p className="text-[15px] leading-relaxed text-[#68645D] mb-7 font-sans">
+                  By confirming boundary dimensions and ground levels on-site early, the architectural
+                  drawings translated seamlessly into structural framing without layout conflicts.
+                </p>
+
+                <div className="flex flex-wrap items-center gap-4">
+                  <Link
+                    href="/projects/nagarajan-residence-nagercoil-theroor"
+                    className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#171714] hover:bg-[#B08A52] text-white font-sans font-semibold text-[13.5px] transition-colors duration-200"
+                  >
+                    <span>View Nagarajan Residence Project</span>
+                    <ArrowRight size={14} />
+                  </Link>
+
+                  <Link
+                    href="/projects"
+                    className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full border border-[#E7E0D4] bg-white hover:bg-[#FAF8F3] text-[#171714] font-sans font-medium text-[13.5px] transition-colors"
+                  >
+                    <span>Browse All Projects</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===================================================================
+            SECTION 11: LOCAL SEO (GEO / LOCAL SERVICE AREA)
+            Using the unified LocalServiceArea component with common geoLocalities
+        =================================================================== */}
+        <LocalServiceArea
+          badge="BASED IN NAGERCOIL"
+          title={
+            <>
+              Survey Services in Nagercoil<span className="text-[#B08A52]">.</span>
+            </>
+          }
+          titleClassName="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
+          description={[
+            "SMS Construction is based in Nagercoil, Tamil Nadu, providing survey and project-preparation services within its actual service area.",
+            "Our permanent engineering presence in Nagercoil enables prompt on-site mobilization across Kanyakumari District to evaluate physical boundaries, access roads, and elevation contours firsthand.",
+          ]}
+          deskTitle="Survey & Engineering Desk"
+          companyName="SMS Construction"
+          phoneNumber={phoneNumber}
+          formattedPhone={formattedPhone}
+          email="smsconstructionngl@gmail.com"
+          emailLabel="Inquiries:"
+          hours="Monday – Saturday"
+          className="py-16 sm:py-24 lg:py-28 bg-white border-b border-[#E7E0D4]"
+          cardBgClassName="bg-[#FAF8F3]"
+          pillBgClassName="bg-[#FAF8F3]"
+        />
+
+        {/* ===================================================================
+            SECTION 12: FAQ (AEO & DIRECT ANSWER KNOWLEDGE BASE)
+            Using unified ModernFaq component
+        =================================================================== */}
+        <ModernFaq
+          sectionId="faq-heading"
+          title="Frequently Asked Questions"
+          titleAccent="."
+          subtitle="Everything you need to know about site survey & planning"
+          items={surveyFaqs}
+          className="py-16 md:py-24 bg-[#FAFAFA] border-b border-[#E7E0D4] relative"
+        />
+
+        {/* ===================================================================
+            SECTION 13: FINAL LEAD CTA
+            Matching site architecture with unified ConversionCTA component
+        =================================================================== */}
+        <ConversionCTA
+          theme="light"
+          badge="START WITH THE SITE"
+          title="Need clarity on your site before you build?"
+          description="Tell us about your site, project requirements, and current stage. Our team will review your location and discuss the appropriate survey and layout preparation support."
+          primaryBtnText="Discuss Your Site"
+          primaryBtnHref="/contact"
+          phoneNumber={phoneNumber}
+          formattedPhone={formattedPhone}
+          whatsappNumber={whatsappNumber}
+          whatsappMessage="Hello SMS Construction, I would like to consult regarding a site survey in Nagercoil."
+          subtext="SMS Construction • Land Survey & Architectural Planning • Nagercoil, Tamil Nadu"
+        />
+      </main>
+    </>
   );
 }

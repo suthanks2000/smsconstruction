@@ -3,28 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  ArrowUpRight,
   Compass,
   Phone,
   MessageSquare,
   CheckCircle2,
-  MapPin,
-  Film,
   Building2,
-  Ruler,
   Layers,
-  Sparkles,
   Eye,
   FileCheck2,
 } from "lucide-react";
 import {
   designServices,
   planningServices,
-  planningDeliverables,
-  planningUseCases,
   designPlanningFaqs,
 } from "@/data/designPlanning";
 import ModernFaq from "@/components/ModernFaq";
+import LocalServiceArea from "@/components/LocalServiceArea";
 import ConversionCTA from "@/components/ConversionCTA";
 
 export const metadata: Metadata = {
@@ -42,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "SMS Construction",
     images: [
       {
-        url: "/images/services/planning.jpg",
+        url: "/images/services/planning.webp",
         width: 1200,
         height: 630,
         alt: "Architectural Design and Planning Services in Nagercoil by SMS Construction",
@@ -56,7 +50,7 @@ export const metadata: Metadata = {
     title: "Design & Planning Services in Nagercoil | SMS Construction",
     description:
       "Explore design and planning services from SMS Construction in Nagercoil, including 3D elevation, interior design, walkthrough visualization, structural design, drawings and building plans.",
-    images: ["/images/services/planning.jpg"],
+    images: ["/images/services/planning.webp"],
   },
 };
 
@@ -217,10 +211,10 @@ export default function DesignPlanningPage() {
           {/* Full-Bleed Architectural Planning Background Image */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <Image
-              src="/images/services/planning.jpg"
+              src="/images/services/planning.webp"
               alt="Architectural design drawings and space planning in Nagercoil by SMS Construction"
               fill
-              priority
+              loading="lazy"
               sizes="100vw"
               className="object-cover object-right lg:object-[center_35%]"
             />
@@ -368,11 +362,11 @@ export default function DesignPlanningPage() {
                   Bring the idea into view<span className="text-[#B08A52]">.</span>
                 </h2>
                 <p className="text-[16px] sm:text-[17px] text-[#68645D] leading-relaxed font-sans mb-8">
-                  Design services help you visualize and shape the project before execution. Four dedicated design disciplines translate functional needs into coherent architectural reality.
+                  Design services help you visualize and shape the project before execution. Dedicated design and planning disciplines translate functional needs into coherent architectural reality.
                 </p>
               </div>
 
-              {/* Right Column: 4 Clean Minimal Cards (No Images, No Pills, Minimal Editorial) */}
+              {/* Right Column: 6 Clean Minimal Cards (No Images, No Pills, Minimal Editorial) */}
               <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
                 {/* 01: 3D Elevation */}
                 <article
@@ -386,7 +380,7 @@ export default function DesignPlanningPage() {
                     3D Elevation
                   </h3>
                   <p className="text-[13.5px] sm:text-[14.5px] text-[#68645D] leading-relaxed font-sans">
-                    Visualize the exterior form, surface finishes, window openings, and architectural character of a project before construction begins. Explore daylight angles and material textures with total clarity.
+                    Visualize exterior massing, surface finishes, window openings, and facade lighting with photorealistic clarity before construction begins.
                   </p>
                 </article>
 
@@ -402,7 +396,7 @@ export default function DesignPlanningPage() {
                     Interior Design
                   </h3>
                   <p className="text-[13.5px] sm:text-[14.5px] text-[#68645D] leading-relaxed font-sans">
-                    Shape interior living spaces around function, comfort, lighting, and aesthetic direction. We integrate modular joinery, false ceiling schematics, wardrobe depths, and ergonomic lighting into the shell early.
+                    Shape interior living spaces around function, comfort, lighting, modular joinery, and ceiling schematics before structural finishes begin.
                   </p>
                 </article>
 
@@ -418,7 +412,7 @@ export default function DesignPlanningPage() {
                     Walkthrough Videos
                   </h3>
                   <p className="text-[13.5px] sm:text-[14.5px] text-[#68645D] leading-relaxed font-sans">
-                    Experience the proposed space through walkthrough-style visual presentation. Understand spatial flow, room transitions, and ceiling heights before physical ground is broken.
+                    Experience proposed spaces through virtual walkthroughs to understand spatial flow, room transitions, and heights before ground is broken.
                   </p>
                 </article>
 
@@ -434,7 +428,39 @@ export default function DesignPlanningPage() {
                     Structural Designing
                   </h3>
                   <p className="text-[13.5px] sm:text-[14.5px] text-[#68645D] leading-relaxed font-sans">
-                    Support the structural direction of the project where applicable. We coordinate column placements, beam depths, and slab spans with architectural floor plans to ensure safety matches living space utility.
+                    Coordinate column placements, beam depths, and slab spans directly with architectural drawings to ensure structural safety and utility.
+                  </p>
+                </article>
+
+                {/* 05: Approval Drawings */}
+                <article
+                  id="approval-drawings"
+                  className="group p-6 sm:p-7 rounded-[22px] bg-white border border-[#E7E0D4] shadow-xs hover:shadow-md hover:border-[#B08A52]/50 hover:-translate-y-1 transition-all duration-300 scroll-mt-28 flex flex-col justify-start"
+                >
+                  <span className="text-[11px] sm:text-[11.5px] font-mono uppercase tracking-wider text-[#B08A52] font-semibold mb-2">
+                    Statutory Clearance
+                  </span>
+                  <h3 className="text-[20px] sm:text-[22px] font-bold text-[#171714] leading-snug mb-2.5 group-hover:text-[#B08A52] transition-colors duration-200">
+                    Approval Drawings
+                  </h3>
+                  <p className="text-[13.5px] sm:text-[14.5px] text-[#68645D] leading-relaxed font-sans">
+                    Drawings prepared systematically to support municipal, Panchayat, and DTCP documentation requirements before site excavation begins.
+                  </p>
+                </article>
+
+                {/* 06: Vastu Plan */}
+                <article
+                  id="vastu-plan"
+                  className="group p-6 sm:p-7 rounded-[22px] bg-white border border-[#E7E0D4] shadow-xs hover:shadow-md hover:border-[#B08A52]/50 hover:-translate-y-1 transition-all duration-300 scroll-mt-28 flex flex-col justify-start"
+                >
+                  <span className="text-[11px] sm:text-[11.5px] font-mono uppercase tracking-wider text-[#B08A52] font-semibold mb-2">
+                    Directional Harmonization
+                  </span>
+                  <h3 className="text-[20px] sm:text-[22px] font-bold text-[#171714] leading-snug mb-2.5 group-hover:text-[#B08A52] transition-colors duration-200">
+                    Vastu Plan
+                  </h3>
+                  <p className="text-[13.5px] sm:text-[14.5px] text-[#68645D] leading-relaxed font-sans">
+                    Aligning room zoning, entrances, kitchens, and water bodies with directional Vastu principles without compromising modern living utility.
                   </p>
                 </article>
               </div>
@@ -533,86 +559,7 @@ export default function DesignPlanningPage() {
         </section>
 
         {/* ===================================================================
-            SECTION 5: PLANNING DISCIPLINES (6 Services in Large Vertical List)
-        =================================================================== */}
-        <section
-          aria-labelledby="planning-heading"
-          className="py-12 sm:py-16 lg:py-20 bg-[#FAF8F3] border-b border-[#E7E0D4]"
-        >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            {/* Header */}
-            <div className="max-w-[760px] mb-10 sm:mb-12">
-              <div className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-2 sm:mb-2.5">
-                <span>PLANNING DISCIPLINES</span>
-              </div>
-              <h2
-                id="planning-heading"
-                className="text-[28px] sm:text-[38px] lg:text-[42px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-3"
-              >
-                Turn the Design into a Workable Plan<span className="text-[#B08A52]">.</span>
-              </h2>
-              <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed max-w-2xl font-sans">
-                Planning services engineer the technical details that guide smooth, error-free execution across six essential planning layers.
-              </p>
-            </div>
-
-            {/* Vertical Editorial List with Section 4 Design Touch */}
-            <div className="divide-y divide-[#E7E0D4] border-y border-[#E7E0D4]">
-              {planningServices.map((service) => (
-                <article
-                  key={service.id}
-                  id={service.id}
-                  className="group py-6 sm:py-7 lg:py-8 scroll-mt-28 transition-colors duration-200 hover:bg-white/80 rounded-xl px-2 sm:px-4 -mx-2 sm:-mx-4"
-                >
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start lg:items-center">
-                    {/* Left: Outline Number Circle + Title */}
-                    <div className="lg:col-span-5 flex items-start sm:items-center gap-3.5 sm:gap-4">
-                      <span className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border border-[#171714] bg-white flex items-center justify-center font-mono text-[12px] sm:text-[13px] font-bold text-[#171714] shrink-0 mt-0.5 sm:mt-0 shadow-2xs">
-                        {service.number}
-                      </span>
-                      <div>
-                        <h3 className="text-[20px] sm:text-[24px] lg:text-[26px] font-bold text-[#171714] tracking-tight group-hover:text-[#B08A52] transition-colors duration-200">
-                          {service.title}
-                        </h3>
-                        <p className="text-[11.5px] font-mono text-[#77736C] uppercase tracking-wider mt-0.5">
-                          Technical Planning Layer
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Center: Description */}
-                    <div className="lg:col-span-4">
-                      <p className="text-[14px] sm:text-[14.5px] text-[#68645D] leading-relaxed font-sans">
-                        {service.shortDescription}
-                      </p>
-                    </div>
-
-                    {/* Right: Technical Tags + Arrow Movement */}
-                    <div className="lg:col-span-3 flex items-center justify-between lg:justify-end gap-3">
-                      <div className="flex flex-wrap gap-1.5 lg:justify-end">
-                        {service.scopeTags.slice(0, 2).map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2.5 py-1 text-[11px] font-mono rounded-md bg-white text-[#68645D] border border-[#E7E0D4]"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="h-9 w-9 shrink-0 rounded-full border border-[#171714] bg-white flex items-center justify-center text-[#171714] group-hover:bg-[#171714] group-hover:text-white transition-all duration-200 transform group-hover:translate-x-0.5 shadow-2xs">
-                        <ArrowRight size={14} />
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ===================================================================
-            SECTION 6: REAL PROJECT CONTEXT (Nagarajan Residence Showcase)
+            SECTION 7: REAL PROJECT CONTEXT (Nagarajan Residence Showcase)
         =================================================================== */}
         <section className="py-12 sm:py-16 lg:py-20 bg-white border-b border-[#E7E0D4]">
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
@@ -646,6 +593,7 @@ export default function DesignPlanningPage() {
                     src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room-wide.webp"
                     alt="Planned living room architecture and false ceiling layout at Nagarajan Residence in Nagercoil"
                     fill
+                    loading="lazy"
                     sizes="(max-width: 1024px) 100vw, 58vw"
                     className="object-cover object-center"
                   />
@@ -715,180 +663,34 @@ export default function DesignPlanningPage() {
           </div>
         </section>
 
-        {/* ===================================================================
-            SECTION 7: CLIENT DELIVERABLES & WHEN DESIGN HELPS
-        =================================================================== */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-[#FAF8F3] border-b border-[#E7E0D4]">
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="max-w-[760px] mb-10 sm:mb-12">
-              <div className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-2 sm:mb-2.5">
-                <span>PROJECT DELIVERABLES</span>
-              </div>
-              <h2 className="text-[28px] sm:text-[38px] lg:text-[42px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-2.5">
-                What You Can Expect<span className="text-[#B08A52]">.</span>
-              </h2>
-              <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed max-w-2xl font-sans">
-                Depending on the project scope, design and planning may include these core technical and visual deliverables:
-              </p>
-            </div>
-
-            {/* Deliverables 10-Item Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 mb-12 sm:mb-14">
-              {planningDeliverables.map((item) => (
-                <div
-                  key={item.number}
-                  className="p-4 sm:p-5 rounded-[20px] bg-white border border-[#E7E0D4] hover:border-[#171714] transition-colors duration-200 flex flex-col justify-between group shadow-2xs"
-                >
-                  <div>
-                    <div className="flex items-center justify-between text-[11px] font-mono text-[#77736C] mb-2.5 pb-2 border-b border-[#E7E0D4]/70">
-                      <span className="h-5 w-5 rounded-full border border-[#171714] bg-[#FAF8F3] flex items-center justify-center font-mono text-[10.5px] font-bold text-[#171714]">
-                        {item.number}
-                      </span>
-                      <span className="text-[10px] uppercase tracking-wider text-[#77736C]">{item.category}</span>
-                    </div>
-                    <h3 className="text-[14.5px] sm:text-[15.5px] font-bold text-[#171714] leading-snug group-hover:text-[#B08A52] transition-colors duration-200">
-                      {item.title}
-                    </h3>
-                  </div>
-
-                  <div className="mt-3.5 pt-2 flex items-center gap-1.5 text-[11px] font-mono text-[#B08A52] font-semibold">
-                    <CheckCircle2 size={12} strokeWidth={2.2} />
-                    <span>Included in Scope</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Scenarios ("When Design & Planning Helps") */}
-            <div className="pt-8 sm:pt-10 border-t border-[#E7E0D4]">
-              <div className="max-w-[760px] mb-8 sm:mb-10">
-                <div className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-2 sm:mb-2.5">
-                  <span>PRACTICAL SCENARIOS</span>
-                </div>
-                <h3 className="text-[24px] sm:text-[30px] lg:text-[34px] font-bold text-[#171714] leading-tight mb-2">
-                  When Design &amp; Planning Helps<span className="text-[#B08A52]">.</span>
-                </h3>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {planningUseCases.map((useCase) => (
-                  <div
-                    key={useCase.number}
-                    className="p-6 sm:p-7 rounded-[22px] bg-white border border-[#E7E0D4] hover:border-[#171714] transition-colors duration-200 shadow-2xs group flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-4 pb-2.5 border-b border-[#E7E0D4]">
-                        <span className="h-6 w-6 rounded-full border border-[#171714] bg-[#FAF8F3] flex items-center justify-center font-mono text-[11px] font-bold text-[#171714]">
-                          {useCase.number}
-                        </span>
-                        <span className="text-[10.5px] font-mono uppercase tracking-wider text-[#77736C]">
-                          Scenario
-                        </span>
-                      </div>
-                      <h4 className="text-[16.5px] sm:text-[17.5px] font-bold text-[#171714] mb-2 group-hover:text-[#B08A52] transition-colors duration-200">
-                        {useCase.title}
-                      </h4>
-                      <p className="text-[13.5px] sm:text-[14px] text-[#68645D] leading-relaxed font-sans">
-                        {useCase.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+      
 
         {/* ===================================================================
             SECTION 8: LOCAL SERVICE AREA (GEO / LOCAL SEO)
-            Exact layout & styling ref from src/app/construction Section 7
         =================================================================== */}
-        <section
-          aria-labelledby="local-geo-heading"
+        <LocalServiceArea
+          badge="BASED IN NAGERCOIL"
+          title={
+            <>
+              Design &amp; Planning Services in Nagercoil<span className="text-[#B08A52]">.</span>
+            </>
+          }
+          titleClassName="text-[28px] sm:text-[38px] lg:text-[42px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
+          description={[
+            "SMS Construction is based in Nagercoil, Tamil Nadu, providing design and planning support for construction and interior projects within its actual service area.",
+            "Our local presence allows us to visit your plot directly, assess boundaries, sun angles, and regional coastal climate considerations in every drawing and spatial layout.",
+          ]}
+          deskTitle="Studio Desk"
+          companyName="SMS Construction"
+          phoneNumber={phoneNumber}
+          formattedPhone={formattedPhone}
+          email="smsconstructionngl@gmail.com"
+          emailLabel="Studio Email:"
+          hours="Monday – Saturday"
           className="py-12 sm:py-16 lg:py-20 bg-white border-b border-[#E7E0D4]"
-        >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-              {/* Left Column: Local Context */}
-              <div className="lg:col-span-7">
-                <div className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-2 sm:mb-2.5">
-                  <span>BASED IN NAGERCOIL</span>
-                </div>
-                <h2
-                  id="local-geo-heading"
-                  className="text-[28px] sm:text-[38px] lg:text-[42px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
-                >
-                  Design &amp; Planning Services in Nagercoil<span className="text-[#B08A52]">.</span>
-                </h2>
-                <p className="text-[15px] sm:text-[16px] leading-relaxed text-[#68645D] mb-4 font-sans">
-                  SMS Construction is based in Nagercoil, Tamil Nadu, providing design and planning support for construction and interior projects within its actual service area.
-                </p>
-                <p className="text-[14.5px] sm:text-[15px] leading-relaxed text-[#68645D] mb-6 font-sans">
-                  Our local presence allows us to visit your plot directly, assess boundaries, sun angles, and regional coastal climate considerations in every drawing and spatial layout.
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Nagercoil",
-                    "Theroor",
-                    "Suchindram",
-                    "Kanyakumari",
-                    "Marthandam",
-                  ].map((place) => (
-                    <span
-                      key={place}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FAF8F3] border border-[#E7E0D4] text-[12.5px] font-sans font-medium text-[#171714] hover:border-[#171714] transition-colors"
-                    >
-                      <MapPin size={12} className="text-[#B08A52]" />
-                      <span>{place}</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Column: Studio Coordinates Card */}
-              <div className="lg:col-span-5">
-                <div className="p-6 sm:p-8 rounded-[24px] bg-[#FAF8F3] border border-[#E7E0D4] shadow-xs">
-                  <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.18em] text-[#B08A52] block mb-1.5">
-                    Studio Desk
-                  </span>
-                  <h3 className="text-[22px] sm:text-[24px] font-bold text-[#171714] mb-2.5">
-                    SMS Construction
-                  </h3>
-                  <address className="not-italic text-[14px] text-[#68645D] leading-relaxed mb-6 space-y-1 font-sans">
-                    <p>25/1 Muthamizh Street, Near Court Road</p>
-                    <p>Nagercoil, Tamil Nadu 629001, India</p>
-                  </address>
-
-                  <div className="pt-5 border-t border-[#E7E0D4] space-y-2.5 text-[13.5px] font-sans">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#77736C]">Direct Line:</span>
-                      <a
-                        href={`tel:${phoneNumber}`}
-                        className="font-medium text-[#171714] hover:text-[#B08A52] transition-colors"
-                      >
-                        {formattedPhone}
-                      </a>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#77736C]">Studio Email:</span>
-                      <a
-                        href="mailto:smsconstructionngl@gmail.com"
-                        className="font-medium text-[#171714] hover:text-[#B08A52] transition-colors"
-                      >
-                        smsconstructionngl@gmail.com
-                      </a>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#77736C]">Site Consultations:</span>
-                      <span className="font-medium text-[#171714]">Monday – Saturday</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+          cardBgClassName="bg-[#FAF8F3]"
+          pillBgClassName="bg-[#FAF8F3]"
+        />
 
         {/* ===================================================================
             SECTION 9: FAQ (AEO & DIRECT ANSWER KNOWLEDGE BASE)

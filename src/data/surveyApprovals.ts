@@ -14,6 +14,7 @@ export interface PreparationServiceItem {
   number: string;
   title: string;
   category: string;
+  summary?: string;
   description: string;
   note: string;
   deliverable: string;

@@ -3,46 +3,47 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  ArrowUpRight,
   Phone,
   MessageSquare,
   CheckCircle2,
   Hammer,
-  Maximize2,
   Layers,
-  Sparkles,
-  Shield,
   Ruler,
   Compass,
+  Sparkles,
 } from "lucide-react";
 import {
-  fabricationCategories,
+  fabricationServices,
+  materialComparison,
   fabricationProcessSteps,
-  fabricationDetailPillars,
-  fabricationAudienceScenarios,
+  fabricationContextCategories,
+  fabricationQualityDetails,
   fabricationFaqs,
 } from "@/data/fabricationWorks";
-import ServiceFaqAccordion from "../services/components/ServiceFaqAccordion";
+import { geoLocalities } from "@/data/geo";
+import ModernFaq from "@/components/ModernFaq";
+import LocalServiceArea from "@/components/LocalServiceArea";
+import ConversionCTA from "@/components/ConversionCTA";
 
 export const metadata: Metadata = {
-  title: "Fabrication Works in Nagercoil | SMS Construction",
+  title: "ACP, Steel & Aluminium Fabrication in Nagercoil | SMS Construction",
   description:
-    "Explore custom fabrication works from SMS Construction in Nagercoil, integrated with interior and construction projects where required.",
+    "Explore ACP, steel and aluminium fabrication services from SMS Construction in Nagercoil, Tamil Nadu, for architectural, construction and interior project requirements.",
   alternates: {
     canonical: "/fabrication-works",
   },
   openGraph: {
-    title: "Fabrication Works in Nagercoil | SMS Construction",
+    title: "ACP, Steel & Aluminium Fabrication in Nagercoil | SMS Construction",
     description:
-      "Explore custom fabrication works from SMS Construction in Nagercoil, integrated with interior and construction projects where required.",
+      "Explore ACP, steel and aluminium fabrication services from SMS Construction in Nagercoil, Tamil Nadu, for architectural, construction and interior project requirements.",
     url: "https://smsconstruction.in/fabrication-works",
     siteName: "SMS Construction",
     images: [
       {
-        url: "/images/services/fabrication.jpg",
+        url: "/images/services/fabrication-works-hero.webp",
         width: 1200,
         height: 630,
-        alt: "Custom architectural metalwork and fabrication elements in Nagercoil by SMS Construction",
+        alt: "Real ACP fabrication and architectural panel installation project in Kanyakumari district, Tamil Nadu by SMS Construction",
       },
     ],
     locale: "en_IN",
@@ -50,10 +51,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fabrication Works in Nagercoil | SMS Construction",
+    title: "ACP, Steel & Aluminium Fabrication in Nagercoil | SMS Construction",
     description:
-      "Explore custom fabrication works from SMS Construction in Nagercoil, integrated with interior and construction projects where required.",
-    images: ["/images/services/fabrication.jpg"],
+      "Explore ACP, steel and aluminium fabrication services from SMS Construction in Nagercoil, Tamil Nadu, for architectural, construction and interior project requirements.",
+    images: ["/images/services/fabrication-works-hero.webp"],
   },
 };
 
@@ -62,7 +63,7 @@ export default function FabricationWorksPage() {
   const formattedPhone = "+91 94880 21183";
   const whatsappNumber = "919488021183";
 
-  // Structured Data Schemas
+  // Structured Data Schemas (JSON-LD)
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -91,11 +92,12 @@ export default function FabricationWorksPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Fabrication Works",
-    serviceType: "Architectural & Interior Custom Fabrication",
+    name: "Architectural Fabrication Services",
+    serviceType: "ACP, Steel & Aluminium Architectural Fabrication",
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "HomeAndConstructionBusiness",
       name: "SMS Construction",
+      telephone: phoneNumber,
       address: {
         "@type": "PostalAddress",
         streetAddress: "25/1 Muthamizh Street, Near Court Road",
@@ -104,26 +106,22 @@ export default function FabricationWorksPage() {
         postalCode: "629001",
         addressCountry: "IN",
       },
-      telephone: "+919488021183",
-      url: "https://smsconstruction.in",
     },
-    areaServed: {
+    areaServed: geoLocalities.map((loc) => ({
       "@type": "City",
-      name: "Nagercoil",
-    },
-    description:
-      "Custom architectural metalwork, decorative partitions, stair railings, custom frames, and interior fabrication integrated with construction and interior projects in Nagercoil.",
+      name: loc,
+    })),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Fabrication Works Offerings",
-      itemListElement: fabricationCategories.map((cat, index) => ({
+      name: "Fabrication Services",
+      itemListElement: fabricationServices.map((service, index) => ({
         "@type": "Offer",
-        position: index + 1,
         itemOffered: {
           "@type": "Service",
-          name: cat.title,
-          description: cat.description,
+          name: service.title,
+          description: service.description,
         },
+        position: index + 1,
       })),
     },
   };
@@ -142,8 +140,8 @@ export default function FabricationWorksPage() {
   };
 
   return (
-    <div className="bg-[#FAF8F3] text-[#171614] min-h-screen selection:bg-[#B08A52]/20 selection:text-[#171614]">
-      {/* Schema Injection */}
+    <>
+      {/* 3 Structured Data Schemas */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -157,788 +155,852 @@ export default function FabricationWorksPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* SECTION 1: HERO */}
-      <section className="relative pt-32 pb-16 lg:pt-36 lg:pb-24 border-b border-[#E7E0D4] overflow-hidden bg-gradient-to-b from-[#FFFFFF] to-[#FAF8F3]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Breadcrumb Navigation & Hub Link */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <nav aria-label="Breadcrumb">
-              <ol className="flex items-center flex-wrap gap-2 text-xs uppercase tracking-widest text-[#77736C]">
-                <li>
-                  <Link
-                    href="/"
-                    className="hover:text-[#B08A52] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#B08A52]"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li aria-hidden="true" className="text-[#E7E0D4]">
-                  /
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className="hover:text-[#B08A52] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#B08A52]"
-                  >
-                    Services
-                  </Link>
-                </li>
-                <li aria-hidden="true" className="text-[#E7E0D4]">
-                  /
-                </li>
-                <li className="text-[#171614] font-medium" aria-current="page">
-                  Fabrication Works
-                </li>
-              </ol>
-            </nav>
-
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-[#77736C] hover:text-[#B08A52] transition-colors duration-200"
-            >
-              <span>&larr; Services</span>
-            </Link>
+      <main className="bg-[#FAF8F3] text-[#171714] selection:bg-[#B08A52] selection:text-white">
+        {/* ===================================================================
+            SECTION 1: HERO
+            Premium fabrication-focused hero over full-bleed real WebP image
+        =================================================================== */}
+        <section
+          data-header-theme="dark"
+          aria-label="Fabrication Works Hero"
+          className="relative w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-between pt-20 pb-4 sm:pt-22 sm:pb-5 lg:pt-22 lg:pb-4 bg-[#171714] text-white overflow-hidden border-b border-[#2A2925]"
+        >
+          {/* Full-Bleed Local WebP Background Image */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <Image
+              src="/images/services/fabrication-works-hero.webp"
+              alt="Real ACP fabrication and architectural panel installation project in Kanyakumari district, Tamil Nadu by SMS Construction"
+              fill
+              loading="lazy"
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+            {/* Soft architectural gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/80 via-[#171714]/50 to-[#171714]/15" />
           </div>
 
-          {/* Hero Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div className="lg:col-span-7 flex flex-col justify-between">
-              <div>
-                {/* Eyebrow */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#171614]/5 border border-[#E7E0D4] mb-6">
-                  <Hammer className="w-3.5 h-3.5 text-[#B08A52]" />
-                  <span className="text-[11px] font-mono tracking-[0.2em] uppercase text-[#77736C]">
-                    FABRICATION WORKS
-                  </span>
+          {/* Main Content Container */}
+          <div className="relative z-10 max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12 w-full flex-1 flex flex-col justify-between pt-4 sm:pt-6 pb-2 sm:pb-3">
+
+            {/* Middle Area: Editorial Copy & CTAs */}
+            <div className="flex-1 flex flex-col justify-center max-w-3xl my-auto py-6 sm:py-8 lg:py-10">
+
+
+              {/* H1 Heading */}
+              <h1
+                className="font-bold text-white leading-[1.12] sm:leading-[1.1] tracking-[-0.025em] mb-4 sm:mb-5 lg:mb-6"
+                style={{ fontSize: "clamp(2.1rem, 3.9vw, 3.6rem)" }}
+              >
+                Architectural Fabrication in Nagercoil<span className="text-[#e3c381]">.</span>
+              </h1>
+
+              {/* Supporting Copy */}
+              <p className="text-[14.5px] sm:text-[15.5px] lg:text-[16.5px] leading-[1.65] sm:leading-[1.7] text-white/90 max-w-2xl mb-7 sm:mb-8 lg:mb-9 font-sans">
+                From ACP detailing to steel and aluminium fabrication, we create practical fabricated
+                elements designed to integrate with construction and interior spaces.
+              </p>
+
+              {/* Primary & Secondary CTAs */}
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-3.5 lg:gap-4">
+                <Link
+                  href="/contact"
+                  className="w-full sm:w-auto group relative overflow-hidden inline-flex items-center justify-center gap-2.5 min-h-[48px] sm:min-h-[50px] px-7 py-3 rounded-full bg-gradient-to-r from-[#e3c381] to-[#C89A47] text-[#171714] font-sans font-semibold text-[13.5px] sm:text-[14.5px] hover:shadow-lg hover:shadow-[#C89A47]/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center shadow-md"
+                >
+                  <span>Discuss Your Fabrication Project</span>
+                  <ArrowRight size={15} />
+                </Link>
+
+                <div className="flex items-center gap-2.5 w-full sm:w-auto">
+
+                  <a
+                    href={`https://wa.me/${whatsappNumber}?text=Hello%20SMS%20Construction%2C%20I%20would%20like%20to%20discuss%20a%20fabrication%20requirement%20for%20my%20property.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 min-h-[48px] sm:min-h-[50px] px-4 sm:px-5 py-2.5 rounded-full border border-[#25D366] bg-[#25D366]/10 backdrop-blur-sm text-[#25D366] hover:bg-[#25D366] hover:text-white font-sans font-medium text-[12.5px] sm:text-[13.5px] transition-all duration-300"
+                  >
+                    <MessageSquare size={14} />
+                    <span>WhatsApp</span>
+                  </a>
                 </div>
+              </div>
+            </div>
 
-                {/* H1 */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-[#171614] tracking-tight leading-[1.1] mb-6">
-                  Custom Fabrication Works for Your Space
-                </h1>
+            {/* Architectural Fabrication Footnote */}
+            <div className="w-full pt-3.5 sm:pt-4 pb-1 border-t border-white/15 grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-wrap sm:items-center sm:justify-start sm:gap-x-5 lg:gap-x-6 sm:gap-y-2 text-[11.5px] sm:text-[12px] lg:text-[12.5px] mt-auto">
+              <span className="flex items-center gap-1.5 font-medium text-white">
+                <Layers size={13} className="text-[#e3c381] shrink-0" />
+                <span>ACP Works</span>
+              </span>
+              <span className="hidden sm:inline-block text-white/30">•</span>
+              <span className="flex items-center gap-1.5 text-white/80">
+                <Hammer size={13} className="text-[#e3c381] shrink-0" />
+                <span>Steel Fabrication</span>
+              </span>
+              <span className="hidden sm:inline-block text-white/30">•</span>
+              <span className="flex items-center gap-1.5 text-white/80">
+                <Ruler size={13} className="text-[#e3c381] shrink-0" />
+                <span>Aluminium Fabrication</span>
+              </span>
+              <span className="hidden sm:inline-block text-white/30">•</span>
+              <span className="flex items-center gap-1.5 text-white/80">
+                <Compass size={13} className="text-[#e3c381] shrink-0" />
+                <span>Site-Coordinated Detailing</span>
+              </span>
+            </div>
+          </div>
+        </section>
 
-                {/* Supporting Copy */}
-                <p className="text-lg sm:text-xl text-[#77736C] font-light leading-relaxed max-w-2xl mb-8">
-                  Purpose-built elements that bring together design, function and the practical
-                  requirements of a project.
+        {/* ===================================================================
+            SECTION 2: INTRODUCTION
+            Editorial Two-Column Clarity Narrative
+        =================================================================== */}
+        <section
+          aria-labelledby="intro-heading"
+          className="py-12 sm:py-16 lg:py-20 bg-white border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+              {/* Left Column: Eyebrow + H2 */}
+              <div className="lg:col-span-5">
+                <div className="inline-flex items-center gap-2 text-[11.5px] sm:text-[12px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                  <span>BUILT WITH PRECISION</span>
+                </div>
+                <h2
+                  id="intro-heading"
+                  className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.15] tracking-tight"
+                >
+                  Fabrication that becomes part of the architecture<span className="text-[#B08A52]">.</span>
+                </h2>
+              </div>
+
+              {/* Right Column: Narrative & Clarity Points */}
+              <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-[15.5px] sm:text-[16.5px] leading-relaxed text-[#68645D] font-sans pt-1">
+                <p>
+                  Fabricated elements need to work with the surrounding structure, finishes and
+                  intended use. Our fabrication services cover ACP, steel and aluminium requirements
+                  based on the scope of each project.
+                </p>
+                <p>
+                  Rather than treating fabrication as an isolated welding task, SMS Construction
+                  coordinates measurements, surface pre-treatments, and structural anchor zones
+                  directly with ongoing civil construction and interior finishing workflows.
                 </p>
 
-                {/* Primary & Secondary CTAs */}
-                <div className="flex flex-wrap items-center gap-4 pt-2">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#171614] text-[#FAF8F3] text-sm uppercase tracking-widest font-medium rounded-sm hover:bg-[#B08A52] transition-colors duration-300 shadow-sm group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52]"
-                  >
-                    <span>Discuss a Fabrication Project</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-
-                  <Link
-                    href="/projects"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-transparent text-[#171614] border border-[#E7E0D4] text-sm uppercase tracking-widest font-medium rounded-sm hover:border-[#171614] hover:bg-[#171614]/5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52]"
-                  >
-                    <span>Explore Our Work</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Technical Specifications Bar */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-12 mt-12 border-t border-[#E7E0D4]">
-                <div>
-                  <span className="block text-[11px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Execution Method
-                  </span>
-                  <p className="text-sm font-medium text-[#171614]">Custom Made-to-Measure</p>
-                </div>
-                <div>
-                  <span className="block text-[11px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Integration
-                  </span>
-                  <p className="text-sm font-medium text-[#171614]">Civil &amp; Interior Works</p>
-                </div>
-                <div className="col-span-2 sm:col-span-1">
-                  <span className="block text-[11px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Location
-                  </span>
-                  <p className="text-sm font-medium text-[#171614]">Nagercoil, Tamil Nadu</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Visual */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/5] rounded-sm overflow-hidden border border-[#E7E0D4] bg-[#E7E0D4]/30 shadow-md group">
-                <Image
-                  src="/images/services/fabrication.jpg"
-                  alt="Custom architectural metalwork and fabrication elements in Nagercoil"
-                  width={800}
-                  height={1000}
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                  className="w-full h-full object-cover grayscale-[15%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#171614]/75 via-transparent to-transparent opacity-90" />
-                
-                {/* Visual Label */}
-                <div className="absolute bottom-6 left-6 right-6 text-[#FAF8F3]">
-                  <p className="text-xs font-mono uppercase tracking-widest text-[#B08A52] mb-1">
-                    Architectural Fabrication
-                  </p>
-                  <p className="text-sm font-light text-[#FAF8F3]/90">
-                    Bespoke metalwork and customized architectural accents crafted for Nagercoil projects.
-                  </p>
-                </div>
-
-                {/* Workshop Quality Badge */}
-                <div className="absolute top-4 right-4 bg-[#171614]/80 backdrop-blur-sm border border-[#FAF8F3]/10 px-3 py-1.5 rounded-sm">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#FAF8F3]/90">
-                    Workshop &bull; On-Site Fitting
-                  </span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">
+                  {[
+                    {
+                      label: "Architectural Fit",
+                      desc: "Profiles planned to align cleanly with surrounding surfaces.",
+                    },
+                    {
+                      label: "Material Focus",
+                      desc: "Appropriate metal alloys and composite panels selected for longevity.",
+                    },
+                    {
+                      label: "Site Coordination",
+                      desc: "Anchor positions resolved during early construction stages.",
+                    },
+                  ].map((pillar) => (
+                    <div
+                      key={pillar.label}
+                      className="p-3.5 sm:p-4 rounded-xl bg-[#FAF8F3] border border-[#E7E0D4]"
+                    >
+                      <h3 className="font-sans font-bold text-[14px] text-[#171714] mb-1">
+                        {pillar.label}
+                      </h3>
+                      <p className="text-[12.5px] text-[#68645D] leading-snug">
+                        {pillar.desc}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SECTION 2: FABRICATION AS PART OF THE PROJECT */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-4">
-              DESIGNED TO FIT
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight leading-tight mb-8">
-              Fabrication that belongs to the space.
-            </h2>
-            <div className="space-y-6 text-base sm:text-lg text-[#77736C] font-light leading-relaxed">
-              <p>
-                Custom-fabricated elements are most effective when developed as part of a broader
-                architectural or interior vision. Instead of forcing standard retail components into
-                unique room dimensions, bespoke fabrication allows dimensions, mounting details,
-                and profiles to be configured specifically for the site&apos;s physical tolerances.
-              </p>
-              <p>
-                From boundary gates that reflect the building facade to fluted living room screens
-                coordinated with ceiling drops, custom fabrication bridges the gap between raw
-                structural civil work and refined interior living. The result is seamless fit,
-                tactile solidity, and a finish that belongs naturally to the space.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3: WHAT WE FABRICATE (CUSTOM ELEMENTS FOR THE PROJECT) */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FAF8F3]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-            <div>
-              <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-                EDITORIAL DIRECTORY
+        {/* ===================================================================
+            SECTION 3: FABRICATION SERVICES (THREE MATERIAL DIRECTIONS)
+            Asymmetric, non-identical material-focused editorial layout
+        =================================================================== */}
+        <section
+          id="fabrication-services"
+          aria-labelledby="services-heading"
+          className="py-16 sm:py-24 bg-[#FAF8F3] border-b border-[#E7E0D4] scroll-mt-28"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            {/* Section Header */}
+            <div className="max-w-3xl mb-14 sm:mb-18">
+              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                WHAT WE FABRICATE
               </span>
-              <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight">
-                Custom Elements for the Project
-              </h2>
-            </div>
-            <p className="text-sm text-[#77736C] max-w-md font-light">
-              A curated range of made-to-measure metalwork, spatial partitions, and interior
-              sub-frameworks designed and fitted for residential and commercial environments.
-            </p>
-          </div>
-
-          {/* Asymmetric Editorial List */}
-          <div className="space-y-8">
-            {fabricationCategories.map((category, idx) => (
-              <div
-                key={category.id}
-                className="bg-[#FFFFFF] p-8 lg:p-10 rounded-sm border border-[#E7E0D4] hover:border-[#B08A52] transition-all duration-300 group"
+              <h2
+                id="services-heading"
+                className="text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.14] tracking-tight mb-4"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                  {/* Column 1: Number, Title & Material Focus */}
-                  <div className="lg:col-span-4">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-2xl font-mono text-[#B08A52] font-light">
-                        {category.number}
-                      </span>
-                      <span className="text-[11px] font-mono uppercase tracking-widest text-[#77736C]">
-                        Scope
-                      </span>
-                    </div>
-                    <h3 className="text-2xl font-light text-[#171614] group-hover:text-[#B08A52] transition-colors mb-2">
-                      {category.title}
-                    </h3>
-                    <div className="inline-block text-xs font-mono text-[#B08A52] bg-[#FAF8F3] border border-[#E7E0D4] px-2.5 py-1 rounded-sm">
-                      {category.materialFocus}
-                    </div>
-                  </div>
+                Three Material Directions<span className="text-[#B08A52]">.</span>
+              </h2>
+              <p className="text-[15.5px] sm:text-[16.5px] text-[#68645D] font-sans leading-relaxed">
+                Dedicated fabrication for ACP, steel, and aluminium elements shaped to
+                project-specific requirements. Rendered with clear dimensional precision and
+                architectural balance.
+              </p>
+            </div>
 
-                  {/* Column 2: Narrative Description & Details */}
-                  <div className={category.image ? "lg:col-span-5" : "lg:col-span-8"}>
-                    <p className="text-base text-[#77736C] font-light leading-relaxed mb-6">
-                      {category.description}
+            {/* Service 01: ACP Works (Asymmetric Split: Left Image + Right Text) */}
+            <article
+              id="acp-works"
+              aria-labelledby="acp-heading"
+              className="mb-16 sm:mb-20 p-6 sm:p-10 lg:p-12 rounded-[28px] bg-white border border-[#E7E0D4] shadow-xs scroll-mt-28"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                <div className="lg:col-span-6 relative aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden border border-[#E7E0D4] bg-[#171714]">
+                  <Image
+                    src="/images/services/acp-works.webp"
+                    alt="ACP panel fabrication for an architectural project by SMS Construction"
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#171714]/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#e3c381] uppercase tracking-wider">
+                    01 • ACP WORKS
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6 flex flex-col justify-between">
+                  <div>
+                    <span className="text-[12px] font-mono font-semibold uppercase tracking-wider text-[#B08A52] block mb-2">
+                      COMPOSITE PANEL SYSTEMS
+                    </span>
+                    <h3
+                      id="acp-heading"
+                      className="text-[26px] sm:text-[32px] lg:text-[36px] font-bold text-[#171714] tracking-tight leading-tight mb-4"
+                    >
+                      ACP Works
+                    </h3>
+                    <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed font-sans mb-6">
+                      ACP fabrication for architectural and project-specific applications where
+                      lightweight panel systems and clean finished surfaces are required.
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-4 border-t border-[#E7E0D4]/70">
-                      {category.details.map((detail, dIdx) => (
-                        <div key={dIdx} className="flex items-start gap-2 text-xs text-[#171614]/80 font-light">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#B08A52] shrink-0 mt-0.5" />
-                          <span>{detail}</span>
+
+                    <div className="space-y-3 mb-8">
+                      {fabricationServices[0].considerations.map((item) => (
+                        <div key={item} className="flex items-start gap-3">
+                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
+                          <span className="text-[13.5px] sm:text-[14px] text-[#171714] font-sans">
+                            {item}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Column 3: Asset Preview (when available) */}
-                  {category.image && (
-                    <div className="lg:col-span-3">
-                      <div className="relative aspect-[4/3] rounded-sm overflow-hidden border border-[#E7E0D4] bg-[#FAF8F3]">
-                        <Image
-                          src={category.image}
-                          alt={category.alt || category.title}
-                          width={400}
-                          height={300}
-                          sizes="(max-width: 768px) 100vw, 25vw"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                    </div>
-                  )}
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#171714] hover:text-[#B08A52] transition-colors"
+                  >
+                    <span>Consult on ACP Works</span>
+                    <ArrowRight size={15} />
+                  </Link>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </article>
 
-      {/* SECTION 4: FROM MEASUREMENT TO INSTALLATION (OUR FABRICATION PROCESS) */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-              OUR FABRICATION PROCESS
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight mb-4">
-              Measure. Make. Fit. Finish.
-            </h2>
-            <p className="text-base text-[#77736C] font-light leading-relaxed">
-              A disciplined progression from on-ground dimension verification to workshop crafting,
-              multi-coat surface treatment, and careful on-site installation.
-            </p>
-          </div>
+            {/* Service 02: Steel Fabrication (Reverse Split: Left Text + Right Image) */}
+            <article
+              id="steel-fabrication"
+              aria-labelledby="steel-heading"
+              className="mb-16 sm:mb-20 p-6 sm:p-10 lg:p-12 rounded-[28px] bg-white border border-[#E7E0D4] shadow-xs scroll-mt-28"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                <div className="lg:col-span-6 order-2 lg:order-1 flex flex-col justify-between">
+                  <div>
+                    <span className="text-[12px] font-mono font-semibold uppercase tracking-wider text-[#B08A52] block mb-2">
+                      METAL FRAMING &amp; COMPONENTS
+                    </span>
+                    <h3
+                      id="steel-heading"
+                      className="text-[26px] sm:text-[32px] lg:text-[36px] font-bold text-[#171714] tracking-tight leading-tight mb-4"
+                    >
+                      Steel Fabrication
+                    </h3>
+                    <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed font-sans mb-4">
+                      Steel fabrication for project requirements where strength, structure or custom
+                      fabricated elements form part of the design and construction scope.
+                    </p>
 
-          {/* Process Timeline Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 relative">
-            {fabricationProcessSteps.map((step) => (
-              <div
-                key={step.number}
-                className="p-6 rounded-sm border border-[#E7E0D4] bg-[#FAF8F3] hover:border-[#B08A52] transition-colors flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-mono text-[#B08A52] font-light">
-                      {step.number}
-                    </span>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#77736C]">
-                      {step.step}
-                    </span>
+                    {/* Engineering Note */}
+                    <div className="p-4 rounded-xl bg-[#FAF8F3] border border-[#E7E0D4] text-[13px] text-[#68645D] font-sans mb-6">
+                      <strong className="text-[#171714] font-semibold block mb-0.5">
+                        Scope Clarity:
+                      </strong>
+                      Not every steel fabrication element is load-bearing. Where a project requires
+                      engineered structural steel, structural calculations and formal approvals are
+                      distinctly coordinated.
+                    </div>
+
+                    <div className="space-y-3 mb-8">
+                      {fabricationServices[1].considerations.map((item) => (
+                        <div key={item} className="flex items-start gap-3">
+                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
+                          <span className="text-[13.5px] sm:text-[14px] text-[#171714] font-sans">
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <h3 className="text-lg font-medium text-[#171614] mb-1 group-hover:text-[#B08A52] transition-colors">
-                    {step.title}
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#171714] hover:text-[#B08A52] transition-colors"
+                  >
+                    <span>Consult on Steel Fabrication</span>
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
+
+                <div className="lg:col-span-6 order-1 lg:order-2 relative aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden border border-[#E7E0D4] bg-[#171714]">
+                  <Image
+                    src="/images/services/steel-fabrication.webp"
+                    alt="Steel fabrication work at a construction site by SMS Construction"
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#171714]/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#e3c381] uppercase tracking-wider">
+                    02 • STEEL FABRICATION
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            {/* Service 03: Aluminium Fabrication (Split with Lighter Technical Detail) */}
+            <article
+              id="aluminium-fabrication"
+              aria-labelledby="aluminium-heading"
+              className="p-6 sm:p-10 lg:p-12 rounded-[28px] bg-white border border-[#E7E0D4] shadow-xs scroll-mt-28"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                <div className="lg:col-span-6 relative aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden border border-[#E7E0D4] bg-[#171714]">
+                  <Image
+                    src="/images/services/aluminium-fabrication.webp"
+                    alt="Aluminium fabrication detail for an architectural project by SMS Construction"
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#171714]/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#e3c381] uppercase tracking-wider">
+                    03 • ALUMINIUM FABRICATION
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6 flex flex-col justify-between">
+                  <div>
+                    <span className="text-[12px] font-mono font-semibold uppercase tracking-wider text-[#B08A52] block mb-2">
+                      LIGHTWEIGHT ARCHITECTURAL PROFILES
+                    </span>
+                    <h3
+                      id="aluminium-heading"
+                      className="text-[26px] sm:text-[32px] lg:text-[36px] font-bold text-[#171714] tracking-tight leading-tight mb-4"
+                    >
+                      Aluminium Fabrication
+                    </h3>
+                    <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed font-sans mb-6">
+                      Aluminium fabrication for lightweight architectural and project-specific elements
+                      where the material suits the design and application.
+                    </p>
+
+                    <div className="space-y-3 mb-8">
+                      {fabricationServices[2].considerations.map((item) => (
+                        <div key={item} className="flex items-start gap-3">
+                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
+                          <span className="text-[13.5px] sm:text-[14px] text-[#171714] font-sans">
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#171714] hover:text-[#B08A52] transition-colors"
+                  >
+                    <span>Consult on Aluminium Fabrication</span>
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        {/* ===================================================================
+            SECTION 4: MATERIAL COMPARISON
+            Compact AEO-friendly decision guide (no single material is best)
+        =================================================================== */}
+        <section
+          aria-labelledby="comparison-heading"
+          className="py-16 sm:py-24 bg-white border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="max-w-3xl mb-12 sm:mb-16">
+              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                CHOOSING THE MATERIAL
+              </span>
+              <h2
+                id="comparison-heading"
+                className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
+              >
+                Which fabrication material fits your project?
+              </h2>
+              <p className="text-[15.5px] sm:text-[16.5px] text-[#68645D] font-sans leading-relaxed">
+                Material selection depends on application, design intent, structural requirements,
+                site exposure, and project scope. No single material is universally best.
+              </p>
+            </div>
+
+            {/* 3 Comparison Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {materialComparison.map((item) => (
+                <div
+                  key={item.material}
+                  className="p-7 sm:p-8 rounded-[24px] bg-[#FAF8F3] border border-[#E7E0D4] flex flex-col justify-between hover:border-[#B08A52]/50 hover:bg-white transition-all duration-300 shadow-2xs"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <span className="font-serif text-[26px] font-bold text-[#171714]">
+                        {item.material}
+                      </span>
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-[#B08A52] px-2.5 py-1 rounded-md bg-[#B08A52]/10">
+                        {item.tagline}
+                      </span>
+                    </div>
+
+                    <div className="mb-5">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-[#77736C] block mb-1.5">
+                        Best Suited To:
+                      </span>
+                      <p className="text-[14px] text-[#171714] font-medium leading-relaxed font-sans">
+                        {item.bestSuitedTo}
+                      </p>
+                    </div>
+
+                    <div className="mb-5">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-[#77736C] block mb-1.5">
+                        Characteristics:
+                      </span>
+                      <p className="text-[13.5px] text-[#68645D] leading-relaxed font-sans">
+                        {item.characteristics}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-[#E7E0D4] text-[12.5px] text-[#68645D] font-sans">
+                    <span className="text-[#171714] font-semibold">Coordination:</span>{" "}
+                    {item.siteCoordination}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Comparison Callout Link */}
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#FAF8F3] border border-[#E7E0D4] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="max-w-xl">
+                <h3 className="font-bold text-[17px] text-[#171714] mb-1">
+                  Need guidance on material selection for your drawings?
+                </h3>
+                <p className="text-[13.5px] text-[#68645D] font-sans">
+                  We review project requirements and recommend the material direction that best
+                  balances performance, aesthetic line, and site durability.
+                </p>
+              </div>
+              <Link
+                href="/contact"
+                className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#171714] hover:bg-[#B08A52] text-white font-sans font-semibold text-[13.5px] transition-colors"
+              >
+                <span>Discuss Your Requirements</span>
+                <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ===================================================================
+            SECTION 5: FABRICATION PROCESS
+            Clean architectural horizontal step flow (matching survey-approvals)
+        =================================================================== */}
+        <section
+          aria-labelledby="process-heading"
+          className="py-12 sm:py-16 lg:py-20 bg-[#FAF8F3] border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            {/* Centered Section Header */}
+            <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
+              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                OUR APPROACH
+              </span>
+              <h2
+                id="process-heading"
+                className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
+              >
+                From drawing to finished detail<span className="text-[#B08A52]">.</span>
+              </h2>
+              <p className="text-[15.5px] sm:text-[16.5px] text-[#68645D] font-sans leading-relaxed max-w-2xl mx-auto">
+                A disciplined fabrication approach connecting design intent to verified site
+                installation without guesswork.
+              </p>
+            </div>
+
+            {/* Continuous Architectural Line Step Flow */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 lg:gap-x-8 gap-y-10 sm:gap-y-12">
+              {fabricationProcessSteps.map((item, idx, arr) => (
+                <div key={item.step} className="group flex flex-col">
+                  {/* Step Number + Connecting Line */}
+                  <div className="flex items-center gap-3.5 mb-4">
+                    <span className="font-bold text-[30px] sm:text-[36px] lg:text-[40px] text-[#171714] leading-none shrink-0 group-hover:text-[#B08A52] transition-colors duration-300">
+                      {item.number}
+                    </span>
+                    {idx !== arr.length - 1 ? (
+                      <div className="flex-1 h-[1.5px] bg-[#E7E0D4] group-hover:bg-[#B08A52]/60 transition-colors duration-300" />
+                    ) : (
+                      <div className="hidden lg:block flex-1 h-[1.5px] bg-transparent" />
+                    )}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-sans font-bold text-[15px] sm:text-[16px] text-[#171714] mb-1.5 tracking-tight group-hover:text-[#B08A52] transition-colors duration-200">
+                    {item.title}
                   </h3>
 
-                  <div className="text-[11px] font-mono text-[#B08A52] uppercase tracking-wider mb-3">
-                    {step.action}
-                  </div>
-
-                  <p className="text-xs text-[#77736C] font-light leading-relaxed mb-4">
-                    {step.description}
+                  {/* Description */}
+                  <p className="font-sans text-[13px] sm:text-[13.5px] text-[#68645D] leading-relaxed">
+                    {item.desc}
                   </p>
                 </div>
-
-                <div className="pt-4 border-t border-[#E7E0D4]/70 mt-auto">
-                  <span className="block text-[10px] font-mono uppercase tracking-wider text-[#77736C] mb-1">
-                    On-Site Role
-                  </span>
-                  <p className="text-xs font-medium text-[#171614]">{step.siteRole}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 5: DETAILS MATTER (CRAFT & DETAIL) */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FAF8F3]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
-            <div className="lg:col-span-7">
-              <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-                CRAFT &amp; DETAIL
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight leading-tight mb-6">
-                The finish is part of the design.
-              </h2>
-              <p className="text-base sm:text-lg text-[#77736C] font-light leading-relaxed">
-                The difference between ordinary metal contracting and architectural fabrication lies in
-                the transitions. Smooth ground joints, balanced visual weights, deburred perimeter
-                edges, and durable multi-coat finishes ensure that custom features feel refined and
-                permanent.
-              </p>
-            </div>
-
-            <div className="lg:col-span-5 flex items-center justify-end">
-              <div className="relative aspect-[4/3] w-full max-w-md rounded-sm overflow-hidden border border-[#E7E0D4] shadow-sm">
-                <Image
-                  src="/images/screen5_detail.jpg"
-                  alt="Architectural fabrication detail and joinery finish by SMS Construction"
-                  width={600}
-                  height={450}
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-3 left-3 bg-[#171614]/80 backdrop-blur-sm px-3 py-1 rounded-sm text-[11px] font-mono text-[#FAF8F3]">
-                  Craft Detail &bull; Joinery Transition
-                </div>
-              </div>
+              ))}
             </div>
           </div>
+        </section>
 
-          {/* Detail Pillars Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {fabricationDetailPillars.map((pillar) => (
-              <div
-                key={pillar.number}
-                className="bg-[#FFFFFF] p-6 rounded-sm border border-[#E7E0D4] hover:shadow-sm transition-shadow flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-mono text-[#B08A52] uppercase tracking-widest">
-                      Detail {pillar.number}
-                    </span>
-                    <span className="text-[11px] font-mono text-[#77736C] bg-[#FAF8F3] px-2 py-0.5 rounded-sm border border-[#E7E0D4]">
-                      {pillar.focus}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-medium text-[#171614] mb-2">{pillar.title}</h3>
-                  <p className="text-xs text-[#77736C] font-light leading-relaxed">
-                    {pillar.description}
-                  </p>
+        {/* ===================================================================
+            SECTION 6: DESIGN + FABRICATION CONNECTION
+            Visual Progressive Relationship & Strong Internal Linking
+        =================================================================== */}
+        <section
+          aria-labelledby="connection-heading"
+          className="py-16 sm:py-24 bg-white border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center mb-14">
+              <div className="lg:col-span-6">
+                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                  SEAMLESS INTEGRATION
+                </span>
+                <h2
+                  id="connection-heading"
+                  className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
+                >
+                  Fabrication that follows the design<span className="text-[#B08A52]">.</span>
+                </h2>
+                <p className="text-[15.5px] sm:text-[16.5px] text-[#68645D] font-sans leading-relaxed">
+                  Fabrication works best when the fabricated element is considered alongside the
+                  surrounding architecture, interior or construction requirements. Early coordination
+                  prevents on-site retrofitting and preserves structural integrity.
+                </p>
+              </div>
+
+              {/* Progressive Flow Diagram: DESIGN → DETAIL → FABRICATE → INSTALL */}
+              <div className="lg:col-span-6 p-6 sm:p-8 rounded-[24px] bg-[#FAF8F3] border border-[#E7E0D4]">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                  {[
+                    { label: "DESIGN", sub: "Architectural Intent" },
+                    { label: "DETAIL", sub: "Shop Measurements" },
+                    { label: "FABRICATE", sub: "Precision Workshop" },
+                    { label: "INSTALL", sub: "Site Anchoring" },
+                  ].map((stage, sIdx) => (
+                    <div
+                      key={stage.label}
+                      className="p-3.5 rounded-xl bg-white border border-[#E7E0D4] flex flex-col justify-between"
+                    >
+                      <span className="font-mono text-[10px] font-bold text-[#B08A52] block mb-1">
+                        0{sIdx + 1}
+                      </span>
+                      <h4 className="font-bold text-[14px] text-[#171714] tracking-tight">
+                        {stage.label}
+                      </h4>
+                      <span className="text-[11px] text-[#77736C] font-sans mt-1">
+                        {stage.sub}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* SECTION 6: FABRICATION + INTERIOR DESIGN (CROSS-SERVICE ARCHITECTURE) */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-              CROSS-DISCIPLINE SYNERGY
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight mb-4">
-              Built to work with the interior.
-            </h2>
-            <p className="text-base text-[#77736C] font-light leading-relaxed">
-              When custom fabrication is planned alongside interior design, metal and joinery elements
-              align naturally with false ceilings, electrical conduits, and surrounding cabinetry
-              without requiring destructive on-site modifications.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="p-6 rounded-sm bg-[#FAF8F3] border border-[#E7E0D4]">
-              <span className="text-xs font-mono text-[#B08A52] uppercase tracking-widest block mb-2">
-                01 / Partitions &amp; Dividers
-              </span>
-              <h3 className="text-lg font-light text-[#171614] mb-3">Zoned Living Spaces</h3>
-              <p className="text-xs text-[#77736C] font-light leading-relaxed mb-6">
-                Decorative fluted screens and metal-profiled room dividers separate living, dining,
-                and prayer spaces while allowing natural airflow and light to filter through.
-              </p>
+            {/* 3 Related Primary Services Internal Links */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-8 border-t border-[#E7E0D4]">
               <Link
-                href="/interior-design#false-ceiling"
-                className="inline-flex items-center gap-1 text-xs uppercase tracking-widest font-medium text-[#B08A52] hover:text-[#171614] transition-colors"
+                href="/design-planning"
+                className="group p-6 rounded-2xl bg-[#FAF8F3] hover:bg-white border border-[#E7E0D4] hover:border-[#B08A52]/60 hover:shadow-xs transition-all duration-300"
               >
-                <span>View Ceiling &amp; Screen Integrations</span>
-                <ArrowRight className="w-3 h-3" />
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#B08A52] block mb-1">
+                  Visualization &amp; Drafting
+                </span>
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-[17px] text-[#171714] group-hover:text-[#B08A52] transition-colors">
+                    Design &amp; Planning
+                  </h3>
+                  <ArrowRight size={15} className="text-[#171714] group-hover:translate-x-1 transition-transform" />
+                </div>
+                <p className="text-[13px] text-[#68645D] font-sans">
+                  Coordinate architectural elevations, floor plans, and shop drawings before cutting metal.
+                </p>
               </Link>
-            </div>
 
-            {/* Feature 2 */}
-            <div className="p-6 rounded-sm bg-[#FAF8F3] border border-[#E7E0D4]">
-              <span className="text-xs font-mono text-[#B08A52] uppercase tracking-widest block mb-2">
-                02 / Media &amp; Wall Backing
-              </span>
-              <h3 className="text-lg font-light text-[#171614] mb-3">Concealed Strength</h3>
-              <p className="text-xs text-[#77736C] font-light leading-relaxed mb-6">
-                Rigid internal metal frameworks anchor heavy stone slabs, TV units, and cantilevered
-                consoles securely into concrete without exposing screws or sagging over time.
-              </p>
-              <Link
-                href="/interior-design#tv-unit"
-                className="inline-flex items-center gap-1 text-xs uppercase tracking-widest font-medium text-[#B08A52] hover:text-[#171614] transition-colors"
-              >
-                <span>View TV Unit Joinery</span>
-                <ArrowRight className="w-3 h-3" />
-              </Link>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="p-6 rounded-sm bg-[#FAF8F3] border border-[#E7E0D4]">
-              <span className="text-xs font-mono text-[#B08A52] uppercase tracking-widest block mb-2">
-                03 / Architectural Enclosures
-              </span>
-              <h3 className="text-lg font-light text-[#171614] mb-3">Flush Wall Transitions</h3>
-              <p className="text-xs text-[#77736C] font-light leading-relaxed mb-6">
-                Custom metal surrounds and door sub-frames coordinate with masonry lines and tile
-                edges to create shadow reveals and clean flush architectural boundaries.
-              </p>
               <Link
                 href="/construction"
-                className="inline-flex items-center gap-1 text-xs uppercase tracking-widest font-medium text-[#B08A52] hover:text-[#171614] transition-colors"
+                className="group p-6 rounded-2xl bg-[#FAF8F3] hover:bg-white border border-[#E7E0D4] hover:border-[#B08A52]/60 hover:shadow-xs transition-all duration-300"
               >
-                <span>View Construction Coordination</span>
-                <ArrowRight className="w-3 h-3" />
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#B08A52] block mb-1">
+                  Structural Execution
+                </span>
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-[17px] text-[#171714] group-hover:text-[#B08A52] transition-colors">
+                    Civil Construction
+                  </h3>
+                  <ArrowRight size={15} className="text-[#171714] group-hover:translate-x-1 transition-transform" />
+                </div>
+                <p className="text-[13px] text-[#68645D] font-sans">
+                  Embed mounting plates, anchor fasteners, and sleeves during concrete casting.
+                </p>
+              </Link>
+
+              <Link
+                href="/interior-design"
+                className="group p-6 rounded-2xl bg-[#FAF8F3] hover:bg-white border border-[#E7E0D4] hover:border-[#B08A52]/60 hover:shadow-xs transition-all duration-300"
+              >
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#B08A52] block mb-1">
+                  Spatial Finishing
+                </span>
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-[17px] text-[#171714] group-hover:text-[#B08A52] transition-colors">
+                    Interior Design
+                  </h3>
+                  <ArrowRight size={15} className="text-[#171714] group-hover:translate-x-1 transition-transform" />
+                </div>
+                <p className="text-[13px] text-[#68645D] font-sans">
+                  Harmonize custom metal accents, room partitions, and panelling with bespoke cabinetry.
+                </p>
               </Link>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SECTION 7: REAL PROJECT PROOF */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FAF8F3]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Visual Column */}
-            <div className="lg:col-span-6">
-              <div className="relative aspect-[4/3] rounded-sm overflow-hidden border border-[#E7E0D4] bg-[#FFFFFF] shadow-sm group">
-                <Image
-                  src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-decorative-partition.webp"
-                  alt="Custom fabricated fluted decorative partition dividing the living and foyer at Nagarajan Residence in Theroor, Nagercoil"
-                  width={800}
-                  height={600}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#171614]/65 via-transparent to-transparent opacity-80" />
-                
-                <div className="absolute bottom-5 left-5 right-5 text-[#FAF8F3]">
-                  <p className="text-xs font-mono uppercase tracking-widest text-[#B08A52] mb-1">
-                    Finished Project Proof
-                  </p>
-                  <p className="text-sm font-light text-[#FAF8F3]">
-                    Nagarajan Residence &mdash; Theroor, Nagercoil
-                  </p>
-                </div>
-              </div>
+        {/* ===================================================================
+            SECTION 7: WHERE FABRICATION FITS
+            Broad Contextual Use-Case Categories (No Invented Products)
+        =================================================================== */}
+        <section
+          aria-labelledby="usecases-heading"
+          className="py-16 sm:py-24 bg-[#FAF8F3] border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="max-w-3xl mb-12 sm:mb-16">
+              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                INTEGRATED APPLICATIONS
+              </span>
+              <h2
+                id="usecases-heading"
+                className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
+              >
+                Where Fabrication Becomes Part of the Project<span className="text-[#B08A52]">.</span>
+              </h2>
+              <p className="text-[15.5px] sm:text-[16.5px] text-[#68645D] font-sans leading-relaxed">
+                Fabricated elements serve broad functional and visual roles across different building
+                zones, planned to work with the surrounding masonry, glass, and joinery.
+              </p>
             </div>
 
-            {/* Narrative Column */}
-            <div className="lg:col-span-6">
-              <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-                FROM OUR PROJECTS
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight leading-tight mb-6">
-                See the Finished Work
-              </h2>
-              <p className="text-base sm:text-lg text-[#77736C] font-light leading-relaxed mb-6">
-                At the Nagarajan Residence in Theroor, our team designed, fabricated, and installed
-                a custom vertical fluted screen to demarcate the foyer from the main living area.
-              </p>
-              <p className="text-sm sm:text-base text-[#77736C] font-light leading-relaxed mb-8">
-                Measuring exact floor-to-ceiling heights after floor tiling allowed the screen to be
-                anchored securely with concealed top and bottom fixings, providing clean visual
-                separation while preserving natural ambient light across the home.
-              </p>
+            {/* 4 Contextual Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+              {fabricationContextCategories.map((cat) => (
+                <div
+                  key={cat.title}
+                  className="p-6 sm:p-7 rounded-[22px] bg-white border border-[#E7E0D4] flex flex-col justify-between hover:border-[#B08A52]/50 hover:shadow-xs transition-all duration-300"
+                >
+                  <div>
+                    <div className="w-10 h-10 rounded-xl bg-[#FAF8F3] border border-[#E7E0D4] flex items-center justify-center text-[#B08A52] mb-4">
+                      <span className="material-symbols-outlined text-[20px]">{cat.icon}</span>
+                    </div>
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-[#B08A52] block mb-1">
+                      {cat.subtitle}
+                    </span>
+                    <h3 className="font-bold text-[18px] text-[#171714] mb-3">
+                      {cat.title}
+                    </h3>
+                    <p className="text-[13.5px] text-[#68645D] leading-relaxed font-sans">
+                      {cat.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-              {/* Verified Project Attributes */}
-              <div className="grid grid-cols-2 gap-4 pt-6 border-t border-[#E7E0D4] mb-8">
-                <div>
-                  <span className="block text-[11px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Fabricated Item
-                  </span>
-                  <p className="text-sm font-medium text-[#171614]">Floor-to-Ceiling Fluted Screen</p>
-                </div>
-                <div>
-                  <span className="block text-[11px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Spatial Role
-                  </span>
-                  <p className="text-sm font-medium text-[#171614]">Foyer &amp; Living Room Division</p>
-                </div>
+        {/* ===================================================================
+            SECTION 8: REAL PROJECT PROOF / CONSULTATION
+            Factual consultation banner without unsupported project claims
+        =================================================================== */}
+        <section
+          aria-labelledby="proof-heading"
+          className="py-14 sm:py-20 bg-white border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="p-8 sm:p-12 rounded-[28px] bg-[#171714] text-white flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[#C89A47]/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative z-10 max-w-2xl">
+                <span className="inline-block text-[11px] sm:text-[12px] font-mono font-medium tracking-[0.2em] uppercase text-[#e3c381] mb-3">
+                  FROM FABRICATION TO FINISHED SPACE
+                </span>
+                <h2
+                  id="proof-heading"
+                  className="text-[24px] sm:text-[32px] lg:text-[36px] font-bold text-white tracking-tight leading-tight mb-3"
+                >
+                  Looking for fabrication for your project?
+                </h2>
+                <p className="text-[14.5px] sm:text-[15.5px] text-white/80 font-sans leading-relaxed">
+                  Whether coordinating ACP panel cladding, custom steel framing, or architectural
+                  aluminium elements, we review your drawings and site conditions to structure an
+                  integrated plan.
+                </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="relative z-10 flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
                 <Link
-                  href="/projects/nagarajan-residence-nagercoil-theroor"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#171614] text-[#FAF8F3] text-xs uppercase tracking-widest font-medium rounded-sm hover:bg-[#B08A52] transition-colors group"
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#e3c381] to-[#C89A47] text-[#171714] font-sans font-semibold text-[14px] hover:shadow-lg hover:shadow-[#C89A47]/20 hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  <span>View Full Project Case Study</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <span>Discuss Your Requirements</span>
+                  <ArrowRight size={15} />
                 </Link>
 
                 <Link
                   href="/projects"
-                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-medium text-[#171614] hover:text-[#B08A52] transition-colors px-4 py-3.5"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/20 text-white font-sans font-medium text-[14px] hover:bg-white hover:text-[#171714] transition-all duration-300"
                 >
-                  <span>All Projects</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  <span>View All Projects</span>
                 </Link>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SECTION 8: WHO THIS IS FOR */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-              PRACTICAL FIT
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight mb-4">
-              When Custom Fabrication Makes Sense
-            </h2>
-            <p className="text-base text-[#77736C] font-light leading-relaxed">
-              Standard retail elements rarely match the exact architectural nuances of a bespoke home.
-              Here is when custom fabrication delivers the highest value.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {fabricationAudienceScenarios.map((scenario) => (
-              <div
-                key={scenario.number}
-                className="p-6 rounded-sm border border-[#E7E0D4] bg-[#FAF8F3] hover:border-[#B08A52] transition-colors flex flex-col justify-between"
-              >
-                <div>
-                  <span className="text-xs font-mono text-[#B08A52] uppercase tracking-widest block mb-2">
-                    Scenario {scenario.number}
-                  </span>
-                  <h3 className="text-lg font-light text-[#171614] mb-3">{scenario.title}</h3>
-                  <p className="text-xs text-[#77736C] font-light leading-relaxed mb-6">
-                    {scenario.description}
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-[#E7E0D4]/70">
-                  <span className="block text-[10px] font-mono uppercase tracking-wider text-[#77736C] mb-1">
-                    Our Solution
-                  </span>
-                  <p className="text-xs font-medium text-[#171614]">{scenario.solution}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 9: LOCAL SEO (BASED IN NAGERCOIL) */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FAF8F3]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7">
-              <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-                BASED IN NAGERCOIL
+        {/* ===================================================================
+            SECTION 9: QUALITY / DETAIL SECTION
+            Design & quality considerations (no unsupported guarantees)
+        =================================================================== */}
+        <section
+          aria-labelledby="quality-heading"
+          className="py-16 sm:py-24 bg-[#FAF8F3] border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="max-w-3xl mb-12 sm:mb-16">
+              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                DETAILS MATTER
               </span>
-              <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight leading-tight mb-6">
-                Fabrication Works in Nagercoil
+              <h2
+                id="quality-heading"
+                className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
+              >
+                Good fabrication is measured in the details<span className="text-[#B08A52]">.</span>
               </h2>
-              <div className="space-y-4 text-base text-[#77736C] font-light leading-relaxed max-w-2xl mb-8">
-                <p>
-                  SMS Construction is based in Nagercoil, Tamil Nadu, providing fabrication-related
-                  services as part of its construction and interior projects within its actual
-                  service area across Kanyakumari district.
-                </p>
-                <p>
-                  Our workshop and site-fitting teams operate locally, enabling fast site measurements,
-                  accurate trial fittings, and responsive aftercare for homeowners and commercial
-                  clients across Nagercoil and neighboring regions.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-4 bg-[#FFFFFF] rounded-sm border border-[#E7E0D4]">
-                  <span className="block text-[10px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Studio Location
-                  </span>
-                  <p className="text-xs text-[#171614] font-medium leading-relaxed">
-                    25/1 Muthamizh Street, Near Court Road, Nagercoil, Tamil Nadu 629001
-                  </p>
-                </div>
-                <div className="p-4 bg-[#FFFFFF] rounded-sm border border-[#E7E0D4]">
-                  <span className="block text-[10px] font-mono uppercase tracking-widest text-[#77736C] mb-1">
-                    Direct Contact
-                  </span>
-                  <a
-                    href={`tel:${phoneNumber}`}
-                    className="text-xs text-[#171614] font-medium hover:text-[#B08A52] transition-colors block"
-                  >
-                    {formattedPhone}
-                  </a>
-                  <a
-                    href="mailto:smsconstructionngl@gmail.com"
-                    className="text-xs text-[#77736C] hover:text-[#B08A52] transition-colors block mt-0.5"
-                  >
-                    smsconstructionngl@gmail.com
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 bg-[#FFFFFF] p-8 rounded-sm border border-[#E7E0D4] shadow-sm">
-              <span className="text-xs font-mono tracking-widest uppercase text-[#B08A52] block mb-2">
-                Custom Requirements
-              </span>
-              <h3 className="text-xl font-light text-[#171614] mb-4">
-                Discuss Your Fabrication Idea
-              </h3>
-              <p className="text-xs text-[#77736C] font-light leading-relaxed mb-6">
-                Have a reference photo, rough sketch, or specific room dimension? Our team can evaluate
-                feasibility, material options, and mounting details for your project.
+              <p className="text-[15.5px] sm:text-[16.5px] text-[#68645D] font-sans leading-relaxed">
+                Precision in metalwork depends on disciplined workshop preparation, clean junction
+                detailing, and careful site fitment. These principles guide every fabrication scope.
               </p>
+            </div>
 
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-2 text-xs text-[#171614]">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B08A52]" />
-                  <span>On-site dimension verification</span>
+            {/* 6 Quality Pillars Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              {fabricationQualityDetails.map((pillar) => (
+                <div
+                  key={pillar.aspect}
+                  className="p-6 sm:p-7 rounded-[22px] bg-white border border-[#E7E0D4] flex flex-col justify-between hover:border-[#B08A52]/40 transition-all duration-300"
+                >
+                  <div>
+                    <div className="w-9 h-9 rounded-lg bg-[#FAF8F3] border border-[#E7E0D4] flex items-center justify-center text-[#B08A52] mb-4 shadow-2xs">
+                      <span className="material-symbols-outlined text-[19px]">{pillar.icon}</span>
+                    </div>
+                    <h3 className="font-sans font-bold text-[17px] text-[#171714] mb-2">
+                      {pillar.aspect}
+                    </h3>
+                    <p className="font-sans text-[13.5px] text-[#68645D] leading-relaxed">
+                      {pillar.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-[#171614]">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B08A52]" />
-                  <span>Coordinated with civil &amp; interior finishes</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-[#171614]">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B08A52]" />
-                  <span>Careful delivery and on-site fitting</span>
-                </div>
-              </div>
-
-              <Link
-                href="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#171614] text-[#FAF8F3] text-xs uppercase tracking-widest font-medium rounded-sm hover:bg-[#B08A52] transition-colors"
-              >
-                <span>Request a Custom Quote</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SECTION 10: FAQ */}
-      <section className="py-20 lg:py-28 border-b border-[#E7E0D4] bg-[#FFFFFF]">
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-16">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-3">
-              ANSWERS &amp; DETAILS
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#171614] tracking-tight mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-base text-[#77736C] font-light max-w-xl mx-auto">
-              Clear answers regarding custom fabrication, materials, interior integration, and
-              consultations in Nagercoil.
-            </p>
-          </div>
+        {/* ===================================================================
+            SECTION 10: LOCAL SERVICE AREA (GEO / LOCAL SEO)
+            Natural Nagercoil & Kanyakumari service context
+        =================================================================== */}
+        <LocalServiceArea
+          badge="BASED IN NAGERCOIL"
+          title={
+            <>
+              Fabrication Services in Nagercoil<span className="text-[#B08A52]">.</span>
+            </>
+          }
+          titleClassName="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
+          description={[
+            "SMS Construction is based in Nagercoil, Tamil Nadu, providing fabrication support for construction, architectural and interior project requirements within its actual service area across Kanyakumari District.",
+            "Our local presence enables direct on-site dimensional verification, workshop pre-assembly, and coordinated installation for residential and commercial projects.",
+          ]}
+          deskTitle="Fabrication & Engineering Desk"
+        />
 
-          <ServiceFaqAccordion items={fabricationFaqs} />
-        </div>
-      </section>
+        {/* ===================================================================
+            SECTION 11: FAQ
+            Using unified ModernFaq component with 8 factual answers
+        =================================================================== */}
+        <ModernFaq
+          sectionId="faq-heading"
+          title="Frequently Asked Questions"
+          titleAccent="."
+          subtitle="Everything you need to know about architectural fabrication services"
+          items={fabricationFaqs}
+          className="py-16 md:py-24 bg-[#FAFAFA] border-b border-[#E7E0D4] relative"
+        />
 
-      {/* SECTION 11: FINAL LEAD CTA */}
-      <section className="py-20 lg:py-28 bg-[#171614] text-[#FAF8F3] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-          <div className="max-w-3xl">
-            <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#B08A52] block mb-4">
-              START A CUSTOM PROJECT
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-light text-[#FAF8F3] tracking-tight leading-tight mb-6">
-              Have something specific in mind?
-            </h2>
-            <p className="text-base sm:text-lg text-[#FAF8F3]/70 font-light leading-relaxed mb-10 max-w-2xl">
-              Tell us what you need fabricated, where it will be used, and what you have in mind.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#B08A52] text-[#FAF8F3] text-xs uppercase tracking-widest font-medium rounded-sm hover:bg-[#FFFFFF] hover:text-[#171614] transition-colors duration-300"
-              >
-                <span>Get a Free Quote</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-
-              <a
-                href={`tel:${phoneNumber}`}
-                className="inline-flex items-center gap-2 px-6 py-4 bg-transparent border border-[#FAF8F3]/20 text-[#FAF8F3] text-xs uppercase tracking-widest font-medium rounded-sm hover:border-[#FAF8F3] hover:bg-[#FAF8F3]/10 transition-colors"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#B08A52]" />
-                <span>Call {formattedPhone}</span>
-              </a>
-
-              <a
-                href={`https://wa.me/${whatsappNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-4 bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] text-xs uppercase tracking-widest font-medium rounded-sm hover:bg-[#25D366]/20 transition-colors"
-              >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>WhatsApp</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* DISCIPLINE HUB BAR (Cross-service architecture navigation) */}
-      <section className="py-8 bg-[#FAF8F3] border-t border-[#E7E0D4]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#77736C]">
-              Service Architecture:
-            </span>
-            <div className="flex items-center flex-wrap gap-4 sm:gap-6 text-xs uppercase tracking-wider font-medium">
-              <Link
-                href="/services"
-                className="text-[#77736C] hover:text-[#B08A52] transition-colors"
-              >
-                Services Hub
-              </Link>
-              <span className="text-[#E7E0D4]">&bull;</span>
-              <Link
-                href="/interior-design"
-                className="text-[#77736C] hover:text-[#B08A52] transition-colors"
-              >
-                Interior Design
-              </Link>
-              <span className="text-[#E7E0D4]">&bull;</span>
-              <Link
-                href="/construction"
-                className="text-[#77736C] hover:text-[#B08A52] transition-colors"
-              >
-                Construction
-              </Link>
-              <span className="text-[#E7E0D4]">&bull;</span>
-              <Link
-                href="/design-planning"
-                className="text-[#77736C] hover:text-[#B08A52] transition-colors"
-              >
-                Design &amp; Planning
-              </Link>
-              <span className="text-[#E7E0D4]">&bull;</span>
-              <Link
-                href="/survey-approvals"
-                className="text-[#77736C] hover:text-[#B08A52] transition-colors"
-              >
-                Survey &amp; Approvals
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+        {/* ===================================================================
+            SECTION 12: FINAL LEAD CTA
+            Using unified ConversionCTA component
+        =================================================================== */}
+        <ConversionCTA
+          theme="light"
+          badge="START YOUR FABRICATION PROJECT"
+          title="Have a detail to fabricate?"
+          description="Tell us what you are building, the element you need fabricated, and where it needs to fit into the project. Our team will review your drawings and discuss the details."
+          primaryBtnText="Discuss Your Project"
+          primaryBtnHref="/contact"
+          phoneNumber={phoneNumber}
+          formattedPhone={formattedPhone}
+          whatsappNumber={whatsappNumber}
+          whatsappMessage="Hello SMS Construction, I would like to consult regarding fabrication works in Nagercoil."
+          subtext="SMS Construction • Architectural & Metal Fabrication • Nagercoil, Tamil Nadu"
+        />
+      </main>
+    </>
   );
 }

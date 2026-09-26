@@ -1,35 +1,41 @@
-export interface FabricationCategory {
+export interface FabricationServiceItem {
   id: string;
   number: string;
   title: string;
-  materialFocus: string;
+  category: string;
   description: string;
-  details: string[];
-  image?: string;
-  alt?: string;
+  applicationScope: string;
+  image: string;
+  alt: string;
+  considerations: string[];
 }
 
-export interface FabricationProcessStep {
-  number: string;
+export interface MaterialComparisonItem {
+  material: string;
+  tagline: string;
+  bestSuitedTo: string;
+  characteristics: string;
+  siteCoordination: string;
+}
+
+export interface ProcessStep {
   step: string;
-  title: string;
-  action: string;
-  description: string;
-  siteRole: string;
-}
-
-export interface DetailPillar {
   number: string;
   title: string;
-  description: string;
-  focus: string;
+  desc: string;
 }
 
-export interface FabricationAudienceScenario {
-  number: string;
+export interface FabricationContextCategory {
   title: string;
+  subtitle: string;
   description: string;
-  solution: string;
+  icon: string;
+}
+
+export interface QualityDetailItem {
+  aspect: string;
+  description: string;
+  icon: string;
 }
 
 export interface FabricationFaq {
@@ -37,280 +43,250 @@ export interface FabricationFaq {
   answer: string;
 }
 
-export const fabricationCategories: FabricationCategory[] = [
+// 01 to 03: Actual Fabrication Services (Rendered once, no duplicate ACP)
+export const fabricationServices: FabricationServiceItem[] = [
   {
-    id: "custom-metalwork",
+    id: "acp-works",
     number: "01",
-    title: "Custom Metalwork",
-    materialFocus: "Architectural Steel & Profiled Sections",
+    title: "ACP Works",
+    category: "Composite Panel Systems",
     description:
-      "Purpose-built architectural metal elements engineered to exact site dimensions—incorporating clean perimeter edges, balanced visual weight, and robust mounting details.",
-    details: [
-      "Custom entry gates and protective compound grill profiles",
-      "Perimeter structural framing tailored to boundary walls",
-      "Durable architectural accents integrated into building facades",
-      "Weather-resistant primed and coated surface treatments",
+      "ACP fabrication for architectural and project-specific applications where lightweight panel systems and clean finished surfaces are required.",
+    applicationScope:
+      "Panel-based architectural applications and selected exterior/interior surface finishes coordinated with building elevations.",
+    image: "/images/services/acp-works.webp",
+    alt: "ACP panel fabrication for an architectural project by SMS Construction",
+    considerations: [
+      "Lightweight composite panel fabrication based on measured grid lines",
+      "Clean geometric reveals and perimeter trim alignment",
+      "Fabrication detailing coordinated with structural substructure",
+      "Accurate corner mitres and surface return folds",
     ],
-    image: "/images/services/fabrication.jpg",
-    alt: "Custom architectural metalwork and fabrication elements in Nagercoil",
   },
   {
-    id: "partitions",
+    id: "steel-fabrication",
     number: "02",
-    title: "Partitions & Room Dividers",
-    materialFocus: "Fluted Profiles, Metal Frames & Timber Accents",
+    title: "Steel Fabrication",
+    category: "Metal Framing & Components",
     description:
-      "Spatial dividers designed to define room boundaries between foyers, living areas, and dining spaces while preserving sightlines and natural ambient light.",
-    details: [
-      "Floor-to-ceiling fluted vertical dividers and room dividers",
-      "Geometric decorative screens separating entryways from living zones",
-      "Custom framework anchoring decorative panels and privacy louvers",
-      "Concealed base and ceiling anchor plates for seamless visual lines",
+      "Steel fabrication for project requirements where strength, structure or custom fabricated elements form part of the design and construction scope.",
+    applicationScope:
+      "Fabricated elements where strength and project requirements call for steel, with clear distinction between architectural components and engineered structural members.",
+    image: "/images/services/steel-fabrication.webp",
+    alt: "Steel fabrication work at a construction site by SMS Construction",
+    considerations: [
+      "Profile cutting, fitting, and clean weld transitions",
+      "Dimensional verification against site gridlines and floor levels",
+      "Protective shop-primer application before site delivery",
+      "Mounting and anchoring points resolved for site installation",
     ],
-    image:
-      "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-decorative-partition.webp",
-    alt: "Bespoke fluted room partition installed at Nagarajan Residence in Nagercoil",
   },
   {
-    id: "frames",
+    id: "aluminium-fabrication",
     number: "03",
-    title: "Custom Frames & Enclosures",
-    materialFocus: "Profiled Box Sections & Border Angles",
+    title: "Aluminium Fabrication",
+    category: "Lightweight Architectural Profiles",
     description:
-      "Precision-measured perimeter frames crafted to enclose architectural openings, glass panes, service ducts, and feature panels with flush transitions.",
-    details: [
-      "Recessed wall niche surrounds and display framing",
-      "Concealed utility door frames and access panel edging",
-      "Structural sub-framing for interior panel cladding",
-      "Rigid border profiles designed to resist warping and deflection",
+      "Aluminium fabrication for lightweight architectural and project-specific elements where the material suits the design and application.",
+    applicationScope:
+      "Lightweight architectural and fabricated elements where aluminium's profile versatility and natural corrosion resistance suit the scope.",
+    image: "/images/services/aluminium-fabrication.webp",
+    alt: "Aluminium fabrication detail for an architectural project by SMS Construction",
+    considerations: [
+      "Precision extrusion cutting and tight corner joints",
+      "Subtle architectural framing with clean geometric sightlines",
+      "Surface finish preparation suited to coastal atmospheric conditions",
+      "Integration with surrounding masonry, glass, or interior panelling",
     ],
-  },
-  {
-    id: "railings",
-    number: "04",
-    title: "Stair & Balcony Railings",
-    materialFocus: "Handrails, Balusters & Safety Spindles",
-    description:
-      "Comfortable handrails, balustrades, and terrace edge guards that balance ergonomic grip dimensions with contemporary architectural proportions.",
-    details: [
-      "Internal staircase railings with clean weld transitions",
-      "External balcony and terrace perimeter safety barriers",
-      "Minimalist vertical spindle arrays calibrated for child safety",
-      "Anchor brackets coordinated with concrete staircase treads",
-    ],
-  },
-  {
-    id: "architectural-elements",
-    number: "05",
-    title: "Architectural Features",
-    materialFocus: "Mixed Materials, Brackets & Fascia Profiles",
-    description:
-      "Specialty custom details that give a building its distinctive visual signature—from cantilevered entrance canopies to customized exterior fins.",
-    details: [
-      "Entrance canopy sub-structures and decorative support brackets",
-      "Exterior shading fins and architectural facade accents",
-      "Courtyard pergola frameworks and sky-lit trellis structures",
-      "Custom planter boxes and exterior hardware accents",
-    ],
-  },
-  {
-    id: "interior-fabrication",
-    number: "06",
-    title: "Interior Fabrication",
-    materialFocus: "Joinery Frameworks & Media Backing",
-    description:
-      "Internal support structures, media wall framing, and decorative metal reveals engineered to integrate directly with cabinetwork and false ceiling drops.",
-    details: [
-      "Reinforced backing frames for wall-mounted TV media consoles",
-      "Metal edge trims and shadow gaps within modular joinery",
-      "Suspension frameworks for feature lighting elements",
-      "Custom metal legs and structural plinths for bespoke furniture",
-    ],
-    image:
-      "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-tv-unit-detail.webp",
-    alt: "Custom joinery and internal framing detail at Nagarajan Residence",
   },
 ];
 
-export const fabricationProcessSteps: FabricationProcessStep[] = [
+// Section 4: Material Comparison
+export const materialComparison: MaterialComparisonItem[] = [
   {
+    material: "ACP",
+    tagline: "Composite Panel Systems",
+    bestSuitedTo:
+      "Panel-based architectural applications and selected exterior/interior finishes.",
+    characteristics:
+      "Lightweight flat surfaces, modular panel layouts, and clean contemporary visual lines.",
+    siteCoordination:
+      "Requires measured sub-frame framing aligned with wall planes.",
+  },
+  {
+    material: "Steel",
+    tagline: "High-Strength Fabricated Elements",
+    bestSuitedTo:
+      "Fabricated elements where strength and project requirements call for steel.",
+    characteristics:
+      "High rigidity, versatile profile forms, welded connectivity, and solid load capability.",
+    siteCoordination:
+      "Requires anti-corrosive priming and coordinated structural or masonry anchor points.",
+  },
+  {
+    material: "Aluminium",
+    tagline: "Lightweight Profile Framing",
+    bestSuitedTo:
+      "Lightweight architectural and fabricated elements where aluminium is appropriate.",
+    characteristics:
+      "Inherent atmospheric corrosion resistance, crisp extrusion shapes, and lighter dead-weight.",
+    siteCoordination:
+      "Requires careful fastener selection and isolated contact with dissimilar metals.",
+  },
+];
+
+// Section 5: Fabrication Process (Continuous architectural line)
+export const fabricationProcessSteps: ProcessStep[] = [
+  {
+    step: "1",
     number: "01",
-    step: "Stage 1 of 6",
     title: "Understand",
-    action: "Design Intent & Function",
-    description:
-      "We begin by reviewing the broader architectural or interior drawings to understand where the fabricated element will sit, what load it bears, and how it will be viewed.",
-    siteRole: "Reviewing spatial context and functional requirements in Nagercoil.",
+    desc: "Review the requirement and intended application.",
   },
   {
+    step: "2",
     number: "02",
-    step: "Stage 2 of 6",
     title: "Measure",
-    action: "On-Site Dimensioning",
-    description:
-      "Taking exact physical measurements directly on site after civil masonry or plastering is complete to account for real-world floor levels and wall plumb variations.",
-    siteRole: "Physical site verification before cutting materials.",
+    desc: "Confirm relevant dimensions and site conditions.",
   },
   {
+    step: "3",
     number: "03",
-    step: "Stage 3 of 6",
-    title: "Develop",
-    action: "Shop Drawing & Mockups",
-    description:
-      "Translating measurements into detailed fabrication drawings, defining joint details, profile gauges, anchor points, and material intersections with adjacent finishes.",
-    siteRole: "Resolving fixing points and connection clearances.",
+    title: "Detail",
+    desc: "Define the fabrication direction and required details.",
   },
   {
+    step: "4",
     number: "04",
-    step: "Stage 4 of 6",
     title: "Fabricate",
-    action: "Workshop Construction",
-    description:
-      "Cutting, profiling, fitting, and assembling raw metal or composite materials in our workshop according to verified dimensions and structural requirements.",
-    siteRole: "Careful assembly and true-square alignment.",
+    desc: "Produce the fabricated element according to the project scope.",
   },
   {
+    step: "5",
     number: "05",
-    step: "Stage 5 of 6",
     title: "Finish",
-    action: "Surface Treatment & Prep",
-    description:
-      "Grinding welds flush, deburring sharp edges, and applying multi-layer protective primers, durable matte enamels, or architectural powder coats suited to coastal climate.",
-    siteRole: "Corrosion protection and uniform color consistency.",
+    desc: "Prepare the surface/finish as required by the project.",
   },
   {
+    step: "6",
     number: "06",
-    step: "Stage 6 of 6",
     title: "Install",
-    action: "On-Site Anchoring & Fitting",
-    description:
-      "Delivering finished assemblies to the project site, anchoring securely into concrete or masonry without damaging surrounding tilework, paint, or joinery.",
-    siteRole: "Careful on-site placement, leveling, and final handover.",
+    desc: "Coordinate installation at the relevant site stage.",
   },
 ];
 
-export const fabricationDetailPillars: DetailPillar[] = [
+// Section 7: Where Fabrication Becomes Part of the Project (Broad Contextual Categories)
+export const fabricationContextCategories: FabricationContextCategory[] = [
   {
-    number: "01",
-    title: "Joints & Welds",
+    title: "Architectural Elements",
+    subtitle: "Envelope & Facade Detailing",
     description:
-      "Clean corner miters and ground-smooth joints that eliminate unsightly weld seams, ensuring continuous visual surfaces.",
-    focus: "Visual Continuity",
+      "Fabricated detailing integrated into building exterior envelopes, parapet copings, and architectural feature zones.",
+    icon: "apartment",
   },
   {
-    number: "02",
-    title: "Proportions & Scale",
+    title: "Interior Elements",
+    subtitle: "Internal Framing & Metal Accents",
     description:
-      "Profile widths and member thicknesses calibrated to look deliberate and architectural rather than heavy or industrial.",
-    focus: "Spatial Harmony",
+      "Internal custom framing, spatial partitions, display surrounds, and architectural metal accents designed to complement joinery.",
+    icon: "meeting_room",
   },
   {
-    number: "03",
-    title: "Clean Edges",
+    title: "Project-Specific Components",
+    subtitle: "Tailored Site Assemblies",
     description:
-      "Deburred, radiused perimeter edges that are safe to the touch and hold surface coating layers evenly over time.",
-    focus: "Tactile Quality",
+      "Bespoke metal components resolved to unique dimensional constraints, awkward spans, or non-standard site junction conditions.",
+    icon: "architecture",
   },
   {
-    number: "04",
-    title: "Durable Finishes",
+    title: "Exterior Applications",
+    subtitle: "Weather-Exposed Coordination",
     description:
-      "Protective primers and weather-resilient coatings selected to withstand coastal humidity and everyday residential wear.",
-    focus: "Long-Term Resilience",
-  },
-  {
-    number: "05",
-    title: "Level & Plumb Alignment",
-    description:
-      "Laser-checked vertical and horizontal installation that aligns perfectly with adjacent tiles, false ceilings, and walls.",
-    focus: "Installation Precision",
-  },
-  {
-    number: "06",
-    title: "Architectural Integration",
-    description:
-      "Concealed anchor screws and discreet wall brackets so fixings never compete with the beauty of the finished element.",
-    focus: "Seamless Attachment",
+      "Fabricated components planned for outdoor environmental exposure, with finish specifications matched to coastal atmospheric weathering.",
+    icon: "wb_sunny",
   },
 ];
 
-export const fabricationAudienceScenarios: FabricationAudienceScenario[] = [
+// Section 9: Quality / Detail Pillars
+export const fabricationQualityDetails: QualityDetailItem[] = [
   {
-    number: "01",
-    title: "A Custom Element Does Not Fit Standard Sizes",
+    aspect: "Alignment",
     description:
-      "You have an entryway, stairwell, or balcony with unique dimensions where off-the-shelf market products look undersized, oversized, or ill-fitted.",
-    solution: "Bespoke on-site measurement ensures millimeter-accurate tailoring to your space.",
+      "True geometric squareness, level mounting planes, and consistent reveal gaps aligned with adjoining surfaces.",
+    icon: "straighten",
   },
   {
-    number: "02",
-    title: "A Project Needs a Specific Design Detail",
+    aspect: "Edges",
     description:
-      "Your architectural or interior design requires a particular geometric screen, fluted partition, or custom gate design that cannot be bought in stores.",
-    solution: "Custom workshop assembly directly realizes your architectural drawings.",
+      "Clean edge trimming, deburred profile perimeters, and dressed sheet transitions free of raw cut burrs.",
+    icon: "crop_free",
   },
   {
-    number: "03",
-    title: "An Interior Requires a Made-to-Fit Component",
+    aspect: "Joints",
     description:
-      "Your living room layout calls for an open room divider, a custom TV support frame, or a decorative metal reveal that coordinates with wooden cabinetry.",
-    solution: "Fabrication is coordinated simultaneously with interior woodwork and paint finishes.",
+      "Uniform weld transitions, flush mechanical fasteners, and mitred profile corners calibrated for durability.",
+    icon: "join_inner",
   },
   {
-    number: "04",
-    title: "A Fabricated Feature Needs to Work With Existing Architecture",
+    aspect: "Surface Finish",
     description:
-      "During a renovation, a new balcony railing or entrance gate must harmoniously match the existing home's structural character and masonry lines.",
-    solution: "Profiles, gauges, and finishes are carefully matched to your existing building.",
+      "Properly prepared surfaces receiving appropriate shop primer, powder coating, or anodized protective treatments.",
+    icon: "format_paint",
   },
   {
-    number: "05",
-    title: "Design and Fabrication Considered Together",
+    aspect: "Proportion",
     description:
-      "Homeowners who prefer one unified team to design, measure, fabricate, and install elements rather than coordinating separate metal contractors and carpenters.",
-    solution: "Zero accountability gaps between architectural design and site installation.",
+      "Material section thicknesses and visual weights calibrated to complement surrounding architectural volumes.",
+    icon: "aspect_ratio",
+  },
+  {
+    aspect: "Installation",
+    description:
+      "Secure anchoring systems designed to interface reliably with concrete slabs, blockwork, or secondary sub-framing.",
+    icon: "build",
   },
 ];
 
+// Section 11: 8 Factual FAQs
 export const fabricationFaqs: FabricationFaq[] = [
   {
-    question: "What fabrication works does SMS Construction provide?",
+    question: "What fabrication services does SMS Construction provide?",
     answer:
-      "SMS Construction provides custom architectural fabrication integrated with our residential and commercial projects in Nagercoil. This includes custom metalwork, decorative room partitions, custom window and door sub-frames, stair and balcony railings, architectural entrance features, and internal joinery support frames.",
+      "SMS Construction provides custom architectural fabrication services covering ACP (Aluminium Composite Panel) works, steel fabrication, and aluminium fabrication, integrated with our construction and interior project scopes in Nagercoil and Kanyakumari District.",
   },
   {
-    question: "Can fabrication be customized to a specific space?",
+    question: "What are ACP works?",
     answer:
-      "Yes. Every fabrication element we produce is made-to-order based on physical on-site measurements. We evaluate floor level variations, ceiling drops, and adjacent wall materials to ensure the finished piece fits your exact spatial dimensions.",
+      "ACP works involve fabricating and installing Aluminium Composite Panels onto engineered sub-frames. ACP is used for lightweight architectural exterior cladding, clean fascias, and selected interior panelling where smooth, flat, low-maintenance surfaces are needed.",
   },
   {
-    question: "Can fabrication work be coordinated with interior design?",
+    question: "What is steel fabrication?",
     answer:
-      "Yes, and that is one of our strongest advantages. Because SMS Construction executes full turnkey interiors, our fabrication team works alongside our interior designers and carpenters. This ensures partitions, media wall backings, and metal accents coordinate seamlessly with false ceiling lines and cabinetry.",
+      "Steel fabrication involves cutting, welding, and assembling steel sections for project requirements where strength, rigidity, or tailored metal components form part of the design. When a project requires structural engineering, distinct calculations and approvals are maintained.",
   },
   {
-    question: "Can custom elements be made for existing spaces?",
+    question: "What is aluminium fabrication?",
     answer:
-      "Yes. We frequently fabricate custom railings, room partitions, and replacement gates for existing homes during renovation or interior remodeling projects across Nagercoil and surrounding localities.",
+      "Aluminium fabrication uses lightweight architectural aluminium extrusions and profiles. It is chosen for components where natural resistance to coastal corrosion, lighter dead-weight, and slim geometric frames suit the architectural or interior application.",
   },
   {
-    question: "What information is needed before discussing a fabrication project?",
+    question: "How do I choose between ACP, steel and aluminium?",
     answer:
-      "It helps to have approximate dimensions of the area, a photo of the site or room where the element will be installed, and any reference photos or sketches illustrating your design preference. If you don't have these, our team can visit your site to take measurements.",
+      "Material choice depends on application, design intent, structural requirements, site exposure, and project scope. Steel is suited where strength is paramount, aluminium where lightweight corrosion resistance is needed, and ACP where flat panelized architectural surfaces are desired.",
   },
   {
-    question: "Does the fabrication process include installation?",
+    question: "Can fabrication be coordinated with construction?",
     answer:
-      "Yes. Our service covers the complete lifecycle—from on-site measurement and workshop assembly to protective surface finishing, transport, and careful on-site installation and anchoring by our trained fitting team.",
+      "Yes. Because SMS Construction provides turnkey civil construction as well as fabrication, anchor plates, conduit openings, and mounting brackets can be embedded directly during masonry and concrete stages to avoid post-construction damage.",
   },
   {
-    question: "Do you provide fabrication services in Nagercoil?",
+    question: "Can fabrication work be part of an interior project?",
     answer:
-      "Yes. SMS Construction is based in Nagercoil, Tamil Nadu, and provides custom fabrication works across Nagercoil, Suchindram, Theroor, Kanyakumari, Marthandam, and nearby areas within Kanyakumari district.",
+      "Yes. Fabricated metal elements—such as room dividers, frame borders, and custom architectural accents—can be coordinated directly with our interior design team to harmonize with cabinetry, false ceilings, and finishes.",
   },
   {
-    question: "How can I discuss a custom fabrication requirement?",
+    question: "How can I discuss a fabrication requirement?",
     answer:
-      "You can submit an inquiry through our contact form, call us directly at +91 94880 21183, or message us on WhatsApp with photos and sketches of what you have in mind. We will arrange a consultation at our Nagercoil studio or directly at your project site.",
+      "You can contact SMS Construction by calling +91 94880 21183, sending a WhatsApp message, or submitting your site details and drawings through our online contact form to arrange an initial project discussion.",
   },
 ];

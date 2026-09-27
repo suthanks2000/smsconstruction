@@ -167,16 +167,26 @@ export default function FabricationWorksPage() {
         >
           {/* Full-Bleed Local WebP Background Image */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            {/* Mobile portrait background image */}
+            <Image
+              src="/images/services/services-fabrication-works-portrait.jpg"
+              alt="Real ACP fabrication and architectural panel installation project in Kanyakumari district, Tamil Nadu by SMS Construction"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 1px"
+              className="object-cover object-center md:hidden"
+            />
+            {/* Desktop / tablet landscape background image */}
             <Image
               src="/images/services/fabrication-works-hero.webp"
               alt="Real ACP fabrication and architectural panel installation project in Kanyakumari district, Tamil Nadu by SMS Construction"
               fill
-              loading="lazy"
-              sizes="100vw"
-              className="object-cover object-center"
+              priority
+              sizes="(min-width: 769px) 100vw, 1px"
+              className="hidden md:block object-cover object-center"
             />
-            {/* Soft architectural gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/80 via-[#171714]/50 to-[#171714]/15" />
+            {/* Elegant gradient overlay ensuring high contrast readability while keeping image bright */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#171714]/45 via-[#171714]/20 to-[#171714]/40 md:bg-gradient-to-r md:from-[#171714]/80 md:via-[#171714]/50 md:to-[#171714]/15" />
           </div>
 
           {/* Main Content Container */}
@@ -206,11 +216,19 @@ export default function FabricationWorksPage() {
                   href="/contact"
                   className="w-full sm:w-auto group relative overflow-hidden inline-flex items-center justify-center gap-2.5 min-h-[48px] sm:min-h-[50px] px-7 py-3 rounded-full bg-gradient-to-r from-[#e3c381] to-[#C89A47] text-[#171714] font-sans font-semibold text-[13.5px] sm:text-[14.5px] hover:shadow-lg hover:shadow-[#C89A47]/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-center shadow-md"
                 >
-                  <span>Discuss Your Fabrication Project</span>
+                  <span>Discuss Your Site</span>
                   <ArrowRight size={15} />
                 </Link>
 
                 <div className="flex items-center gap-2.5 w-full sm:w-auto">
+
+                  <a
+                    href={`tel:${phoneNumber}`}
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 min-h-[48px] sm:min-h-[50px] px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm text-white font-sans font-medium text-[13px] sm:text-[14px] hover:bg-white hover:text-[#171714] transition-all duration-300 active:scale-[0.98] whitespace-nowrap"
+                  >
+                    <Phone size={14} className="text-[#e3c381] group-hover:text-[#171714]" />
+                    <span>Call {formattedPhone}</span>
+                  </a>
 
                   <a
                     href={`https://wa.me/${whatsappNumber}?text=Hello%20SMS%20Construction%2C%20I%20would%20like%20to%20discuss%20a%20fabrication%20requirement%20for%20my%20property.`}
@@ -347,195 +365,77 @@ export default function FabricationWorksPage() {
               </p>
             </div>
 
-            {/* Service 01: ACP Works (Asymmetric Split: Left Image + Right Text) */}
-            <article
-              id="acp-works"
-              aria-labelledby="acp-heading"
-              className="mb-16 sm:mb-20 p-6 sm:p-10 lg:p-12 rounded-[28px] bg-white border border-[#E7E0D4] shadow-xs scroll-mt-28"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-                <div className="lg:col-span-6 relative aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden border border-[#E7E0D4] bg-[#171714]">
-                  <Image
-                    src="/images/services/acp-works.webp"
-                    alt="ACP panel fabrication for an architectural project by SMS Construction"
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#171714]/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#e3c381] uppercase tracking-wider">
-                    01 • ACP WORKS
-                  </div>
-                </div>
+            {/* Fabrication Services: 3 Architectural Design Cards (Image-free, Premium Engineering Aesthetic) */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+              {/* Card 01: ACP Works */}
+              <article
+                id="acp-works"
+                aria-labelledby="acp-heading"
+                className="group relative rounded-[28px] bg-white border border-[#E7E0D4] p-7 sm:p-9 hover:border-[#B08A52]/60 hover:shadow-xl hover:shadow-[#B08A52]/10 transition-all duration-500 hover:-translate-y-1.5 scroll-mt-28"
+              >
+                {/* Top Subtle Gold Accent Line */}
+                <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#B08A52]/30 to-transparent group-hover:via-[#B08A52] transition-all duration-500" />
 
-                <div className="lg:col-span-6 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[12px] font-mono font-semibold uppercase tracking-wider text-[#B08A52] block mb-2">
-                      COMPOSITE PANEL SYSTEMS
-                    </span>
-                    <h3
-                      id="acp-heading"
-                      className="text-[26px] sm:text-[32px] lg:text-[36px] font-bold text-[#171714] tracking-tight leading-tight mb-4"
-                    >
-                      ACP Works
-                    </h3>
-                    <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed font-sans mb-6">
-                      ACP fabrication for architectural and project-specific applications where
-                      lightweight panel systems and clean finished surfaces are required.
-                    </p>
+                {/* Title */}
+                <h3
+                  id="acp-heading"
+                  className="text-[24px] sm:text-[28px] font-bold text-[#171714] tracking-tight leading-tight mb-4 group-hover:text-[#B08A52] transition-colors duration-300"
+                >
+                  {fabricationServices[0].title}
+                </h3>
 
-                    <div className="space-y-3 mb-8">
-                      {fabricationServices[0].considerations.map((item) => (
-                        <div key={item} className="flex items-start gap-3">
-                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
-                          <span className="text-[13.5px] sm:text-[14px] text-[#171714] font-sans">
-                            {item}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                {/* Description */}
+                <p className="text-[14.5px] sm:text-[15.5px] text-[#68645D] leading-relaxed font-sans">
+                  {fabricationServices[0].description}
+                </p>
+              </article>
 
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#171714] hover:text-[#B08A52] transition-colors"
-                  >
-                    <span>Consult on ACP Works</span>
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
-              </div>
-            </article>
+              {/* Card 02: Steel Fabrication */}
+              <article
+                id="steel-fabrication"
+                aria-labelledby="steel-heading"
+                className="group relative rounded-[28px] bg-white border border-[#E7E0D4] p-7 sm:p-9 hover:border-[#B08A52]/60 hover:shadow-xl hover:shadow-[#B08A52]/10 transition-all duration-500 hover:-translate-y-1.5 scroll-mt-28"
+              >
+                {/* Top Subtle Gold Accent Line */}
+                <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#B08A52]/30 to-transparent group-hover:via-[#B08A52] transition-all duration-500" />
 
-            {/* Service 02: Steel Fabrication (Reverse Split: Left Text + Right Image) */}
-            <article
-              id="steel-fabrication"
-              aria-labelledby="steel-heading"
-              className="mb-16 sm:mb-20 p-6 sm:p-10 lg:p-12 rounded-[28px] bg-white border border-[#E7E0D4] shadow-xs scroll-mt-28"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-                <div className="lg:col-span-6 order-2 lg:order-1 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[12px] font-mono font-semibold uppercase tracking-wider text-[#B08A52] block mb-2">
-                      METAL FRAMING &amp; COMPONENTS
-                    </span>
-                    <h3
-                      id="steel-heading"
-                      className="text-[26px] sm:text-[32px] lg:text-[36px] font-bold text-[#171714] tracking-tight leading-tight mb-4"
-                    >
-                      Steel Fabrication
-                    </h3>
-                    <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed font-sans mb-4">
-                      Steel fabrication for project requirements where strength, structure or custom
-                      fabricated elements form part of the design and construction scope.
-                    </p>
+                {/* Title */}
+                <h3
+                  id="steel-heading"
+                  className="text-[24px] sm:text-[28px] font-bold text-[#171714] tracking-tight leading-tight mb-4 group-hover:text-[#B08A52] transition-colors duration-300"
+                >
+                  {fabricationServices[1].title}
+                </h3>
 
-                    {/* Engineering Note */}
-                    <div className="p-4 rounded-xl bg-[#FAF8F3] border border-[#E7E0D4] text-[13px] text-[#68645D] font-sans mb-6">
-                      <strong className="text-[#171714] font-semibold block mb-0.5">
-                        Scope Clarity:
-                      </strong>
-                      Not every steel fabrication element is load-bearing. Where a project requires
-                      engineered structural steel, structural calculations and formal approvals are
-                      distinctly coordinated.
-                    </div>
+                {/* Description */}
+                <p className="text-[14.5px] sm:text-[15.5px] text-[#68645D] leading-relaxed font-sans">
+                  {fabricationServices[1].description}
+                </p>
+              </article>
 
-                    <div className="space-y-3 mb-8">
-                      {fabricationServices[1].considerations.map((item) => (
-                        <div key={item} className="flex items-start gap-3">
-                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
-                          <span className="text-[13.5px] sm:text-[14px] text-[#171714] font-sans">
-                            {item}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+              {/* Card 03: Aluminium Fabrication */}
+              <article
+                id="aluminium-fabrication"
+                aria-labelledby="aluminium-heading"
+                className="group relative rounded-[28px] bg-white border border-[#E7E0D4] p-7 sm:p-9 hover:border-[#B08A52]/60 hover:shadow-xl hover:shadow-[#B08A52]/10 transition-all duration-500 hover:-translate-y-1.5 scroll-mt-28"
+              >
+                {/* Top Subtle Gold Accent Line */}
+                <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#B08A52]/30 to-transparent group-hover:via-[#B08A52] transition-all duration-500" />
 
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#171714] hover:text-[#B08A52] transition-colors"
-                  >
-                    <span>Consult on Steel Fabrication</span>
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
+                {/* Title */}
+                <h3
+                  id="aluminium-heading"
+                  className="text-[24px] sm:text-[28px] font-bold text-[#171714] tracking-tight leading-tight mb-4 group-hover:text-[#B08A52] transition-colors duration-300"
+                >
+                  {fabricationServices[2].title}
+                </h3>
 
-                <div className="lg:col-span-6 order-1 lg:order-2 relative aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden border border-[#E7E0D4] bg-[#171714]">
-                  <Image
-                    src="/images/services/steel-fabrication.webp"
-                    alt="Steel fabrication work at a construction site by SMS Construction"
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#171714]/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#e3c381] uppercase tracking-wider">
-                    02 • STEEL FABRICATION
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            {/* Service 03: Aluminium Fabrication (Split with Lighter Technical Detail) */}
-            <article
-              id="aluminium-fabrication"
-              aria-labelledby="aluminium-heading"
-              className="p-6 sm:p-10 lg:p-12 rounded-[28px] bg-white border border-[#E7E0D4] shadow-xs scroll-mt-28"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-                <div className="lg:col-span-6 relative aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden border border-[#E7E0D4] bg-[#171714]">
-                  <Image
-                    src="/images/services/aluminium-fabrication.webp"
-                    alt="Aluminium fabrication detail for an architectural project by SMS Construction"
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#171714]/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-[#e3c381] uppercase tracking-wider">
-                    03 • ALUMINIUM FABRICATION
-                  </div>
-                </div>
-
-                <div className="lg:col-span-6 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[12px] font-mono font-semibold uppercase tracking-wider text-[#B08A52] block mb-2">
-                      LIGHTWEIGHT ARCHITECTURAL PROFILES
-                    </span>
-                    <h3
-                      id="aluminium-heading"
-                      className="text-[26px] sm:text-[32px] lg:text-[36px] font-bold text-[#171714] tracking-tight leading-tight mb-4"
-                    >
-                      Aluminium Fabrication
-                    </h3>
-                    <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed font-sans mb-6">
-                      Aluminium fabrication for lightweight architectural and project-specific elements
-                      where the material suits the design and application.
-                    </p>
-
-                    <div className="space-y-3 mb-8">
-                      {fabricationServices[2].considerations.map((item) => (
-                        <div key={item} className="flex items-start gap-3">
-                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0 mt-0.5" />
-                          <span className="text-[13.5px] sm:text-[14px] text-[#171714] font-sans">
-                            {item}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#171714] hover:text-[#B08A52] transition-colors"
-                  >
-                    <span>Consult on Aluminium Fabrication</span>
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
-              </div>
-            </article>
+                {/* Description */}
+                <p className="text-[14.5px] sm:text-[15.5px] text-[#68645D] leading-relaxed font-sans">
+                  {fabricationServices[2].description}
+                </p>
+              </article>
+            </div>
           </div>
         </section>
 
@@ -687,171 +587,6 @@ export default function FabricationWorksPage() {
           </div>
         </section>
 
-        {/* ===================================================================
-            SECTION 6: DESIGN + FABRICATION CONNECTION
-            Visual Progressive Relationship & Strong Internal Linking
-        =================================================================== */}
-        <section
-          aria-labelledby="connection-heading"
-          className="py-16 sm:py-24 bg-white border-b border-[#E7E0D4]"
-        >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center mb-14">
-              <div className="lg:col-span-6">
-                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                  SEAMLESS INTEGRATION
-                </span>
-                <h2
-                  id="connection-heading"
-                  className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
-                >
-                  Fabrication that follows the design<span className="text-[#B08A52]">.</span>
-                </h2>
-                <p className="text-[15.5px] sm:text-[16.5px] text-[#68645D] font-sans leading-relaxed">
-                  Fabrication works best when the fabricated element is considered alongside the
-                  surrounding architecture, interior or construction requirements. Early coordination
-                  prevents on-site retrofitting and preserves structural integrity.
-                </p>
-              </div>
-
-              {/* Progressive Flow Diagram: DESIGN → DETAIL → FABRICATE → INSTALL */}
-              <div className="lg:col-span-6 p-6 sm:p-8 rounded-[24px] bg-[#FAF8F3] border border-[#E7E0D4]">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                  {[
-                    { label: "DESIGN", sub: "Architectural Intent" },
-                    { label: "DETAIL", sub: "Shop Measurements" },
-                    { label: "FABRICATE", sub: "Precision Workshop" },
-                    { label: "INSTALL", sub: "Site Anchoring" },
-                  ].map((stage, sIdx) => (
-                    <div
-                      key={stage.label}
-                      className="p-3.5 rounded-xl bg-white border border-[#E7E0D4] flex flex-col justify-between"
-                    >
-                      <span className="font-mono text-[10px] font-bold text-[#B08A52] block mb-1">
-                        0{sIdx + 1}
-                      </span>
-                      <h4 className="font-bold text-[14px] text-[#171714] tracking-tight">
-                        {stage.label}
-                      </h4>
-                      <span className="text-[11px] text-[#77736C] font-sans mt-1">
-                        {stage.sub}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* 3 Related Primary Services Internal Links */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-8 border-t border-[#E7E0D4]">
-              <Link
-                href="/design-planning"
-                className="group p-6 rounded-2xl bg-[#FAF8F3] hover:bg-white border border-[#E7E0D4] hover:border-[#B08A52]/60 hover:shadow-xs transition-all duration-300"
-              >
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#B08A52] block mb-1">
-                  Visualization &amp; Drafting
-                </span>
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-bold text-[17px] text-[#171714] group-hover:text-[#B08A52] transition-colors">
-                    Design &amp; Planning
-                  </h3>
-                  <ArrowRight size={15} className="text-[#171714] group-hover:translate-x-1 transition-transform" />
-                </div>
-                <p className="text-[13px] text-[#68645D] font-sans">
-                  Coordinate architectural elevations, floor plans, and shop drawings before cutting metal.
-                </p>
-              </Link>
-
-              <Link
-                href="/construction"
-                className="group p-6 rounded-2xl bg-[#FAF8F3] hover:bg-white border border-[#E7E0D4] hover:border-[#B08A52]/60 hover:shadow-xs transition-all duration-300"
-              >
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#B08A52] block mb-1">
-                  Structural Execution
-                </span>
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-bold text-[17px] text-[#171714] group-hover:text-[#B08A52] transition-colors">
-                    Civil Construction
-                  </h3>
-                  <ArrowRight size={15} className="text-[#171714] group-hover:translate-x-1 transition-transform" />
-                </div>
-                <p className="text-[13px] text-[#68645D] font-sans">
-                  Embed mounting plates, anchor fasteners, and sleeves during concrete casting.
-                </p>
-              </Link>
-
-              <Link
-                href="/interior-design"
-                className="group p-6 rounded-2xl bg-[#FAF8F3] hover:bg-white border border-[#E7E0D4] hover:border-[#B08A52]/60 hover:shadow-xs transition-all duration-300"
-              >
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#B08A52] block mb-1">
-                  Spatial Finishing
-                </span>
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-bold text-[17px] text-[#171714] group-hover:text-[#B08A52] transition-colors">
-                    Interior Design
-                  </h3>
-                  <ArrowRight size={15} className="text-[#171714] group-hover:translate-x-1 transition-transform" />
-                </div>
-                <p className="text-[13px] text-[#68645D] font-sans">
-                  Harmonize custom metal accents, room partitions, and panelling with bespoke cabinetry.
-                </p>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* ===================================================================
-            SECTION 7: WHERE FABRICATION FITS
-            Broad Contextual Use-Case Categories (No Invented Products)
-        =================================================================== */}
-        <section
-          aria-labelledby="usecases-heading"
-          className="py-16 sm:py-24 bg-[#FAF8F3] border-b border-[#E7E0D4]"
-        >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="max-w-3xl mb-12 sm:mb-16">
-              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                INTEGRATED APPLICATIONS
-              </span>
-              <h2
-                id="usecases-heading"
-                className="text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
-              >
-                Where Fabrication Becomes Part of the Project<span className="text-[#B08A52]">.</span>
-              </h2>
-              <p className="text-[15.5px] sm:text-[16.5px] text-[#68645D] font-sans leading-relaxed">
-                Fabricated elements serve broad functional and visual roles across different building
-                zones, planned to work with the surrounding masonry, glass, and joinery.
-              </p>
-            </div>
-
-            {/* 4 Contextual Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-              {fabricationContextCategories.map((cat) => (
-                <div
-                  key={cat.title}
-                  className="p-6 sm:p-7 rounded-[22px] bg-white border border-[#E7E0D4] flex flex-col justify-between hover:border-[#B08A52]/50 hover:shadow-xs transition-all duration-300"
-                >
-                  <div>
-                    <div className="w-10 h-10 rounded-xl bg-[#FAF8F3] border border-[#E7E0D4] flex items-center justify-center text-[#B08A52] mb-4">
-                      <span className="material-symbols-outlined text-[20px]">{cat.icon}</span>
-                    </div>
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-[#B08A52] block mb-1">
-                      {cat.subtitle}
-                    </span>
-                    <h3 className="font-bold text-[18px] text-[#171714] mb-3">
-                      {cat.title}
-                    </h3>
-                    <p className="text-[13.5px] text-[#68645D] leading-relaxed font-sans">
-                      {cat.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ===================================================================
             SECTION 8: REAL PROJECT PROOF / CONSULTATION

@@ -210,16 +210,26 @@ export default function DesignPlanningPage() {
         >
           {/* Full-Bleed Architectural Planning Background Image */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            {/* Mobile portrait background image */}
+            <Image
+              src="/images/services/services-design-planning-portrait.jpg"
+              alt="Architectural design drawings and space planning in Nagercoil by SMS Construction"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 1px"
+              className="object-cover object-center md:hidden"
+            />
+            {/* Desktop / tablet landscape background image */}
             <Image
               src="/images/services/planning.webp"
               alt="Architectural design drawings and space planning in Nagercoil by SMS Construction"
               fill
-              loading="lazy"
-              sizes="100vw"
-              className="object-cover object-right lg:object-[center_35%]"
+              priority
+              sizes="(min-width: 769px) 100vw, 1px"
+              className="hidden md:block object-cover object-right lg:object-[center_35%]"
             />
-            {/* Elegant Soft Overlay Gradient matching Construction */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/85 via-[#171714]/50 to-[#171714]/20" />
+            {/* Elegant gradient overlay ensuring high contrast readability while keeping image bright */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#171714]/45 via-[#171714]/20 to-[#171714]/40 md:bg-gradient-to-r md:from-[#171714]/85 md:via-[#171714]/50 md:to-[#171714]/20" />
           </div>
 
           {/* Main Content Area */}
@@ -227,12 +237,6 @@ export default function DesignPlanningPage() {
 
             {/* Middle Area: Editorial Copy & CTAs */}
             <div className="flex-1 flex flex-col justify-center max-w-3xl my-auto py-6 sm:py-8 lg:py-10">
-              {/* Eyebrow Label */}
-              <div className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.2em] sm:tracking-[0.24em] uppercase text-[#e3c381] mb-3.5 sm:mb-4 lg:mb-5">
-                <Compass size={13} className="shrink-0 text-[#e3c381]" />
-                <span>SMS CONSTRUCTION • DESIGN &amp; PLANNING STUDIO</span>
-              </div>
-
               {/* H1 Heading */}
               <h1
                 className="font-bold intro-elem text-white leading-[1.12] sm:leading-[1.1] tracking-[-0.025em] mb-4 sm:mb-5 lg:mb-6"

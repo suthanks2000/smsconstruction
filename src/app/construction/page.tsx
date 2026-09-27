@@ -236,16 +236,26 @@ export default function ConstructionPage() {
         >
           {/* Full-Bleed Civil Construction Background Image */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            {/* Mobile portrait background image */}
+            <Image
+              src="/images/services/services-civil-construction-portrait.jpg"
+              alt="Civil RCC residential and commercial building construction site in Nagercoil by SMS Construction"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 1px"
+              className="object-cover object-center md:hidden"
+            />
+            {/* Desktop / tablet landscape background image */}
             <Image
               src="/images/services/civil-construction-hero.webp"
               alt="Civil RCC residential and commercial building construction site in Nagercoil by SMS Construction"
               fill
-              loading="lazy"
-              sizes="100vw"
-              className="object-cover object-right lg:object-[center_35%]"
+              priority
+              sizes="(min-width: 769px) 100vw, 1px"
+              className="hidden md:block object-cover object-right lg:object-[center_35%]"
             />
-            {/* Overlay - Restored to the elegant soft style */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/80 via-[#171714]/40 to-[#171714]/10" />
+            {/* Elegant gradient overlay ensuring high contrast readability while keeping image bright */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#171714]/45 via-[#171714]/20 to-[#171714]/40 md:bg-gradient-to-r md:from-[#171714]/80 md:via-[#171714]/40 md:to-[#171714]/10" />
           </div>
 
           {/* Main Content Area */}
@@ -253,10 +263,6 @@ export default function ConstructionPage() {
             {/* Top / Middle Area: Editorial Copy & CTAs */}
             <div className="flex-1 flex flex-col justify-center max-w-3xl my-auto py-3 sm:py-5 lg:py-6">
               {/* Editorial Copy */}
-              <div className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#e3c381] mb-6 sm:mb-3.5">
-                <Hammer size={13} />
-                <span>SMS CONSTRUCTION • CIVIL, COMMERCIAL &amp; RESIDENTIAL CONTRACTORS</span>
-              </div>
               <h1
                 className="font-bold intro-elem text-white leading-[1.1] tracking-[-0.02em] mb-3.5 sm:mb-4.5"
                 style={{ fontSize: "clamp(1.95rem, 3.6vw, 3.35rem)" }}

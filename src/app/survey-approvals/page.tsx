@@ -175,16 +175,26 @@ export default function SurveyApprovalsPage() {
         >
           {/* Full-Bleed Real Survey WebP Background Image */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            {/* Mobile portrait background image */}
+            <Image
+              src="/images/services/services-survey-approvals-portrait.jpg"
+              alt="Professional site survey and land measurement on a residential project site in Nagercoil by SMS Construction"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 1px"
+              className="object-cover object-center md:hidden"
+            />
+            {/* Desktop / tablet landscape background image */}
             <Image
               src="/images/services/survey.webp"
               alt="Professional site survey and land measurement on a residential project site in Nagercoil by SMS Construction"
               fill
-              loading="lazy"
-              sizes="100vw"
-              className="object-cover object-center"
+              priority
+              sizes="(min-width: 769px) 100vw, 1px"
+              className="hidden md:block object-cover object-center"
             />
-            {/* Soft architectural gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#171714]/92 via-[#171714]/70 to-[#171714]/35" />
+            {/* Elegant gradient overlay ensuring high contrast readability while keeping image bright */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#171714]/45 via-[#171714]/20 to-[#171714]/40 md:bg-gradient-to-r md:from-[#171714]/92 md:via-[#171714]/70 md:to-[#171714]/35" />
           </div>
 
           {/* Main Content Container */}

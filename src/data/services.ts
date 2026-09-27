@@ -1,34 +1,34 @@
-export interface CoreService {
+export interface PrimaryService {
+  number: string;
+  slug: string;
   id: string;
+  title: string;
+  eyebrow: string;
+  href: string;
+  description: string;
+  image: string;
+  alt: string;
+  subservices: string[];
+  ctaText: string;
+  matrix?: {
+    design: string[];
+    planning: string[];
+  };
+}
+
+export interface JourneyStep {
   number: string;
   title: string;
   description: string;
   href: string;
-  image: string;
-  alt: string;
-  tags: string[];
-  ctaText: string;
 }
 
-export interface InteriorSpecialty {
+export interface StartingPoint {
   id: string;
-  title: string;
-  description: string;
+  need: string;
+  service: string;
   href: string;
-  image: string;
-  alt: string;
-}
-
-export interface ProcessMilestone {
-  step: string;
-  title: string;
   description: string;
-}
-
-export interface TrustPillar {
-  title: string;
-  description: string;
-  icon: string;
 }
 
 export interface ServiceFaq {
@@ -36,203 +36,258 @@ export interface ServiceFaq {
   answer: string;
 }
 
-export const coreServices: CoreService[] = [
+// 5 Primary Services — Single Source of Truth
+export const primaryServices: PrimaryService[] = [
   {
-    id: "interior-design",
     number: "01",
-    title: "INTERIOR DESIGN",
-    description: "Thoughtfully planned interiors for homes and spaces.",
+    slug: "interior-design",
+    id: "interior-design",
+    title: "Interior Design",
+    eyebrow: "Bespoke Residential Spaces",
     href: "/interior-design",
-    image: "/images/services/interior.webp",
-    alt: "Bespoke residential interior design by SMS Construction",
-    tags: ["Bedroom", "Kitchen", "False Ceiling", "TV Unit", "Wall Decor", "Terrace Garden"],
+    description:
+      "Bespoke residential interior architecture designed around your family's routine. We plan and execute custom modular kitchens, luxury bedroom joinery, ambient false ceiling illumination, TV consoles, and terrace gardens across Nagercoil.",
+    image: "/images/services/services-interior-design-portrait.jpg",
+    alt: "Luxury modern residential living room interior with teakwood paneling and false ceiling lighting in Nagercoil, Tamil Nadu by SMS Construction",
+    subservices: [
+      "Modular Kitchens & Pantry",
+      "Master & Kids Bedroom Joinery",
+      "Cove Lighting & False Ceilings",
+      "TV Units & Acoustic Wall Paneling",
+      "Balcony & Terrace Green Patios",
+    ],
     ctaText: "Explore Interior Design",
   },
   {
-    id: "construction",
     number: "02",
-    title: "CONSTRUCTION",
-    description: "Residential and building construction delivered with a clear process.",
+    slug: "construction",
+    id: "construction",
+    title: "Civil Construction",
+    eyebrow: "Turnkey Structural Execution",
     href: "/construction",
-    image: "/images/services/construction.jpg",
-    alt: "Residential and commercial building construction in Nagercoil",
-    tags: ["Site Discovery", "Structural Masonry", "Foundation Engineering", "Turnkey Build"],
+    description:
+      "Turnkey civil and structural execution engineered for Nagercoil's coastal climate and heavy rainfall. From foundation pile work to reinforced RCC slab casting, premium brick masonry, and turnkey handover with strict quality audits.",
+    image: "/images/services/services-civil-construction-portrait.jpg",
+    alt: "Active multi-story residential civil construction site with RCC framing and brick masonry in Nagercoil, Kanyakumari district by SMS Construction",
+    subservices: [
+      "Turnkey Residential Villas",
+      "Commercial Plazas & Office Spaces",
+      "Heavy RCC Structural Framing",
+      "High-Grade Brick Masonry",
+      "Weatherproofing & Site Supervision",
+    ],
     ctaText: "Explore Construction",
   },
   {
-    id: "design-planning",
     number: "03",
-    title: "DESIGN & PLANNING",
-    description: "Planning and design support before execution begins.",
+    slug: "design-planning",
+    id: "design-planning",
+    title: "Design & Planning",
+    eyebrow: "3D Visualization & Engineering Sets",
     href: "/design-planning",
-    image: "/images/services/planning.webp",
-    alt: "Architectural planning and space drafting",
-    tags: ["Architectural Layouts", "3D Visualizations", "Vastu Compliance", "Material Spec"],
+    description:
+      "Comprehensive architectural visualization and engineering blueprints before groundbreaking. We prepare photorealistic 3D elevations, structural column schedules, Vastu-compliant layouts, and DTCP approval drawing sets.",
+    image: "/images/services/services-design-planning-portrait.jpg",
+    alt: "Architectural design drafting studio with 3D elevations, villa model and structural blueprints in Nagercoil by SMS Construction",
+    subservices: [
+      "Photorealistic 3D Elevations",
+      "Structural & Foundation Blueprints",
+      "DTCP & Municipal Approval Sets",
+      "Scientific Vastu Compliant Plans",
+      "Electrical & Plumbing (MEP) Layouts",
+    ],
+    matrix: {
+      design: [
+        "3D Elevation",
+        "Interior Design",
+        "Walkthrough Videos",
+        "Structural Designing",
+      ],
+      planning: [
+        "Approval Drawings",
+        "Vastu Plan",
+        "3D Plan",
+        "Electrical Plan",
+        "Plumbing Plan",
+        "Landscape Plan",
+      ],
+    },
     ctaText: "Explore Design & Planning",
   },
   {
-    id: "survey-approvals",
     number: "04",
-    title: "SURVEY & APPROVALS",
-    description: "Support for understanding site and project requirements.",
+    slug: "survey-approvals",
+    id: "survey-approvals",
+    title: "Survey & Approvals",
+    eyebrow: "Site Measurement & Discovery",
     href: "/survey-approvals",
-    image: "/images/services/survey.webp",
-    alt: "Land survey and regulatory approval documentation",
-    tags: ["Site Boundary Survey", "Topography Analysis", "Regulatory Guidance", "Document Prep"],
+    description:
+      "Precision on-site land survey and government approval documentation across Kanyakumari district. Using advanced electronic Total Stations, we measure boundary contours, mark building columns on ground, and verify FMB records.",
+    image: "/images/services/services-survey-approvals-portrait.jpg",
+    alt: "Total station digital land survey and site measurement on a residential plot in Nagercoil, Tamil Nadu by SMS Construction",
+    subservices: [
+      "Digital Total Station Land Surveys",
+      "On-Ground Column & Building Marking",
+      "Topographical & Contour Profiling",
+      "FMB Revenue Sketch Verification",
+      "DTCP / LPA Layout Documentation",
+    ],
     ctaText: "Explore Survey & Approvals",
   },
   {
-    id: "fabrication-works",
     number: "05",
-    title: "FABRICATION WORKS",
-    description: "Custom-built elements designed for the project and space.",
+    slug: "fabrication-works",
+    id: "fabrication-works",
+    title: "Fabrication Works",
+    eyebrow: "Architectural Metal & Facades",
     href: "/fabrication-works",
-    image: "/images/services/fabrication.jpg",
-    alt: "Custom architectural metalwork and joinery fabrication",
-    tags: ["Architectural Metalwork", "Custom Gates & Grills", "Structural Glazing", "Safety Railings"],
+    description:
+      "Custom architectural metal engineering and modern exterior cladding fabricated in our dedicated workshop. Specializing in weather-resistant ACP facades, structural steel gates, stair balustrades, and aluminium glazing.",
+    image: "/images/services/services-fabrication-works-portrait.jpg",
+    alt: "Architectural metal fabrication, structural steel gate and aluminium window section assembly in Nagercoil by SMS Construction",
+    subservices: [
+      "Modern ACP Facade Cladding",
+      "Heavy-Duty Designer Steel Gates",
+      "Stainless Steel & Glass Balustrades",
+      "Architectural Aluminium Glazing",
+      "Industrial Trusses & Shed Roofing",
+    ],
     ctaText: "Explore Fabrication Works",
   },
 ];
 
-export const interiorSpecialties: InteriorSpecialty[] = [
+// For backward compatibility
+export const coreServices = primaryServices;
+
+// Project Journey: 6 Connected Phases
+export const projectJourney: JourneyStep[] = [
   {
-    id: "bedroom",
-    title: "Bedroom",
-    description: "Quiet retreats with tailored wardrobes, acoustic comfort, and ambient light.",
-    href: "/interior-design#bedroom",
-    image: "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-bedroom-interior.webp",
-    alt: "Master bedroom interior design at Nagarajan Residence in Nagercoil",
+    number: "01",
+    title: "SURVEY",
+    description: "Understand site boundaries, contour levels, and physical land parameters before planning.",
+    href: "/survey-approvals",
   },
   {
-    id: "kitchen",
-    title: "Kitchen",
-    description: "High-efficiency culinary layouts with durable surfaces and smart storage.",
-    href: "/interior-design#kitchen",
-    image: "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-kitchen.webp",
-    alt: "Modern modular kitchen cabinetry and stone surfaces",
+    number: "02",
+    title: "DESIGN & PLANNING",
+    description: "Develop 3D visual concepts, functional floor layouts, and coordinated engineering plans.",
+    href: "/design-planning",
   },
   {
-    id: "false-ceiling",
-    title: "False Ceiling",
-    description: "Clean architectural planes with recessed LED illumination and seamless finishes.",
-    href: "/interior-design#false-ceiling",
-    image: "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room-wide.webp",
-    alt: "Architectural false ceiling with recessed lighting and warm wood accents",
+    number: "03",
+    title: "CONSTRUCTION",
+    description: "Execute structural RCC framing, masonry, and civil engineering on ground.",
+    href: "/construction",
   },
   {
-    id: "tv-unit",
-    title: "TV Unit",
-    description: "Bespoke media consoles balancing fluted teak veneers and concealed wiring.",
-    href: "/interior-design#tv-unit",
-    image: "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-tv-unit.webp",
-    alt: "Custom fluted wood TV unit console with warm ambient backlighting",
+    number: "04",
+    title: "INTERIOR DESIGN",
+    description: "Shape the living experience inside through custom millwork, false ceilings, and ambient lighting.",
+    href: "/interior-design",
   },
   {
-    id: "wall-decor",
-    title: "Wall Decor",
-    description: "Tactile partitions, fluted paneling, and curated accent surfaces.",
-    href: "/interior-design#wall-decor",
-    image: "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-decorative-partition.webp",
-    alt: "Decorative wooden wall partition and custom living room decor",
+    number: "05",
+    title: "FABRICATION",
+    description: "Integrate specialized ACP panel systems, architectural steelwork, and aluminium fittings.",
+    href: "/fabrication-works",
   },
   {
-    id: "terrace-garden",
-    title: "Terrace Garden",
-    description: "Open-air landscaped sanctuaries designed for coastal sun and natural breezes.",
-    href: "/interior-design#terrace-garden",
-    image: "/images/projects/courtyard-house.jpg",
-    alt: "Open-air landscaped terrace garden and courtyard architecture",
+    number: "06",
+    title: "FINISHED SPACE",
+    description: "Complete walk-through handover of a unified, move-in-ready home or commercial environment.",
+    href: "/projects",
   },
 ];
 
-export const processMilestones: ProcessMilestone[] = [
+// Section 5: Choose Where to Start (Decision Support)
+export const startingPoints: StartingPoint[] = [
   {
-    step: "01",
-    title: "Consultation",
-    description: "Initial discovery to understand your lifestyle, plot parameters, and spatial aspirations in Nagercoil.",
+    id: "plan-home",
+    need: "Planning a New Home",
+    service: "Design & Planning",
+    href: "/design-planning",
+    description: "Start with 3D elevations, architectural plans, Vastu layouts, and complete pre-construction engineering.",
   },
   {
-    step: "02",
-    title: "Planning",
-    description: "Site study, spatial mapping, preliminary zoning alignment, and budget structuring.",
+    id: "measure-land",
+    need: "Need Site Measurements",
+    service: "Survey & Approvals",
+    href: "/survey-approvals",
+    description: "Establish verified site boundaries, total station data, contour levels, and project-preparation documentation.",
   },
   {
-    step: "03",
-    title: "Design",
-    description: "Photorealistic 3D visual walkthroughs, material moodboards, and interior schematics.",
+    id: "build-space",
+    need: "Building a New Space",
+    service: "Construction",
+    href: "/construction",
+    description: "Execute turnkey residential, commercial, or structural RCC civil construction with on-site engineering oversight.",
   },
   {
-    step: "04",
-    title: "Execution",
-    description: "Coordinated civil work, structural engineering, bespoke joinery, and fit-out supervision.",
+    id: "interior-fitout",
+    need: "Designing Your Interiors",
+    service: "Interior Design",
+    href: "/interior-design",
+    description: "Craft bespoke living spaces, bedrooms, modular kitchens, custom TV consoles, false ceilings, and wall decor.",
   },
   {
-    step: "05",
-    title: "Quality Check",
-    description: "Rigorous multi-point quality audits for structural alignment, joinery precision, and material finish.",
-  },
-  {
-    step: "06",
-    title: "Handover",
-    description: "Clean, styled, move-in-ready space delivered on schedule with warranty documentation.",
-  },
-];
-
-export const trustPillars: TrustPillar[] = [
-  {
-    title: "Clear Planning",
-    description: "Defined milestones, transparent estimates, and structured project roadmaps with zero ambiguous guesswork.",
-    icon: "draw",
-  },
-  {
-    title: "Thoughtful Design",
-    description: "Architecture and interiors calibrated to local climate, natural cross-ventilation, and enduring regional materials.",
-    icon: "architecture",
-  },
-  {
-    title: "Coordinated Execution",
-    description: "Seamless alignment between engineering, civil masonry, and interior craftsmanship under one dedicated team.",
-    icon: "engineering",
-  },
-  {
-    title: "Quality Focus",
-    description: "Stringent material testing, certified structural grades, and precision joinery that stands the test of time.",
-    icon: "verified",
-  },
-  {
-    title: "End-to-End Approach",
-    description: "A single accountable studio managing your space from initial sketches through to final key handover.",
-    icon: "key",
+    id: "custom-fab",
+    need: "Need Custom Fabrication",
+    service: "Fabrication Works",
+    href: "/fabrication-works",
+    description: "Fabricate lightweight ACP cladding, structural steel framing, or precision aluminium profiles built to project specs.",
   },
 ];
 
+// Section 9: 10 Authoritative Service FAQs
 export const serviceFaqs: ServiceFaq[] = [
   {
     question: "What services does SMS Construction provide?",
-    answer: "SMS Construction provides end-to-end building and interior solutions in Nagercoil and Kanyakumari district, encompassing Interior Design, Residential Construction, Architectural Design & Planning, Survey & Approvals Support, and Custom Fabrication Works.",
+    answer:
+      "SMS Construction provides five primary integrated disciplines: Interior Design, Construction, Design & Planning, Survey & Approvals, and Fabrication Works across Nagercoil and Kanyakumari District.",
   },
   {
-    question: "Do you handle both interior design and execution?",
-    answer: "Yes. We offer complete turnkey execution. Our in-house team oversees the initial architectural or interior design concepts, 3D visualizations, material procurement, on-site civil works, and final fit-outs, ensuring consistent design fidelity.",
+    question: "Does SMS Construction handle both construction and interior design?",
+    answer:
+      "Yes. We operate as an integrated design-and-build studio, coordinating civil building construction and interior joinery under a single execution team to eliminate discrepancies between architectural plans and finished spaces.",
   },
   {
-    question: "What areas do you serve from Nagercoil?",
-    answer: "We operate from our Nagercoil studio and undertake residential and commercial projects across Nagercoil, Suchindram, Theroor, Kanyakumari, Marthandam, and neighboring regions throughout Kanyakumari District.",
+    question: "What interior design services are available?",
+    answer:
+      "Our interior design services cover tailored bedrooms, high-efficiency modular kitchens, architectural false ceilings with recessed lighting, bespoke TV media units, decorative wall panelling, and landscaped terrace gardens.",
   },
   {
-    question: "Can I discuss a construction project before starting?",
-    answer: "Absolutely. We offer initial consultations to review your plot, discuss lifestyle requirements, examine feasibility, and guide you through planning, budgeting, and regulatory considerations before any formal commitments.",
+    question: "What design and planning services are available?",
+    answer:
+      "We provide architectural design (3D elevations, interior 3D modeling, walkthrough videos, and structural engineering) alongside regulatory planning (approval drawings, Vastu layouts, 3D plans, electrical, plumbing, and landscape planning).",
   },
   {
-    question: "Can you design individual rooms such as bedrooms or kitchens?",
-    answer: "Yes. While we build full-scale turnkey homes, our interior design studio regularly crafts dedicated spaces including modular kitchens, master bedroom retreats, custom TV consoles, false ceilings, and terrace gardens.",
+    question: "What types of site surveys are available?",
+    answer:
+      "Site survey services include tape surveys, digital measurements, total station surveys, building marking surveys, topographical mapping, contour surveys, layout preparation, and FMB coordination to establish verified site boundaries.",
   },
   {
-    question: "How can I request a project quotation?",
-    answer: "You can reach out through our contact page, submit an inquiry form, or call our studio directly. We will schedule a site review or discovery meeting to understand your scope and provide a detailed, itemized estimate.",
+    question: "What fabrication services are available?",
+    answer:
+      "Our custom fabrication services cover architectural ACP (Aluminium Composite Panel) systems, structural and decorative steel fabrication, and lightweight aluminium profiles for partitions, screens, and windows.",
   },
   {
-    question: "How does SMS Construction coordinate between civil works and interior finishings?",
-    answer: "Because both civil engineering and interior joinery are directed by the same coordinated team, MEP conduits, wall niches, ceiling drops, and electrical lines are integrated into the structural phase, eliminating costly rework.",
+    question: "Can different services be combined for one project?",
+    answer:
+      "Yes. While clients may engage SMS Construction for a single specialized service, most residential and commercial projects combine multiple stages—such as survey, planning, construction, and interiors—for seamless end-to-end delivery.",
+  },
+  {
+    question: "Which service should I start with for a new project?",
+    answer:
+      "For a vacant land plot, we recommend beginning with Survey & Approvals or Design & Planning. For existing buildings requiring remodeling or new fit-outs, you can start directly with Interior Design or Fabrication Works.",
+  },
+  {
+    question: "Do you provide services in Nagercoil?",
+    answer:
+      "Yes. SMS Construction is based in Nagercoil, Tamil Nadu, and provides all five services across Nagercoil, Theroor, Suchindram, Kanyakumari, Marthandam, and all surrounding areas of Kanyakumari District.",
+  },
+  {
+    question: "How can I discuss my project requirements?",
+    answer:
+      "You can call our Nagercoil studio directly at +91 94880 21183, connect via WhatsApp, or submit your project details through our online contact form to schedule an initial consultation with our engineering team.",
   },
 ];

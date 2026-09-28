@@ -3,36 +3,30 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  MapPin,
   CheckCircle2,
   Compass,
   Layers,
   Building2,
   Crosshair,
   Sparkles,
-  ChevronDown,
-  ShieldCheck,
-  Clock,
-  Users,
-  Lightbulb,
-  Target,
-  Eye,
-  Award,
 } from "lucide-react";
+import LocalServiceArea from "@/components/LocalServiceArea";
+import ModernFaq from "@/components/ModernFaq";
 import ConversionCTA from "@/components/ConversionCTA";
+import AboutStats from "@/components/AboutStats";
 
 /* ─── SEO Metadata ────────────────────────────────────────────────────────── */
 export const metadata: Metadata = {
   title: "About SMS Construction | Construction & Interior Design in Nagercoil",
   description:
-    "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, interior design, planning, surveying and fabrication services in Tamil Nadu.",
+    "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, planning, surveying and fabrication services.",
   alternates: {
     canonical: "/about-us",
   },
   openGraph: {
     title: "About SMS Construction | Construction & Interior Design in Nagercoil",
     description:
-      "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, interior design, planning, surveying and fabrication services in Tamil Nadu.",
+      "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, planning, surveying and fabrication services.",
     url: "https://smsconstruction.in/about-us",
     siteName: "SMS Construction",
     images: [
@@ -50,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About SMS Construction | Construction & Interior Design in Nagercoil",
     description:
-      "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, interior design, planning, surveying and fabrication services in Tamil Nadu.",
+      "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, planning, surveying and fabrication services.",
     images: [
       "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room-wide.webp",
     ],
@@ -65,7 +59,7 @@ const aboutPageSchema = {
   url: "https://smsconstruction.in/about-us",
   name: "About SMS Construction | Construction & Interior Design in Nagercoil",
   description:
-    "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, interior design, planning, surveying and fabrication services in Tamil Nadu.",
+    "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, planning, surveying and fabrication services.",
   isPartOf: {
     "@type": "WebSite",
     "@id": "https://smsconstruction.in/#website",
@@ -80,6 +74,19 @@ const aboutPageSchema = {
   },
   breadcrumb: {
     "@id": "https://smsconstruction.in/about-us#breadcrumb",
+  },
+};
+
+const ceoPersonSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://smsconstruction.in/about-us#ceo",
+  name: "S. Harish",
+  jobTitle: "Chief Executive Officer",
+  worksFor: {
+    "@type": "HomeAndConstructionBusiness",
+    "@id": "https://smsconstruction.in",
+    name: "SMS Construction",
   },
 };
 
@@ -112,27 +119,32 @@ const faqs = [
   {
     question: "Where is SMS Construction located?",
     answer:
-      "SMS Construction is based at 25/1 Muthamizh Street, Near Court Road, Nagercoil, Tamil Nadu 629001, India.",
+      "SMS Construction is located at 25/1 Muthamizh Street, Near Court Road, Nagercoil, Tamil Nadu 629001, India.",
+  },
+  {
+    question: "Who is the CEO of SMS Construction?",
+    answer:
+      "S. Harish is the Chief Executive Officer of SMS Construction.",
   },
   {
     question: "What services does SMS Construction provide?",
     answer:
-      "Its services include interior design, construction, design and planning, survey and approvals-related services, and fabrication works.",
+      "Its main services include Interior Design, Construction, Design & Planning, Survey & Approvals, and Fabrication Works.",
   },
   {
     question: "Does SMS Construction provide interior design services?",
     answer:
-      "Yes. Interior design services include residential interior categories such as bedrooms, kitchens, false ceilings, TV units, wall decor and terrace garden concepts.",
+      "Yes. Its interior design offering includes residential spaces such as bedrooms, kitchens, false ceilings, TV units, wall decor and terrace garden concepts.",
   },
   {
     question: "How can I contact SMS Construction?",
     answer:
-      "You can contact SMS Construction at +91 94880 21183 or smsconstructionngl@gmail.com, or use the Contact page.",
+      "You can contact SMS Construction by phone at +91 94880 21183 or by email at smsconstructionngl@gmail.com.",
   },
   {
-    question: "Where does SMS Construction work?",
+    question: "Where does SMS Construction operate?",
     answer:
-      "SMS Construction is based in Nagercoil, Tamil Nadu. The company works with clients in its service region depending on project requirements and scope.",
+      "SMS Construction is based in Nagercoil, Tamil Nadu, and works on projects according to client requirements and project scope.",
   },
 ];
 
@@ -150,19 +162,20 @@ const faqSchema = {
 };
 
 /* ─── Static Data ─────────────────────────────────────────────────────────── */
-const stats = [
-  { num: "01", value: "15+", label: "Years Experience" },
-  { num: "02", value: "100+", label: "Projects Completed" },
-  { num: "03", value: "500+", label: "Happy Clients" },
-  { num: "04", value: "100%", label: "Commitment" },
-];
-
 const services = [
   {
     num: "01",
     title: "Interior Design",
     description:
-      "Bedroom interiors, kitchens, false ceilings, TV units, wall decor, terrace garden concepts and related interior work.",
+      "Residential interior design including bedrooms, kitchens, false ceilings, TV units, wall decor and terrace garden concepts.",
+    items: [
+      "Bedroom Interiors",
+      "Kitchens",
+      "False Ceilings",
+      "TV Units",
+      "Wall Decor",
+      "Terrace Garden Concepts",
+    ],
     href: "/interior-design",
     linkText: "Explore our interior design services",
     icon: Sparkles,
@@ -171,16 +184,34 @@ const services = [
     num: "02",
     title: "Construction",
     description:
-      "Residential construction and related building work.",
+      "Construction services for residential and related building requirements.",
+    items: [
+      "Residential Construction",
+      "RCC Structural Work",
+      "Turnkey Building",
+      "Site Supervision",
+    ],
     href: "/construction",
-    linkText: "View construction services",
+    linkText: "View our construction services",
     icon: Building2,
   },
   {
     num: "03",
     title: "Design & Planning",
     description:
-      "3D elevation, interior design, walkthrough videos, structural designing, approval drawings, Vastu plans, 3D plans, electrical plans, plumbing plans and landscape plans.",
+      "Comprehensive architectural drafting, engineering drawings and conceptual visualization.",
+    items: [
+      "3D Elevation",
+      "Interior Design",
+      "Walkthrough Videos",
+      "Structural Designing",
+      "Approval Drawings",
+      "Vastu Plan",
+      "3D Plan",
+      "Electrical Plan",
+      "Plumbing Plan",
+      "Landscape Plan",
+    ],
     href: "/design-planning",
     linkText: "Explore design and planning",
     icon: Compass,
@@ -189,135 +220,88 @@ const services = [
     num: "04",
     title: "Survey & Approvals",
     description:
-      "Tape survey, digital survey, total station survey, building marking survey, topographical survey, contour survey, layout preparation and FMB-related work.",
+      "Precise ground measurements, boundary verification and official drawing preparation.",
+    items: [
+      "Tape Survey",
+      "Digital Survey",
+      "Total Station Survey",
+      "Building Marking Survey",
+      "Topographical Survey",
+      "Contour Survey",
+      "Layout Preparation",
+      "FMB (Field Measurement Book)",
+    ],
     href: "/survey-approvals",
-    linkText: "See survey services",
+    linkText: "View survey services",
     icon: Crosshair,
   },
   {
     num: "05",
     title: "Fabrication Works",
     description:
-      "ACP works, steel fabrication and aluminium fabrication.",
+      "Custom metalwork, exterior cladding and architectural metal elements.",
+    items: [
+      "ACP Works",
+      "Steel Fabrication",
+      "Aluminium Fabrication",
+    ],
     href: "/fabrication-works",
     linkText: "Explore fabrication works",
     icon: Layers,
   },
 ];
 
-const howWeWorkSteps = [
+const approachSteps = [
   {
     num: "01",
     name: "Understand",
     description:
-      "We listen carefully to your requirements, ideas and project goals.",
+      "Understand the client's requirements, project scope and site conditions.",
   },
   {
     num: "02",
     name: "Plan",
     description:
-      "We develop practical plans and designs around your needs and budget.",
+      "Develop the relevant design, drawings, measurements and planning information.",
   },
   {
     num: "03",
-    name: "Build",
+    name: "Execute",
     description:
-      "Our skilled team executes every stage with precision and attention to detail.",
+      "Coordinate the required construction, interior or fabrication work.",
   },
   {
     num: "04",
-    name: "Deliver",
+    name: "Refine",
     description:
-      "We complete every project with quality finishing and lasting value.",
+      "Focus on finish, details and practical usability.",
   },
 ];
 
-const missionVision = [
+const focusPrinciples = [
   {
-    eyebrow: "OUR MISSION",
-    title: "Creating spaces that matter.",
-    description:
-      "To deliver reliable construction solutions through quality workmanship, responsible practices and customer-focused service.",
-    icon: Target,
+    title: "Practical Design",
+    description: "Solutions should work for the space and its intended use.",
   },
   {
-    eyebrow: "OUR VISION",
-    title: "Building a better tomorrow.",
-    description:
-      "To become a trusted construction partner known for quality, innovation, transparency and lasting relationships.",
-    icon: Eye,
-  },
-];
-
-const coreValues = [
-  {
-    num: "01",
-    title: "Quality",
-    description: "High standards from foundation to finishing.",
-    icon: Award,
+    title: "Attention to Detail",
+    description: "Details influence the overall look, finish and usability.",
   },
   {
-    num: "02",
-    title: "Safety",
-    description: "Responsible practices at every stage.",
-    icon: ShieldCheck,
+    title: "Clear Planning",
+    description: "Good projects begin with proper understanding and planning.",
   },
   {
-    num: "03",
-    title: "Trust",
-    description: "Honest communication and transparent service.",
-    icon: CheckCircle2,
+    title: "Coordinated Execution",
+    description: "Design, construction and related work should be properly coordinated.",
   },
   {
-    num: "04",
-    title: "Innovation",
-    description: "Modern ideas and practical construction solutions.",
-    icon: Lightbulb,
+    title: "Quality Standards",
+    description: "Consistent standards maintained from structural work to final finishing.",
   },
   {
-    num: "05",
-    title: "On Time",
-    description: "We respect your schedule and commitments.",
-    icon: Clock,
-  },
-  {
-    num: "06",
-    title: "People First",
-    description: "Your needs remain at the centre of our work.",
-    icon: Users,
-  },
-];
-
-const trustPillars = [
-  {
-    title: "Clear Project Scope",
-    description:
-      "Itemized scope outlines, transparent bill of quantities, and clear technical specifications before starting any build or fit-out.",
-  },
-  {
-    title: "Design-Led Planning",
-    description:
-      "Coordinating architectural elevations, structural drafting, and interior layouts early to prevent construction discrepancies.",
-  },
-  {
-    title: "Site-Specific Understanding",
-    description:
-      "Taking actual ground measurements, boundary verification, and orientation into account for practical local suitability.",
-  },
-  {
-    title: "Integrated Disciplines",
-    description:
-      "Bringing civil construction, interior carpentry, planning, surveying, and fabrication together under a single coordinated team.",
-  },
-  {
-    title: "Local Presence",
-    description:
-      "Permanently based in Nagercoil, ensuring direct engineer supervision, active site visits, and reliable regional material sourcing.",
-  },
-  {
-    title: "Real Project Documentation",
-    description:
-      "Transparent project photography and verified delivery records from actual residential and commercial sites across Kanyakumari.",
+    title: "Client Requirements",
+    description: "Project decisions should reflect the client's requirements and scope.",
   },
 ];
 
@@ -335,6 +319,10 @@ export default function AboutUsPage() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ceoPersonSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <script
@@ -344,8 +332,8 @@ export default function AboutUsPage() {
 
       <main className="bg-[#FAF8F3] text-[#171714] selection:bg-[#B08A52] selection:text-white">
         {/* ===================================================================
-            SECTION 1 — EDITORIAL HERO
-            "We Build More Than Structures"
+            SECTION 1 — HERO
+            Clean editorial presentation
         =================================================================== */}
         <section
           data-header-theme="light"
@@ -353,284 +341,303 @@ export default function AboutUsPage() {
           className="relative pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-24 lg:pb-28 border-b border-[#E7E0D4] bg-[#FAF8F3]"
         >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              {/* Left Column: Narrative & Metadata */}
-              <div className="lg:col-span-7 flex flex-col justify-center">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="font-mono text-[11px] font-bold text-[#B08A52] tracking-[0.2em]">
-                    01
-                  </span>
-                  <span className="w-8 h-[1px] bg-[#B08A52]/40" />
-                  <span className="text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52]">
-                    ABOUT SMS CONSTRUCTION
-                  </span>
-                </div>
+            <div className="max-w-3xl flex flex-col justify-center">
+              <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-4">
+                ABOUT SMS CONSTRUCTION
+              </span>
 
-                <h1 className="font-serif text-[36px] sm:text-[50px] lg:text-[60px] font-bold text-[#171714] leading-[1.1] tracking-tight mb-4">
-                  We Build More Than Structures<span className="text-[#B08A52]">.</span>
-                </h1>
+              <h1 className=" text-[34px] sm:text-[48px] lg:text-[56px] font-bold text-[#171714] leading-[1.12] tracking-tight mb-6">
+                Building spaces with clarity, craft and purpose<span className="text-[#B08A52]">.</span>
+              </h1>
 
-                <p className="font-serif italic text-[18px] sm:text-[22px] text-[#B08A52] font-normal leading-snug mb-5">
-                  Thoughtful design. Precise execution. Lasting quality.
-                </p>
+              <p className="font-sans text-[16px] sm:text-[17.5px] leading-[1.7] text-[#68645D] max-w-2xl mb-8">
+                SMS Construction is a construction and interior design company based in Nagercoil, Tamil Nadu, offering construction, interior design, design and planning, survey-related services and fabrication works.
+              </p>
 
-                <p className="font-sans text-[15.5px] sm:text-[17px] leading-[1.7] text-[#68645D] max-w-2xl mb-5">
-                  At SMS Construction, we believe great buildings begin with great thinking. From the first survey and plan to the final finishing touch, we bring together practical planning, skilled workmanship and modern construction methods.
-                </p>
+              {/* Hero CTAs */}
+              <div className="flex flex-wrap items-center gap-3.5 sm:gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 rounded-full bg-[#171714] hover:bg-[#B08A52] text-white font-sans font-semibold text-[14px] transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98]"
+                >
+                  <span>Get a Quote</span>
+                  <ArrowRight size={15} />
+                </Link>
 
-                {/* Factual Location Tag */}
-                <p className="font-sans text-[13px] sm:text-[14px] font-medium text-[#77736C] tracking-wide mb-8 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#B08A52]" aria-hidden="true" />
-                  <span>Nagercoil, Tamil Nadu · Construction · Interior Design · Planning</span>
-                </p>
-
-                {/* Hero CTAs */}
-                <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 mb-8">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 rounded-full bg-[#171714] hover:bg-[#B08A52] text-white font-sans font-semibold text-[14px] transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98]"
-                  >
-                    <span>Start Your Project</span>
-                    <ArrowRight size={15} />
-                  </Link>
-
-                  <Link
-                    href="/projects"
-                    className="inline-flex items-center justify-center px-7 sm:px-8 py-3.5 rounded-full border border-[#E7E0D4] hover:border-[#171714] bg-white text-[#171714] font-sans font-semibold text-[14px] transition-all duration-300 hover:bg-[#FAF8F5] active:scale-[0.98]"
-                  >
-                    Explore Our Work
-                  </Link>
-                </div>
-
-                {/* Scroll Indicator */}
-                <div className="inline-flex items-center gap-2.5 text-[11px] font-mono tracking-[0.2em] uppercase text-[#77736C] pt-2">
-                  <span className="text-[#B08A52] font-bold">01</span>
-                  <span>·</span>
-                  <span>SCROLL TO EXPLORE</span>
-                </div>
-              </div>
-
-              {/* Right Column: Authentic Architectural Visual */}
-              <div className="lg:col-span-5">
-                <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#E7E0D4] bg-[#EAE4D9] shadow-sm aspect-[4/3] sm:aspect-[4/3] lg:aspect-[5/4]">
-                  <Image
-                    src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room-wide.webp"
-                    alt="Contemporary residential interior executed by SMS Construction in Nagercoil"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 42vw"
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute bottom-4 left-4 right-4 px-3.5 py-2 rounded-full bg-[#171714]/85 backdrop-blur-sm text-white/90 text-[11.5px] font-sans font-medium flex items-center justify-between">
-                    <span>Nagarajan Residence, Nagercoil</span>
-                    <span className="text-[#e3c381]">Real Project</span>
-                  </div>
-                </div>
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 rounded-full border border-[#E7E0D4] hover:border-[#171714] bg-white text-[#171714] font-sans font-semibold text-[14px] transition-all duration-300 hover:bg-[#FAF8F5] active:scale-[0.98]"
+                >
+                  <span>View Our Projects</span>
+                  <ArrowRight size={14} className="text-[#77736C]" />
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
         {/* ===================================================================
-            SECTION 2 — ENTITY INTRODUCTION (WHO WE ARE)
-            "Built on experience. Driven by quality." + 4 Stat Cards
+            SECTION 2 — WHO WE ARE
+            Concise, factual establishment of the company
         =================================================================== */}
         <section
           aria-labelledby="who-we-are-heading"
           className="py-16 sm:py-24 bg-white border-b border-[#E7E0D4]"
         >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-14">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
               <div className="lg:col-span-5">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="font-mono text-[11px] font-bold text-[#B08A52] tracking-[0.2em]">
-                    01
-                  </span>
-                  <span className="w-8 h-[1px] bg-[#B08A52]/40" />
-                  <span className="text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52]">
-                    WHO WE ARE
-                  </span>
-                </div>
-
+                <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                  WHO WE ARE
+                </span>
                 <h2
                   id="who-we-are-heading"
-                  className="font-serif text-[28px] sm:text-[38px] lg:text-[44px] font-bold text-[#171714] leading-[1.18] tracking-tight"
+                  className=" text-[28px] sm:text-[38px] lg:text-[44px] font-semibold text-[#171714] leading-[1.18] tracking-tight"
                 >
-                  Built on experience. Driven by quality<span className="text-[#B08A52]">.</span>
+                  A construction and design company based in Nagercoil<span className="text-[#B08A52]">.</span>
                 </h2>
               </div>
 
-              <div className="lg:col-span-7 space-y-5">
-                <p className="font-sans text-[16px] sm:text-[18px] leading-relaxed text-[#171714] font-medium">
-                  At SMS Construction, we believe great buildings begin with great thinking.
-                </p>
-                <p className="font-sans text-[15.5px] sm:text-[17px] leading-relaxed text-[#68645D]">
-                  From the first survey and plan to the final finishing touch, we bring together practical planning, skilled workmanship and modern construction methods under one brand in Nagercoil, Tamil Nadu.
-                </p>
-                <p className="font-sans text-[15.5px] sm:text-[17px] leading-relaxed text-[#68645D]">
-                  Our goal is simple — to create spaces that are strong, functional, beautiful and built to stand the test of time.
+              <div className="lg:col-span-7">
+                <p className="font-sans text-[16px] sm:text-[18px] leading-relaxed text-[#68645D] mb-6">
+                  SMS Construction is based in Nagercoil, Tamil Nadu, bringing construction, interior design, planning, surveying and fabrication services together to support residential and related project requirements.
                 </p>
 
-                {/* Entity Pills */}
-                <div className="pt-4 flex flex-wrap gap-3 text-[13px] font-sans">
-                  <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF8F3] border border-[#E7E0D4] text-[#171714]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#B08A52]" />
-                    <span>Brand: <strong>SMS Construction</strong></span>
-                  </span>
-                  <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF8F3] border border-[#E7E0D4] text-[#171714]">
-                    <MapPin size={12} className="text-[#B08A52]" />
-                    <span>Nagercoil, Kanyakumari, Tamil Nadu</span>
-                  </span>
-                </div>
+                <AboutStats />
               </div>
-            </div>
-
-            {/* 4 Stat Highlights Grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-4 border-t border-[#E7E0D4]">
-              {stats.map((stat) => (
-                <div
-                  key={stat.num}
-                  className="p-6 sm:p-8 rounded-[22px] bg-[#FAF8F3] border border-[#E7E0D4] flex flex-col justify-between group hover:border-[#B08A52] transition-colors"
-                >
-                  <span className="font-mono text-[12px] font-bold text-[#B08A52] block mb-3">
-                    {stat.num}
-                  </span>
-                  <div>
-                    <span className="font-serif text-[36px] sm:text-[46px] lg:text-[52px] font-bold text-[#171714] leading-none block mb-2 tracking-tight group-hover:text-[#B08A52] transition-colors">
-                      {stat.value}
-                    </span>
-                    <span className="font-sans text-[13px] sm:text-[14.5px] font-semibold text-[#68645D] block">
-                      {stat.label}
-                    </span>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
 
         {/* ===================================================================
-            SECTION 3 — WHAT WE DO
-            Editorial 5-discipline split list with contextual internal links
+            SECTION 3 — ABOUT SMS CONSTRUCTION
+            Detailed company introduction: Text on one side, architectural detail on other
         =================================================================== */}
         <section
-          aria-labelledby="what-we-do-heading"
+          aria-labelledby="about-sms-heading"
           className="py-16 sm:py-24 lg:py-28 bg-[#FAF8F3] border-b border-[#E7E0D4]"
         >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 lg:mb-16">
-              <div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Left Column: Editorial narrative */}
+              <div className="lg:col-span-7">
                 <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                  DISCIPLINES
+                  THE STUDIO
                 </span>
                 <h2
-                  id="what-we-do-heading"
-                  className="font-serif text-[32px] sm:text-[42px] lg:text-[48px] font-bold text-[#171714] leading-[1.15] tracking-tight"
+                  id="about-sms-heading"
+                  className=" text-[30px] sm:text-[40px] lg:text-[46px] font-semibold text-[#171714] leading-[1.18] tracking-tight mb-6"
+                >
+                  About SMS Construction<span className="text-[#B08A52]">.</span>
+                </h2>
+
+                <div className="space-y-4 font-sans text-[15.5px] sm:text-[16.5px] leading-relaxed text-[#68645D]">
+                  <p>
+                    SMS Construction is permanently based in Nagercoil, Tamil Nadu, operating as an integrated practice that bridges building construction and interior design under one coordinated roof.
+                  </p>
+                  <p>
+                    Construction and interior design form the primary focus of our day-to-day operations. Alongside building and interior fit-outs, comprehensive architectural planning, land surveying, and custom fabrication services are part of our core offering.
+                  </p>
+                  <p>
+                    Every project is approached around its specific site conditions, spatial requirements, and practical scope. We emphasize disciplined planning, coordinated trade execution, and meticulous attention to materials and finish quality.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Column: Architectural detail visual */}
+              <div className="lg:col-span-5">
+                <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#E7E0D4] bg-[#EAE4D9] shadow-sm aspect-[4/3] sm:aspect-[4/3] lg:aspect-[5/4]">
+                  <Image
+                    src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-decorative-partition.webp"
+                    alt="Wood partition and joinery detail executed by SMS Construction in Nagercoil"
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 px-3.5 py-2 rounded-full bg-[#171714]/85 backdrop-blur-sm text-white/90 text-[11.5px] font-sans font-medium flex items-center justify-between">
+                    <span>Interior Partition Detail</span>
+                    <span className="text-[#e3c381]">Nagercoil Studio</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===================================================================
+            SECTION 4 — CEO / LEADERSHIP
+            Tasteful, premium architecture-studio profile for S. Harish
+        =================================================================== */}
+        <section
+          aria-labelledby="leadership-heading"
+          className="py-10 sm:py-14 bg-white border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="max-w-3xl mx-auto text-center mb-6 sm:mb-8">
+              <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                LEADERSHIP
+              </span>
+              <h2
+                id="leadership-heading"
+                className=" text-[30px] sm:text-[40px] lg:text-[46px] font-semibold text-[#171714] leading-[1.18] tracking-tight"
+              >
+                Meet the team behind SMS Construction<span className="text-[#B08A52]">.</span>
+              </h2>
+            </div>
+
+            {/* Leadership Profile Card */}
+            <div className="max-w-4xl mx-auto p-6 sm:p-8 lg:p-10 rounded-[24px] sm:rounded-[30px] bg-[#FAF8F3] border border-[#E7E0D4]">
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-serif text-[28px] sm:text-[34px] font-bold text-[#171714] leading-tight mb-1">
+                    S. Harish
+                  </h3>
+                  <p className="font-sans text-[14px] font-semibold text-[#B08A52] uppercase tracking-wider">
+                    Chief Executive Officer, SMS Construction
+                  </p>
+                </div>
+
+                <div className="w-16 h-[2px] bg-[#B08A52]/40 my-4" />
+
+                <p className="font-sans text-[16px] sm:text-[17.5px] leading-relaxed text-[#68645D]">
+                  S. Harish leads SMS Construction with a focus on construction, design and project execution, helping bring together the company&apos;s range of services for client requirements.
+                </p>
+
+                <p className="font-sans text-[14.5px] leading-relaxed text-[#77736C] pt-2">
+                  Operating directly from our Nagercoil office, leadership actively oversees preliminary site evaluations, design documentation, and coordinated site delivery across Kanyakumari District.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===================================================================
+            SECTION 5 — WHAT WE DO
+            Clean, minimal service directory (01 - 05)
+        =================================================================== */}
+        <section
+          aria-labelledby="services-heading"
+          className="py-12 sm:py-16 lg:py-20 bg-[#FAF8F3] border-b border-[#E7E0D4]"
+        >
+          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 lg:mb-12">
+              <div>
+                <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-2.5">
+                  OUR SERVICES
+                </span>
+                <h2
+                  id="services-heading"
+                  className="text-[28px] sm:text-[36px] lg:text-[42px] font-semibold text-[#171714] leading-[1.18] tracking-tight"
                 >
                   What we do<span className="text-[#B08A52]">.</span>
                 </h2>
               </div>
-              <p className="font-sans text-[15px] sm:text-[16px] text-[#68645D] max-w-md">
-                Five integrated service areas structured to handle projects from land survey to finished interiors.
+              <p className="font-sans text-[14.5px] sm:text-[15.5px] text-[#68645D] max-w-md">
+                Five integrated disciplines supporting your project from initial survey to finished space.
               </p>
             </div>
 
-            {/* Editorial Split List Layout */}
+            {/* Minimal Editorial Service List */}
             <div className="divide-y divide-[#E7E0D4] border-t border-b border-[#E7E0D4]">
-              {services.map((service) => {
-                const Icon = service.icon;
-                return (
-                  <article
-                    key={service.num}
-                    className="py-8 sm:py-10 lg:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-start group transition-colors hover:bg-white/50 px-2 sm:px-4"
-                  >
-                    <div className="md:col-span-2 flex items-center gap-3">
-                      <span className="font-mono text-[14px] font-semibold text-[#B08A52]">
-                        {service.num}
-                      </span>
-                      <Icon size={18} className="text-[#77736C] group-hover:text-[#B08A52] transition-colors" />
-                    </div>
+              {services.map((service) => (
+                <Link
+                  key={service.num}
+                  href={service.href}
+                  className="group py-6 sm:py-7 lg:py-8 grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-8 items-start lg:items-center transition-colors hover:bg-white/60 px-3 sm:px-5 -mx-3 sm:-mx-5 rounded-2xl block"
+                >
+                  {/* Number & Title */}
+                  <div className="lg:col-span-4 flex items-baseline gap-4 sm:gap-5">
+                    <span className="font-mono text-[12.5px] sm:text-[13px] font-bold text-[#B08A52] tracking-wider shrink-0">
+                      {service.num}
+                    </span>
+                    <h3 className="text-[19px] sm:text-[22px] font-semibold text-[#171714] group-hover:text-[#B08A52] transition-colors tracking-tight">
+                      {service.title}
+                    </h3>
+                  </div>
 
-                    <div className="md:col-span-4">
-                      <h3 className="font-serif text-[22px] sm:text-[26px] font-bold text-[#171714]">
-                        {service.title}
-                      </h3>
-                    </div>
+                  {/* Description & Inline Items */}
+                  <div className="lg:col-span-6 space-y-1 pl-7 sm:pl-8 lg:pl-0">
+                    <p className="font-sans text-[14px] sm:text-[14.5px] leading-relaxed text-[#68645D]">
+                      {service.description}
+                    </p>
+                    <p className="font-sans text-[12px] sm:text-[12.5px] text-[#77736C] tracking-wide">
+                      {service.items.join(" · ")}
+                    </p>
+                  </div>
 
-                    <div className="md:col-span-4">
-                      <p className="font-sans text-[14.5px] sm:text-[15.5px] leading-relaxed text-[#68645D]">
-                        {service.description}
-                      </p>
-                    </div>
-
-                    <div className="md:col-span-2 flex md:justify-end">
-                      <Link
-                        href={service.href}
-                        className="inline-flex items-center gap-1.5 font-sans font-semibold text-[13.5px] text-[#171714] group-hover:text-[#B08A52] transition-colors"
-                      >
-                        <span>Details</span>
-                        <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-                  </article>
-                );
-              })}
+                  {/* Link action */}
+                  <div className="lg:col-span-2 flex items-center lg:justify-end pl-7 sm:pl-8 lg:pl-0">
+                    <span className="inline-flex items-center gap-1.5 font-sans font-medium text-[13px] text-[#77736C] group-hover:text-[#B08A52] transition-colors">
+                      <span>Explore</span>
+                      <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
             </div>
 
-            {/* Hub link */}
-            <div className="mt-8 text-right">
+            {/* Overview Link */}
+            <div className="mt-8 flex justify-end">
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 font-sans font-semibold text-[14px] text-[#B08A52] hover:text-[#171714] transition-colors"
+                className="inline-flex items-center gap-1.5 font-sans font-medium text-[13.5px] text-[#B08A52] hover:text-[#171714] transition-colors"
               >
                 <span>View Full Services Overview</span>
-                <ArrowRight size={15} />
+                <ArrowRight size={14} />
               </Link>
             </div>
           </div>
         </section>
 
         {/* ===================================================================
-            SECTION 4 — HOW WE WORK (OUR APPROACH)
-            "From idea to reality."
+            SECTION 6 — OUR APPROACH
+            Concise 4-step workflow
         =================================================================== */}
         <section
-          aria-labelledby="how-we-work-heading"
-          className="py-16 sm:py-24 lg:py-28 bg-white border-b border-[#E7E0D4]"
+          aria-labelledby="approach-heading"
+          className="py-12 sm:py-16 lg:py-20 bg-white border-b border-[#E7E0D4]"
         >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="max-w-3xl mb-12 lg:mb-16">
+            <div className="max-w-3xl mb-10 lg:mb-14">
               <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                HOW WE WORK
+                OUR APPROACH
               </span>
               <h2
-                id="how-we-work-heading"
-                className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
+                id="approach-heading"
+                className="text-[28px] sm:text-[36px] lg:text-[42px] font-semibold text-[#171714] leading-[1.18] tracking-tight mb-3"
               >
-                From idea to reality<span className="text-[#B08A52]">.</span>
+                From understanding the requirement to completing the work<span className="text-[#B08A52]">.</span>
               </h2>
-              <p className="font-sans text-[16px] sm:text-[17px] leading-relaxed text-[#68645D]">
-                A disciplined four-stage process guiding your construction, interior, or planning project from concept to finished space.
+              <p className="font-sans text-[14.5px] sm:text-[15.5px] leading-relaxed text-[#68645D]">
+                A practical sequence applied across residential construction, interior projects, and fabrication requirements.
               </p>
             </div>
 
-            {/* 4 Steps Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-              {howWeWorkSteps.map((step) => (
-                <div
-                  key={step.num}
-                  className="p-7 sm:p-8 rounded-[24px] bg-[#FAF8F3] border border-[#E7E0D4] flex flex-col justify-between group hover:border-[#B08A52] transition-colors"
-                >
-                  <div>
-                    <span className="font-mono text-[13px] font-bold text-[#B08A52] block mb-3">
-                      STEP {step.num}
+            {/* Continuous Architectural Line Step Flow */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 lg:gap-x-10 gap-y-10 sm:gap-y-12">
+              {approachSteps.map((item, idx, arr) => (
+                <div key={item.num} className="group flex flex-col">
+                  {/* Step Number + Connecting Line */}
+                  <div className="flex items-center gap-3.5 mb-4">
+                    <span className="font-bold text-[30px] sm:text-[36px] lg:text-[40px] text-[#171714] leading-none shrink-0 group-hover:text-[#B08A52] transition-colors duration-300">
+                      {item.num}
                     </span>
-                    <h3 className="font-serif text-[22px] sm:text-[24px] font-bold text-[#171714] mb-3 group-hover:text-[#B08A52] transition-colors">
-                      {step.name}
-                    </h3>
+                    {idx !== arr.length - 1 ? (
+                      <div className="flex-1 h-[1.5px] bg-[#E7E0D4] group-hover:bg-[#B08A52]/60 transition-colors duration-300" />
+                    ) : (
+                      <div className="hidden lg:block flex-1 h-[1.5px] bg-transparent" />
+                    )}
                   </div>
-                  <p className="font-sans text-[14.5px] leading-relaxed text-[#68645D]">
-                    {step.description}
+
+                  {/* Title */}
+                  <h3 className="font-sans font-bold text-[16px] sm:text-[17px] text-[#171714] mb-2 tracking-tight group-hover:text-[#B08A52] transition-colors duration-200">
+                    {item.name}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="font-sans text-[13.5px] sm:text-[14px] text-[#68645D] leading-relaxed">
+                    {item.description}
                   </p>
                 </div>
               ))}
@@ -639,205 +646,57 @@ export default function AboutUsPage() {
         </section>
 
         {/* ===================================================================
-            SECTION 5 — MISSION & VISION
-            "Creating spaces that matter." & "Building a better tomorrow."
-        =================================================================== */}
-        <section
-          aria-labelledby="mission-vision-heading"
-          className="py-16 sm:py-24 bg-[#FAF8F3] border-b border-[#E7E0D4]"
-        >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-              {missionVision.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.eyebrow}
-                    className="p-8 sm:p-10 lg:p-12 rounded-[28px] bg-white border border-[#E7E0D4] shadow-xs flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-6">
-                        <span className="text-[11.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52]">
-                          {item.eyebrow}
-                        </span>
-                        <div className="w-10 h-10 rounded-full bg-[#FAF8F3] border border-[#E7E0D4] flex items-center justify-center text-[#B08A52]">
-                          <Icon size={18} />
-                        </div>
-                      </div>
-                      <h3 className="font-serif text-[26px] sm:text-[32px] font-bold text-[#171714] leading-[1.2] mb-4">
-                        {item.title}
-                      </h3>
-                      <p className="font-sans text-[15.5px] sm:text-[16.5px] leading-relaxed text-[#68645D]">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* ===================================================================
-            SECTION 6 — WHAT DEFINES US (OUR VALUES)
-            "Our values in every detail."
+            SECTION 7 — OUR VALUES / FOCUS
+            Factual principles
         =================================================================== */}
         <section
           aria-labelledby="values-heading"
-          className="py-16 sm:py-24 lg:py-28 bg-white border-b border-[#E7E0D4]"
+          className="py-12 sm:py-16 lg:py-20 bg-[#FAF8F3] border-b border-[#E7E0D4]"
         >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="max-w-3xl mb-12 lg:mb-16">
+            <div className="max-w-3xl mb-10 lg:mb-14">
               <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                WHAT DEFINES US
+                OUR FOCUS
               </span>
               <h2
                 id="values-heading"
-                className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
+                className="text-[28px] sm:text-[36px] lg:text-[42px] font-semibold text-[#171714] leading-[1.18] tracking-tight mb-3"
               >
-                Our values in every detail<span className="text-[#B08A52]">.</span>
+                What we focus on<span className="text-[#B08A52]">.</span>
               </h2>
-              <p className="font-sans text-[16px] sm:text-[17px] leading-relaxed text-[#68645D]">
-                Six principles that shape every blueprint, material choice, and finish across our projects.
+              <p className="font-sans text-[14.5px] sm:text-[15.5px] leading-relaxed text-[#68645D]">
+                Core operational principles guiding our design planning, material choices, and site execution.
               </p>
             </div>
 
-            {/* 6 Values Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {coreValues.map((val) => {
-                const Icon = val.icon;
-                return (
-                  <div
-                    key={val.num}
-                    className="p-7 sm:p-8 rounded-[24px] bg-[#FAF8F3] border border-[#E7E0D4] flex flex-col justify-between group hover:border-[#B08A52] transition-colors"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="font-mono text-[13px] font-bold text-[#B08A52]">
-                          {val.num}
-                        </span>
-                        <div className="w-9 h-9 rounded-full bg-white border border-[#E7E0D4] flex items-center justify-center text-[#77736C] group-hover:text-[#B08A52] group-hover:border-[#B08A52] transition-colors">
-                          <Icon size={16} />
-                        </div>
-                      </div>
-                      <h3 className="font-serif text-[22px] font-bold text-[#171714] mb-2.5">
-                        {val.title}
-                      </h3>
-                      <p className="font-sans text-[14.5px] leading-relaxed text-[#68645D]">
-                        {val.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* ===================================================================
-            SECTION 7 — LOCAL IDENTITY / NAGERCOIL
-            Grounded local entity representation with real NAP
-        =================================================================== */}
-        <section
-          aria-labelledby="local-identity-heading"
-          className="py-16 sm:py-24 bg-[#F6F3EB] border-b border-[#E7E0D4]"
-        >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-              {/* Left Column: Local Narrative */}
-              <div className="lg:col-span-7">
-                <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                  BASED IN NAGERCOIL
-                </span>
-                <h2
-                  id="local-identity-heading"
-                  className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-5"
+            {/* Focus Cards Grid - 6 Items (3x2 on desktop) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+              {focusPrinciples.map((principle, idx) => (
+                <div
+                  key={idx}
+                  className="p-6 sm:p-7 rounded-[22px] bg-white border border-[#E7E0D4] shadow-xs hover:border-[#B08A52]/40 transition-colors"
                 >
-                  Rooted in Nagercoil, Tamil Nadu<span className="text-[#B08A52]">.</span>
-                </h2>
-                <p className="font-sans text-[16px] sm:text-[17.5px] leading-relaxed text-[#68645D] mb-6">
-                  SMS Construction is based in Nagercoil and works with clients looking for construction, interior design, planning, surveying and fabrication services in and around the region.
-                </p>
-                <p className="font-sans text-[15px] sm:text-[16px] leading-relaxed text-[#68645D] mb-8">
-                  Being permanently established in Nagercoil allows our engineering and design team to conduct responsive site visits, understand local soil conditions and town planning guidelines, and maintain close supervision throughout every stage of execution across Kanyakumari District.
-                </p>
-
-                <div className="flex flex-wrap gap-2 text-[13px] font-sans">
-                  {["Nagercoil", "Suchindram", "Theroor", "Kanyakumari", "Marthandam", "Colachel"].map((loc) => (
-                    <span
-                      key={loc}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-[#E7E0D4] text-[#171714]"
-                    >
-                      <MapPin size={12} className="text-[#B08A52]" />
-                      <span>{loc}</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Column: Studio Coordinates Card */}
-              <div className="lg:col-span-5">
-                <div className="p-7 sm:p-9 lg:p-10 rounded-[28px] bg-white border border-[#E7E0D4] shadow-sm">
-                  <span className="text-[11px] sm:text-[12px] font-sans font-semibold uppercase tracking-wider text-[#B08A52] block mb-2">
-                    Studio &amp; Office Coordinates
-                  </span>
-                  <h3 className="font-serif text-[24px] sm:text-[26px] font-bold text-[#171714] mb-3">
-                    SMS Construction
-                  </h3>
-
-                  <address className="not-italic font-sans text-[14.5px] sm:text-[15px] text-[#68645D] leading-relaxed mb-6 space-y-1">
-                    <p>25/1 Muthamizh Street, Near Court Road</p>
-                    <p>Nagercoil, Tamil Nadu 629001</p>
-                    <p>India</p>
-                  </address>
-
-                  <div className="pt-6 border-t border-[#E7E0D4] space-y-3.5 text-[14px] font-sans">
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="text-[#77736C]">Direct Line:</span>
-                      <a
-                        href={`tel:${phoneNumber}`}
-                        className="font-semibold text-[#171714] hover:text-[#B08A52] transition-colors"
-                      >
-                        {formattedPhone}
-                      </a>
-                    </div>
-
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="text-[#77736C]">Email Inquiries:</span>
-                      <a
-                        href={`mailto:${email}`}
-                        className="font-semibold text-[#171714] hover:text-[#B08A52] transition-colors break-all"
-                      >
-                        {email}
-                      </a>
-                    </div>
-
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="text-[#77736C]">WhatsApp Direct:</span>
-                      <a
-                        href={`https://wa.me/919488021183?text=${encodeURIComponent(
-                          "Hello SMS Construction, I would like to consult about your services."
-                        )}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-semibold text-[#25D366] hover:underline"
-                      >
-                        Chat with Team
-                      </a>
-                    </div>
+                  <div className="w-9 h-9 rounded-full bg-[#FAF8F3] border border-[#E7E0D4] flex items-center justify-center text-[#B08A52] mb-4">
+                    <CheckCircle2 size={16} />
                   </div>
+                  <h3 className="text-[18px] sm:text-[19px] font-semibold text-[#171714] mb-2 tracking-tight">
+                    {principle.title}
+                  </h3>
+                  <p className="font-sans text-[14px] leading-relaxed text-[#68645D]">
+                    {principle.description}
+                  </p>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* ===================================================================
-            SECTION 8 — REAL PROJECT PROOF
-            Nagarajan Residence, Nagercoil – Theroor Case Study
+            SECTION 8 — REAL PROJECT FEATURE
+            Nagarajan Residence, Nagercoil – Theroor
         =================================================================== */}
         <section
-          aria-labelledby="project-proof-heading"
+          aria-labelledby="project-feature-heading"
           className="py-16 sm:py-24 lg:py-28 bg-white border-b border-[#E7E0D4]"
         >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
@@ -847,10 +706,10 @@ export default function AboutUsPage() {
                   FROM OUR WORK
                 </span>
                 <h2
-                  id="project-proof-heading"
-                  className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-2"
+                  id="project-feature-heading"
+                  className=" text-[30px] sm:text-[40px] lg:text-[46px] font-semibold text-[#171714] leading-[1.18] tracking-tight mb-2"
                 >
-                  A closer look at a completed residential project<span className="text-[#B08A52]">.</span>
+                  A closer look at a residential project<span className="text-[#B08A52]">.</span>
                 </h2>
                 <p className="font-sans text-[16px] text-[#68645D]">
                   Nagarajan Residence, Nagercoil – Theroor
@@ -917,130 +776,61 @@ export default function AboutUsPage() {
         </section>
 
         {/* ===================================================================
-            SECTION 9 — TRUST / WORKING PRINCIPLES
-            Factual operational principles without fake testimonials
+            SECTION 9 — LOCAL PRESENCE / CONTACT
+            Grounded entity representation with exact NAP
         =================================================================== */}
-        <section
-          aria-labelledby="trust-heading"
-          className="py-16 sm:py-24 lg:py-28 bg-[#FAF8F3] border-b border-[#E7E0D4]"
-        >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="max-w-3xl mb-12 lg:mb-16">
-              <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                WORKING PRINCIPLES
-              </span>
-              <h2
-                id="trust-heading"
-                className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
-              >
-                How we build trust with every client<span className="text-[#B08A52]">.</span>
-              </h2>
-              <p className="font-sans text-[16px] sm:text-[17px] leading-relaxed text-[#68645D]">
-                Our reputation is established on verifiable execution, clear technical specifications, and continuous communication throughout the project lifecycle.
-              </p>
-            </div>
-
-            {/* 6 Trust Pillars Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {trustPillars.map((pillar, idx) => (
-                <div
-                  key={idx}
-                  className="p-7 sm:p-8 rounded-[24px] bg-white border border-[#E7E0D4] shadow-xs"
-                >
-                  <div className="w-10 h-10 rounded-full bg-[#FAF8F3] border border-[#E7E0D4] flex items-center justify-center text-[#B08A52] mb-5">
-                    <CheckCircle2 size={18} />
-                  </div>
-                  <h3 className="font-serif text-[20px] font-bold text-[#171714] mb-2.5">
-                    {pillar.title}
-                  </h3>
-                  <p className="font-sans text-[14.5px] leading-relaxed text-[#68645D]">
-                    {pillar.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <LocalServiceArea
+          sectionId="local-presence-heading"
+          badge="BASED IN NAGERCOIL"
+          title={
+            <>
+              Serving projects from Nagercoil, Tamil Nadu<span className="text-[#B08A52]">.</span>
+            </>
+          }
+          description={[
+            "SMS Construction is based in Nagercoil, Tamil Nadu, with services covering construction, interior design, planning, survey-related work and fabrication based on project requirements.",
+            "Being permanently established in Nagercoil allows our engineering and design team to conduct responsive site visits, understand local soil conditions and town planning guidelines, and maintain close supervision throughout every stage of execution across Kanyakumari District.",
+          ]}
+          localities={["Nagercoil", "Suchindram", "Theroor", "Kanyakumari", "Marthandam", "Colachel"]}
+          deskTitle="Studio & Office Coordinates"
+          companyName="SMS Construction"
+          addressLines={[
+            "25/1 Muthamizh Street, Near Court Road",
+            "Nagercoil, Tamil Nadu 629001, India",
+          ]}
+          phoneNumber={phoneNumber}
+          formattedPhone={formattedPhone}
+          email={email}
+        />
 
         {/* ===================================================================
-            SECTION 10 — FAQ / AEO SECTION
-            6 Authoritative, concise FAQs with accessible semantic details
+            SECTION 10 — FAQ — AEO
+            7 Authoritative, direct questions with accessible semantic details
         =================================================================== */}
-        <section
-          aria-labelledby="faq-heading"
-          className="py-16 sm:py-24 lg:py-28 bg-white border-b border-[#E7E0D4]"
-        >
-          <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-              {/* Left Column: Heading */}
-              <div className="lg:col-span-5">
-                <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                  QUESTIONS &amp; ANSWERS
-                </span>
-                <h2
-                  id="faq-heading"
-                  className="font-serif text-[30px] sm:text-[40px] lg:text-[46px] font-bold text-[#171714] leading-[1.18] tracking-tight mb-4"
-                >
-                  Frequently asked questions<span className="text-[#B08A52]">.</span>
-                </h2>
-                <p className="font-sans text-[15.5px] sm:text-[16.5px] leading-relaxed text-[#68645D] mb-6">
-                  Direct answers regarding our services, operating base, and coordination model in Nagercoil.
-                </p>
-                <div className="p-6 rounded-[22px] bg-[#FAF8F3] border border-[#E7E0D4]">
-                  <p className="font-serif font-bold text-[17px] text-[#171714] mb-2">
-                    Have a specific project inquiry?
-                  </p>
-                  <p className="font-sans text-[13.5px] text-[#68645D] mb-4">
-                    Our team is available for plot reviews and preliminary consultations at our Nagercoil studio.
-                  </p>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-1.5 font-sans font-semibold text-[13.5px] text-[#B08A52] hover:text-[#171714] transition-colors"
-                  >
-                    <span>Contact Us</span>
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right Column: 6 Semantic Accordion Items */}
-              <div className="lg:col-span-7 space-y-4">
-                {faqs.map((faq, idx) => (
-                  <details
-                    key={idx}
-                    className="group bg-[#FAF8F3] rounded-[20px] border border-[#E7E0D4] p-5 sm:p-6 open:bg-white transition-colors"
-                  >
-                    <summary className="flex items-center justify-between gap-4 font-sans font-semibold text-[16px] sm:text-[17px] text-[#171714] cursor-pointer list-none select-none">
-                      <span>{faq.question}</span>
-                      <span className="w-8 h-8 rounded-full bg-white border border-[#E7E0D4] group-open:bg-[#FAF8F3] flex items-center justify-center text-[#B08A52] shrink-0 transition-transform duration-200 group-open:rotate-180">
-                        <ChevronDown size={16} />
-                      </span>
-                    </summary>
-                    <div className="pt-4 font-sans text-[14.5px] sm:text-[15.5px] leading-relaxed text-[#68645D] border-t border-[#E7E0D4] mt-4">
-                      {faq.answer}
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <ModernFaq
+          sectionId="faq-heading"
+          title="Frequently Asked Questions"
+          titleAccent="."
+          subtitle="Direct answers regarding our services, operating base, and coordination model in Nagercoil"
+          items={faqs}
+          className="py-16 md:py-24 bg-white border-b border-[#E7E0D4] relative"
+        />
 
         {/* ===================================================================
-            SECTION 11 — FINAL CONVERSION CTA
-            "LET'S BUILD TOGETHER - Have a project in mind?"
+            SECTION 11 — FINAL CTA
+            Reusing standard ConversionCTA component
         =================================================================== */}
         <ConversionCTA
           theme="light"
-          badge="LET'S BUILD TOGETHER"
-          title="Have a project in mind?"
-          description="Let's turn your vision into something extraordinary. Discuss your construction, interior design, or renovation project with SMS Construction in Nagercoil."
-          primaryBtnText="Start Your Project"
+          badge="START YOUR PROJECT"
+          title="Let’s build your next space."
+          description="Discuss your construction, interior design, or renovation project with SMS Construction in Nagercoil."
+          primaryBtnText="Get a Quote"
           primaryBtnHref="/contact"
           phoneNumber={phoneNumber}
           formattedPhone={formattedPhone}
           whatsappNumber="919488021183"
-          whatsappMessage="Hello SMS Construction, I have a project in mind and would like to discuss it."
+          whatsappMessage="Hello SMS Construction, I would like to discuss a project."
           subtext="SMS Construction • 25/1 Muthamizh Street, Near Court Road, Nagercoil, Tamil Nadu 629001"
         />
       </main>

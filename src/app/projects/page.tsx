@@ -3,13 +3,49 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import ConversionCTA from "@/components/ConversionCTA";
+import ModernFaq, { FaqItemType } from "@/components/ModernFaq";
 import Image from "next/image";
-import Footer from "@/components/Footer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
+
+/* ─── Projects FAQ Items ─────────────────────────────────────────────────── */
+const projectsFaqs: FaqItemType[] = [
+  {
+    q: "What type of projects does SMS Construction showcase?",
+    a: "SMS Construction showcases residential construction, interior design and related project work completed or documented by the company.",
+  },
+  {
+    q: "Where are the projects by SMS Construction located?",
+    a: "SMS Construction is based in Nagercoil, Tamil Nadu. Project locations can vary depending on the work and client requirements.",
+  },
+  {
+    q: "Can I view completed projects by SMS Construction?",
+    a: "Yes. The Projects page features selected project work with images and project details where available.",
+  },
+  {
+    q: "What information is available on a project detail page?",
+    a: "Depending on the project, the page may include the project name, location, project type, design details, images and related work information.",
+  },
+  {
+    q: "Does SMS Construction handle both construction and interior projects?",
+    a: "Yes. The company provides construction and interior design services along with design and planning, survey-related services and fabrication works.",
+  },
+  {
+    q: "Can I discuss a project similar to the work shown here?",
+    a: "Yes. You can contact SMS Construction to discuss your project requirements, location and scope.",
+  },
+  {
+    q: "How can I enquire about a project shown on the website?",
+    a: "You can contact SMS Construction at +91 94880 21183 or smsconstructionngl@gmail.com, or submit an enquiry through the Contact page.",
+  },
+  {
+    q: "Are all images on the Projects page actual SMS Construction projects?",
+    a: "Only verified project images should be presented as completed or documented SMS Construction projects. Any inspiration or catalog imagery should be clearly separated from real project documentation.",
+  },
+];
 
 /* ─── Marquee ticker items ──────────────────────────────────────────────── */
 const tickerItems = [
@@ -210,8 +246,27 @@ export default function ProjectsPage() {
     return () => ctx.revert();
   }, []);
 
+  // Structured Data: FAQPage Schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: projectsFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <main className="bg-[#F7F3ED]">
+      {/* FAQ Schema for Search & Answer Engines */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* ══════════════════════════════════════════════════════
           1. COMPACT EDITORIAL HERO (100vh)
       ══════════════════════════════════════════════════════ */}
@@ -388,7 +443,20 @@ export default function ProjectsPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          6. FINAL CTA
+          6. FREQUENTLY ASKED QUESTIONS
+      ══════════════════════════════════════════════════════ */}
+      <ModernFaq
+        sectionId="projects-faq"
+        badgeText="QUESTIONS & ANSWERS"
+        title="Frequently Asked Questions"
+        titleAccent="."
+        subtitle="Everything you need to know about our project work and portfolio"
+        items={projectsFaqs}
+        className="py-16 md:py-24 bg-[#FAFAFA] border-t border-[#E7E0D4] relative"
+      />
+
+      {/* ══════════════════════════════════════════════════════
+          7. FINAL CTA
       ══════════════════════════════════════════════════════ */}
       <ConversionCTA
         badge="HAVE A PROJECT IN MIND?"

@@ -7,9 +7,10 @@ module.exports = {
       {
         userAgent: '*',
         allow: '/',
+        disallow: '/design-system',
       },
     ],
   },
-  exclude: ['/server-sitemap.xml'], // exclude anything if needed
+  exclude: ['/server-sitemap.xml', '/design-system'], // exclude anything if needed
   generateIndexSitemap: false,
 };

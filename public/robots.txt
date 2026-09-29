@@ -1,6 +1,7 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /design-system
 
 # Host
 Host: https://smsconstruction.in

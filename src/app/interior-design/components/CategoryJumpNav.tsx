@@ -122,10 +122,7 @@ export default function CategoryJumpNav({ categories }: CategoryJumpNavProps) {
                     : "bg-white text-[#555] hover:text-[#171614] hover:bg-[#FAF8F5] border border-[#E7E0D4] hover:border-[#B08A52]/50 shadow-xs"
                 }`}
               >
-                {isActive && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#B08A52] shrink-0 animate-pulse" />
-                )}
-                <span>{cat.title}</span>
+                {cat.title}
               </a>
             );
           })}

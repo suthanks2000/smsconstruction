@@ -342,7 +342,7 @@ export default function ConstructionPage() {
                 <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.22em] uppercase text-[#B08A52] mb-3">
                   ALL-SECTOR CIVIL CONSTRUCTION
                 </span>
-                <h2 className="text-[30px] sm:text-[42px] lg:text-[48px] text-[#171714] leading-[1.18] tracking-tight">
+                <h2 className="font-semibold text-[30px] sm:text-[42px] lg:text-[48px] text-[#171714] leading-[1.18] tracking-tight">
                   Every structure requires engineering discipline, structural integrity, and purpose-driven execution.
                 </h2>
               </div>

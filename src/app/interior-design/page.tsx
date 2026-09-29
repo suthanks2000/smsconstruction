@@ -4,9 +4,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   Phone,
-  MessageSquare,
   CheckCircle2,
-  Sparkles,
   MapPin,
 } from "lucide-react";
 import {
@@ -17,7 +15,6 @@ import {
 } from "@/data/interiorDesign";
 import ModernFaq from "@/components/ModernFaq";
 import CatalogGalleryDrawer from "./components/CatalogGalleryDrawer";
-import LocationMarquee from "./components/LocationMarquee";
 import CategoryJumpNav from "./components/CategoryJumpNav";
 import ConversionCTA from "@/components/ConversionCTA";
 
@@ -243,11 +240,6 @@ export default function InteriorDesignPage() {
               </div>
             </div>
           </div>
-
-          {/* Location Marquee Ticker at bottom of 100dvh */}
-          <div className="relative z-10 mt-auto shrink-0 w-full max-w-full overflow-hidden">
-            <LocationMarquee />
-          </div>
         </section>
 
         {/* ===================================================================
@@ -296,7 +288,7 @@ export default function InteriorDesignPage() {
               <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
                 SERVICE &amp; CATEGORY SHOWCASE
               </span>
-              <h2 className="text-[30px] sm:text-[44px] lg:text-[52px] text-[#171614] leading-[1.16] tracking-tight mb-4">
+              <h2 className="font-semibold  text-[30px] sm:text-[44px] lg:text-[52px] text-[#171614] leading-[1.16] tracking-tight mb-4">
                 Spaces We Design
               </h2>
               <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
@@ -319,7 +311,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {bedroom.eyebrow}
                     </span>
-                    <h3 className="text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
+                    <h3 className="font-semibold text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
                       {bedroom.title}
                     </h3>
                     <p className="text-[16px] text-[#68645D] max-w-xl mt-2">
@@ -397,7 +389,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {kitchen.eyebrow}
                     </span>
-                    <h3 className="text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
+                    <h3 className="font-semibold text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
                       {kitchen.title}
                     </h3>
                     <p className="text-[16px] text-[#68645D] max-w-xl mt-2">
@@ -475,7 +467,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {falseCeiling.eyebrow}
                     </span>
-                    <h3 className="text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
+                    <h3 className="font-semibold text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
                       {falseCeiling.title}
                     </h3>
                     <p className="text-[16px] text-[#68645D] max-w-xl mt-2">
@@ -553,7 +545,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {tvUnit.eyebrow}
                     </span>
-                    <h3 className="text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
+                    <h3 className="font-semibold text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
                       {tvUnit.title}
                     </h3>
                     <p className="text-[16px] text-[#68645D] max-w-xl mt-2">
@@ -652,7 +644,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {terraceGarden.eyebrow}
                     </span>
-                    <h3 className="text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
+                    <h3 className="font-semibold text-[30px] sm:text-[40px] text-[#171614] tracking-tight">
                       {terraceGarden.title}
                     </h3>
                     <p className="text-[16px] text-[#68645D] max-w-xl mt-2">
@@ -744,7 +736,7 @@ export default function InteriorDesignPage() {
                     <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                       {wallDecor.eyebrow}
                     </span>
-                    <h3 className="text-[28px] sm:text-[42px] text-[#171614] leading-[1.14] mb-4">
+                    <h3 className="font-semibold text-[28px] sm:text-[42px] text-[#171614] leading-[1.14] mb-4">
                       {wallDecor.title}
                     </h3>
                     <p className="text-[16px] sm:text-[17px] text-[#68645D] leading-relaxed mb-6 font-sans">
@@ -788,7 +780,7 @@ export default function InteriorDesignPage() {
               <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
                 WORKFLOW &amp; METHODOLOGY
               </span>
-              <h2 className="text-[30px] sm:text-[44px] lg:text-[52px] text-[#171614] leading-[1.16] tracking-tight mb-4">
+              <h2 className="font-semibold text-[30px] sm:text-[44px] lg:text-[52px] text-[#171614] leading-[1.16] tracking-tight mb-4">
                 Our Approach
               </h2>
               <p className="text-[15px] sm:text-[17px] text-[#68645D] leading-relaxed">
@@ -831,7 +823,7 @@ export default function InteriorDesignPage() {
                 <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
                   FROM OUR PROJECTS
                 </span>
-                <h2 className="text-[30px] sm:text-[42px] lg:text-[48px] text-[#171614] leading-[1.16] tracking-tight mb-3">
+                <h2 className="font-semibold text-[30px] sm:text-[42px] lg:text-[48px] text-[#171614] leading-[1.16] tracking-tight mb-3">
                   See Interior Design in Real Spaces
                 </h2>
                 <p className="text-[15px] sm:text-[18px] text-[#68645D] leading-relaxed">
@@ -921,7 +913,7 @@ export default function InteriorDesignPage() {
                 <span className="text-[12px] font-sans font-semibold tracking-widest uppercase text-[#B08A52] mb-2 block">
                   BASED IN NAGERCOIL
                 </span>
-                <h2 className="text-[24px] sm:text-[34px] text-[#171614] leading-[1.2] mb-3">
+                <h2 className="font-semibold text-[24px] sm:text-[34px] text-[#171614] leading-[1.2] mb-3">
                   Interior Design in Nagercoil and Surrounding Areas
                 </h2>
                 <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed max-w-2xl font-sans">
@@ -967,7 +959,7 @@ export default function InteriorDesignPage() {
                 <p className="text-[11px] font-sans font-semibold uppercase tracking-wider text-[#B08A52]">
                   Explore Architecture &amp; Construction Disciplines
                 </p>
-                <p className="text-[17px] sm:text-[18px] text-[#171614]">
+                <p className="font-semibold text-[17px] sm:text-[18px] text-[#171614]">
                   Complementary Services by SMS Construction
                 </p>
               </div>

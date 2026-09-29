@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import ConversionCTA from "@/components/ConversionCTA";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import gsap from "gsap";
@@ -221,7 +222,7 @@ export default function ProjectsPage() {
             Selected Work
           </p>
           <h1
-            className="intro-elem text-[#171614] leading-[1.05] tracking-[-0.02em] mb-5"
+            className="font-semibold intro-elem text-[#171614] leading-[1.05] tracking-[-0.02em] mb-5"
             style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
           >
             Our Projects.
@@ -277,7 +278,7 @@ export default function ProjectsPage() {
                   </div>
 
                   <Link href={`/projects/${project.slug}`} className="group block focus-visible:outline-[#B08A52] rounded-md">
-                    <h2 className="text-serif text-[#171614] text-[32px] lg:text-[40px] xl:text-[44px] leading-[1.1] uppercase mb-4 transition-colors duration-300 group-hover:text-[#B08A52]">
+                    <h2 className="font-semibold text-[#171614] text-[32px] lg:text-[40px] xl:text-[44px] leading-[1.1] uppercase mb-4 transition-colors duration-300 group-hover:text-[#B08A52]">
                       {project.title.split(' ').map((word, j) => (
                         <span key={j} className="block">{word}</span>
                       ))}
@@ -369,7 +370,7 @@ export default function ProjectsPage() {
           <div>
             <h2
               id="seo-heading"
-              className="text-[#171614] leading-[1.1] tracking-[-0.02em]"
+              className="font-semibold text-[#171614] leading-[1.1] tracking-[-0.02em]"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
               OUR PROJECTS
@@ -389,41 +390,18 @@ export default function ProjectsPage() {
       {/* ══════════════════════════════════════════════════════
           6. FINAL CTA
       ══════════════════════════════════════════════════════ */}
-      <section
-        className="bg-[#171614] text-white px-6 md:px-12 lg:px-20 py-24 md:py-32"
-        aria-labelledby="cta-heading"
-      >
-        <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-10">
-          <div>
-            <p className="font-sans text-[11px] tracking-[0.25em] uppercase font-semibold text-[#B08A52] mb-4">
-              Have a project in mind?
-            </p>
-            <h2
-              id="cta-heading"
-              className="font-serif font-bold text-white leading-[1.05] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
-            >
-              Let&apos;s talk about
-              <br />
-              your next space.
-            </h2>
-          </div>
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-3 self-start md:self-auto font-sans text-[12px] tracking-[0.15em] uppercase font-semibold text-[#171614] bg-[#B08A52] px-8 py-4 rounded-full hover:bg-white transition-all duration-300"
-          >
-            Start a conversation
-            <span
-              aria-hidden="true"
-              className="inline-block transition-transform duration-300 group-hover:translate-x-1"
-            >
-              →
-            </span>
-          </Link>
-        </div>
-      </section>
-
-      <Footer />
+      <ConversionCTA
+        badge="HAVE A PROJECT IN MIND?"
+        title="Let’s talk about your next space."
+        description="Whether you're planning a bespoke residential home, turnkey commercial build, or luxury interior in Nagercoil and Kanyakumari, our team is ready to assist you."
+        primaryBtnText="Start a Conversation"
+        primaryBtnHref="/contact"
+        phoneNumber="+919488021183"
+        formattedPhone="+91 94880 21183"
+        whatsappNumber="919488021183"
+        whatsappMessage="Hello SMS Construction, I am interested in discussing a project for my space."
+        subtext="SMS Construction • Architecture, Civil & Interior Design Studio • Nagercoil, Tamil Nadu"
+      />
     </main>
   );
 }

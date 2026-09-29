@@ -59,7 +59,7 @@ export default function ConversionCTA({
         )}
 
         <h2
-          className={`text-[32px] sm:text-[46px] lg:text-[52px] leading-[1.14] tracking-tight mb-5 ${
+          className={`font-semibold text-[32px] sm:text-[46px] lg:text-[52px] leading-[1.14] tracking-tight mb-5 ${
             isDark ? "text-[#FAF8F3]" : "text-[#171614]"
           }`}
         >

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Handshake, Map, DraftingCompass, HardHat, ClipboardCheck, Key, Plus, Play, ArrowRight } from "lucide-react";
+import { Handshake, Map, DraftingCompass, HardHat, ClipboardCheck, Key, Plus, Play, ArrowRight, ArrowUpRight, Wrench } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -293,279 +293,63 @@ function TrustStats() {
 /* ─── Services ────────────────────────────────────────────── */
 const servicesData = [
   {
-    category: "Interior Design",
-    desc: "Bespoke design solutions that transform your residential spaces into tranquil, luxurious havens tailored to your lifestyle.",
-    href: "/interior-design",
-    img: "/images/services/interior.webp",
-  },
-  {
-    category: "Construction",
-    desc: "Architecturally significant ground-up construction, focusing on precision, premium materials, and structural integrity.",
+    title: "Civil construction",
     href: "/construction",
-    img: "/images/services/construction.jpg",
+    img: "/images/services/services-civil-construction-portrait.jpg",
+    alt: "Civil and residential construction projects by SMS Construction in Nagercoil",
   },
   {
-    category: "Design & Planning",
-    desc: "Comprehensive architectural blueprints and spatial planning to visualize your dream project before it begins.",
+    title: "Interior design",
+    href: "/interior-design",
+    img: "/images/services/services-interior-design-portrait.jpg",
+    alt: "Bespoke luxury interior design and spaces by SMS Construction in Nagercoil",
+  },
+  {
+    title: "Design & planning",
     href: "/design-planning",
-    img: "/images/services/planning.webp",
+    img: "/images/services/services-design-planning-portrait.jpg",
+    alt: "Architectural blueprints, 3D elevation, and spatial planning",
   },
   {
-    category: "Survey & Approvals",
-    desc: "Supporting site understanding, documentation review, and project coordination before construction begins.",
+    title: "Survey & approvals",
     href: "/survey-approvals",
-    img: "/images/services/survey.webp",
+    img: "/images/services/services-survey-approvals-portrait.jpg",
+    alt: "Land survey, digital mapping, and government building approvals",
   },
   {
-    category: "Fabrication Works",
-    desc: "Custom architectural metalwork, decorative partitions, and purpose-built elements crafted for your space.",
+    title: "Fabrication works",
     href: "/fabrication-works",
-    img: "/images/services/fabrication.jpg",
+    img: "/images/services/services-fabrication-works-portrait.jpg",
+    alt: "Architectural metalwork, aluminum joinery, and structural steel fabrication",
   },
 ];
 
 function Services() {
   const containerRef = useRef<HTMLElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const router = useRouter();
-
-  const scrollToService = (index: number) => {
-    const st = ScrollTrigger.getAll().find((t) => t.trigger === containerRef.current && t.vars.pin === true);
-    if (st) {
-      const total = servicesData.length;
-      let scrollPos = st.start + (index * (st.end - st.start)) / (total - 1);
-
-      // Prevent triggering the 'onLeave' animation when clicking the last item
-      if (index === total - 1) {
-        scrollPos -= 10;
-      }
-
-      window.scrollTo({ top: scrollPos, behavior: "auto" });
-    }
-  };
 
   useEffect(() => {
+    const reducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const ctx = gsap.context(() => {
-      const mm = gsap.matchMedia();
-
-      mm.add("all", () => {
-        const container = containerRef.current;
-
-        if (!container) return;
-
-        const total = servicesData.length;
-
-        // Initial fan position
-        const setCardPositions = (active: number, animate = false) => {
-          cardRefs.current.forEach((card, index) => {
-            if (!card) return;
-
-            let relative = index - active;
-
-            // Make the carousel circular
-            if (relative > total / 2) relative -= total;
-            if (relative < -total / 2) relative += total;
-
-            const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-            const spreadX = isMobile ? 0.45 : 1;
-            const spreadY = isMobile ? 0.55 : 1;
-
-            let x = 0;
-            let y = 0;
-            let rotate = 0;
-            let scale = 1;
-            let opacity = 1;
-            let zIndex = 10 - Math.abs(relative);
-
-            // CENTER CARD
-            if (relative === 0) {
-              x = 0;
-              y = 0;
-              rotate = 0;
-              scale = 1;
-              opacity = 1;
-              zIndex = 50;
-            }
-
-            // LEFT 1
-            else if (relative === -1) {
-              x = -270 * spreadX;
-              y = 55 * spreadY;
-              rotate = -11;
-              scale = 0.88;
-              opacity = 1;
-              zIndex = 40;
-            }
-
-            // LEFT 2
-            else if (relative === -2) {
-              x = -465 * spreadX;
-              y = 115 * spreadY;
-              rotate = -19;
-              scale = 0.78;
-              opacity = 1;
-              zIndex = 30;
-            }
-
-            // RIGHT 1
-            else if (relative === 1) {
-              x = 270 * spreadX;
-              y = 55 * spreadY;
-              rotate = 11;
-              scale = 0.88;
-              opacity = 1;
-              zIndex = 40;
-            }
-
-            // RIGHT 2
-            else if (relative === 2) {
-              x = 465 * spreadX;
-              y = 115 * spreadY;
-              rotate = 19;
-              scale = 0.78;
-              opacity = 1;
-              zIndex = 30;
-            }
-
-            // Hide everything outside visible fan
-            else {
-              x = (relative > 0 ? 580 : -580) * spreadX;
-              y = 150 * spreadY;
-              rotate = relative > 0 ? 25 : -25;
-              scale = 0.65;
-              opacity = 0;
-              zIndex = 1;
-            }
-
-            const vars: gsap.TweenVars = {
-              x,
-              y,
-              rotate,
-              scale,
-              opacity,
-              zIndex,
-              duration: animate ? 0.8 : 0,
-              ease: "power3.out",
-              overwrite: "auto"
-            };
-
-            if (animate) {
-              gsap.to(card, vars);
-            } else {
-              gsap.set(card, vars);
-            }
-
-            const innerCard = card.querySelector('.inner-card');
-            if (innerCard) {
-              if (relative === 0) {
-                innerCard.classList.add('is-center');
-                innerCard.classList.remove('not-center');
-              } else {
-                innerCard.classList.add('not-center');
-                innerCard.classList.remove('is-center');
-              }
-            }
-          });
-        };
-
-        let currentActiveIndex = 0;
-
-        // Initialize positions
-        setCardPositions(currentActiveIndex, false);
-
-        // Hide initially for entrance animation
-        cardRefs.current.forEach((card) => {
-          if (!card) return;
-          const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-          gsap.set(card, {
-            y: isMobile ? 0 : 250,
-            scale: 0.7,
-            opacity: 0,
-            zIndex: 1,
-          });
-        });
-
-        // Trigger for entering from the top
-        const introTrigger = ScrollTrigger.create({
-          trigger: container,
-          start: "top 75%",
-          onEnter: () => {
-            setCardPositions(currentActiveIndex, true);
+      if (!reducedMotion) {
+        gsap.fromTo(
+          ".services-card",
+          { opacity: 0, y: 35 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 78%",
+            },
           }
-        });
-
-        const trigger = ScrollTrigger.create({
-          trigger: container,
-          start: "top top",
-          end: `+=${window.innerHeight * (total - 1)}`,
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-
-          onUpdate: (self) => {
-            const nextIndex = Math.round(self.progress * (total - 1));
-
-            if (nextIndex !== currentActiveIndex) {
-              currentActiveIndex = nextIndex;
-              setCardPositions(nextIndex, true);
-            }
-          }
-        });
-
-        return () => {
-          introTrigger.kill();
-          trigger.kill();
-        };
-      });
-
-      // --- Mobile / Tablet Autoplay logic overlay ---
-      // This leaves the native scrollbar scrubbing completely intact and smoothly animates the scroll position
-      mm.add("all", () => {
-        let autoplayTimer: NodeJS.Timeout;
-        let interactionTimeout: NodeJS.Timeout;
-
-        const pauseAutoplay = () => {
-          clearInterval(autoplayTimer);
-          clearTimeout(interactionTimeout);
-          interactionTimeout = setTimeout(() => {
-            startAutoplay();
-          }, 500);
-        };
-
-        const startAutoplay = () => {
-          clearInterval(autoplayTimer);
-          autoplayTimer = setInterval(() => {
-            const container = containerRef.current;
-            if (!container) return;
-            const st = ScrollTrigger.getAll().find((t) => t.trigger === container && t.vars.pin === true);
-
-            if (st && st.isActive) {
-              const total = servicesData.length;
-              const currentIndex = Math.round(st.progress * (total - 1));
-              const nextIdx = (currentIndex + 1) % total;
-
-              const targetScroll = st.start + (nextIdx * (st.end - st.start)) / (total - 1);
-              window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-            }
-          }, 3000);
-        };
-
-        startAutoplay();
-
-        // Listen for user interaction to temporarily pause the autoplay so they can scroll naturally
-        window.addEventListener('wheel', pauseAutoplay, { passive: true });
-        window.addEventListener('touchstart', pauseAutoplay, { passive: true });
-        window.addEventListener('touchmove', pauseAutoplay, { passive: true });
-
-        return () => {
-          clearInterval(autoplayTimer);
-          clearTimeout(interactionTimeout);
-          window.removeEventListener('wheel', pauseAutoplay);
-          window.removeEventListener('touchstart', pauseAutoplay);
-          window.removeEventListener('touchmove', pauseAutoplay);
-        };
-      });
-
+        );
+      }
     }, containerRef);
 
     return () => ctx.revert();
@@ -574,142 +358,92 @@ function Services() {
   return (
     <section
       ref={containerRef}
-      className="relative z-20 bg-[#F7F3ED] overflow-hidden"
+      className="relative z-20 bg-[#FAF8F3] py-20 sm:py-24 lg:py-28 overflow-hidden border-t border-[#E7E0D4]/70"
     >
-      {/* =========================
-          ALL SCREENS
-      ========================== */}
-      <div className="block h-[100dvh] relative w-full">
-        {/* Section heading */}
-        <div className="absolute top-10 w-full left-0 flex flex-col items-center text-center md:items-start md:text-left md:w-auto md:left-8 lg:left-16 md:top-14 z-[70]">
-          <div className="flex items-center justify-center md:justify-start gap-3 mb-2 md:mb-4">
-            <span className="hidden md:block w-8 md:w-10 h-[1px] bg-[#B08A52]" />
-            <span className="text-[9px] md:text-[11px] uppercase tracking-[0.25em] text-[#6B6862]">
-              What we do
-            </span>
-          </div>
+      {/* Soft Architectural Sunlight / Leaf Shadow Ambient Effect */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-40 mix-blend-multiply overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse 65% 50% at 15% 20%, rgba(200, 185, 165, 0.28), transparent 70%), radial-gradient(ellipse 55% 45% at 85% 75%, rgba(176, 138, 82, 0.12), transparent 75%)",
+        }}
+      />
 
-          <h2 className="text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-3">
-            Services<span className="text-[#B08A52]">.</span>
-          </h2>
-
-          {/* Scroll Indicator (Mobile & Tablet) */}
-          <div className="flex lg:hidden items-start justify-center md:justify-start gap-3 opacity-100 transition-opacity duration-500 mt-2 md:mt-4 md:ml-1 animate-zoom-scroll">
-            <div className="flex flex-col items-center -space-y-3">
-              <svg className="w-5 h-5 text-[#B08A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-              </svg>
-              <svg className="w-5 h-5 text-[#B08A52] opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-              </svg>
-              <svg className="w-5 h-5 text-[#B08A52] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-              </svg>
+      <div className="relative max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+        {/* Top Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 sm:mb-16">
+          {/* Left: Badge & Heading */}
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E7E0D4] bg-white/80 backdrop-blur-xs text-[12px] font-sans font-medium text-[#171614] mb-4 shadow-2xs">
+              <Wrench size={13} className="text-[#B08A52]" aria-hidden="true" />
+              <span>Our services</span>
             </div>
-            <span className="text-[10px] md:text-[12px] uppercase tracking-[0.2em] text-[#B08A52] font-bold shadow-sm pt-2">Scroll to explore</span>
+
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[54px] leading-[1.08] tracking-tight text-[#171614]">
+              What we can do <br className="hidden sm:inline" />
+              <span className="italic font-normal">for you</span>
+            </h2>
+          </div>
+
+          {/* Right: Description & CTA Button */}
+          <div className="lg:max-w-[420px] flex flex-col items-start">
+            <p className="font-sans text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed mb-6 lg:mb-7">
+              From architectural planning to turnkey execution, we provide quality construction and interior solutions tailored to your needs.
+            </p>
+
+            <Link
+              href="/services"
+              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-[#D6C5B0] hover:bg-[#C9B6A0] text-[#171614] font-sans font-medium text-[14px] sm:text-[15px] transition-all shadow-2xs active:scale-[0.98]"
+            >
+              <span>See our services</span>
+              <span className="w-8 h-8 rounded-full bg-[#171614] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0">
+                <ArrowUpRight size={16} />
+              </span>
+            </Link>
           </div>
         </div>
 
-        {/* Top right count */}
-        <div className="hidden md:block absolute top-16 right-8 lg:right-16 z-[70] text-right">
-          <div className="text-[11px] uppercase tracking-[0.25em] text-[#6B6862]">
-            Core Services
-          </div>
-        </div>
+        {/* 5 Portrait Cards */}
+        <div className="flex lg:grid lg:grid-cols-5 gap-3 sm:gap-4 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 pt-1 -mx-5 px-5 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0 snap-x snap-mandatory scrollbar-none">
+          {servicesData.map((svc) => (
+            <Link
+              key={svc.title}
+              href={svc.href}
+              className="services-card w-[80vw] sm:w-[50vw] md:w-[36vw] lg:w-auto shrink-0 lg:shrink snap-center aspect-[3/4.2] sm:aspect-[3/4.4] rounded-[20px] sm:rounded-[22px] overflow-hidden relative group block bg-[#171614] shadow-sm hover:shadow-xl transition-shadow duration-500"
+            >
+              {/* Image */}
+              <Image
+                src={svc.img}
+                alt={svc.alt}
+                fill
+                loading="lazy"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 20vw"
+              />
 
-        <style>{`
-          @keyframes zoomInOutCenter {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.15); }
-          }
-          @keyframes zoomInOut {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-          }
-          .animate-zoom-scroll-center {
-            animation: zoomInOutCenter 2s ease-in-out infinite;
-          }
-          .animate-zoom-scroll {
-            animation: zoomInOut 2s ease-in-out infinite;
-          }
-        `}</style>
-        {/* Scroll Indicator (Laptop/Desktop) */}
-        <div className="absolute bottom-6 md:bottom-10 left-1/2 z-[70] hidden lg:flex flex-col items-center opacity-100 transition-opacity duration-500 animate-zoom-scroll-center">
-          <span className="text-[10px] md:text-[12px] uppercase tracking-[0.2em] text-[#B08A52] mb-1 font-bold shadow-sm">Scroll to explore</span>
-          <div className="flex flex-col items-center -space-y-4">
-            <svg className="w-6 h-6 text-[#B08A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-            </svg>
-            <svg className="w-6 h-6 text-[#B08A52] opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-            </svg>
-            <svg className="w-6 h-6 text-[#B08A52] opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-        </div>
-        {/* Fan stage */}
-        <div className="absolute inset-0 flex items-center justify-center pt-24 pb-4 md:pt-20 md:pb-40">
-          <div className="relative w-full max-w-[1500px] h-[450px] md:h-[650px] flex items-center justify-center mt-10 lg:mt-16">
-            {servicesData.map((svc, index) => (
-              <div
-                key={svc.category}
-                ref={(el) => {
-                  cardRefs.current[index] = el;
-                }}
-                className="absolute w-[min(320px,75vw)] md:w-[min(360px,28vw)] h-[min(450px,60vh)] md:h-[min(500px,68vh)]"
-              >
-                <div
-                  className="relative w-full h-full rounded-[28px] overflow-hidden shadow-[0_30px_80px_rgba(23,22,20,0.18)] bg-[#171614] p-6 lg:p-8 flex flex-col justify-between border border-[#B08A52]/10 group transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] [&.not-center:hover]:-translate-y-8 [&.not-center:hover]:-translate-x-2 [&.not-center:hover]:rotate-[-2deg] [&.not-center:hover]:scale-105 [&.is-center:hover]:-translate-y-2 [&.is-center:hover]:scale-[1.02] hover:shadow-[0_40px_100px_rgba(0,0,0,0.6)] hover:border-[#B08A52]/40 cursor-pointer inner-card"
-                  onClick={() => scrollToService(index)}
-                >
+              {/* Bottom gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
-                  {/* Image part */}
-                  <div className="relative w-full flex-1 rounded-[20px] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.6)] mb-8">
-                    <Image
-                      src={svc.img}
-                      alt={svc.category}
-                      fill
-                      loading="lazy"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 1200px) 30vw, 360px"
-                    />
-                  </div>
-
-                  {/* bottom part */}
-                  <div className="relative z-10 w-full pr-12">
-                    <h3 className="font-serif text-[28px] lg:text-[32px] leading-[1.05] text-white mb-3">
-                      {svc.category}
-                    </h3>
-                    <p className="text-white/60 text-[13px] lg:text-[14px] leading-relaxed">
-                      {svc.desc}
-                    </p>
-                  </div>
-
-                  {/* Reveal Button */}
-                  <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 opacity-0 translate-y-8 transition-all duration-500 [.is-center:hover_&]:opacity-100 [.is-center:hover_&]:translate-y-0 z-20">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        router.push(svc.href);
-                      }}
-                      className="flex items-center justify-center w-12 h-12 rounded-full bg-[#B08A52] text-white hover:bg-[#8F6F41] transition-all shadow-[0_4px_15px_rgba(176,138,82,0.4)] group/btn"
-                    >
-                      <svg className="transition-transform duration-300 group-hover/btn:translate-x-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+              {/* Arrow */}
+              <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white transition-all duration-300 group-hover:bg-white group-hover:text-[#171614] group-hover:scale-110">
+                <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
-            ))}
-          </div>
+
+              {/* Title */}
+              <div className="absolute left-5 right-14 bottom-5 z-10 pointer-events-none">
+                <span className="block font-sans font-semibold text-[16px] sm:text-[17px] tracking-tight text-white drop-shadow-md leading-snug">
+                  {svc.title}
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ─── Why SMS ─────────────────────────────────────────────── */
 const whyItems = [
@@ -748,7 +482,7 @@ function WhySMS() {
   return (
     <section ref={container} className="pt-12 pb-20 md:pt-16 md:pb-32 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
       <div className="mb-12 md:mb-16 flex flex-col items-center text-center">
-        <h2 className="text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-[#171614] mb-3">
+        <h2 className="font-semibold text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-[#171614] mb-3">
           Why Choose Us<span className="text-[#B08A52]">.</span>
         </h2>
         <h3 className="font-sans text-[13px] md:text-[15px] font-semibold tracking-widest uppercase text-[#B08A52] max-w-3xl mb-3">
@@ -1011,7 +745,7 @@ function FeaturedProjects() {
               </span>
             </div>
 
-            <h2 className="
+            <h2 className="font-semibold
               text-[#171614]
               text-[clamp(2.8rem,5vw,5.2rem)]
               leading-[0.88]
@@ -1574,7 +1308,7 @@ function GalleryStrip() {
   return (
     <section className="py-16 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
       <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-        <h2 className="text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-4">
+        <h2 className="font-semibold text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-4">
           Our Studio<span className="text-[#B08A52]">.</span>
         </h2>
         <span className="text-lg md:text-xl font-serif text-[#C89A47] block">
@@ -1693,7 +1427,7 @@ function Process() {
 
         {/* Left: Sticky Header */}
         <div className="lg:w-[40%] lg:sticky lg:top-40 h-fit mb-10 lg:mb-0">
-          <h2 className="text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-4">
+          <h2 className="font-semibold text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-4">
             How we build <br className="hidden lg:block" />
             your dream space<span className="text-[#B08A52]">.</span>
           </h2>
@@ -1801,7 +1535,7 @@ function Testimonials() {
     <section className="py-12 md:py-20 bg-white overflow-hidden border-t border-[#E7E0D4]/50">
       <div className="max-w-[1440px] mx-auto px-6 md:px-16 mb-8 md:mb-10">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-3">
+          <h2 className="font-semibold text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-3">
             Client Reviews<span className="text-[#B08A52]">.</span>
           </h2>
           <span className="text-lg md:text-xl font-serif text-[#C89A47] block">
@@ -2028,7 +1762,7 @@ export default function Home() {
         <Services />
         <WhySMS />
         <FeaturedProjects />
-        <GalleryStrip />
+        {/* <GalleryStrip /> */}
         <Process />
         <Testimonials />
         <FAQ />

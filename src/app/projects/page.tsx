@@ -185,7 +185,7 @@ function ProjectCollage({ images, title }: { images: string[], title: string }) 
 /* ─── Main Page Component ───────────────────────────────────────────────── */
 export default function ProjectsPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const lookbookProjects = projects.slice(0, 3); // Display top 3 projects
+  const lookbookProjects = projects; // Display all verified real projects
 
   /* ── GSAP Scroll Sequence ── */
   useEffect(() => {

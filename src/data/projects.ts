@@ -95,50 +95,59 @@ export const projects: Project[] = [
   /* ── 02 ─────────────────────────────────────────────────────────────── */
   {
     number: "02",
-    slug: "serene-villa-suchindram-nagercoil",
-    title: "The Serene Villa",
-    category: "Residential Construction",
-    location: "Suchindram, Nagercoil",
-    year: "2025",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
-    alt: "The Serene Villa — limestone and glass residential construction in Suchindram, Nagercoil",
+    slug: "zahir-hussain-residence-nagercoil",
+    title: "Zahir Hussain Residence",
+    category: "Turnkey Interiors",
+    location: "Nagercoil",
+    year: "2026",
+    image: "/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-living-room.webp",
+    alt: "Bespoke living room and marble TV wall paneling at Zahir Hussain Residence in Nagercoil",
     description:
-      "A breathtaking villa marrying modern clean geometry with local limestone structural craftsmanship.",
-    area: "4,200 Sq. Ft.",
-    duration: "14 Months",
-    completionDate: "October 2025",
+      "A complete turnkey residential interior featuring custom marble TV units, high-gloss gold-inlay wardrobes, illuminated stairs, and modern modular kitchen.",
+    area: "3,200 Sq. Ft.",
+    duration: "5 Months",
+    completionDate: "February 2026",
     materials: [
-      "Local Limestone",
-      "Artisan Teak Wood",
-      "Custom Low-E Glazing",
-      "Eco-Concrete",
+      "Statuario Marble TV Paneling",
+      "Fluted Acoustic Wood Louvers",
+      "High-Gloss Acrylic Wardrobes with Gold Inlays",
+      "Integrated Step & Cove LED Profiles",
+      "Solid Carved Teak Entrance Door",
+      "Tempered Glass & SS Stair Balustrade",
+      "Designer Stone Vanity & Backlit Mirror",
+      "Custom Modular Kitchen with Breakfast Island",
     ],
     overview:
-      "A premium private residence built on a gently sloping terrain in Suchindram, Nagercoil. The architectural intent was to celebrate the surrounding landscape while providing ultimate privacy and luxurious comfort.",
+      "A luxurious contemporary turnkey interior project completed for Mr. Zahir Hussain in Nagercoil. The residence merges refined textures, geometric craftsmanship, custom gold accent joinery, and functional spatial planning tailored for modern living.",
     requirements:
-      "The client requested a modern 4-bedroom home that prioritised open-plan living, maximised natural cross-ventilation, and integrated a private swimming pool with direct outdoor access from the main lounge.",
+      "The client envisioned a sleek, hotel-grade aesthetic featuring ambient warm lighting throughout, high-end storage with dedicated dressing zones, an expansive open kitchen with a breakfast island, and a distinctive main entrance.",
     concept:
-      "We developed a 'floating pavilion' concept — two heavy limestone-clad block volumes anchor the structure, while a lightweight steel-and-wood roof plane floats above the central open living spaces.",
+      "We executed a 'Modern Luxe & Architectural Linearity' theme — emphasizing vertical fluting, reflective high-gloss surfaces contrasted against warm wood tones, and concealed linear illumination.",
     process:
-      "We began with rigorous soil testing and site grading. The foundation was reinforced with Grade-A steel. Local stone masons hand-carved the limestone panels, which were dry-hung onto the concrete walls.",
+      "Every module was digitally precision-modeled before fabrication in our joinery unit. Site electrical conduits were recessed during false ceiling preparation to ensure perfectly hidden power drivers and smooth profile light diffusions.",
     challenges:
-      "Regional monsoon seasons introduced severe humidity and heavy rains, threatening execution delays and material weathering.",
+      "Executing seamless flush brass and gold inlay geometry across large wardrobe shutters while coordinating precision step-riser lighting throughout the interior staircase.",
     solutions:
-      "We scheduled structure and exterior cladding phases before the monsoon, using specialised moisture barrier membranes and premium weather-resistant wood seals for the teak finishings.",
+      "Utilized computerized CNC groove routings to secure gold inlay profiles with zero gap, alongside dedicated low-voltage step channels with concealed service panels for effortless lifelong maintenance.",
     finalResult:
-      "An architectural landmark in Nagercoil that seamlessly connects high-end luxury with sustainable regional elements.",
+      "An impeccably delivered turnkey residence that strikes the ideal balance between high visual drama, superior material longevity, and welcoming daily comfort.",
     clientReview: {
-      text: "SMS Construction has exceeded every expectation. Their commitment to structural integrity, material beauty, and timeless design has given us our dream home.",
-      author: "Dr. Anand Krishnan",
+      text: "SMS Construction delivered exceptional craftsmanship. The finish on the wardrobes, TV unit, staircase, and modular kitchen exceeded all our expectations. Timely execution and complete peace of mind.",
+      author: "Mr. Zahir Hussain",
       role: "Homeowner",
     },
     gallery: {
       before: [],
       progress: [],
       completed: [
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuAlv89jHFn8icc2eVUZmKWCOzjLHWk7Z82nBjF1Jbt2-6P-hmpSPsGV8WUynyZrOWk4QuMzJbLrtMkNK-PuqBQVck-VOkebUt4C3e2HaaMcDE3xDhTgiSxKlcqz7V2P6J86F04-0atYfeUrBWJwFlISijsZgou5sIAlM5x96pOfs21P7MReGnQebiKUFLB2xp2-B3mACSxdoO6ZoTiT53UspCQGeOZq2h5HgwW3-jk5Ri-_8mlbmnbp",
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCUecCBc6LTh8fKtOha47Fe_2GFXl2qv3YinrkfapKZ5VUAYrWFETYbGRb2R78QKNxXPvV7-UGZLZaXfGG0BmHIc6ilAxCrku03kE553zXtl-lDukuLkqboqb_LFZWOgLVLhiduMx4UBVeJVzFhO64mn-UidQs7GGGkMu1i0TeTqh59l867NjSSxfZeepZzatisCegk8K3E0TgPn-_UkWMTJrkBk3aAEh0ZFsbncyko-mBbss7J3n4d",
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuAyzSqguT_CG4dDNc40ENJqUenHE48xgelLoh0RUdKoe7gU1L3QMKhbuQNaZG0G5fHLa_qqged4HvrHHsK1MopflLauMXt4NmnifxZ5ik6cY6Sk7eRx0YopCgdjNuK3JqLw-vpaiNb9g-w6Snzfr-ROcw8-HA-mAX96HRb2QL-jraFBoR_ifF2mjimdKWH5AD2_cINWjW4XdrE60ZCLUl8aAkpqUHzDnDcQN3deK_LjzbpvDKOrYhtH",
+        "/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-living-room.webp",
+        "/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-modular-kitchen.webp",
+        "/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-master-wardrobe-gold-inlay.webp",
+        "/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-bedroom-wardrobe-geometric.webp",
+        "/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-illuminated-staircase.webp",
+        "/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-vanity-washbasin.webp",
+        "/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-entrance-door.webp",
+        "/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-living-room-alt.webp",
       ],
     },
   },
@@ -146,52 +155,191 @@ export const projects: Project[] = [
   /* ── 03 ─────────────────────────────────────────────────────────────── */
   {
     number: "03",
-    slug: "aura-penthouse-court-road-nagercoil",
-    title: "Aura Penthouse",
-    category: "Interior Design",
-    location: "Court Road, Nagercoil",
+    slug: "selvaprasad-residence-paruthivilai",
+    title: "Selvaprasad Residence",
+    category: "Turnkey Interiors",
+    location: "Paruthivilai, Nagercoil",
     year: "2026",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAsc46s9mdARWyrZMovUG0R9EcoPiVtJuxkdDdXl3F4U8pAuKD6jUPx6SwIJoIPV7BvYGkI0NdWOiwH9nE3xsc61Jt5-m4xHO0VuqtfHW-v9LJD1Ey0WG_elwwqw0HSWnTXGRwmakqagm7aLrTmpqz_v6MJhsR0Ovs_af4lMyFvhFmgut19txMukscULqoKdybC11FxEPfg1_5kDZmqEtWHq6ea5lkU9NYFJexr-PYrxOfgFnjRWuC-",
-    alt: "Aura Penthouse interior — cream curved furniture, warm bronze accents and ivory textiles in Nagercoil",
+    image: "/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp",
+    alt: "Luxury living room TV unit with marble wall paneling and acoustic fluting at Selvaprasad Residence in Paruthivilai",
     description:
-      "A high-end luxury apartment featuring curved cream furniture, warm bronze accents, and tactile ivory textiles.",
-    area: "2,800 Sq. Ft.",
+      "A grand turnkey interior featuring double-height chandelier foyer, custom acoustic TV lounge, bedroom window bay seating, and bespoke joinery in Paruthivilai.",
+    area: "3,400 Sq. Ft.",
     duration: "6 Months",
-    completionDate: "January 2026",
+    completionDate: "March 2026",
     materials: [
-      "Calacatta Marble",
-      "Brushed Bronze",
-      "Bouclé Fabric",
-      "Smoked Oak Flooring",
+      "Bookmatched Black Marquina Marble Paneling",
+      "Charcoal & Oak Fluted Acoustic Wall Slats",
+      "Double-Height Crystal Chandelier with Warm Halo Ring",
+      "Granite Floating Steps & Frameless Glass Railing",
+      "Integrated Bedroom Bay Window Seating with Storage",
+      "Natural Woodgrain Laminates & Backlit Dressing Mirrors",
+      "Dedicated Home Study Workstation with Overhead Storage",
+      "Custom Backlit Sacred Pooja Altar Niche",
     ],
     overview:
-      "A luxury interior transformation of a duplex penthouse off Court Road, Nagercoil. The design philosophy was rooted in soft minimalism and warm, layered textures to create a highly sophisticated sanctuary.",
+      "A sophisticated multi-level residential interior completed for Mr. Selvaprasad in Paruthivilai, Nagercoil. Designed to marry statement architectural moments with everyday practical living, this residence showcases a dramatic double-height foyer, acoustically treated media lounge, custom bedroom bay storage, and warm perimeter illumination.",
     requirements:
-      "The client wanted a luxurious, gallery-like space to display curated art pieces while keeping the environment comfortable and inviting for family gatherings.",
+      "The client requested a commanding living room TV feature, an awe-inspiring double-height staircase entrance with statement lighting, ergonomic study desks for work-from-home focus, and bedrooms equipped with comfortable window seating and floor-to-ceiling storage.",
     concept:
-      "We embraced 'Tactile Luxury' with organic curves, a neutral palette of ivory and warm beige, and strategic metallic highlights in brushed bronze and brass.",
+      "We developed an 'Architectural Harmony & Natural Textures' concept — blending deep dark marble accents and acoustic wooden slats with gentle natural wood grains, warm cove glow, and open vertical volumes.",
     process:
-      "Our team completely reworked the lighting plans to include concealed warm LED coves. The curved walls were hand-plastered by master artisans to achieve a seamless monolithic look.",
+      "From 3D structural planning of the double-height ceiling suspension to precision joinery fabrication for the window bay bridges and study nooks, our team coordinated every milestone with exact site measurement and off-site pre-finishing.",
     challenges:
-      "Hoisting massive slabs of Calacatta marble up to the penthouse level required specialised crane logistics in a densely populated urban road.",
+      "Safely anchoring and balancing the heavy multi-tier crystal chandelier in the high-volume foyer while coordinating concealed ambient LED coves along the granite staircase and bedroom window bridge cabinets.",
     solutions:
-      "We coordinated with city authorities for a controlled night-time hoist, ensuring safe and undamaged delivery of the premium marble.",
+      "Reinforced structural ceiling unistrut brackets prior to gypsum finishing for chandelier load safety, and engineered concealed low-voltage cable raceways behind the fluted wall paneling for an immaculate, cable-free finish.",
     finalResult:
-      "A stunning, serene penthouse that feels entirely detached from the bustling city below.",
+      "A breathtaking, warm, and highly functional home interior that delivers both impressive hospitality zones and serene, cozy private retreats.",
     clientReview: {
-      text: "Coming home feels like stepping into a luxury resort. The craftsmanship is flawless, and the space is so peaceful.",
-      author: "Mrs. Meena Rajan",
+      text: "The transformation of our home is magnificent. From the grand chandelier foyer to the cozy window seating and TV unit, SMS Construction delivered flawless quality on schedule.",
+      author: "Mr. Selvaprasad",
       role: "Homeowner",
     },
     gallery: {
       before: [],
       progress: [],
       completed: [
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuAsc46s9mdARWyrZMovUG0R9EcoPiVtJuxkdDdXl3F4U8pAuKD6jUPx6SwIJoIPV7BvYGkI0NdWOiwH9nE3xsc61Jt5-m4xHO0VuqtfHW-v9LJD1Ey0WG_elwwqw0HSWnTXGRwmakqagm7aLrTmpqz_v6MJhsR0Ovs_af4lMyFvhFmgut19txMukscULqoKdybC11FxEPfg1_5kDZmqEtWHq6ea5lkU9NYFJexr-PYrxOfgFnjRWuC-",
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDBR_fo2_CyHNYySkdd6srb36FQoCsJr2FtIL3mTiMTy3rGXsHJ5Iih5ciDI9TbJSjH9OdkxWJd1d8gy-E2uQpYXQefrmuYDkTw1QtPfy1Z__ura1QnGA7OngCnNn6GNSK3IHvUjiEgYpKJBdzLBiMlWXHOI1jtS3ohN4kvS2Cb2HnB-_tO5RM3qGewtQ-H0j8b6YMv5rzmjnuVuuaTewMxO3W11Q1Pkscqxll_xD1lXYqeldaMXFSfHg",
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuC6OjLQPm1eIBjpK4ChN3-L7UJ3Bz8GUvB0nd_IaPxe0mrZzj-64E_Gs1sSrqVilOGrAotp1Zrwh4a8oBh-JHQXw8M-ys-OUXRtSfOLq1ZzFLyLVqVJTVvEF2YLUOGrjVF3Qa7mlPEofIlzqbiOi_39r70-8o5ybiLIUqJbQUT5VtFgw0n1IpGsYW3hlvTV7oeFNi-edSPiVyeHTyNa09MgcuQB4k2CAcxBa0PSDpfxhW58BGPQjJUinQ",
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCQn1piHpoqb26Itm5N3HjqtSz8N-_O13S8AJ-i7XNSXpzzENymz14054sQR-iVGGlrLt6IYyN2XlGRG5_Kpyqx1_tTArLwsLARyevotALnJpSefTDqztUNo6cAt-K_pajSuqumbV1-dZoEYo8r3LFpnuPE7aXI9iKi_RjlrNBGvXaJn9fl-u6qg6q902w09kkD9vnb-t5jh-rq2m6yS2dWnflAl0YP5AnyF5DJ17bfrX3YIA3Cq4mGcw"
+        "/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp",
+        "/images/projects/selvaprasad-residence-paruthivilai/double-height-chandelier-foyer.webp",
+        "/images/projects/selvaprasad-residence-paruthivilai/granite-staircase-glass-railing.webp",
+        "/images/projects/selvaprasad-residence-paruthivilai/master-bedroom-window-bay-wardrobe.webp",
+        "/images/projects/selvaprasad-residence-paruthivilai/woodgrain-wardrobe-backlit-dresser.webp",
+        "/images/projects/selvaprasad-residence-paruthivilai/study-workstation-overhead-storage.webp",
+        "/images/projects/selvaprasad-residence-paruthivilai/guest-bedroom-bay-seating-wardrobe.webp",
+        "/images/projects/selvaprasad-residence-paruthivilai/sacred-pooja-niche-altar.webp",
+        "/images/projects/selvaprasad-residence-paruthivilai/backlit-round-vanity-mirror.webp",
+        "/images/projects/selvaprasad-residence-paruthivilai/master-bedroom-ceiling-rafters.webp",
+        "/images/projects/selvaprasad-residence-paruthivilai/living-ceiling-cove-lighting.webp",
+        "/images/projects/selvaprasad-residence-paruthivilai/bedroom-full-height-storage.webp",
+      ],
+    },
+  },
+
+  /* ── 04 ─────────────────────────────────────────────────────────────── */
+  {
+    number: "04",
+    slug: "dr-arun-kumar-residence-nagercoil",
+    title: "Dr. Arun Kumar Residence",
+    category: "Residential Construction",
+    location: "Nagercoil",
+    year: "2026",
+    image: "/images/projects/dr-arun-kumar-residence-nagercoil/central-atrium-courtyard-chandelier-hero.webp",
+    alt: "Triple-height central atrium courtyard with floating glass staircase and cascading crystal chandelier at Dr. Arun Kumar Residence in Nagercoil",
+    description:
+      "An architectural masterpiece featuring a triple-height atrium, glass-enclosed indoor courtyard garden, floating staircase, bespoke modular kitchen, and thematic bedrooms.",
+    area: "4,200 Sq. Ft.",
+    duration: "8 Months",
+    completionDate: "March 2026",
+    materials: [
+      "Triple-Height Floating Glass Staircase with SS Standoffs",
+      "Cascading Multi-Tier Ring Chandelier with Skylight Coffer",
+      "Glass-Enclosed Biophilic Courtyard Garden",
+      "Textured Stucco & Vibrant Golden Ochre Accent Walls",
+      "High-Gloss Dual-Tone Modular Kitchen & Quartz Waterfall Island",
+      "Backlit World Map Kinetic Wall Art in Kids Bedroom",
+      "Marble-Faced Sliding Wardrobes with Integrated Digital Safe",
+      "Charcoal Acoustic Fluted Wall Paneling & Vanity Mirrors",
+    ],
+    overview:
+      "A landmark turnkey residential project executed for Dr. Arun Kumar in Nagercoil. Centered around a majestic triple-height illuminated atrium, this modern villa integrates an indoor glass-enclosed landscaped courtyard, floating stair architecture, customized modular kitchen with island dining, and immersive bedroom suites.",
+    requirements:
+      "The client envisioned an awe-inspiring open-concept villa with natural skylit ventilation, a central double-to-triple volume living core, seamless biophilic green connections, ergonomic kitchen workstations with glass display cabinets, and modern themed rooms for their children.",
+    concept:
+      "We conceived the 'Vertical Light & Biophilic Atrium' philosophy — introducing a dramatic skylit void that filters natural sunlight across multiple floors, paired with raw concrete stucco textures against radiant warm golden accent finishes.",
+    process:
+      "Structural steel supports and heavy-duty glass balustrades were laser-aligned on-site. The suspended crystal ring chandelier was hoisted into the reinforced coffer ceiling before installing under-cabinet lighting and precision modular wardrobe carcasses.",
+    challenges:
+      "Balancing structural rigidity for the multi-level open stairwell and skylight opening while engineering airtight climate isolation for the glass-walled indoor garden below.",
+    solutions:
+      "Utilized double-glazed insulated safety glass with thermal-break aluminum perimeters for the courtyard, alongside concealed drainage weep holes and automated drip irrigation for lush indoor plant vitality.",
+    finalResult:
+      "An iconic architectural residence setting a new benchmark for luxury residential construction and interior sophistication in Nagercoil.",
+    clientReview: {
+      text: "SMS Construction has brought our dream home to life beyond what we could have imagined. The central atrium, the lighting, the courtyard, and the kitchen finishes are world-class.",
+      author: "Dr. Arun Kumar",
+      role: "Homeowner",
+    },
+    gallery: {
+      before: [],
+      progress: [],
+      completed: [
+        "/images/projects/dr-arun-kumar-residence-nagercoil/central-atrium-courtyard-chandelier-hero.webp",
+        "/images/projects/dr-arun-kumar-residence-nagercoil/atrium-skylight-chandelier-perspective.webp",
+        "/images/projects/dr-arun-kumar-residence-nagercoil/stairwell-golden-accent-wall-sconce.webp",
+        "/images/projects/dr-arun-kumar-residence-nagercoil/modular-kitchen-island-breakfast-counter.webp",
+        "/images/projects/dr-arun-kumar-residence-nagercoil/kitchen-botanical-backsplash-countertop.webp",
+        "/images/projects/dr-arun-kumar-residence-nagercoil/contemporary-kitchen-wide-perspective.webp",
+        "/images/projects/dr-arun-kumar-residence-nagercoil/kids-bedroom-world-map-headboard.webp",
+        "/images/projects/dr-arun-kumar-residence-nagercoil/grey-marble-wardrobe-digital-safe.webp",
+        "/images/projects/dr-arun-kumar-residence-nagercoil/teak-mahogany-woodgrain-wardrobe.webp",
+        "/images/projects/dr-arun-kumar-residence-nagercoil/charcoal-fluted-dressing-wall.webp",
+        "/images/projects/dr-arun-kumar-residence-nagercoil/indoor-biophilic-planter-accent.webp",
+        "/images/projects/dr-arun-kumar-residence-nagercoil/courtyard-greenery-planter-detail.webp",
+      ],
+    },
+  },
+
+  /* ── 05 ─────────────────────────────────────────────────────────────── */
+  {
+    number: "05",
+    slug: "godwin-dhas-residence",
+    title: "Godwin Dhas Residence",
+    category: "Turnkey Interiors",
+    location: "Nagercoil",
+    year: "2026",
+    image: "/images/projects/godwin-dhas-residence/master-suite-floating-bed-hero.webp",
+    alt: "Luxury presidential master suite with illuminated floating platform bed and canopy portal at Godwin Dhas Residence in Nagercoil",
+    description:
+      "A high-glamour turnkey interior showcasing a presidential master suite with neon-canopy floating bed, high-gloss acrylic kitchen, and bespoke CNC jali wooden partitions.",
+    area: "3,600 Sq. Ft.",
+    duration: "6 Months",
+    completionDate: "February 2026",
+    materials: [
+      "Floating Velvet Platform Bed with Perimeter Neon Glow",
+      "Architectural Canopy Portal with Embedded Linear Light Slots",
+      "Bespoke Red Cedar & White CNC Jali Architectural Room Divider",
+      "High-Gloss Acrylic Modular Kitchen with Rose Gold Profiles",
+      "Calacatta Marble TV Panel with Fluted Wood Acoustic Louvers",
+      "Designer Floating Dining Vanity with Touch-Sensor Backlit Mirror",
+      "Geometric Origami False Ceilings with Warm Cove Illumination",
+      "Custom Stepped Under-Stair Storage Cabinetry",
+    ],
+    overview:
+      "A magnificent contemporary turnkey residence executed for Mr. Godwin Dhas in Nagercoil. Celebrated for its bold lighting architecture and bespoke joinery, the home features a 7-star presidential master suite, a high-gloss acrylic kitchen with breakfast bar, customized origami false ceilings, and precision-crafted spatial partitions.",
+    requirements:
+      "The client requested a showstopping master bedroom inspired by luxury boutique hotels, an expansive open kitchen with a dedicated dining pass-through and breakfast counter, artistic room partitions that define spaces without enclosing them, and smart under-stair storage utility.",
+    concept:
+      "We implemented a 'Luminous Geometry & Contrast Craft' design philosophy — utilizing dramatic neon float lighting, monolithic canopy portals, warm natural timber slats contrasted against crisp white CNC lattices, and high-gloss reflective surfaces.",
+    process:
+      "The custom bedroom canopy framework was fabricated with integrated low-voltage heat-dissipation aluminum LED extrusions. The room divider's jali cutouts were precision-milled using computerized CNC water-jet cutters and seamlessly interfaced with solid red cedar vertical framing.",
+    challenges:
+      "Engineering the structural cantilever for the floating master bed platform while ensuring flawless flush alignment of the canopy ceiling neon slots with the headboard wall panel.",
+    solutions:
+      "Constructed an internal heavy-gauge steel chassis anchored directly into the floor slab to support the floating bed frame, alongside micro-channeled acrylic diffusers to ensure hot-spot-free linear lighting across all canopy surfaces.",
+    finalResult:
+      "An extraordinary residential interior that exudes pure luxury, unmatched illumination drama, and ergonomic practical comfort for everyday living.",
+    clientReview: {
+      text: "The master bedroom suite and the kitchen are beyond stunning. SMS Construction turned our ideas into a living work of art. The quality of materials and execution is second to none.",
+      author: "Mr. Godwin Dhas",
+      role: "Homeowner",
+    },
+    gallery: {
+      before: [],
+      progress: [],
+      completed: [
+        "/images/projects/godwin-dhas-residence/master-suite-floating-bed-hero.webp",
+        "/images/projects/godwin-dhas-residence/high-gloss-acrylic-modular-kitchen.webp",
+        "/images/projects/godwin-dhas-residence/architectural-jali-wood-partition.webp",
+        "/images/projects/godwin-dhas-residence/dining-vanity-backlit-mirror.webp",
+        "/images/projects/godwin-dhas-residence/living-tv-unit-fluted-marble.webp",
+        "/images/projects/godwin-dhas-residence/breakfast-counter-pendant-lights.webp",
+        "/images/projects/godwin-dhas-residence/master-suite-wide-perspective.webp",
+        "/images/projects/godwin-dhas-residence/bedroom-curved-platform-bed.webp",
+        "/images/projects/godwin-dhas-residence/staircase-under-step-storage.webp",
+        "/images/projects/godwin-dhas-residence/lounge-curved-cove-ceiling.webp",
+        "/images/projects/godwin-dhas-residence/teak-kitchen-wicker-baskets.webp",
+        "/images/projects/godwin-dhas-residence/sliding-wardrobe-tufted-bed.webp",
       ],
     },
   },

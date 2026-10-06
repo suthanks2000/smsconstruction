@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
-
-const NagarajanResidenceClient = dynamic(() => import("./client"), {
-  ssr: true,
-});
+import NagarajanResidenceClient from "./client";
 
 export const metadata: Metadata = {
   title: "Nagarajan Residence | Interior Design in Nagercoil (Theroor) | SMS Construction",

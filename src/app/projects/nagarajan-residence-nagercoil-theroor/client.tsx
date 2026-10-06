@@ -297,21 +297,21 @@ export default function NagarajanResidenceClient() {
 
             {/* Previous */}
             <Link
-              href="/projects"
+              href="/projects/godwin-dhas-residence"
               className="group flex flex-col items-center md:items-start text-center md:text-left transition-opacity hover:opacity-70"
             >
               <span className="text-[9px] uppercase tracking-[0.25em] text-[#77736C] mb-3 flex items-center gap-3">
                 <span className="text-[#B08A52] transition-transform duration-300 group-hover:-translate-x-1">←</span>
-                All Projects
+                Previous Project
               </span>
               <h3 className="font-serif text-[24px] md:text-[32px] text-[#171614] leading-none">
-                Back to Collection
+                Godwin Dhas Residence
               </h3>
             </Link>
 
             {/* Next */}
             <Link
-              href="/projects/serene-villa-suchindram-nagercoil"
+              href="/projects/zahir-hussain-residence-nagercoil"
               className="group flex flex-col items-center md:items-end text-center md:text-right transition-opacity hover:opacity-70"
             >
               <span className="text-[9px] uppercase tracking-[0.25em] text-[#77736C] mb-3 flex items-center gap-3">
@@ -319,7 +319,7 @@ export default function NagarajanResidenceClient() {
                 <span className="text-[#B08A52] transition-transform duration-300 group-hover:translate-x-1">→</span>
               </span>
               <h3 className="font-serif text-[24px] md:text-[32px] text-[#171614] leading-none">
-                Serene Villa
+                Zahir Hussain Residence
               </h3>
             </Link>
 

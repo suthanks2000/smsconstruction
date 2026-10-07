@@ -343,6 +343,66 @@ export const projects: Project[] = [
       ],
     },
   },
+
+  /* ── 06 ─────────────────────────────────────────────────────────────── */
+  {
+    number: "06",
+    slug: "gold-finance-parvathipuram",
+    title: "Gold Finance Branch",
+    category: "Commercial Construction",
+    location: "Parvathipuram, Nagercoil",
+    year: "2026",
+    image: "/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp",
+    alt: "Commercial turnkey banking interior with geometric LED profile ceiling and teller counters at Gold Finance Branch in Parvathipuram, Nagercoil",
+    description:
+      "A complete commercial turnkey banking interior featuring custom acoustic fluted teller counters, etched security partitions, geometric LED profile ceilings, and gold inlay accents.",
+    area: "1,800 Sq. Ft.",
+    duration: "2 Months",
+    completionDate: "February 2026",
+    materials: [
+      "Custom Chamfered Teak Reception & Cashier Counters",
+      "Backlit Gold & Brass Inlay Geometric Feature Wall",
+      "Acoustic Fluted Walnut Louvers with Vertical LED Profiles",
+      "Etched Security Glass Cashier Partitions & Laser-Cut Jali Screens",
+      "Geometric Recessed LED Profile Ceiling with Orbital Crystal Pendant",
+      "Heavy-Duty Commercial Wood-Plank Vinyl Flooring",
+      "Secure Commercial Access Control & Back-Office Banking Partitioning",
+      "High-Traffic Textured Damask & Marble Wall Coverings",
+    ],
+    overview:
+      "A turnkey commercial interior fit-out executed for Gold Finance in Parvathipuram, Nagercoil. Designed to project financial trust, prestige, and institutional security, this branch combines customer service counters with back-office cash handling, acoustic wall treatments, and architectural linear lighting.",
+    requirements:
+      "The client required an open banking hall with high-throughput customer transaction counters, bullet-resistant security glass cashier enclosures, acoustic privacy between public and banking operations, and an inviting brand presence.",
+    concept:
+      "We conceived an 'Institutional Prestige & Modern Transparency' identity — utilizing warm golden metallic inlays, warm natural timber paneling, crystalline orbital chandeliers, and geometric linear ceiling lights to deliver an ambiance of trust and efficiency.",
+    process:
+      "Off-site fabrication of high-pressure laminate counters and security partitions ensured rapid on-site assembly within a tight 60-day deadline, coordinating structural ceiling framing with HVAC and electrical conduits simultaneously.",
+    challenges:
+      "Delivering high-security cash management zones and concealed armored cabling while maintaining a welcoming, warm customer-facing retail atmosphere in a compact 1,800 sq. ft. commercial footprint.",
+    solutions:
+      "Engineered integrated chase raceways behind the fluted acoustic wall slats for tamper-proof electrical and CCTV wiring, along with high-impact etched laminated security glass for teller counters.",
+    finalResult:
+      "A sophisticated, safe, and highly functional commercial banking branch setting a high design benchmark for financial institutions in the region.",
+    clientReview: {
+      text: "SMS Construction delivered our branch interior ahead of schedule with remarkable precision. The counter finishes, lighting design, and security details are world-class.",
+      author: "Branch Operations Manager",
+      role: "Gold Finance, Parvathipuram",
+    },
+    gallery: {
+      before: [],
+      progress: [],
+      completed: [
+        "/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp",
+        "/images/projects/gold-finance-parvathipuram/gold-finance-reception-teller-counter.webp",
+        "/images/projects/gold-finance-parvathipuram/gold-finance-ceiling-lighting-architecture.webp",
+        "/images/projects/gold-finance-parvathipuram/gold-finance-hallway-perspective.webp",
+        "/images/projects/gold-finance-parvathipuram/gold-finance-cashier-teller-security-partition.webp",
+        "/images/projects/gold-finance-parvathipuram/gold-finance-reception-counter-inlay.webp",
+        "/images/projects/gold-finance-parvathipuram/gold-finance-back-office-acoustic-slats.webp",
+        "/images/projects/gold-finance-parvathipuram/gold-finance-wood-plank-flooring-detail.webp",
+      ],
+    },
+  },
 ];
 
 /** Unique category values derived from the real project data */

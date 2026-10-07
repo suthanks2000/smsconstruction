@@ -25,129 +25,87 @@ interface GalleryPhoto {
 const galleryPhotos: GalleryPhoto[] = [
   // Row 1: 7 / 5 Split
   {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp",
-    alt: "Living room feature wall and custom TV console at Selvaprasad Residence",
-    label: "Living Lounge",
-    width: 1320,
-    height: 1273,
+    src: "/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp",
+    alt: "Banking hall front perspective with counter and suspended LED profile ceiling at Gold Finance Branch",
+    label: "Banking Hall",
+    width: 1280,
+    height: 960,
     spanClass: "md:col-span-7",
     heightClass: "h-[50vh] md:h-[75vh]",
     sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 840px",
     priority: true,
   },
   {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/double-height-chandelier-foyer.webp",
-    alt: "Double-height stair foyer with multi-tier crystal chandelier",
-    label: "Chandelier Foyer",
-    width: 1320,
-    height: 1124,
+    src: "/images/projects/gold-finance-parvathipuram/gold-finance-reception-teller-counter.webp",
+    alt: "L-shaped reception desk and cash teller counters",
+    label: "Transaction Counters",
+    width: 1280,
+    height: 960,
     spanClass: "md:col-span-5",
     heightClass: "h-[50vh] md:h-[75vh]",
     sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 560px",
   },
-  // Row 2: 4 / 4 / 4 Split
+  // Row 2: 3 / 3 / 6 Split
   {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/granite-staircase-glass-railing.webp",
-    alt: "Granite steps with frameless glass railing and vanity",
-    label: "Granite Staircase",
-    width: 958,
-    height: 1600,
-    spanClass: "md:col-span-4",
+    src: "/images/projects/gold-finance-parvathipuram/gold-finance-cashier-teller-security-partition.webp",
+    alt: "Cashier teller counter with etched security glass",
+    label: "Security Glass Enclosure",
+    width: 1280,
+    height: 960,
+    spanClass: "md:col-span-3",
     heightClass: "h-[40vh] md:h-[55vh]",
-    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 480px",
+    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 25vw, 360px",
   },
   {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/master-bedroom-window-bay-wardrobe.webp",
-    alt: "Master bedroom wardrobe with integrated window bay seating",
-    label: "Bay Wardrobe",
-    width: 1320,
-    height: 1156,
-    spanClass: "md:col-span-4",
+    src: "/images/projects/gold-finance-parvathipuram/gold-finance-reception-counter-inlay.webp",
+    alt: "Chamfered reception counter with gold inlays",
+    label: "Gold Inlay Counter",
+    width: 1280,
+    height: 960,
+    spanClass: "md:col-span-3",
     heightClass: "h-[40vh] md:h-[55vh]",
-    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 480px",
+    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 25vw, 360px",
   },
   {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/sacred-pooja-niche-altar.webp",
-    alt: "Bespoke pooja niche altar with golden backlit paisley Buddha motif",
-    label: "Sacred Pooja Altar",
-    width: 1320,
-    height: 1600,
-    spanClass: "md:col-span-4",
-    heightClass: "h-[40vh] md:h-[55vh]",
-    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 480px",
-  },
-  // Row 3: 6 / 6 Split
-  {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/study-workstation-overhead-storage.webp",
-    alt: "Ergonomic study desk with overhead storage and keyboard drawer",
-    label: "Study Suite",
-    width: 1320,
-    height: 980,
+    src: "/images/projects/gold-finance-parvathipuram/gold-finance-ceiling-lighting-architecture.webp",
+    alt: "Linear profile LEDs and crystal orbital pendant",
+    label: "Ceiling Lighting Matrix",
+    width: 1280,
+    height: 960,
     spanClass: "md:col-span-6",
-    heightClass: "h-[45vh] md:h-[60vh]",
+    heightClass: "h-[40vh] md:h-[55vh]",
     sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 720px",
   },
+  // Row 3: 5 / 3 / 4 Split
   {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/woodgrain-wardrobe-backlit-dresser.webp",
-    alt: "Natural woodgrain wardrobe with integrated backlit dressing mirror",
-    label: "Woodgrain Wardrobe",
-    width: 1320,
-    height: 980,
-    spanClass: "md:col-span-6",
-    heightClass: "h-[45vh] md:h-[60vh]",
-    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 720px",
+    src: "/images/projects/gold-finance-parvathipuram/gold-finance-hallway-perspective.webp",
+    alt: "Customer waiting area with textured damask wall covering",
+    label: "Waiting Lounge",
+    width: 1280,
+    height: 960,
+    spanClass: "md:col-span-5",
+    heightClass: "h-[40vh] md:h-[60vh]",
+    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 560px",
   },
-  // Row 4: 4 / 4 / 4 Split
   {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/backlit-round-vanity-mirror.webp",
-    alt: "Backlit circular vanity mirror and quartz washbasin counter",
-    label: "Vanity Basin",
-    width: 1320,
-    height: 1400,
+    src: "/images/projects/gold-finance-parvathipuram/gold-finance-back-office-acoustic-slats.webp",
+    alt: "Staff back-office corridor with vertical wood slats and inset LED lights",
+    label: "Back-Office Fluting",
+    width: 960,
+    height: 1280,
+    spanClass: "md:col-span-3",
+    heightClass: "h-[40vh] md:h-[60vh]",
+    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 25vw, 360px",
+  },
+  {
+    src: "/images/projects/gold-finance-parvathipuram/gold-finance-wood-plank-flooring-detail.webp",
+    alt: "Heavy-duty commercial wood plank vinyl floor installation",
+    label: "Commercial Flooring",
+    width: 1280,
+    height: 960,
     spanClass: "md:col-span-4",
-    heightClass: "h-[40vh] md:h-[55vh]",
+    heightClass: "h-[40vh] md:h-[60vh]",
     sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 480px",
-  },
-  {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/guest-bedroom-bay-seating-wardrobe.webp",
-    alt: "Guest bedroom wardrobe bridge with comfortable bay seating",
-    label: "Guest Bedroom",
-    width: 1320,
-    height: 1400,
-    spanClass: "md:col-span-4",
-    heightClass: "h-[40vh] md:h-[55vh]",
-    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 480px",
-  },
-  {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/master-bedroom-ceiling-rafters.webp",
-    alt: "Bedroom ceiling wooden rafters and perimeter warm cove lighting",
-    label: "Ceiling Rafters",
-    width: 1320,
-    height: 1400,
-    spanClass: "md:col-span-4",
-    heightClass: "h-[40vh] md:h-[55vh]",
-    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 480px",
-  },
-  // Row 5: 6 / 6 Split
-  {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/living-ceiling-cove-lighting.webp",
-    alt: "Living room perimeter gypsum ceiling with indirect cove LED diffusers",
-    label: "Ceiling Cove Illumination",
-    width: 1320,
-    height: 980,
-    spanClass: "md:col-span-6",
-    heightClass: "h-[45vh] md:h-[55vh]",
-    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 720px",
-  },
-  {
-    src: "/images/projects/selvaprasad-residence-paruthivilai/bedroom-full-height-storage.webp",
-    alt: "Full-height floor to ceiling wardrobe storage and loft cabinets",
-    label: "Full-Height Storage",
-    width: 1320,
-    height: 980,
-    spanClass: "md:col-span-6",
-    heightClass: "h-[45vh] md:h-[55vh]",
-    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 720px",
   },
 ];
 
@@ -157,32 +115,32 @@ const lightboxItems: LightboxImageItem[] = galleryPhotos.map((photo) => ({
   label: photo.label,
 }));
 
-const selvaprasadFaqs: FaqItemType[] = [
+const goldFinanceFaqs: FaqItemType[] = [
   {
-    q: "What type of project is Selvaprasad Residence?",
-    a: "Selvaprasad Residence is an ultra-premium turnkey residential interior design and bespoke millwork execution in Paruthivilai, Nagercoil by SMS Construction.",
+    q: "What type of project is Gold Finance Branch?",
+    a: "Gold Finance Branch is a high-security commercial turnkey fit-out and banking hall interior project executed by SMS Construction in Parvathipuram, Nagercoil.",
   },
   {
-    q: "Where is this project located?",
-    a: "The residence is located in Paruthivilai, near Nagercoil, Kanyakumari District, Tamil Nadu.",
+    q: "Where is this branch located?",
+    a: "The commercial project is located in Parvathipuram, Nagercoil, Tamil Nadu.",
   },
   {
-    q: "What specialized interior architectural features are featured?",
-    a: "The project includes double-height chandelier foyer anchoring, frameless glass balustrades with granite steps, custom window bay seating bridges, bespoke backlit pooja altar, study workstations, and timber ceiling rafters.",
+    q: "What commercial capabilities were deployed?",
+    a: "The fit-out features secure transaction teller counters, etched toughened glass cashier enclosures, acoustic wall fluting, geometric suspended LED lighting matrices, and heavy-duty vinyl flooring.",
   },
   {
-    q: "Can SMS Construction provide end-to-end design and execution for new villas?",
-    a: "Yes. SMS Construction offers architectural design, 3D visualization, structural engineering, and turnkey interior fitouts across South Tamil Nadu.",
+    q: "Does SMS Construction handle commercial and corporate interiors?",
+    a: "Yes. SMS Construction provides comprehensive commercial design, bank fit-outs, corporate offices, retail spaces, and structural civil works across Kanyakumari district.",
   },
   {
-    q: "How can I schedule a consultation for my home?",
-    a: "Contact SMS Construction at +91 94880 21183 or smsconstructionngl@gmail.com, or submit an inquiry through our Contact page.",
+    q: "How can we get a commercial turnkey quotation?",
+    a: "Contact our team directly at +91 94880 21183 or smsconstructionngl@gmail.com, or submit project plans through our Contact page.",
   },
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
   const project = projects.find(
-    (p) => p.slug === "selvaprasad-residence-paruthivilai"
+    (p) => p.slug === "gold-finance-parvathipuram"
   );
 
   if (!project) {
@@ -192,11 +150,11 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   }
 
-  const title = "Selvaprasad Residence, Paruthivilai | Turnkey Interiors | SMS Construction";
+  const title = "Gold Finance Branch, Parvathipuram | Commercial Fit-Out | SMS Construction";
   const description =
-    "Explore Selvaprasad Residence in Paruthivilai, Nagercoil: turnkey interiors with double-height chandelier foyer, custom bay window seating, and bespoke millwork by SMS Construction.";
-  const canonicalUrl = "/projects/selvaprasad-residence-paruthivilai";
-  const ogImageUrl = "/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp";
+    "Explore the Gold Finance Branch commercial turnkey fit-out in Parvathipuram, Nagercoil by SMS Construction: teller counters, security glass partitions, and modern lighting.";
+  const canonicalUrl = "/projects/gold-finance-parvathipuram";
+  const ogImageUrl = "/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp";
 
   return {
     title,
@@ -214,9 +172,9 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [
         {
           url: ogImageUrl,
-          width: 1320,
-          height: 1273,
-          alt: "Living room TV unit at Selvaprasad Residence in Paruthivilai",
+          width: 1280,
+          height: 960,
+          alt: "Banking hall at Gold Finance Branch in Parvathipuram",
         },
       ],
     },
@@ -229,9 +187,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function SelvaprasadResidencePage() {
+export default function GoldFinancePage() {
   const project = projects.find(
-    (p) => p.slug === "selvaprasad-residence-paruthivilai"
+    (p) => p.slug === "gold-finance-parvathipuram"
   );
 
   if (!project) {
@@ -243,7 +201,7 @@ export default function SelvaprasadResidencePage() {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://smsconstruction.in/projects/selvaprasad-residence-paruthivilai#breadcrumb",
+        "@id": "https://smsconstruction.in/projects/gold-finance-parvathipuram#breadcrumb",
         itemListElement: [
           {
             "@type": "ListItem",
@@ -260,22 +218,22 @@ export default function SelvaprasadResidencePage() {
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "Selvaprasad Residence",
-            "item": "https://smsconstruction.in/projects/selvaprasad-residence-paruthivilai",
+            "name": "Gold Finance Branch",
+            "item": "https://smsconstruction.in/projects/gold-finance-parvathipuram",
           },
         ],
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://smsconstruction.in/projects/selvaprasad-residence-paruthivilai#project",
-        "name": "Selvaprasad Residence",
-        "headline": "Selvaprasad Residence, Paruthivilai",
+        "@id": "https://smsconstruction.in/projects/gold-finance-parvathipuram#project",
+        "name": "Gold Finance Branch",
+        "headline": "Gold Finance Branch, Parvathipuram",
         "description": project.description,
-        "url": "https://smsconstruction.in/projects/selvaprasad-residence-paruthivilai",
-        "image": "https://smsconstruction.in/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp",
+        "url": "https://smsconstruction.in/projects/gold-finance-parvathipuram",
+        "image": "https://smsconstruction.in/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp",
         "locationCreated": {
           "@type": "Place",
-          "name": "Paruthivilai, Nagercoil",
+          "name": "Parvathipuram, Nagercoil",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Nagercoil",
@@ -354,7 +312,7 @@ export default function SelvaprasadResidencePage() {
               /
             </li>
             <li aria-current="page" className="text-[#171614] font-medium">
-              Selvaprasad Residence
+              Gold Finance Branch
             </li>
           </ol>
         </nav>
@@ -363,18 +321,18 @@ export default function SelvaprasadResidencePage() {
           {/* Left Column: Heading & Subtitle */}
           <div className="lg:col-span-5 flex flex-col items-start text-left">
             <span className="hero-reveal text-[20px] uppercase font-semibold text-[#B08A52] mb-4 md:mb-6">
-              TURNKEY RESIDENTIAL INTERIORS
+              COMMERCIAL FIT-OUT &amp; INTERIORS
             </span>
             <h1
               className="hero-reveal font-bold text-[#171614] leading-[1.05] tracking-[-0.02em] mb-4 md:mb-6"
               style={{ fontSize: "clamp(3rem, 6vw, 5.5rem)" }}
             >
-              Selvaprasad
+              Gold Finance
               <br />
-              Residence
+              Branch
             </h1>
             <p className="hero-reveal font-sans text-[13px] md:text-[14px] tracking-[0.12em] text-[#77736C] uppercase mb-4">
-              Paruthivilai, Nagercoil
+              Parvathipuram, Nagercoil
             </p>
 
             {/* Scope / Services Summary */}
@@ -383,15 +341,15 @@ export default function SelvaprasadResidencePage() {
                 Key Interior Scope
               </h3>
               <ul className="font-sans text-[13px] md:text-[14px] text-[#77736C] flex flex-wrap items-center gap-x-4 md:gap-x-6 gap-y-2">
-                <li>Bespoke Joinery</li>
+                <li>Commercial Fit-Outs</li>
                 <li className="hidden md:inline-block w-1 h-1 rounded-full bg-[#B08A52]/50" />
-                <li>Double-Height Chandelier Anchor</li>
+                <li>Security Joinery &amp; Glass</li>
                 <li className="hidden md:inline-block w-1 h-1 rounded-full bg-[#B08A52]/50" />
-                <li>Granite Staircase Balustrade</li>
+                <li>Architectural Lighting</li>
                 <li className="hidden md:inline-block w-1 h-1 rounded-full bg-[#B08A52]/50" />
-                <li>Bay Window Wardrobe Bridge</li>
+                <li>Acoustic Wall Louvers</li>
                 <li className="hidden md:inline-block w-1 h-1 rounded-full bg-[#B08A52]/50" />
-                <li>Sacred Backlit Altar</li>
+                <li>Commercial Vinyl Flooring</li>
               </ul>
             </div>
           </div>
@@ -413,7 +371,7 @@ export default function SelvaprasadResidencePage() {
                     Project
                   </dt>
                   <dd className="text-[15px] md:text-[16px] text-[#171614] font-medium">
-                    Selvaprasad Residence
+                    Gold Finance Branch
                   </dd>
                 </div>
                 <div>
@@ -421,7 +379,7 @@ export default function SelvaprasadResidencePage() {
                     Location
                   </dt>
                   <dd className="text-[15px] md:text-[16px] text-[#171614] font-medium">
-                    Paruthivilai, Nagercoil
+                    Parvathipuram, Nagercoil
                   </dd>
                 </div>
                 <div>
@@ -429,7 +387,7 @@ export default function SelvaprasadResidencePage() {
                     Project Type
                   </dt>
                   <dd className="text-[15px] md:text-[16px] text-[#171614] font-medium">
-                    Residential
+                    Commercial Fit-Out
                   </dd>
                 </div>
                 <div>
@@ -489,7 +447,7 @@ export default function SelvaprasadResidencePage() {
 
       {/* 3. FREQUENTLY ASKED QUESTIONS — AEO */}
       <ModernFaq
-        items={selvaprasadFaqs}
+        items={goldFinanceFaqs}
         title="Frequently Asked Questions"
         titleAccent="."
         subtitle="Project Insights"
@@ -500,17 +458,17 @@ export default function SelvaprasadResidencePage() {
       <ProjectServiceHub />
 
       {/* 5. PROJECT NAVIGATION — DYNAMIC COMPONENT */}
-      <ProjectNavigation currentSlug="selvaprasad-residence-paruthivilai" />
+      <ProjectNavigation currentSlug="gold-finance-parvathipuram" />
 
       {/* 6. FINAL CTA — CONVERSION FOCUSED */}
       <ConversionCTA
-        badge="HAVE A PROJECT IN MIND?"
-        title="Ready to transform your space?"
-        description="Tell us about your home, the spaces you want to improve, and what you have in mind. Our team will prepare a tailored consultation and quotation."
-        primaryBtnText="Get a Free Quote"
+        badge="HAVE A COMMERCIAL PROJECT IN MIND?"
+        title="Ready to build your business space?"
+        description="Tell us about your commercial establishment, retail branch, or office space. Our turnkey team will prepare a structured plan and commercial proposal."
+        primaryBtnText="Get a Commercial Quote"
         primaryBtnHref="/contact"
-        whatsappMessage="Hello SMS Construction, I saw the Selvaprasad Residence project and am interested in discussing a project for my space."
-        subtext="SMS Construction • Architecture, Civil & Interior Design Studio • Nagercoil, Tamil Nadu"
+        whatsappMessage="Hello SMS Construction, I saw the Gold Finance Branch project and am interested in discussing a commercial fit-out for my space."
+        subtext="SMS Construction • Architecture, Civil & Commercial Turnkey Studio • Nagercoil, Tamil Nadu"
       />
 
       {/* 7. ACCESSIBLE FULLSCREEN LIGHTBOX (CLIENT COMPONENT) */}

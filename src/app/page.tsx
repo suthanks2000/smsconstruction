@@ -280,7 +280,7 @@ function TrustStats() {
               {stat.label}
             </div>
             {/* Gray Description */}
-            <div className="font-sans text-[11px] md:text-[14px] text-[#8A8A8A] leading-relaxed line-clamp-3 md:line-clamp-none">
+            <div className="text-[11px] md:text-[14px] text-[#8A8A8A] leading-relaxed line-clamp-3 md:line-clamp-none">
               {stat.desc}
             </div>
           </div>
@@ -358,7 +358,7 @@ function Services() {
   return (
     <section
       ref={containerRef}
-      className="relative z-20 bg-[#FAF8F3] py-20 sm:py-24 lg:py-28 overflow-hidden border-t border-[#E7E0D4]/70"
+      className="relative z-20 bg-[#FAF8F3] pt-10 sm:pt-12 lg:pt-14 pb-20 sm:pb-24 lg:pb-28 overflow-hidden border-t border-[#E7E0D4]/70"
     >
       {/* Soft Architectural Sunlight / Leaf Shadow Ambient Effect */}
       <div
@@ -375,15 +375,13 @@ function Services() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 sm:mb-16">
           {/* Left: Badge & Heading */}
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E7E0D4] bg-white/80 backdrop-blur-xs text-[12px] font-sans font-medium text-[#171614] mb-4 shadow-2xs">
-              <Wrench size={13} className="text-[#B08A52]" aria-hidden="true" />
-              <span>Our services</span>
-            </div>
+            <h3 className="font-sans text-[13px] md:text-[15px] font-semibold tracking-widest uppercase text-[#B08A52] max-w-3xl mb-3">
+          Our Solutions
+        </h3>
 
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[54px] leading-[1.08] tracking-tight text-[#171614]">
-              What we can do <br className="hidden sm:inline" />
-              <span className="italic font-normal">for you</span>
-            </h2>
+        <h2 className="font-semibold text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-[#171614] mb-3">
+          What we can do for you<span className="text-[#B08A52]">.</span>
+        </h2>
           </div>
 
           {/* Right: Description & CTA Button */}
@@ -456,31 +454,8 @@ const whyItems = [
 ];
 
 function WhySMS() {
-  const container = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".gsap-why-card",
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: container.current,
-            start: "top 80%",
-          },
-        }
-      );
-    }, container);
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={container} className="pt-12 pb-20 md:pt-16 md:pb-32 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
+    <section className="pt-12 pb-20 md:pt-16 md:pb-32 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
       <div className="mb-12 md:mb-16 flex flex-col items-center text-center">
         <h2 className="font-semibold text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-[#171614] mb-3">
           Why Choose Us<span className="text-[#B08A52]">.</span>
@@ -497,19 +472,17 @@ function WhySMS() {
         {whyItems.map((item) => (
           <div
             key={item.title}
-            className="gsap-why-card h-full opacity-0 relative overflow-hidden bg-white rounded-[20px] p-4 sm:p-6 md:p-8 border border-[#E7E0D4] hover:shadow-[0_24px_48px_rgba(23,23,20,0.06)] hover:-translate-y-2 transition-all duration-500 group flex flex-col items-start text-left z-0"
+            className="h-full relative overflow-hidden bg-white rounded-[22px] p-4 sm:p-6 md:p-8 border border-[#E7E0D4] hover:border-[#B08A52]/60 hover:shadow-[0_24px_48px_rgba(176,138,82,0.22)] hover:-translate-y-2 transition-all duration-500 group flex flex-col items-start text-left z-0"
           >
             {/* Expanding Background Circle */}
-            <div className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-[#C89A47] -z-10 transform scale-100 origin-center transition-transform duration-[600ms] ease-out group-hover:scale-[45]" />
-
-            {/* Top Right Corner Arrow */}
-            <div className="absolute top-0 right-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-[#C89A47] text-white rounded-bl-[20px] sm:rounded-bl-[24px] overflow-hidden pointer-events-none">
-              <span className="material-symbols-outlined text-[14px] sm:text-[16px] -mt-1 -mr-1 font-bold">arrow_forward</span>
-            </div>
+            <div
+              className="pointer-events-none absolute -top-8 -right-8 w-20 h-20 rounded-full bg-gradient-to-br from-[#D4A853] via-[#B08A52] to-[#8C652D] opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-[18] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] -z-10"
+              aria-hidden="true"
+            />
 
             <div className="relative z-10 flex items-center gap-2 sm:gap-4 mb-3 sm:mb-4 pr-4">
-              <div className="shrink-0 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#F8F4EE] flex items-center justify-center group-hover:bg-white/20 transition-colors duration-500">
-                <span className="material-symbols-outlined text-[#C89A47] group-hover:text-white transition-colors duration-500 text-[16px] sm:text-[24px]">
+              <div className="shrink-0 w-9 h-9 sm:w-12 sm:h-12 rounded-2xl bg-[#F8F4EE] flex items-center justify-center group-hover:bg-white/20 group-hover:shadow-xs transition-all duration-500">
+                <span className="material-symbols-outlined text-[#B08A52] group-hover:text-white group-hover:scale-110 transition-all duration-500 text-[18px] sm:text-[24px]">
                   {item.icon}
                 </span>
               </div>
@@ -517,7 +490,7 @@ function WhySMS() {
                 {item.title}
               </h3>
             </div>
-            <p className="relative z-10 font-sans text-[11px] sm:text-[14px] text-[#8A8A8A] leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+            <p className="relative z-10 font-sans text-[11px] sm:text-[14px] text-[#77736C] leading-relaxed group-hover:text-white/95 transition-colors duration-300">
               {item.desc}
             </p>
           </div>
@@ -536,47 +509,44 @@ function FeaturedProjects() {
     {
       number: "01",
       title: "Nagarajan Residence",
-      category: "Interior Design",
       location: "Nagercoil (Theroor)",
-      year: "2026",
       img: "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room.webp",
       href: "/projects/nagarajan-residence-nagercoil-theroor",
     },
     {
       number: "02",
       title: "Zahir Hussain Residence",
-      category: "Turnkey Interiors",
       location: "Nagercoil",
-      year: "2026",
       img: "/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-living-room.webp",
       href: "/projects/zahir-hussain-residence-nagercoil",
     },
     {
       number: "03",
-      title: "Urban Retreat",
-      category: "Interior",
-      location: "Trivandrum",
-      year: "2026",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCQn1piHpoqb26Itm5N3HjqtSz8N-_O13S8AJ-i7XNSXpzzENymz14054sQR-iVGGlrLt6IYyN2XlGRG5_Kpyqx1_tTArLwsLARyevotALnJpSefTDqztUNo6cAt-K_pajSuqumbV1-dZoEYo8r3LFpnuPE7aXI9iKi_RjlrNBGvXaJn9fl-u6qg6q902w09kkD9vnb-t5jh-rq2m6yS2dWnflAl0YP5AnyF5DJ17bfrX3YIA3Cq4mGcw",
-      href: "/projects/urban-retreat",
+      title: "Selvaprasad Residence",
+      location: "Paruthivilai, Nagercoil",
+      img: "/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp",
+      href: "/projects/selvaprasad-residence-paruthivilai",
     },
     {
       number: "04",
-      title: "The Courtyard House",
-      category: "Construction",
-      location: "Marthandam",
-      year: "2026",
-      img: "/images/projects/courtyard-house.jpg",
-      href: "/projects/courtyard-house",
+      title: "Dr. Arun Kumar Residence",
+      location: "Nagercoil",
+      img: "/images/projects/dr-arun-kumar-residence-nagercoil/central-atrium-courtyard-chandelier-hero.webp",
+      href: "/projects/dr-arun-kumar-residence-nagercoil",
+    },
+        {
+      number: "05",
+      title: "Gold Finance Branch",
+      location: "Parvathipuram, Nagercoil",
+      img: "/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp",
+      href: "/projects/gold-finance-parvathipuram",
     },
     {
-      number: "05",
-      title: "Modern Edge Residence",
-      category: "Residential",
-      location: "Kanyakumari",
-      year: "2026",
-      img: "/images/projects/modern-edge-residence.jpg",
-      href: "/projects/modern-edge-residence",
+      number: "06",
+      title: "Godwin Dhas Residence",
+      location: "Chunkankadai, Nagercoil",
+      img: "/images/projects/godwin-dhas-residence/master-suite-floating-bed-hero.webp",
+      href: "/projects/godwin-dhas-residence",
     },
   ];
 
@@ -737,13 +707,6 @@ function FeaturedProjects() {
 
         <div className="flex items-end justify-between gap-6 mb-7 md:mb-8">
           <div>
-            <div className="flex items-center gap-3 mb-3">
-              <span className="w-9 h-px bg-[#B08A52]" />
-
-              <span className="text-[9px] uppercase tracking-[0.28em] text-[#77736C]">
-                Selected Work
-              </span>
-            </div>
 
             <h2 className="font-semibold
               text-[#171614]
@@ -755,21 +718,15 @@ function FeaturedProjects() {
             </h2>
           </div>
 
-          <Link
-            href="/projects"
-            className="
-              hidden
-              sm:inline-flex
-              animated-next-btn
-            "
-          >
-            <span>VIEW ALL PROJECTS</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 43">
-              <polygon points="39.58,4.46 44.11,0 66,21.5 44.11,43 39.58,38.54 56.94,21.5" />
-              <polygon points="19.79,4.46 24.32,0 46.21,21.5 24.32,43 19.79,38.54 37.15,21.5" />
-              <polygon points="0,4.46 4.53,0 26.42,21.5 4.53,43 0,38.54 17.36,21.5" />
-            </svg>
-          </Link>
+           <Link
+              href="/projects"
+              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-[#D6C5B0] hover:bg-[#C9B6A0] text-[#171614] font-sans font-medium text-[14px] sm:text-[15px] transition-all shadow-2xs active:scale-[0.98]"
+            >
+              <span>View All Projects</span>
+              <span className="w-8 h-8 rounded-full bg-[#171614] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0">
+                <ArrowUpRight size={16} />
+              </span>
+            </Link>
         </div>
 
         {/* ═══════════════════════════════════════
@@ -789,393 +746,80 @@ function FeaturedProjects() {
             max-h-[900px]
           "
         >
+          {projects.map((project, index) => {
+            const isWide = index === 0 || index === 5;
+            return (
+              <Link
+                key={project.number}
+                href={project.href}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className={`
+                  project-card-anim
+                  group
+                  relative
+                  ${isWide ? "col-span-6" : "col-span-3"}
+                  row-span-1
+                  overflow-hidden
+                  rounded-[22px]
+                  bg-[#EDE7DE]
+                  will-change-transform
+                `}
+              >
+                <img
+                  src={project.img}
+                  alt={project.title}
+                  className="
+                    project-image
+                    absolute
+                    inset-0
+                    w-full
+                    h-full
+                    object-cover
+                    will-change-transform
+                  "
+                />
 
-          {/* ───────────────── PROJECT 01 ───────────────── */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
 
-          <a
-            href={projects[0].href}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="
-              project-card-anim
-              group
-              relative
-              col-span-6
-              row-span-1
-              overflow-hidden
-              rounded-[22px]
-              bg-[#EDE7DE]
-              will-change-transform
-            "
-          >
-            <img
-              src={projects[0].img}
-              alt={projects[0].title}
-              className="
-                project-image
-                absolute
-                inset-0
-                w-full
-                h-full
-                object-cover
-                will-change-transform
-              "
-            />
+                <div
+                  className="
+                    project-hover-overlay
+                    absolute
+                    inset-0
+                    bg-black/25
+                    opacity-0
+                  "
+                />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+                {/* Content */}
+                <div
+                  className={`
+                    project-content
+                    absolute
+                    ${isWide ? "left-5 right-5 bottom-5 lg:left-6 lg:right-6 lg:bottom-6" : "left-4 right-4 bottom-4"}
+                  `}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className={`${isWide ? "text-[8px] tracking-[0.2em]" : "text-[7px] tracking-[0.18em]"} uppercase text-white/70`}>
+                      {project.location}
+                    </span>
+                  </div>
 
-            <div
-              className="
-                project-hover-overlay
-                absolute
-                inset-0
-                bg-black/25
-                opacity-0
-              "
-            />
-
-            {/* Number */}
-            <div className="absolute top-4 left-4 lg:top-5 lg:left-5">
-              <span className="font-serif italic text-[17px] text-[#B08A52]">
-                {projects[0].number}
-              </span>
-            </div>
-
-            {/* Content */}
-            <div
-              className="
-                project-content
-                absolute
-                left-5
-                right-5
-                bottom-5
-                lg:left-6
-                lg:right-6
-                lg:bottom-6
-              "
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[8px] uppercase tracking-[0.2em] text-white/70">
-                  {projects[0].category}
-                </span>
-                <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
-                <span className="text-[8px] uppercase tracking-[0.2em] text-white/70">
-                  {projects[0].location}
-                </span>
-              </div>
-
-              <h3 className="
-                font-serif
-                text-white
-                text-[clamp(1.8rem,3.2vw,3.2rem)]
-                leading-[0.9]
-                tracking-[-0.03em]
-              ">
-                {projects[0].title}
-              </h3>
-
-            </div>
-          </a>
-
-          {/* ───────────────── PROJECT 02 ───────────────── */}
-
-          <a
-            href={projects[1].href}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="
-              project-card-anim
-              group
-              relative
-              col-span-3
-              row-span-1
-              overflow-hidden
-              rounded-[22px]
-              bg-[#EDE7DE]
-              will-change-transform
-            "
-          >
-            <img
-              src={projects[1].img}
-              alt={projects[1].title}
-              className="
-                project-image
-                absolute
-                inset-0
-                w-full
-                h-full
-                object-cover
-                will-change-transform
-              "
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-
-            <div
-              className="
-                project-hover-overlay
-                absolute
-                inset-0
-                bg-black/30
-                opacity-0
-              "
-            />
-
-            <div className="absolute top-4 left-4">
-              <span className="font-serif italic text-[17px] text-[#B08A52]">
-                {projects[1].number}
-              </span>
-            </div>
-
-            <div className="project-content absolute left-4 right-4 bottom-4">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
-                  {projects[1].category}
-                </span>
-                <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
-                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
-                  {projects[1].location}
-                </span>
-              </div>
-
-              <h3 className="
-                font-serif
-                text-white
-                text-[clamp(1.35rem,2vw,2rem)]
-                leading-[0.92]
-                tracking-[-0.025em]
-              ">
-                {projects[1].title}
-              </h3>
-
-
-            </div>
-          </a>
-
-          {/* ───────────────── PROJECT 05 — TALL ───────────────── */}
-
-          <a
-            href={projects[4].href}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="
-              project-card-anim
-              group
-              relative
-              col-span-3
-              row-span-2
-              overflow-hidden
-              rounded-[22px]
-              bg-[#EDE7DE]
-              will-change-transform
-            "
-          >
-            <img
-              src={projects[4].img}
-              alt={projects[4].title}
-              className="
-                project-image
-                absolute
-                inset-0
-                w-full
-                h-full
-                object-cover
-                will-change-transform
-              "
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
-
-            <div
-              className="
-                project-hover-overlay
-                absolute
-                inset-0
-                bg-black/25
-                opacity-0
-              "
-            />
-
-            <div className="absolute top-4 left-4 lg:top-5 lg:left-5">
-              <span className="font-serif italic text-[17px] text-[#B08A52]">
-                {projects[4].number}
-              </span>
-            </div>
-
-            <div className="project-content absolute left-4 right-4 bottom-4 lg:left-5 lg:right-5 lg:bottom-5">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
-                  {projects[4].category}
-                </span>
-                <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
-                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
-                  {projects[4].location}
-                </span>
-              </div>
-
-              <h3 className="
-                font-serif
-                text-white
-                text-[clamp(1.45rem,2.2vw,2.3rem)]
-                leading-[0.9]
-                tracking-[-0.03em]
-              ">
-                {projects[4].title}
-              </h3>
-
-
-            </div>
-          </a>
-
-          {/* ───────────────── PROJECT 03 ───────────────── */}
-
-          <a
-            href={projects[2].href}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="
-              project-card-anim
-              group
-              relative
-              col-span-3
-              row-span-1
-              overflow-hidden
-              rounded-[22px]
-              bg-[#EDE7DE]
-              will-change-transform
-            "
-          >
-            <img
-              src={projects[2].img}
-              alt={projects[2].title}
-              className="
-                project-image
-                absolute
-                inset-0
-                w-full
-                h-full
-                object-cover
-                will-change-transform
-              "
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-
-            <div
-              className="
-                project-hover-overlay
-                absolute
-                inset-0
-                bg-black/25
-                opacity-0
-              "
-            />
-
-            <div className="absolute top-4 left-4">
-              <span className="font-serif italic text-[17px] text-[#B08A52]">
-                {projects[2].number}
-              </span>
-            </div>
-
-            <div className="project-content absolute left-4 right-4 bottom-4">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
-                  {projects[2].category}
-                </span>
-                <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
-                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
-                  {projects[2].location}
-                </span>
-              </div>
-
-              <h3 className="
-                font-serif
-                text-white
-                text-[clamp(1.35rem,2vw,2rem)]
-                leading-[0.92]
-                tracking-[-0.025em]
-              ">
-                {projects[2].title}
-              </h3>
-
-
-            </div>
-          </a>
-
-          {/* ───────────────── PROJECT 04 ───────────────── */}
-
-          <a
-            href={projects[3].href}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="
-              project-card-anim
-              group
-              relative
-              col-span-6
-              row-span-1
-              overflow-hidden
-              rounded-[22px]
-              bg-[#EDE7DE]
-              will-change-transform
-            "
-          >
-            <img
-              src={projects[3].img}
-              alt={projects[3].title}
-              className="
-                project-image
-                absolute
-                inset-0
-                w-full
-                h-full
-                object-cover
-                will-change-transform
-              "
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-
-            <div
-              className="
-                project-hover-overlay
-                absolute
-                inset-0
-                bg-black/25
-                opacity-0
-              "
-            />
-
-            <div className="absolute top-4 left-4">
-              <span className="font-serif italic text-[17px] text-[#B08A52]">
-                {projects[3].number}
-              </span>
-            </div>
-
-            <div className="project-content absolute left-4 right-4 bottom-4 lg:left-5 lg:right-5 lg:bottom-5">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
-                  {projects[3].category}
-                </span>
-                <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
-                <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
-                  {projects[3].location}
-                </span>
-              </div>
-
-              <h3 className="
-                font-serif
-                text-white
-                text-[clamp(1.5rem,2.3vw,2.4rem)]
-                leading-[0.9]
-                tracking-[-0.03em]
-              ">
-                {projects[3].title}
-              </h3>
-
-
-            </div>
-          </a>
+                  <h3
+                    className={`
+                      text-white
+                      ${isWide ? "text-[clamp(1.8rem,3.2vw,3.2rem)]" : "text-[clamp(1.35rem,2vw,2rem)]"}
+                      leading-[0.92]
+                      tracking-[-0.025em]
+                    `}
+                  >
+                    {project.title}
+                  </h3>
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
         {/* ═══════════════════════════════════════
@@ -1183,88 +827,70 @@ function FeaturedProjects() {
         ═══════════════════════════════════════ */}
 
         <div className="md:hidden grid grid-cols-2 gap-3">
+          {projects.map((project, index) => {
+            const isFullWidth = index === 0 || index === 5;
+            return (
+              <Link
+                key={project.number}
+                href={project.href}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className={`
+                  project-card-anim
+                  group
+                  relative
+                  block
+                  overflow-hidden
+                  rounded-[18px]
+                  bg-[#EDE7DE]
+                  ${isFullWidth ? "col-span-2 min-h-[420px]" : "col-span-1 min-h-[300px]"}
+                `}
+              >
+                <img
+                  src={project.img}
+                  alt={project.title}
+                  className="
+                    project-image
+                    absolute
+                    inset-0
+                    w-full
+                    h-full
+                    object-cover
+                  "
+                />
 
-          {projects.map((project, index) => (
-            <a
-              key={project.number}
-              href={project.href}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className={`
-                project-card-anim
-                group
-                relative
-                block
-                overflow-hidden
-                rounded-[18px]
-                min-h-[320px]
-                bg-[#EDE7DE]
-                ${index === 0 ? "col-span-2 min-h-[460px]" : ""}
-                ${index === 3 ? "col-span-2 min-h-[400px]" : ""}
-                ${index === 4 ? "col-span-2 min-h-[440px]" : ""}
-              `}
-            >
-              <img
-                src={project.img}
-                alt={project.title}
-                className="
-                  project-image
-                  absolute
-                  inset-0
-                  w-full
-                  h-full
-                  object-cover
-                "
-              />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+                <div className="project-hover-overlay absolute inset-0 bg-black/20 opacity-0" />
 
-              <div className="project-hover-overlay absolute inset-0 bg-black/20 opacity-0" />
+                <div className="project-content absolute left-4 right-4 bottom-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                      {project.location}
+                    </span>
+                  </div>
 
-              <div className="absolute top-4 left-4">
-                <span className="font-serif italic text-[16px] text-[#B08A52]">
-                  {project.number}
-                </span>
-              </div>
-
-
-
-              <div className="project-content absolute left-4 right-4 bottom-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
-                    {project.category}
-                  </span>
-                  <span className="w-1 h-1 rounded-full bg-[#B08A52]" />
-                  <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
-                    {project.location}
-                  </span>
+                  <h3 className="font-serif text-white text-[1.45rem] leading-[0.92] tracking-[-0.025em]">
+                    {project.title}
+                  </h3>
                 </div>
-
-                <h3 className="font-serif text-white text-[1.5rem] leading-[0.92] tracking-[-0.025em]">
-                  {project.title}
-                </h3>
-
-
-              </div>
-            </a>
-          ))}
+              </Link>
+            );
+          })}
         </div>
 
         {/* ───────────────── Mobile CTA ───────────────── */}
 
         <div className="md:hidden mt-6 flex justify-end">
-          <Link
-            href="/projects"
-            className="group inline-flex items-center gap-3 text-[9px] uppercase tracking-[0.2em] font-semibold text-[#171614]"
-          >
-            <span className="border-b border-[#B08A52] pb-1">
-              View All Projects
-            </span>
-
-            <span className="text-[#B08A52] group-hover:translate-x-1 transition-transform">
-              →
-            </span>
-          </Link>
+                    <Link
+              href="/projects"
+              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-[#D6C5B0] hover:bg-[#C9B6A0] text-[#171614] font-sans font-medium text-[14px] sm:text-[15px] transition-all shadow-2xs active:scale-[0.98]"
+            >
+              <span>View All Projects</span>
+              <span className="w-8 h-8 rounded-full bg-[#171614] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0">
+                <ArrowUpRight size={16} />
+              </span>
+            </Link>
         </div>
 
       </div>
@@ -1399,7 +1025,7 @@ function Process() {
         });
       }
 
-      // Stagger fade up for each step when it enters the viewport
+      // Stagger fade up and scroll-driven active state for each step
       const stepsArray = gsap.utils.toArray<HTMLElement>(".process-step");
       stepsArray.forEach((step) => {
         gsap.fromTo(step,
@@ -1415,6 +1041,25 @@ function Process() {
             }
           }
         );
+
+        // Scroll active trigger
+        ScrollTrigger.create({
+          trigger: step,
+          start: "top 65%",
+          end: "bottom 35%",
+          onEnter: () => {
+            step.classList.add("is-active", "is-passed");
+          },
+          onLeave: () => {
+            step.classList.remove("is-active");
+          },
+          onEnterBack: () => {
+            step.classList.add("is-active");
+          },
+          onLeaveBack: () => {
+            step.classList.remove("is-active", "is-passed");
+          },
+        });
       });
 
     }, containerRef);
@@ -1452,22 +1097,28 @@ function Process() {
               return (
                 <div key={idx} className="relative flex gap-6 md:gap-12 group process-step pt-2">
                   {/* Node on line */}
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white border-2 border-[#E7E0D4] shadow-sm flex items-center justify-center text-[#C89A47] relative z-10 shrink-0 transition-all duration-500 group-hover:bg-[#C89A47] group-hover:text-white group-hover:border-[#C89A47] group-hover:shadow-[0_10px_30px_rgba(200,154,71,0.2)]">
-                    <span className="text-[16px] md:text-[22px]">{step.num}</span>
+                  <div className="process-step-node w-12 h-12 md:w-16 md:h-16 rounded-full bg-white border-2 border-[#E7E0D4] shadow-sm flex items-center justify-center text-[#C89A47] relative z-10 shrink-0 transition-all duration-500">
+                    <span className="text-[16px] md:text-[22px] font-semibold">{step.num}</span>
                   </div>
 
                   {/* Content */}
                   <div className="pt-1 md:pt-4 pb-10 md:pb-12 border-b border-[#E7E0D4]/50 last:border-0 last:pb-0 w-full">
-                    <h3 className="font-sans font-bold text-[20px] md:text-[28px] text-[#1F1F1F] mb-3 md:mb-4 transition-colors duration-300 group-hover:text-[#C89A47]">{step.title}</h3>
-                    <p className="font-sans text-[14px] md:text-[16px] text-[#77736C] leading-[1.7] md:leading-[1.8] max-w-lg mb-6 md:mb-8">{step.desc}</p>
+                    <h3 className="process-step-title font-sans font-bold text-[20px] md:text-[28px] text-[#1F1F1F] mb-3 md:mb-4 transition-colors duration-300">
+                      {step.title}
+                    </h3>
+                    <p className="font-sans text-[14px] md:text-[16px] text-[#77736C] leading-[1.7] md:leading-[1.8] max-w-lg mb-6 md:mb-8">
+                      {step.desc}
+                    </p>
 
                     {/* Enhanced Visual Box */}
-                    <div className="rounded-[20px] md:rounded-[24px] overflow-hidden bg-white shadow-[0_5px_20px_rgba(0,0,0,0.02)] border border-[#E7E0D4]/60 p-4 md:p-6 flex flex-col sm:flex-row sm:items-center gap-4 md:gap-5 transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_15px_30px_rgba(0,0,0,0.04)] group-hover:border-[#C89A47]/30">
-                      <div className="w-12 h-12 rounded-full bg-[#F8F4EE] shadow-inner flex items-center justify-center text-[#C89A47] shrink-0 transition-transform duration-500 group-hover:scale-110">
+                    <div className="process-step-box rounded-[20px] md:rounded-[24px] overflow-hidden bg-white shadow-[0_5px_20px_rgba(0,0,0,0.02)] border border-[#E7E0D4]/60 p-4 md:p-6 flex flex-col sm:flex-row sm:items-center gap-4 md:gap-5 transition-all duration-500">
+                      <div className="process-step-icon w-12 h-12 rounded-full bg-[#F8F4EE] shadow-inner flex items-center justify-center text-[#C89A47] shrink-0 transition-all duration-500">
                         <Icon size={24} strokeWidth={1.5} />
                       </div>
                       <div>
-                        <div className="text-[10px] md:text-[11px] uppercase tracking-widest text-[#77736C] font-semibold mb-1">Phase {step.num} Overview</div>
+                        <div className="text-[10px] md:text-[11px] uppercase tracking-widest text-[#77736C] font-semibold mb-1">
+                          Phase {step.num} Overview
+                        </div>
                         <div className="text-[#1F1F1F] text-[13px] md:text-[14px] font-medium leading-relaxed">
                           Learn more about our meticulous {step.title.toLowerCase()} process.
                         </div>
@@ -1538,7 +1189,7 @@ function Testimonials() {
           <h2 className="font-semibold text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-3">
             Client Reviews<span className="text-[#B08A52]">.</span>
           </h2>
-          <span className="text-lg md:text-xl font-serif text-[#C89A47] block">
+          <span className="text-lg md:text-xl text-[#C89A47] block">
             What Our Clients Say
           </span>
         </div>

@@ -394,3 +394,36 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ─── Process Step Scroll Active & Hover States ──────────── */
+.process-step.is-passed .process-step-node,
+.process-step:hover .process-step-node {
+  background-color: #C89A47 !important;
+  color: #FFFFFF !important;
+  border-color: #C89A47 !important;
+  box-shadow: 0 8px 24px rgba(200, 154, 71, 0.28) !important;
+}
+
+.process-step.is-active .process-step-node {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 6px rgba(200, 154, 71, 0.2), 0 10px 30px rgba(200, 154, 71, 0.35) !important;
+}
+
+.process-step.is-active .process-step-title,
+.process-step:hover .process-step-title {
+  color: #C89A47 !important;
+}
+
+.process-step.is-active .process-step-box,
+.process-step:hover .process-step-box {
+  transform: translateY(-4px);
+  border-color: rgba(200, 154, 71, 0.45) !important;
+  box-shadow: 0 16px 36px rgba(200, 154, 71, 0.1) !important;
+}
+
+.process-step.is-active .process-step-icon,
+.process-step:hover .process-step-icon {
+  transform: scale(1.12);
+  background-color: #C89A47 !important;
+  color: #FFFFFF !important;
+}

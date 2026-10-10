@@ -66,6 +66,15 @@ export default function RootLayout({
         <link rel="icon" href="/logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/logo.png" />
 
+        {/* Preload critical LCP Hero Image */}
+        <link
+          rel="preload"
+          as="image"
+          href="/hero.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
+
         {/* Google Fonts preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -78,7 +87,7 @@ export default function RootLayout({
 
         {/* Material Symbols */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0&display=swap"
           rel="stylesheet"
         />
       </head>

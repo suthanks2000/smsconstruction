@@ -16,35 +16,31 @@ function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.2 });
+      const tl = gsap.timeline();
 
-      tl.fromTo(
-        ".gsap-heading",
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-      );
+      tl.from(".gsap-heading", {
+        y: 25,
+        duration: 0.8,
+        ease: "power2.out",
+      });
 
       if (container.current?.querySelector(".gsap-subtitle")) {
-        tl.fromTo(
+        tl.from(
           ".gsap-subtitle",
-          { opacity: 0 },
-          { opacity: 1, duration: 0.8, ease: "power2.out" },
+          { opacity: 0.3, duration: 0.6, ease: "power2.out" },
           "-=0.4"
         );
       }
 
-      tl.fromTo(
+      tl.from(
         ".gsap-desc",
-        { opacity: 0 },
-        { opacity: 1, duration: 0.8, ease: "power2.out" },
-        "-=0.6"
-      )
-        .fromTo(
-          ".gsap-button",
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-          "-=0.4"
-        );
+        { y: 20, opacity: 0.3, duration: 0.6, ease: "power2.out" },
+        "-=0.4"
+      ).from(
+        ".gsap-button",
+        { y: 15, opacity: 0.4, duration: 0.6, ease: "power2.out" },
+        "-=0.3"
+      );
 
       gsap.fromTo(
         ".gsap-hero-bg",
@@ -68,6 +64,7 @@ function Hero() {
           alt="Luxury Construction & Interior Design Background"
           fill
           priority
+          fetchPriority="high"
           className="object-cover object-center gsap-hero-bg"
           sizes="100vw"
         />
@@ -109,14 +106,14 @@ function Hero() {
               </p>
             </div> */}
 
-            <h1 className="gsap-heading opacity-0 mb-5 md:mb-8 max-w-3xl  text-[clamp(2.6rem,5.5vw,5rem)] font-bold leading-[1.02] tracking-[-0.035em] text-white">
+            <h1 className="gsap-heading mb-5 md:mb-8 max-w-3xl text-[clamp(2.6rem,5.5vw,5rem)] font-bold leading-[1.02] tracking-[-0.035em] text-white">
               Interior Design &amp; Construction
               <br />
               <span className="text-[#C89A47]">in Nagercoil</span>
             </h1>
           </div>
 
-          <div className="gsap-desc opacity-0 mb-8 space-y-3 border-l-[2px] border-[#e3c381] pl-5 sm:mb-10 sm:space-y-4 sm:pl-6">
+          <div className="gsap-desc mb-8 space-y-3 border-l-[2px] border-[#e3c381] pl-5 sm:mb-10 sm:space-y-4 sm:pl-6">
             <p className="font-sans text-[15px] sm:text-[17px] font-medium leading-tight text-white/95">
               Residential Construction &amp; Interior Design
             </p>
@@ -128,7 +125,7 @@ function Hero() {
             </p>
           </div>
 
-          <div className="gsap-button opacity-0 flex flex-col sm:flex-row gap-4 sm:gap-5 w-[210px] sm:w-auto">
+          <div className="gsap-button flex flex-col sm:flex-row gap-4 sm:gap-5 w-[210px] sm:w-auto">
 
             {/* Explore Projects Button - Expanding Icon Animation */}
             <Link
@@ -390,9 +387,9 @@ function Services() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 mb-8 sm:mb-14">
           {/* Left: Badge & Heading */}
           <div className="max-w-xl">
-            <h3 className="font-sans text-[12px] sm:text-[13px] md:text-[15px] font-semibold tracking-widest uppercase text-[#B08A52] mb-2 sm:mb-3">
+            <p className="font-sans text-[12px] sm:text-[13px] md:text-[15px] font-semibold tracking-widest uppercase text-[#855F25] mb-2 sm:mb-3">
               Our Solutions
-            </h3>
+            </p>
 
             <h2 className="font-semibold text-[clamp(2.4rem,5.5vw,4.8rem)] leading-[0.98] tracking-[-0.03em] text-[#171614] mb-3">
               What we can do for you<span className="text-[#B08A52]">.</span>
@@ -481,10 +478,10 @@ function WhySMS() {
         <h2 className="font-semibold text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-[#171614] mb-3">
           Why Choose Us<span className="text-[#B08A52]">.</span>
         </h2>
-        <h3 className="font-sans text-[13px] md:text-[15px] font-semibold tracking-widest uppercase text-[#B08A52] max-w-3xl mb-3">
+        <h3 className="font-sans text-[13px] md:text-[15px] font-semibold tracking-widest uppercase text-[#855F25] max-w-3xl mb-3">
           Built on Trust, Delivered with Excellence
         </h3>
-        <p className="font-sans text-[12px] md:text-[14px] text-[#8A8A8A] max-w-lg leading-relaxed">
+        <p className="font-sans text-[12px] md:text-[14px] text-[#5A5854] max-w-lg leading-relaxed">
           Six pillars that define our promise to every client who chooses SMS Construction.
         </p>
       </div>
@@ -796,6 +793,8 @@ function FeaturedProjects() {
                 <img
                   src={project.img}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="
                     project-image
                     absolute
@@ -873,6 +872,8 @@ function FeaturedProjects() {
                 <img
                   src={project.img}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="
                     project-image
                     absolute
@@ -951,7 +952,7 @@ function GalleryStrip() {
         <h2 className="font-semibold text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-4">
           Our Studio<span className="text-[#B08A52]">.</span>
         </h2>
-        <span className="text-lg md:text-xl font-serif text-[#C89A47] block">
+        <span className="text-lg md:text-xl font-serif text-[#855F25] block">
           Spaces We&apos;ve Crafted
         </span>
       </div>
@@ -1090,7 +1091,7 @@ function Process() {
             How we build <br className="hidden lg:block" />
             your dream space<span className="text-[#B08A52]">.</span>
           </h2>
-          <span className="text-lg md:text-xl text-[#C89A47] block">
+          <span className="text-lg md:text-xl text-[#855F25] block">
             Our Process
           </span>
           <p className="mt-6 md:mt-8 text-[15px] md:text-[17px] text-[#77736C] leading-[1.7] max-w-md">
@@ -1203,7 +1204,7 @@ function Testimonials() {
           <h2 className="font-semibold text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-3">
             Client Reviews<span className="text-[#B08A52]">.</span>
           </h2>
-          <span className="text-lg md:text-xl text-[#C89A47] block">
+          <span className="text-lg md:text-xl text-[#855F25] block">
             What Our Clients Say
           </span>
         </div>
@@ -1388,7 +1389,7 @@ function FinalCTA() {
     <section className="py-12 md:py-20 bg-[#FAF8F3] relative overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 md:px-16 text-center">
 
-        <span className="font-sans text-[11px] md:text-[13px] uppercase tracking-[0.25em] font-semibold text-[#77736C] block mb-4 md:mb-6">
+        <span className="font-sans text-[11px] md:text-[13px] uppercase tracking-[0.25em] font-semibold text-[#5C5851] block mb-4 md:mb-6">
           Start Your Project
         </span>
 
@@ -1407,7 +1408,7 @@ function FinalCTA() {
           consultation.
         </h2>
 
-        <p className="mt-8 md:mt-10 max-w-2xl mx-auto text-[15px] md:text-[17px] leading-7 text-[#77736C]">
+        <p className="mt-8 md:mt-10 max-w-2xl mx-auto text-[15px] md:text-[17px] leading-7 text-[#5C5851]">
           Planning a new home, upgrading your interiors, or renovating an
           existing space? Discuss your project with SMS Construction in Nagercoil.
         </p>

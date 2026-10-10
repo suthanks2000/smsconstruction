@@ -299,7 +299,7 @@ export default function Navbar() {
 
           <MagneticContactButton
             href={`tel:${phoneNumber}`}
-            className="hidden lg:flex rounded-full bg-[#B08A52] px-6 py-3 text-[15px]"
+            className="hidden lg:flex rounded-full bg-[#855F25] px-6 py-3 text-[15px]"
           />
 
           {/* Mobile Toggle */}

@@ -1,4 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Terms and Conditions | SMS Construction Nagercoil",
+  description:
+    "Review the Terms and Conditions for using the SMS Construction website and requesting architectural, construction, or interior design services.",
+  alternates: {
+    canonical: "/terms-and-conditions",
+  },
+  openGraph: {
+    title: "Terms and Conditions | SMS Construction Nagercoil",
+    description:
+      "Review the Terms and Conditions for using the SMS Construction website and requesting architectural, construction, or interior design services.",
+    url: "https://smsconstruction.in/terms-and-conditions",
+    siteName: "SMS Construction",
+    locale: "en_IN",
+    type: "website",
+  },
+};
 
 const sections = [
   { id: "acceptance-of-terms", number: "01", title: "Acceptance of Terms" },

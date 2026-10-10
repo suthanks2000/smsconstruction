@@ -1,4 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | SMS Construction Nagercoil",
+  description:
+    "Read the Privacy Policy for SMS Construction in Nagercoil, Tamil Nadu. Learn how we handle your personal information and project enquiries.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy | SMS Construction Nagercoil",
+    description:
+      "Read the Privacy Policy for SMS Construction in Nagercoil, Tamil Nadu. Learn how we handle your personal information and project enquiries.",
+    url: "https://smsconstruction.in/privacy-policy",
+    siteName: "SMS Construction",
+    locale: "en_IN",
+    type: "website",
+  },
+};
 
 const sections = [
   { id: "introduction", number: "01", title: "Introduction" },
@@ -71,15 +90,15 @@ export default function PrivacyPolicyPage() {
               </p>
               <ul className="space-y-2.5 text-[14px] sm:text-[15px] font-sans text-[#77736C] leading-relaxed list-none pl-0">
                 <li className="flex items-start gap-2.5">
-                  <span className="text-[#B08A52] font-semibold shrink-0">&check;</span>
+                  <span className="text-[#B08A52] font-semibold shrink-0">✓</span>
                   <span><strong className="text-[#171614] font-medium">No Third-Party Selling:</strong> We never sell, lease, or monetize your contact records or property information.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-[#B08A52] font-semibold shrink-0">&check;</span>
+                  <span className="text-[#B08A52] font-semibold shrink-0">✓</span>
                   <span><strong className="text-[#171614] font-medium">Purpose-Bound Use:</strong> Data is strictly utilized to prepare structural quotes, interior drawings, and facilitate project discussions.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-[#B08A52] font-semibold shrink-0">&check;</span>
+                  <span className="text-[#B08A52] font-semibold shrink-0">✓</span>
                   <span><strong className="text-[#171614] font-medium">Local Jurisdiction:</strong> Operations and data security are managed directly from our studio in Nagercoil, Tamil Nadu.</span>
                 </li>
               </ul>

@@ -22,19 +22,23 @@ function Hero() {
         ".gsap-heading",
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-      )
-        .fromTo(
+      );
+
+      if (container.current?.querySelector(".gsap-subtitle")) {
+        tl.fromTo(
           ".gsap-subtitle",
           { opacity: 0 },
           { opacity: 1, duration: 0.8, ease: "power2.out" },
           "-=0.4"
-        )
-        .fromTo(
-          ".gsap-desc",
-          { opacity: 0 },
-          { opacity: 1, duration: 0.8, ease: "power2.out" },
-          "-=0.6"
-        )
+        );
+      }
+
+      tl.fromTo(
+        ".gsap-desc",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.8, ease: "power2.out" },
+        "-=0.6"
+      )
         .fromTo(
           ".gsap-button",
           { y: 20, opacity: 0 },

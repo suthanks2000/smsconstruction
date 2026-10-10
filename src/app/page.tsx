@@ -18,11 +18,7 @@ function Hero() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
-      tl.from(".gsap-heading", {
-        y: 25,
-        duration: 0.8,
-        ease: "power2.out",
-      });
+
 
       if (container.current?.querySelector(".gsap-subtitle")) {
         tl.from(
@@ -42,15 +38,7 @@ function Hero() {
         "-=0.3"
       );
 
-      gsap.fromTo(
-        ".gsap-hero-bg",
-        { scale: 1.05 },
-        {
-          scale: 1,
-          duration: 2.5,
-          ease: "power2.out",
-        }
-      );
+
     }, container);
     return () => ctx.revert();
   }, []);

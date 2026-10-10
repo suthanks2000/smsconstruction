@@ -43,6 +43,7 @@ export default function ContactForm() {
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -56,7 +57,7 @@ export default function ContactForm() {
 
     if (!formData.phone.trim()) {
       newErrors.phone = "Please enter your phone number.";
-    } else if (!/^[0-9]{7,15}$/.test(formData.phone.trim())) {
+    } else if (!/^[0-9+\s\-()]{7,20}$/.test(formData.phone.trim())) {
       newErrors.phone = "Please enter a valid phone number (minimum 7 to 15 digits).";
     }
 
@@ -82,9 +83,10 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
 
     // Spam honeypot trap: if filled, silently discard
-    if (formData.honeypot) {
+    if (formData.honeypot && formData.honeypot.trim() !== "") {
       setIsSubmitted(true);
       return;
     }
@@ -93,16 +95,61 @@ export default function ContactForm() {
       return;
     }
 
+    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL;
+
+    // Guard: Check if the webhook URL is configured
+    if (!scriptUrl || scriptUrl.trim() === "" || scriptUrl.includes("YOUR_APPS_SCRIPT_DEPLOYMENT_ID")) {
+      setSubmitError(
+        "Contact webhook is currently being finalized. Please reach us directly via phone or WhatsApp at +91 94880 21183."
+      );
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Simulate submission network handshake with anti-double-click guard
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      setIsSubmitted(true);
-    } catch {
-      setErrors({
-        message: "Unable to submit your enquiry right now. Please call or email us directly.",
+      const payload = {
+        name: formData.name.trim(),
+        phone: formData.phone.trim(),
+        email: formData.email.trim(),
+        projectType: formData.projectType,
+        location: formData.location.trim(),
+        message: formData.message.trim(),
+        honeypot: formData.honeypot,
+        submittedAt: new Date().toISOString(),
+      };
+
+      // We send as text/plain;charset=utf-8 so the browser skips the preflight OPTIONS request.
+      // Google Apps Script redirects with 302 to script.googleusercontent.com with Access-Control-Allow-Origin: *
+      const response = await fetch(scriptUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(payload),
       });
+
+      if (!response.ok) {
+        throw new Error(
+          `Server responded with HTTP ${response.status}. Please try again or reach out to us directly.`
+        );
+      }
+
+      const result = await response.json();
+
+      if (result && result.status === "success") {
+        setIsSubmitted(true);
+      } else {
+        throw new Error(
+          result?.message || "Your submission could not be processed. Please contact us directly."
+        );
+      }
+    } catch (err: unknown) {
+      const errorMessage =
+        err instanceof Error && err.message
+          ? err.message
+          : "Unable to submit your enquiry at the moment. Please call +91 94880 21183 or email smsconstructionngl@gmail.com directly.";
+      setSubmitError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -119,6 +166,7 @@ export default function ContactForm() {
       honeypot: "",
     });
     setErrors({});
+    setSubmitError(null);
     setIsSubmitted(false);
     setIsDropdownOpen(false);
   };
@@ -479,6 +527,31 @@ export default function ContactForm() {
           </p>
         )}
       </div>
+
+      {/* Submission Error Banner */}
+      {submitError && (
+        <div
+          role="alert"
+          aria-live="assertive"
+          className="p-4 sm:p-5 rounded-[20px] bg-[#FEF2F2] border border-[#FCA5A5] text-[#991B1B] text-[14px] font-sans flex items-start gap-3 shadow-xs"
+        >
+          <AlertCircle size={18} className="shrink-0 mt-0.5 text-[#DC2626]" />
+          <div className="space-y-1">
+            <p className="font-semibold text-[14px] text-[#991B1B]">Unable to send message</p>
+            <p className="text-[13.5px] leading-relaxed text-[#7F1D1D]">{submitError}</p>
+            <p className="text-[12.5px] text-[#991B1B] pt-0.5">
+              Direct assistance:{" "}
+              <a href="tel:+919488021183" className="underline font-semibold hover:text-[#7F1D1D]">
+                +91 94880 21183
+              </a>{" "}
+              |{" "}
+              <a href="mailto:smsconstructionngl@gmail.com" className="underline font-semibold hover:text-[#7F1D1D]">
+                smsconstructionngl@gmail.com
+              </a>
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Bottom Row: Helper Note & Styled Submit Pill Button matching reference image */}
       <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-5">

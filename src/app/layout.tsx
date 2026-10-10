@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://smsconstruction.in"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://smsconstruction.in"),
   title: "SMS Construction | Best Interior & Construction in Nagercoil",
   description:
     "Top-rated Interior Design & Construction Company in Nagercoil. We build premium residential homes, turnkey commercial projects, and bespoke interior spaces across Kanyakumari District.",

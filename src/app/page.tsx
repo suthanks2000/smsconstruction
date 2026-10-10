@@ -95,33 +95,40 @@ function Hero() {
         <div className="w-full lg:w-7/12 text-left -mt-8 md:-mt-12 ml-0 sm:ml-6 md:ml-10 lg:ml-16">
 
           <div>
-            <p className="gsap-subtitle opacity-0 mb-3 md:mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#e3c381] sm:text-[12px]">
-              Nagercoil&apos;s Design &amp; Build Studio
-            </p>
+            {/* <div className="gsap-subtitle opacity-0 mb-3 md:mb-4 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <p className="text-[10px] sm:text-[12px] font-semibold uppercase tracking-[0.24em] text-[#e3c381]">
+                NAGERCOIL&apos;S DESIGN &amp; BUILD STUDIO
+              </p>
+              <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-[#C89A47]" aria-hidden="true" />
+              <p className="text-[10px] sm:text-[12px] font-semibold uppercase tracking-[0.24em] text-[#C89A47]">
+                DESIGN. BUILD. COMPLETE.
+              </p>
+            </div> */}
 
-            <h1 className="gsap-heading opacity-0 mb-5 md:mb-8 font-serif text-[42px] sm:text-[clamp(3.5rem,6vw,5.5rem)] font-bold uppercase leading-[0.95] md:leading-[0.9] tracking-[-0.03em] text-white">
-              DESIGN.<br />
-              BUILD.<br />
-              <span className="text-[#C89A47]">COMPLETE.</span>
+            <h1 className="gsap-heading opacity-0 mb-5 md:mb-8 max-w-3xl  text-[clamp(2.6rem,5.5vw,5rem)] font-bold leading-[1.02] tracking-[-0.035em] text-white">
+              Interior Design &amp; Construction
+              <br />
+              <span className="text-[#C89A47]">in Nagercoil</span>
             </h1>
           </div>
 
           <div className="gsap-desc opacity-0 mb-8 space-y-3 border-l-[2px] border-[#e3c381] pl-5 sm:mb-10 sm:space-y-4 sm:pl-6">
             <p className="font-sans text-[15px] sm:text-[17px] font-medium leading-tight text-white/95">
-              Bespoke Interior Design &amp; Construction
+              Residential Construction &amp; Interior Design
             </p>
             <p className="font-sans text-[15px] sm:text-[17px] font-medium leading-tight text-white/95">
-              Architecturally Refined Living Spaces
+              Design, Planning &amp; Turnkey Solutions
             </p>
             <p className="font-sans text-[15px] sm:text-[17px] font-medium leading-tight text-white/95">
-              End-to-End Modern Solutions
+              Serving Nagercoil and the Kanyakumari Region
             </p>
           </div>
 
           <div className="gsap-button opacity-0 flex flex-col sm:flex-row gap-4 sm:gap-5 w-[210px] sm:w-auto">
 
             {/* Explore Projects Button - Expanding Icon Animation */}
-            <button
+            <Link
+              href="/projects"
               className="
                 group relative overflow-hidden
                 flex items-center p-1.5
@@ -130,6 +137,7 @@ function Hero() {
                 shadow-[0_8px_20px_rgba(0,0,0,0.3)]
                 transition-all duration-300 ease-out
                 hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(200,154,71,0.25)] hover:border-[#C89A47]
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C89A47] focus-visible:ring-offset-2 focus-visible:ring-offset-[#171714]
                 active:scale-95
               "
             >
@@ -153,10 +161,11 @@ function Hero() {
               ">
                 Explore Projects
               </span>
-            </button>
+            </Link>
 
             {/* Book Consultation Button */}
-            <button
+            <Link
+              href="/contact"
               className="
                 group relative overflow-hidden
                 flex items-center justify-center gap-2
@@ -165,12 +174,13 @@ function Hero() {
                 text-[15px] font-semibold text-white tracking-wide
                 transition-all duration-500 ease-out
                 hover:-translate-y-1 hover:bg-white/20 hover:border-white/50 hover:shadow-[0_15px_30px_rgba(0,0,0,0.15)]
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C89A47] focus-visible:ring-offset-2 focus-visible:ring-offset-[#171714]
                 active:scale-95
               "
             >
               <div className="absolute inset-0 z-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
               <span className="relative z-10">Book Consultation</span>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -411,11 +421,10 @@ function Services() {
               <Link
                 key={svc.title}
                 href={svc.href}
-                className={`services-card ${
-                  isFeatured
+                className={`services-card ${isFeatured
                     ? "col-span-2 lg:col-span-1 aspect-[16/8] sm:aspect-[2.2/1] lg:aspect-[3/4.4]"
                     : "col-span-1 aspect-[3/4] sm:aspect-[3/4.2] lg:aspect-[3/4.4]"
-                } rounded-[18px] sm:rounded-[22px] overflow-hidden relative group block bg-[#171614] shadow-xs hover:shadow-xl transition-all duration-500`}
+                  } rounded-[18px] sm:rounded-[22px] overflow-hidden relative group block bg-[#171614] shadow-xs hover:shadow-xl transition-all duration-500`}
               >
                 {/* Image */}
                 <Image
@@ -732,15 +741,15 @@ function FeaturedProjects() {
             </h2>
           </div>
 
-           <Link
-              href="/projects"
-              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-[#D6C5B0] hover:bg-[#C9B6A0] text-[#171614] font-sans font-medium text-[14px] sm:text-[15px] transition-all shadow-2xs active:scale-[0.98]"
-            >
-              <span>View All Projects</span>
-              <span className="w-8 h-8 rounded-full bg-[#171614] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0">
-                <ArrowUpRight size={16} />
-              </span>
-            </Link>
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-[#D6C5B0] hover:bg-[#C9B6A0] text-[#171614] font-sans font-medium text-[14px] sm:text-[15px] transition-all shadow-2xs active:scale-[0.98]"
+          >
+            <span>View All Projects</span>
+            <span className="w-8 h-8 rounded-full bg-[#171614] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0">
+              <ArrowUpRight size={16} />
+            </span>
+          </Link>
         </div>
 
         {/* ═══════════════════════════════════════

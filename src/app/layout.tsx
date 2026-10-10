@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "SMS Construction",
     images: [
       {
-        url: "/hero.jpeg",
+        url: "/hero.webp",
         width: 1200,
         height: 630,
         alt: "SMS Construction Luxury Interior Design",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SMS Construction | Best Interior & Construction in Nagercoil",
     description: "Premium Interior Design & Architecture in Nagercoil.",
-    images: ["/hero.jpeg"],
+    images: ["/hero.webp"],
   },
   robots: {
     index: true,

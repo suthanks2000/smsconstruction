@@ -177,7 +177,7 @@ export default function InteriorDesignPage() {
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             {/* Mobile portrait background image */}
             <Image
-              src="/images/services/services-interior-design-portrait.jpg"
+              src="/images/services/services-interior-design-portrait.webp"
               alt="Contemporary luxury residential interior design in Nagercoil by SMS Construction"
               fill
               priority

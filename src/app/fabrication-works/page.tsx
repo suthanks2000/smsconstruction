@@ -169,7 +169,7 @@ export default function FabricationWorksPage() {
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             {/* Mobile portrait background image */}
             <Image
-              src="/images/services/services-fabrication-works-portrait.jpg"
+              src="/images/services/services-fabrication-works-portrait.webp"
               alt="Real ACP fabrication and architectural panel installation project in Kanyakumari district, Tamil Nadu by SMS Construction"
               fill
               priority

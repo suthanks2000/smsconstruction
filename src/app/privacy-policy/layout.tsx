@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "SMS Construction",
     images: [
       {
-        url: "/hero.jpeg",
+        url: "/hero.webp",
         width: 1200,
         height: 630,
         alt: "SMS Construction Privacy Policy",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy | SMS Construction Nagercoil",
     description:
       "Read the Privacy Policy for SMS Construction, a construction and interior design studio in Nagercoil, Tamil Nadu.",
-    images: ["/hero.jpeg"],
+    images: ["/hero.webp"],
   },
   robots: {
     index: true,

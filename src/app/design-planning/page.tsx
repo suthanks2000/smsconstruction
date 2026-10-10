@@ -212,7 +212,7 @@ export default function DesignPlanningPage() {
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             {/* Mobile portrait background image */}
             <Image
-              src="/images/services/services-design-planning-portrait.jpg"
+              src="/images/services/services-design-planning-portrait.webp"
               alt="Architectural design drawings and space planning in Nagercoil by SMS Construction"
               fill
               priority

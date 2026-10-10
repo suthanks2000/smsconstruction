@@ -223,13 +223,13 @@ export default function DesignSystemPage() {
             title="The Grand Courtyard Villa"
             category="Residential Architecture"
             location="Nagercoil, TN"
-            imageSrc="/hero.jpeg"
+            imageSrc="/hero.webp"
           />
           <ProjectCard
             title="Minimalist Teak Residence"
             category="Interior Design"
             location="Kanyakumari, TN"
-            imageSrc="/hero.jpeg"
+            imageSrc="/hero.webp"
           />
         </div>
 

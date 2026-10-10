@@ -60,7 +60,7 @@ function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
-          src="/hero.jpeg"
+          src="/hero.webp"
           alt="Luxury Construction & Interior Design Background"
           fill
           priority
@@ -293,33 +293,34 @@ function TrustStats() {
 /* ─── Services ────────────────────────────────────────────── */
 const servicesData = [
   {
-    title: "Civil construction",
-    href: "/construction",
-    img: "/images/services/services-civil-construction-portrait.jpg",
-    alt: "Civil and residential construction projects by SMS Construction in Nagercoil",
-  },
-  {
     title: "Interior design",
     href: "/interior-design",
-    img: "/images/services/services-interior-design-portrait.jpg",
+    img: "/images/services/services-interior-design-portrait.webp",
     alt: "Bespoke luxury interior design and spaces by SMS Construction in Nagercoil",
   },
   {
+    title: "Civil construction",
+    href: "/construction",
+    img: "/images/services/services-civil-construction-portrait.webp",
+    alt: "Civil and residential construction projects by SMS Construction in Nagercoil",
+  },
+
+  {
     title: "Design & planning",
     href: "/design-planning",
-    img: "/images/services/services-design-planning-portrait.jpg",
+    img: "/images/services/services-design-planning-portrait.webp",
     alt: "Architectural blueprints, 3D elevation, and spatial planning",
   },
   {
     title: "Survey & approvals",
     href: "/survey-approvals",
-    img: "/images/services/services-survey-approvals-portrait.jpg",
+    img: "/images/services/services-survey-approvals-portrait.webp",
     alt: "Land survey, digital mapping, and government building approvals",
   },
   {
     title: "Fabrication works",
     href: "/fabrication-works",
-    img: "/images/services/services-fabrication-works-portrait.jpg",
+    img: "/images/services/services-fabrication-works-portrait.webp",
     alt: "Architectural metalwork, aluminum joinery, and structural steel fabrication",
   },
 ];
@@ -358,7 +359,7 @@ function Services() {
   return (
     <section
       ref={containerRef}
-      className="relative z-20 bg-[#FAF8F3] pt-10 sm:pt-12 lg:pt-14 pb-20 sm:pb-24 lg:pb-28 overflow-hidden border-t border-[#E7E0D4]/70"
+      className="relative z-20 bg-[#FAF8F3] pt-8 sm:pt-12 lg:pt-14 pb-12 sm:pb-20 lg:pb-28 overflow-hidden border-t border-[#E7E0D4]/70"
     >
       {/* Soft Architectural Sunlight / Leaf Shadow Ambient Effect */}
       <div
@@ -372,70 +373,77 @@ function Services() {
 
       <div className="relative max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20">
         {/* Top Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 sm:mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 mb-8 sm:mb-14">
           {/* Left: Badge & Heading */}
           <div className="max-w-xl">
-            <h3 className="font-sans text-[13px] md:text-[15px] font-semibold tracking-widest uppercase text-[#B08A52] max-w-3xl mb-3">
-          Our Solutions
-        </h3>
+            <h3 className="font-sans text-[12px] sm:text-[13px] md:text-[15px] font-semibold tracking-widest uppercase text-[#B08A52] mb-2 sm:mb-3">
+              Our Solutions
+            </h3>
 
-        <h2 className="font-semibold text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-[#171614] mb-3">
-          What we can do for you<span className="text-[#B08A52]">.</span>
-        </h2>
+            <h2 className="font-semibold text-[clamp(2.4rem,5.5vw,4.8rem)] leading-[0.98] tracking-[-0.03em] text-[#171614] mb-3">
+              What we can do for you<span className="text-[#B08A52]">.</span>
+            </h2>
           </div>
 
           {/* Right: Description & CTA Button */}
           <div className="lg:max-w-[420px] flex flex-col items-start">
-            <p className="font-sans text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed mb-6 lg:mb-7">
+            <p className="font-sans text-[14px] sm:text-[16px] text-[#68645D] leading-relaxed mb-4 sm:mb-6 lg:mb-7">
               From architectural planning to turnkey execution, we provide quality construction and interior solutions tailored to your needs.
             </p>
 
             <Link
               href="/services"
-              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-[#D6C5B0] hover:bg-[#C9B6A0] text-[#171614] font-sans font-medium text-[14px] sm:text-[15px] transition-all shadow-2xs active:scale-[0.98]"
+              className="group inline-flex items-center gap-3 pl-5 sm:pl-6 pr-2 py-2 rounded-full bg-[#D6C5B0] hover:bg-[#C9B6A0] text-[#171614] font-sans font-medium text-[13.5px] sm:text-[15px] transition-all shadow-2xs active:scale-[0.98]"
             >
               <span>See our services</span>
-              <span className="w-8 h-8 rounded-full bg-[#171614] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0">
-                <ArrowUpRight size={16} />
+              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#171614] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0">
+                <ArrowUpRight size={15} />
               </span>
             </Link>
           </div>
         </div>
 
-        {/* 5 Portrait Cards */}
-        <div className="flex lg:grid lg:grid-cols-5 gap-3 sm:gap-4 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 pt-1 -mx-5 px-5 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0 snap-x snap-mandatory scrollbar-none">
-          {servicesData.map((svc) => (
-            <Link
-              key={svc.title}
-              href={svc.href}
-              className="services-card w-[80vw] sm:w-[50vw] md:w-[36vw] lg:w-auto shrink-0 lg:shrink snap-center aspect-[3/4.2] sm:aspect-[3/4.4] rounded-[20px] sm:rounded-[22px] overflow-hidden relative group block bg-[#171614] shadow-sm hover:shadow-xl transition-shadow duration-500"
-            >
-              {/* Image */}
-              <Image
-                src={svc.img}
-                alt={svc.alt}
-                fill
-                loading="lazy"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 20vw"
-              />
+        {/* 5 Service Cards — Interior Design Featured Wide Card on Mobile, 5 Columns on Desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-4">
+          {servicesData.map((svc, idx) => {
+            const isFeatured = idx === 0; // Interior design is wide, matha ellam normal size
+            return (
+              <Link
+                key={svc.title}
+                href={svc.href}
+                className={`services-card ${
+                  isFeatured
+                    ? "col-span-2 lg:col-span-1 aspect-[16/8] sm:aspect-[2.2/1] lg:aspect-[3/4.4]"
+                    : "col-span-1 aspect-[3/4] sm:aspect-[3/4.2] lg:aspect-[3/4.4]"
+                } rounded-[18px] sm:rounded-[22px] overflow-hidden relative group block bg-[#171614] shadow-xs hover:shadow-xl transition-all duration-500`}
+              >
+                {/* Image */}
+                <Image
+                  src={svc.img}
+                  alt={svc.alt}
+                  fill
+                  loading="lazy"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                />
 
-              {/* Bottom gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                {/* Bottom gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
 
-              {/* Arrow */}
-              <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white transition-all duration-300 group-hover:bg-white group-hover:text-[#171614] group-hover:scale-110">
-                <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </div>
+                {/* Arrow */}
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white transition-all duration-300 group-hover:bg-white group-hover:text-[#171614] group-hover:scale-110">
+                  <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
 
-              {/* Title */}
-              <div className="absolute left-5 right-14 bottom-5 z-10 pointer-events-none">
-                <span className="block font-sans font-semibold text-[16px] sm:text-[17px] tracking-tight text-white drop-shadow-md leading-snug">
-                  {svc.title}
-                </span>
-              </div>
-            </Link>
-          ))}
+                {/* Title */}
+                <div className="absolute left-3.5 right-10 bottom-3.5 sm:left-5 sm:right-12 sm:bottom-5 z-10 pointer-events-none">
+                  <span className="block font-sans font-semibold text-[14px] sm:text-[16px] lg:text-[17px] tracking-tight text-white drop-shadow-md leading-snug">
+                    {svc.title}
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -455,7 +463,7 @@ const whyItems = [
 
 function WhySMS() {
   return (
-    <section className="pt-12 pb-20 md:pt-16 md:pb-32 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
+    <section className="pt-12 pb-10 sm:pb-14 md:pt-16 md:pb-32 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
       <div className="mb-12 md:mb-16 flex flex-col items-center text-center">
         <h2 className="font-semibold text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.03em] text-[#171614] mb-3">
           Why Choose Us<span className="text-[#B08A52]">.</span>
@@ -703,15 +711,15 @@ function FeaturedProjects() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white min-h-screen overflow-hidden flex items-center"
+      className="relative bg-white md:min-h-screen overflow-hidden md:flex md:items-center"
     >
-      <div className="w-full max-w-[1500px] mx-auto px-5 sm:px-6 lg:px-12 py-12 md:py-14">
+      <div className="w-full max-w-[1500px] mx-auto px-5 sm:px-6 lg:px-12 pt-6 pb-6 sm:pt-8 sm:pb-10 md:py-14">
 
         {/* ═══════════════════════════════════════
             HEADER
         ═══════════════════════════════════════ */}
 
-        <div className="flex items-end justify-between gap-6 mb-7 md:mb-8">
+        <div className="flex items-end justify-between gap-6 mb-5 md:mb-8">
           <div>
 
             <h2 className="font-semibold
@@ -886,20 +894,6 @@ function FeaturedProjects() {
           })}
         </div>
 
-        {/* ───────────────── Mobile CTA ───────────────── */}
-
-        <div className="md:hidden mt-6 flex justify-end">
-                    <Link
-              href="/projects"
-              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-[#D6C5B0] hover:bg-[#C9B6A0] text-[#171614] font-sans font-medium text-[14px] sm:text-[15px] transition-all shadow-2xs active:scale-[0.98]"
-            >
-              <span>View All Projects</span>
-              <span className="w-8 h-8 rounded-full bg-[#171614] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0">
-                <ArrowUpRight size={16} />
-              </span>
-            </Link>
-        </div>
-
       </div>
     </section>
   );
@@ -910,28 +904,28 @@ function GalleryStrip() {
   const videos = [
     {
       id: 1,
-      poster: "/images/screen1_office.jpg",
+      poster: "/images/screen1_office.webp",
       title: "Design Process",
       views: "12.4K",
       src: ""
     },
     {
       id: 2,
-      poster: "/images/screen2_exterior.jpg",
+      poster: "/images/screen2_exterior.webp",
       title: "Luxury Exterior",
       views: "18.2K",
       src: ""
     },
     {
       id: 3,
-      poster: "/images/screen3_interior.jpg",
+      poster: "/images/screen3_interior.webp",
       title: "Living Spaces",
       views: "24.1K",
       src: ""
     },
     {
       id: 4,
-      poster: "/images/screen5_detail.jpg",
+      poster: "/images/screen5_detail.webp",
       title: "Minimal Details",
       views: "9.8K",
       src: ""
@@ -939,7 +933,7 @@ function GalleryStrip() {
   ];
 
   return (
-    <section className="py-16 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
+    <section className="pt-8 pb-16 md:py-16 px-6 md:px-16 max-w-[1440px] mx-auto bg-[#F8F4EE]">
       <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
         <h2 className="font-semibold text-[clamp(2.5rem,8vw,5.5rem)] md:text-[clamp(3rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.04em] text-[#171614] mb-4">
           Our Studio<span className="text-[#B08A52]">.</span>

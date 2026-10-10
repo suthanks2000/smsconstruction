@@ -238,7 +238,7 @@ export default function ConstructionPage() {
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             {/* Mobile portrait background image */}
             <Image
-              src="/images/services/services-civil-construction-portrait.jpg"
+              src="/images/services/services-civil-construction-portrait.webp"
               alt="Civil RCC residential and commercial building construction site in Nagercoil by SMS Construction"
               fill
               priority

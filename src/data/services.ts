@@ -47,7 +47,7 @@ export const primaryServices: PrimaryService[] = [
     href: "/interior-design",
     description:
       "Bespoke residential interior architecture designed around your family's routine. We plan and execute custom modular kitchens, luxury bedroom joinery, ambient false ceiling illumination, TV consoles, and terrace gardens across Nagercoil.",
-    image: "/images/services/services-interior-design-portrait.jpg",
+    image: "/images/services/services-interior-design-portrait.webp",
     alt: "Luxury modern residential living room interior with teakwood paneling and false ceiling lighting in Nagercoil, Tamil Nadu by SMS Construction",
     subservices: [
       "Modular Kitchens & Pantry",
@@ -67,7 +67,7 @@ export const primaryServices: PrimaryService[] = [
     href: "/construction",
     description:
       "Turnkey civil and structural execution engineered for Nagercoil's coastal climate and heavy rainfall. From foundation pile work to reinforced RCC slab casting, premium brick masonry, and turnkey handover with strict quality audits.",
-    image: "/images/services/services-civil-construction-portrait.jpg",
+    image: "/images/services/services-civil-construction-portrait.webp",
     alt: "Active multi-story residential civil construction site with RCC framing and brick masonry in Nagercoil, Kanyakumari district by SMS Construction",
     subservices: [
       "Turnkey Residential Villas",
@@ -87,7 +87,7 @@ export const primaryServices: PrimaryService[] = [
     href: "/design-planning",
     description:
       "Comprehensive architectural visualization and engineering blueprints before groundbreaking. We prepare photorealistic 3D elevations, structural column schedules, Vastu-compliant layouts, and DTCP approval drawing sets.",
-    image: "/images/services/services-design-planning-portrait.jpg",
+    image: "/images/services/services-design-planning-portrait.webp",
     alt: "Architectural design drafting studio with 3D elevations, villa model and structural blueprints in Nagercoil by SMS Construction",
     subservices: [
       "Photorealistic 3D Elevations",
@@ -123,7 +123,7 @@ export const primaryServices: PrimaryService[] = [
     href: "/survey-approvals",
     description:
       "Precision on-site land survey and government approval documentation across Kanyakumari district. Using advanced electronic Total Stations, we measure boundary contours, mark building columns on ground, and verify FMB records.",
-    image: "/images/services/services-survey-approvals-portrait.jpg",
+    image: "/images/services/services-survey-approvals-portrait.webp",
     alt: "Total station digital land survey and site measurement on a residential plot in Nagercoil, Tamil Nadu by SMS Construction",
     subservices: [
       "Digital Total Station Land Surveys",
@@ -143,7 +143,7 @@ export const primaryServices: PrimaryService[] = [
     href: "/fabrication-works",
     description:
       "Custom architectural metal engineering and modern exterior cladding fabricated in our dedicated workshop. Specializing in weather-resistant ACP facades, structural steel gates, stair balustrades, and aluminium glazing.",
-    image: "/images/services/services-fabrication-works-portrait.jpg",
+    image: "/images/services/services-fabrication-works-portrait.webp",
     alt: "Architectural metal fabrication, structural steel gate and aluminium window section assembly in Nagercoil by SMS Construction",
     subservices: [
       "Modern ACP Facade Cladding",

@@ -177,7 +177,7 @@ export default function SurveyApprovalsPage() {
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             {/* Mobile portrait background image */}
             <Image
-              src="/images/services/services-survey-approvals-portrait.jpg"
+              src="/images/services/services-survey-approvals-portrait.webp"
               alt="Professional site survey and land measurement on a residential project site in Nagercoil by SMS Construction"
               fill
               priority

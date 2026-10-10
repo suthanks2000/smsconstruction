@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "SMS Construction",
     images: [
       {
-        url: "/hero.jpeg",
+        url: "/hero.webp",
         width: 1200,
         height: 630,
         alt: "SMS Construction Terms & Conditions",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Terms & Conditions | SMS Construction Nagercoil",
     description:
       "Read the Terms & Conditions for using the SMS Construction website and submitting project enquiries.",
-    images: ["/hero.jpeg"],
+    images: ["/hero.webp"],
   },
   robots: {
     index: true,

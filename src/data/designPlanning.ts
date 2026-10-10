@@ -47,7 +47,7 @@ export const designServices: DesignServiceItem[] = [
     subtitle: "Exterior Architectural Form",
     description:
       "Visualize the exterior form, surface finishes, window openings, and architectural character of your residential or commercial project before construction begins.",
-    image: "/images/projects/modern-edge-residence.jpg",
+    image: "/images/projects/modern-edge-residence.webp",
     imageAlt: "3D architectural elevation visual for a modern residential project",
     deliverables: ["Exterior Facade Views", "Material & Color Study", "Daylight Perspective"],
   },

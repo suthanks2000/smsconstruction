@@ -32,27 +32,27 @@ if (typeof window !== "undefined") {
 const heroBackgroundPanels = [
   {
     title: "Interior Design",
-    src: "/images/services/services-interior-design-portrait.jpg",
+    src: "/images/services/services-interior-design-portrait.webp",
     alt: "Bespoke interior design in Nagercoil by SMS Construction",
   },
   {
     title: "Civil Construction",
-    src: "/images/services/services-civil-construction-portrait.jpg",
+    src: "/images/services/services-civil-construction-portrait.webp",
     alt: "RCC civil building construction in Nagercoil by SMS Construction",
   },
   {
     title: "Design & Planning",
-    src: "/images/services/services-design-planning-portrait.jpg",
+    src: "/images/services/services-design-planning-portrait.webp",
     alt: "Architectural planning and structural drafting in Nagercoil",
   },
   {
     title: "Survey & Approvals",
-    src: "/images/services/services-survey-approvals-portrait.jpg",
+    src: "/images/services/services-survey-approvals-portrait.webp",
     alt: "Site survey and land measurements in Nagercoil",
   },
   {
     title: "Fabrication Works",
-    src: "/images/services/services-fabrication-works-portrait.jpg",
+    src: "/images/services/services-fabrication-works-portrait.webp",
     alt: "Custom architectural fabrication and steel works in Nagercoil",
   },
 ];

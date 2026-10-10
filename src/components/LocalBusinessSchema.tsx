@@ -7,7 +7,7 @@ export default function LocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     name: "SMS Construction",
-    image: "https://smsconstruction.in/hero.jpeg",
+    image: "https://smsconstruction.in/hero.webp",
     "@id": "https://smsconstruction.in",
     url: "https://smsconstruction.in",
     telephone: "+919488021183",

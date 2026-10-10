@@ -377,28 +377,53 @@ export const interiorCategories: InteriorCategory[] = [
 ];
 
 /* =========================================================================
-   GROUP B: REAL PROJECT PROOF (AUTHENTIC COMPLETED RESIDENCE)
-   Note: Explicitly separated from the general catalog above.
+   GROUP B: REAL PROJECT PROOF (AUTHENTIC COMPLETED RESIDENCES)
+   Note: Two distinct completed residential projects in Nagercoil.
 ========================================================================= */
-export const realProjectShowcase = {
-  title: "Nagarajan Residence",
-  location: "Nagercoil (Theroor)",
-  scope: "Full Residential Interior",
-  scale: "3,500 Sq. Ft.",
-  description:
-    "A completed residential interior combining tailored teak fluting, ambient false ceilings, integrated media consoles, and custom modular kitchen cabinetry tailored for coastal living.",
-  image:
-    "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room-wide.webp",
-  alt: "Living room interior architecture at Nagarajan Residence in Theroor, Nagercoil",
-  slug: "nagarajan-residence-nagercoil-theroor",
-  href: "/projects/nagarajan-residence-nagercoil-theroor",
-  highlights: [
-    "Master Bedroom Suite & Floor-to-Ceiling Wardrobes",
-    "Fluted Burma Teak TV Wall & Floating Console",
-    "Drywall False Ceiling with Perimeter LED Coves",
-    "Open-Slat Room Partition & Entrance Foyer Styling",
-  ],
-};
+export const realProjectShowcases = [
+  {
+    title: "Nagarajan Residence",
+    location: "Nagercoil (Theroor)",
+    scope: "Full Residential Interior",
+    scale: "3,500 Sq. Ft.",
+    description:
+      "A completed residential interior combining tailored teak fluting, ambient false ceilings, integrated media consoles, and custom modular kitchen cabinetry tailored for coastal living.",
+    image:
+      "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room-wide.webp",
+    alt: "Living room interior architecture at Nagarajan Residence in Theroor, Nagercoil",
+    slug: "nagarajan-residence-nagercoil-theroor",
+    href: "/projects/nagarajan-residence-nagercoil-theroor",
+    ctaText: "Read Full Nagarajan Residence Case Study",
+    highlights: [
+      "Master Bedroom Suite & Floor-to-Ceiling Wardrobes",
+      "Fluted Burma Teak TV Wall & Floating Console",
+      "Drywall False Ceiling with Perimeter LED Coves",
+      "Open-Slat Room Partition & Entrance Foyer Styling",
+    ],
+  },
+  {
+    title: "Godwin Dhas Residence",
+    location: "Nagercoil",
+    scope: "Luxury Bedroom Suite & Architectural Lighting",
+    scale: "3,800 Sq. Ft.",
+    description:
+      "A bespoke residential interior execution featuring a floating platform bed frame with warm LED underglow, custom canopy headboards, and architectural false ceiling cove details.",
+    image:
+      "/images/projects/godwin-dhas-residence/master-suite-floating-bed-hero.webp",
+    alt: "Master suite floating bed and architectural lighting at Godwin Dhas Residence in Nagercoil",
+    slug: "godwin-dhas-residence",
+    href: "/projects/godwin-dhas-residence",
+    ctaText: "Read Full Godwin Dhas Residence Case Study",
+    highlights: [
+      "Floating Platform Bed Frame with Ambient LED Underglow",
+      "Bespoke Canopy Headboard with Linear Wall Recesses",
+      "Full-Height Concealed Wardrobes & Precision Joinery",
+      "Architectural Drywall False Ceiling with Warm Indirect Illumination",
+    ],
+  },
+];
+
+export const realProjectShowcase = realProjectShowcases[0];
 
 /* =========================================================================
    APPROACH / PROCESS STEPS (6 MILESTONES)

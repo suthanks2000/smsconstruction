@@ -340,13 +340,18 @@ export default function ProjectsPage() {
                     </h2>
                   </Link>
 
-                  <div className="font-sans text-[12px] tracking-[0.15em] text-[#B08A52] uppercase font-semibold mb-2">
-                    {project.category}
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="font-sans text-[11px] tracking-[0.16em] text-[#B08A52] uppercase font-bold px-3 py-1 rounded-full bg-[#B08A52]/10 border border-[#B08A52]/25">
+                      {project.category}
+                    </span>
+                    <span className="font-sans text-[11.5px] font-semibold text-[#77736C] px-2.5 py-1 rounded-full bg-white/70 border border-[#E7E0D4]">
+                      {project.area}
+                    </span>
                   </div>
-                  <div className="font-sans text-[13px] text-[#77736C] mb-8">
+                  <div className="font-sans text-[13px] text-[#77736C] font-medium mb-6">
                     {project.location}
                   </div>
-                  <p className="font-sans text-[14px] leading-[1.7] text-[#171614] max-w-sm mb-12">
+                  <p className="font-sans text-[14px] leading-[1.7] text-[#171614] max-w-sm mb-10">
                     {project.description}
                   </p>
 
@@ -389,10 +394,15 @@ export default function ProjectsPage() {
             <h2 className="font-serif font-bold text-[#171614] text-[32px] leading-[1.1] mb-2 uppercase">
               {project.title}
             </h2>
-            <div className="font-sans text-[12px] tracking-[0.1em] uppercase font-semibold text-[#B08A52] mb-1">
-              {project.category}
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <span className="font-sans text-[11px] tracking-[0.12em] uppercase font-bold text-[#B08A52] px-2.5 py-0.5 rounded-full bg-[#B08A52]/10 border border-[#B08A52]/25">
+                {project.category}
+              </span>
+              <span className="font-sans text-[11px] font-semibold text-[#77736C] px-2 py-0.5 rounded-full bg-white/70 border border-[#E7E0D4]">
+                {project.area}
+              </span>
             </div>
-            <div className="font-sans text-[13px] text-[#77736C] mb-8">
+            <div className="font-sans text-[12.5px] text-[#77736C] font-medium mb-6">
               {project.location}
             </div>
 

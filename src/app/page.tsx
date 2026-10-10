@@ -510,6 +510,7 @@ function FeaturedProjects() {
       number: "01",
       title: "Nagarajan Residence",
       location: "Nagercoil (Theroor)",
+      scope: "3,500 Sq. Ft. • Bespoke Teak & Modern Interiors",
       img: "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room.webp",
       href: "/projects/nagarajan-residence-nagercoil-theroor",
     },
@@ -517,6 +518,7 @@ function FeaturedProjects() {
       number: "02",
       title: "Zahir Hussain Residence",
       location: "Nagercoil",
+      scope: "3,200 Sq. Ft. • Turnkey Luxe & Marble Paneling",
       img: "/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-living-room.webp",
       href: "/projects/zahir-hussain-residence-nagercoil",
     },
@@ -524,6 +526,7 @@ function FeaturedProjects() {
       number: "03",
       title: "Selvaprasad Residence",
       location: "Paruthivilai, Nagercoil",
+      scope: "3,400 Sq. Ft. • Double-Height Chandelier Foyer",
       img: "/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp",
       href: "/projects/selvaprasad-residence-paruthivilai",
     },
@@ -531,13 +534,15 @@ function FeaturedProjects() {
       number: "04",
       title: "Dr. Arun Kumar Residence",
       location: "Nagercoil",
+      scope: "4,200 Sq. Ft. • Triple-Height Atrium Courtyard Villa",
       img: "/images/projects/dr-arun-kumar-residence-nagercoil/central-atrium-courtyard-chandelier-hero.webp",
       href: "/projects/dr-arun-kumar-residence-nagercoil",
     },
-        {
+    {
       number: "05",
       title: "Gold Finance Branch",
       location: "Parvathipuram, Nagercoil",
+      scope: "1,800 Sq. Ft. • Commercial Banking Interior",
       img: "/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp",
       href: "/projects/gold-finance-parvathipuram",
     },
@@ -545,6 +550,7 @@ function FeaturedProjects() {
       number: "06",
       title: "Godwin Dhas Residence",
       location: "Chunkankadai, Nagercoil",
+      scope: "3,600 Sq. Ft. • Presidential Suite & Floating Bed",
       img: "/images/projects/godwin-dhas-residence/master-suite-floating-bed-hero.webp",
       href: "/projects/godwin-dhas-residence",
     },
@@ -800,22 +806,19 @@ function FeaturedProjects() {
                     ${isWide ? "left-5 right-5 bottom-5 lg:left-6 lg:right-6 lg:bottom-6" : "left-4 right-4 bottom-4"}
                   `}
                 >
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className={`${isWide ? "text-[8px] tracking-[0.2em]" : "text-[7px] tracking-[0.18em]"} uppercase text-white/70`}>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="text-[10px] tracking-[0.18em] uppercase font-semibold text-[#E6C687]">
                       {project.location}
                     </span>
                   </div>
 
-                  <h3
-                    className={`
-                      text-white
-                      ${isWide ? "text-[clamp(1.8rem,3.2vw,3.2rem)]" : "text-[clamp(1.35rem,2vw,2rem)]"}
-                      leading-[0.92]
-                      tracking-[-0.025em]
-                    `}
-                  >
+                  <h3 className="text-white text-[22px] sm:text-[24px] lg:text-[26px] leading-[1.05] tracking-[-0.025em] mb-1.5">
                     {project.title}
                   </h3>
+
+                  <p className="font-sans text-[12.5px] sm:text-[13px] text-white/80 line-clamp-1">
+                    {project.scope}
+                  </p>
                 </div>
               </Link>
             );
@@ -859,20 +862,24 @@ function FeaturedProjects() {
                   "
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
                 <div className="project-hover-overlay absolute inset-0 bg-black/20 opacity-0" />
 
                 <div className="project-content absolute left-4 right-4 bottom-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[7px] uppercase tracking-[0.18em] text-white/70">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[9.5px] uppercase tracking-[0.16em] font-semibold text-[#E6C687]">
                       {project.location}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-white text-[1.45rem] leading-[0.92] tracking-[-0.025em]">
+                  <h3 className="font-serif text-white text-[19px] leading-[1.05] tracking-[-0.025em] mb-1">
                     {project.title}
                   </h3>
+
+                  <p className="font-sans text-[11.5px] text-white/80 line-clamp-1">
+                    {project.scope}
+                  </p>
                 </div>
               </Link>
             );

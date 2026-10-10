@@ -692,84 +692,172 @@ export default function AboutUsPage() {
         </section>
 
         {/* ===================================================================
-            SECTION 8 — REAL PROJECT FEATURE
-            Nagarajan Residence, Nagercoil – Theroor
+            SECTION 8 — REAL PROJECT FEATURES
+            Zahir Hussain Residence & Selvaprasad Residence (Nagercoil)
         =================================================================== */}
         <section
           aria-labelledby="project-feature-heading"
           className="py-16 sm:py-24 lg:py-28 bg-white border-b border-[#E7E0D4]"
         >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-              <div>
-                <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                  FROM OUR WORK
-                </span>
-                <h2
-                  id="project-feature-heading"
-                  className=" text-[30px] sm:text-[40px] lg:text-[46px] font-semibold text-[#171714] leading-[1.18] tracking-tight mb-2"
-                >
-                  A closer look at a residential project<span className="text-[#B08A52]">.</span>
-                </h2>
-                <p className="font-sans text-[16px] text-[#68645D]">
-                  Nagarajan Residence, Nagercoil – Theroor
-                </p>
-              </div>
-
-              <Link
-                href="/projects/nagarajan-residence-nagercoil-theroor"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FAF8F3] hover:bg-[#171714] text-[#171714] hover:text-white border border-[#E7E0D4] font-sans font-semibold text-[13.5px] transition-all duration-300"
+            <div className="max-w-2xl mb-12 sm:mb-16">
+              <span className="inline-block text-[11.5px] sm:text-[12.5px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                FROM OUR WORK
+              </span>
+              <h2
+                id="project-feature-heading"
+                className="text-[30px] sm:text-[40px] lg:text-[46px] font-semibold text-[#171714] leading-[1.18] tracking-tight mb-3"
               >
-                <span>View Project</span>
-                <ArrowRight size={14} />
-              </Link>
+                A closer look at our residential craftsmanship<span className="text-[#B08A52]">.</span>
+              </h2>
+              <p className="font-sans text-[16px] text-[#68645D]">
+                Direct proof of turnkey architectural execution, interior joinery, and detailing from two completed residences in Nagercoil.
+              </p>
             </div>
 
-            {/* 3 Real Project Photographs */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-              <div className="flex flex-col">
-                <div className="relative rounded-[22px] overflow-hidden border border-[#E7E0D4] bg-[#FAF8F3] aspect-[4/3] mb-3">
-                  <Image
-                    src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room.webp"
-                    alt="Living room interior woodwork and false ceiling at Nagarajan Residence in Nagercoil"
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-center"
-                  />
+            <div className="space-y-16 sm:space-y-20">
+              {/* Project 1: Zahir Hussain Residence */}
+              <div>
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 pb-4 border-b border-[#E7E0D4]/70">
+                  <div>
+                    <span className="inline-block text-[11px] font-sans font-semibold tracking-[0.2em] uppercase text-[#B08A52] mb-1.5">
+                      RESIDENTIAL EXECUTION • NAGERCOIL
+                    </span>
+                    <h3 className="font-serif text-[26px] sm:text-[32px] font-bold text-[#171714]">
+                      Zahir Hussain Residence
+                    </h3>
+                    <p className="font-sans text-[14.5px] text-[#68645D] mt-1">
+                      Turnkey residence featuring custom woodcraft, acoustic panelling, and integrated modular kitchen.
+                    </p>
+                  </div>
+
+                  <Link
+                    href="/projects/zahir-hussain-residence-nagercoil"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FAF8F3] hover:bg-[#171714] text-[#171714] hover:text-white border border-[#E7E0D4] font-sans font-semibold text-[13.5px] transition-all duration-300 shrink-0 self-start md:self-auto"
+                  >
+                    <span>View Zahir Hussain Project</span>
+                    <ArrowRight size={14} />
+                  </Link>
                 </div>
-                <span className="font-sans text-[13px] font-medium text-[#171714]">Living Room Space Planning</span>
-                <span className="font-sans text-[12px] text-[#77736C]">Custom joinery and recessed lighting</span>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                  <div className="flex flex-col">
+                    <div className="relative rounded-[22px] overflow-hidden border border-[#E7E0D4] bg-[#FAF8F3] aspect-[4/3] mb-3">
+                      <Image
+                        src="/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-living-room.webp"
+                        alt="Living room interior design and recessed illumination at Zahir Hussain Residence in Nagercoil"
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-center"
+                      />
+                    </div>
+                    <span className="font-sans text-[13px] font-medium text-[#171714]">Living Room Space Planning</span>
+                    <span className="font-sans text-[12px] text-[#77736C]">Custom joinery and recessed lighting</span>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <div className="relative rounded-[22px] overflow-hidden border border-[#E7E0D4] bg-[#FAF8F3] aspect-[4/3] mb-3">
+                      <Image
+                        src="/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-living-room-alt.webp"
+                        alt="Fluted wood panel wall and console styling at Zahir Hussain Residence in Nagercoil"
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-center"
+                      />
+                    </div>
+                    <span className="font-sans text-[13px] font-medium text-[#171714]">Fluted Wood Wall &amp; Console</span>
+                    <span className="font-sans text-[12px] text-[#77736C]">Bespoke acoustic wall panelling</span>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <div className="relative rounded-[22px] overflow-hidden border border-[#E7E0D4] bg-[#FAF8F3] aspect-[4/3] mb-3">
+                      <Image
+                        src="/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-modular-kitchen.webp"
+                        alt="Modular kitchen cabinetry fit-out at Zahir Hussain Residence in Nagercoil"
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-center"
+                      />
+                    </div>
+                    <span className="font-sans text-[13px] font-medium text-[#171714]">Modular Kitchen Fit-out</span>
+                    <span className="font-sans text-[12px] text-[#77736C]">High-durability storage cabinetry</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex flex-col">
-                <div className="relative rounded-[22px] overflow-hidden border border-[#E7E0D4] bg-[#FAF8F3] aspect-[4/3] mb-3">
-                  <Image
-                    src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-tv-unit.webp"
-                    alt="Fluted wood TV entertainment console detail at Nagarajan Residence in Nagercoil"
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-center"
-                  />
-                </div>
-                <span className="font-sans text-[13px] font-medium text-[#171714]">Fluted TV Media Console</span>
-                <span className="font-sans text-[12px] text-[#77736C]">Bespoke acoustic wall panelling</span>
-              </div>
+              {/* Project 2: Selvaprasad Residence */}
+              <div>
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 pb-4 border-b border-[#E7E0D4]/70">
+                  <div>
+                    <span className="inline-block text-[11px] font-sans font-semibold tracking-[0.2em] uppercase text-[#B08A52] mb-1.5">
+                      RESIDENTIAL EXECUTION • PARUTHIVILAI, NAGERCOIL
+                    </span>
+                    <h3 className="font-serif text-[26px] sm:text-[32px] font-bold text-[#171714]">
+                      Selvaprasad Residence
+                    </h3>
+                    <p className="font-sans text-[14.5px] text-[#68645D] mt-1">
+                      Contemporary residence featuring grand double-height foyer, granite staircase, and tailored wood veneer consoles.
+                    </p>
+                  </div>
 
-              <div className="flex flex-col">
-                <div className="relative rounded-[22px] overflow-hidden border border-[#E7E0D4] bg-[#FAF8F3] aspect-[4/3] mb-3">
-                  <Image
-                    src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-kitchen.webp"
-                    alt="Modular kitchen cabinetry installation at Nagarajan Residence in Nagercoil"
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-center"
-                  />
+                  <Link
+                    href="/projects/selvaprasad-residence-paruthivilai"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FAF8F3] hover:bg-[#171714] text-[#171714] hover:text-white border border-[#E7E0D4] font-sans font-semibold text-[13.5px] transition-all duration-300 shrink-0 self-start md:self-auto"
+                  >
+                    <span>View Selvaprasad Project</span>
+                    <ArrowRight size={14} />
+                  </Link>
                 </div>
-                <span className="font-sans text-[13px] font-medium text-[#171714]">Modular Kitchen Fit-out</span>
-                <span className="font-sans text-[12px] text-[#77736C]">High-durability storage cabinetry</span>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                  <div className="flex flex-col">
+                    <div className="relative rounded-[22px] overflow-hidden border border-[#E7E0D4] bg-[#FAF8F3] aspect-[4/3] mb-3">
+                      <Image
+                        src="/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp"
+                        alt="Living room architectural TV console and cove lighting at Selvaprasad Residence in Paruthivilai"
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-center"
+                      />
+                    </div>
+                    <span className="font-sans text-[13px] font-medium text-[#171714]">Architectural TV Wall Unit</span>
+                    <span className="font-sans text-[12px] text-[#77736C]">Fluted timber backing &amp; cove illumination</span>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <div className="relative rounded-[22px] overflow-hidden border border-[#E7E0D4] bg-[#FAF8F3] aspect-[4/3] mb-3">
+                      <Image
+                        src="/images/projects/selvaprasad-residence-paruthivilai/granite-staircase-glass-railing.webp"
+                        alt="Granite staircase with toughened glass railing at Selvaprasad Residence in Paruthivilai"
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-center"
+                      />
+                    </div>
+                    <span className="font-sans text-[13px] font-medium text-[#171714]">Granite Staircase &amp; Glass</span>
+                    <span className="font-sans text-[12px] text-[#77736C]">Toughened glass balustrade with teak handrail</span>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <div className="relative rounded-[22px] overflow-hidden border border-[#E7E0D4] bg-[#FAF8F3] aspect-[4/3] mb-3">
+                      <Image
+                        src="/images/projects/selvaprasad-residence-paruthivilai/double-height-chandelier-foyer.webp"
+                        alt="Double height foyer chandelier illumination at Selvaprasad Residence in Paruthivilai"
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-center"
+                      />
+                    </div>
+                    <span className="font-sans text-[13px] font-medium text-[#171714]">Double-Height Foyer</span>
+                    <span className="font-sans text-[12px] text-[#77736C]">Grand chandelier &amp; architectural volume</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

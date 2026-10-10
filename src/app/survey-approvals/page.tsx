@@ -689,67 +689,119 @@ export default function SurveyApprovalsPage() {
 
         {/* ===================================================================
             SECTION 10: REAL PROJECT CONTEXT
-            Nagarajan Residence, Nagercoil (Theroor)
+            Two Real Site Studies in Nagercoil
         =================================================================== */}
         <section
           aria-labelledby="case-study-heading"
           className="py-16 sm:py-24 lg:py-28 bg-[#FAF8F3] border-b border-[#E7E0D4]"
         >
           <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-              {/* Project Real Photography */}
-              <div className="lg:col-span-6 relative rounded-[28px] overflow-hidden border border-[#E7E0D4] aspect-[4/3] bg-white shadow-xs">
-                <Image
-                  src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-entrance.webp"
-                  alt="Nagarajan Residence in Theroor, Nagercoil — Site boundary and orientation executed by SMS Construction"
-                  fill
-                  loading="lazy"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#171714]/80 backdrop-blur-md text-white text-[12.5px] font-sans">
-                  <span className="font-semibold block text-[#e3c381]">Nagarajan Residence</span>
-                  <span className="text-white/80">Theroor, Nagercoil • Site Verification &amp; Turnkey Execution</span>
+            <div className="max-w-2xl mb-12 sm:mb-16">
+              <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
+                FROM SITE TO SPACE
+              </span>
+              <h2
+                id="case-study-heading"
+                className="text-[28px] sm:text-[38px] lg:text-[42px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
+              >
+                Where Site Understanding Becomes the Starting Point<span className="text-[#B08A52]">.</span>
+              </h2>
+              <p className="text-[15.5px] sm:text-[16.5px] leading-relaxed text-[#68645D] font-sans">
+                Real case studies demonstrating how precise boundary survey, zoning verification, and structural clearances turn complex sites into buildable architectural reality in Nagercoil.
+              </p>
+            </div>
+
+            <div className="space-y-12 sm:space-y-16">
+              {/* Study 1: Dr. Arun Kumar Residence */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                <div className="lg:col-span-6 relative rounded-[28px] overflow-hidden border border-[#E7E0D4] aspect-[4/3] bg-white shadow-xs">
+                  <Image
+                    src="/images/projects/dr-arun-kumar-residence-nagercoil/central-atrium-courtyard-chandelier-hero.webp"
+                    alt="Dr. Arun Kumar Residence in Nagercoil — Site survey and multi-level structural clearance by SMS Construction"
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#171714]/80 backdrop-blur-md text-white text-[12.5px] font-sans">
+                    <span className="font-semibold block text-[#e3c381]">Dr. Arun Kumar Residence</span>
+                    <span className="text-white/80">Nagercoil • Residential Survey, Boundary Offsets &amp; Multi-Level Approvals</span>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6">
+                  <span className="inline-block text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.2em] uppercase text-[#B08A52] mb-2">
+                    RESIDENTIAL CASE STUDY • 4,200 SQ. FT.
+                  </span>
+                  <h3 className="text-[24px] sm:text-[32px] font-bold text-[#171714] leading-[1.2] tracking-tight mb-4">
+                    Precision Offsets for a Multi-Level Atrium Villa<span className="text-[#B08A52]">.</span>
+                  </h3>
+                  <p className="text-[15.5px] sm:text-[16px] leading-relaxed text-[#68645D] mb-4 font-sans">
+                    At the Dr. Arun Kumar Residence in Nagercoil, precise physical verification of plot boundaries, natural ground elevations, and solar angles was completed before foundation excavation.
+                  </p>
+                  <p className="text-[15px] leading-relaxed text-[#68645D] mb-7 font-sans">
+                    By validating setback limits and structural soil capacities early, the complex architectural design—featuring a triple-height atrium void and cantilevered staircase—secured smooth municipal approvals and flawless construction framing.
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-4">
+                    <Link
+                      href="/projects/dr-arun-kumar-residence-nagercoil"
+                      className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#171714] hover:bg-[#B08A52] text-white font-sans font-semibold text-[13.5px] transition-colors duration-200"
+                    >
+                      <span>View Dr. Arun Kumar Project</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
                 </div>
               </div>
 
-              {/* Project Editorial Context */}
-              <div className="lg:col-span-6">
-                <span className="inline-block text-[12px] sm:text-[13px] font-sans font-semibold tracking-[0.24em] uppercase text-[#B08A52] mb-3">
-                  FROM SITE TO SPACE
-                </span>
-                <h2
-                  id="case-study-heading"
-                  className="text-[28px] sm:text-[38px] lg:text-[42px] font-bold text-[#171714] leading-[1.16] tracking-tight mb-4"
-                >
-                  Where Site Understanding Becomes the Starting Point<span className="text-[#B08A52]">.</span>
-                </h2>
-                <p className="text-[15.5px] sm:text-[16.5px] leading-relaxed text-[#68645D] mb-5 font-sans">
-                  At the Nagarajan Residence project in Theroor (Nagercoil), accurate site
-                  understanding formed the very first milestone. Physical verification of plot
-                  boundaries, solar angles, and road access helped establish compound setbacks and
-                  footing alignments prior to foundation excavation.
-                </p>
-                <p className="text-[15px] leading-relaxed text-[#68645D] mb-7 font-sans">
-                  By confirming boundary dimensions and ground levels on-site early, the architectural
-                  drawings translated seamlessly into structural framing without layout conflicts.
-                </p>
+              {/* Study 2: Gold Finance Branch */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center pt-8 border-t border-[#E7E0D4]/70">
+                <div className="lg:col-span-6 lg:order-2 relative rounded-[28px] overflow-hidden border border-[#E7E0D4] aspect-[4/3] bg-white shadow-xs">
+                  <Image
+                    src="/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp"
+                    alt="Gold Finance Branch in Parvathipuram, Nagercoil — Commercial approvals and structural safety by SMS Construction"
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#171714]/80 backdrop-blur-md text-white text-[12.5px] font-sans">
+                    <span className="font-semibold block text-[#e3c381]">Gold Finance Parvathipuram</span>
+                    <span className="text-white/80">Parvathipuram, Nagercoil • Commercial Zoning &amp; Structural Load Approvals</span>
+                  </div>
+                </div>
 
-                <div className="flex flex-wrap items-center gap-4">
-                  <Link
-                    href="/projects/nagarajan-residence-nagercoil-theroor"
-                    className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#171714] hover:bg-[#B08A52] text-white font-sans font-semibold text-[13.5px] transition-colors duration-200"
-                  >
-                    <span>View Nagarajan Residence Project</span>
-                    <ArrowRight size={14} />
-                  </Link>
+                <div className="lg:col-span-6 lg:order-1">
+                  <span className="inline-block text-[11px] sm:text-[12px] font-sans font-semibold tracking-[0.2em] uppercase text-[#B08A52] mb-2">
+                    COMMERCIAL CASE STUDY • 2,400 SQ. FT.
+                  </span>
+                  <h3 className="text-[24px] sm:text-[32px] font-bold text-[#171714] leading-[1.2] tracking-tight mb-4">
+                    Commercial Zoning, Structural Load &amp; Safety Compliance<span className="text-[#B08A52]">.</span>
+                  </h3>
+                  <p className="text-[15.5px] sm:text-[16px] leading-relaxed text-[#68645D] mb-4 font-sans">
+                    Transforming commercial floor space into a secure banking and gold loan branch in Parvathipuram required thorough structural load validation for high-security reinforced vault rooms.
+                  </p>
+                  <p className="text-[15px] leading-relaxed text-[#68645D] mb-7 font-sans">
+                    SMS Construction conducted complete site clearance verification, partition stability assessments, and compliance documentation to ensure all banking safety standards and local commercial regulations were strictly met.
+                  </p>
 
-                  <Link
-                    href="/projects"
-                    className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full border border-[#E7E0D4] bg-white hover:bg-[#FAF8F3] text-[#171714] font-sans font-medium text-[13.5px] transition-colors"
-                  >
-                    <span>Browse All Projects</span>
-                  </Link>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <Link
+                      href="/projects/gold-finance-parvathipuram"
+                      className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#171714] hover:bg-[#B08A52] text-white font-sans font-semibold text-[13.5px] transition-colors duration-200"
+                    >
+                      <span>View Gold Finance Project</span>
+                      <ArrowRight size={14} />
+                    </Link>
+
+                    <Link
+                      href="/projects"
+                      className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full border border-[#E7E0D4] bg-white hover:bg-[#FAF8F3] text-[#171714] font-sans font-medium text-[13.5px] transition-colors"
+                    >
+                      <span>Browse All Projects</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

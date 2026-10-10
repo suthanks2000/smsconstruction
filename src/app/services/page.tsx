@@ -585,73 +585,146 @@ export default function ServicesPage() {
               </Link>
             </div>
 
-            {/* Nagarajan Residence Feature Card */}
-            <div className="bg-white rounded-[32px] overflow-hidden border border-[#E7E0D4] shadow-sm">
-              <div className="grid grid-cols-1 lg:grid-cols-12">
-                {/* Visual Imagery Side (Verified Real Photography) */}
-                <div className="lg:col-span-7 relative min-h-[360px] sm:min-h-[480px] bg-[#171714]">
-                  <Image
-                    src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room.webp"
-                    alt="Living room interior design and woodwork at Nagarajan Residence in Theroor, Nagercoil by SMS Construction"
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-[#171714]/80 backdrop-blur-sm text-white text-[12px] font-medium tracking-wide">
-                    Real Project Photography • Theroor, Nagercoil
+            <div className="space-y-10 sm:space-y-14">
+              {/* Card 1: Nagarajan Residence */}
+              <div className="bg-white rounded-[32px] overflow-hidden border border-[#E7E0D4] shadow-sm">
+                <div className="grid grid-cols-1 lg:grid-cols-12">
+                  {/* Visual Imagery Side (Verified Real Photography) */}
+                  <div className="lg:col-span-7 relative min-h-[360px] sm:min-h-[480px] bg-[#171714]">
+                    <Image
+                      src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room.webp"
+                      alt="Living room interior design and woodwork at Nagarajan Residence in Theroor, Nagercoil by SMS Construction"
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 1024px) 100vw, 58vw"
+                      className="object-cover object-center"
+                    />
+                    <div className="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-[#171714]/80 backdrop-blur-sm text-white text-[12px] font-medium tracking-wide">
+                      Real Project Photography • Theroor, Nagercoil
+                    </div>
+                  </div>
+
+                  {/* Editorial Case Summary */}
+                  <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between gap-2 text-[12.5px] text-[#B08A52] font-mono font-semibold uppercase tracking-wider mb-2">
+                        <span>Nagercoil (Theroor)</span>
+                        <span>3,500 Sq. Ft.</span>
+                      </div>
+
+                      <h3 className="font-serif text-[28px] sm:text-[34px] font-bold text-[#171714] mb-3">
+                        Nagarajan Residence
+                      </h3>
+
+                      <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed font-sans mb-6">
+                        A residential interior execution integrating bespoke teak veneers, custom fluted TV console joinery, false ceiling drywall with warm indirect illumination, and modular kitchen cabinetry.
+                      </p>
+
+                      {/* Integrated Scopes Supported by Actual Project Data */}
+                      <div className="space-y-2.5 mb-8">
+                        <span className="text-[11.5px] font-mono font-semibold uppercase tracking-wider text-[#171714] block mb-2">
+                          Coordinated Scopes in this Build:
+                        </span>
+                        <ul className="space-y-2 text-[14px] text-[#68645D] font-sans">
+                          <li className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
+                            <span>Custom Fluted Wood TV Media Console</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
+                            <span>Architectural False Ceilings with Recessed Lighting</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
+                            <span>Modular Kitchen Joinery &amp; Master Bedroom Storage</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
+                            <span>Interior Space Planning &amp; 3D Visual Drafting</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <Link
+                      href="/projects/nagarajan-residence-nagercoil-theroor"
+                      className="inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-full bg-[#FAF8F3] hover:bg-[#171714] text-[#171714] hover:text-white border border-[#E7E0D4] font-sans font-semibold text-[14px] transition-all duration-300"
+                    >
+                      <span>View Project</span>
+                      <ArrowRight size={15} />
+                    </Link>
                   </div>
                 </div>
+              </div>
 
-                {/* Editorial Case Summary */}
-                <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between gap-2 text-[12.5px] text-[#B08A52] font-mono font-semibold uppercase tracking-wider mb-2">
-                      <span>Nagercoil (Theroor)</span>
-                      <span>3,500 Sq. Ft.</span>
-                    </div>
-
-                    <h3 className="font-serif text-[28px] sm:text-[34px] font-bold text-[#171714] mb-3">
-                      Nagarajan Residence
-                    </h3>
-
-                    <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed font-sans mb-6">
-                      A residential interior execution integrating bespoke teak veneers, custom fluted TV console joinery, false ceiling drywall with warm indirect illumination, and modular kitchen cabinetry.
-                    </p>
-
-                    {/* Integrated Scopes Supported by Actual Project Data */}
-                    <div className="space-y-2.5 mb-8">
-                      <span className="text-[11.5px] font-mono font-semibold uppercase tracking-wider text-[#171714] block mb-2">
-                        Coordinated Scopes in this Build:
-                      </span>
-                      <ul className="space-y-2 text-[14px] text-[#68645D] font-sans">
-                        <li className="flex items-center gap-2.5">
-                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
-                          <span>Custom Fluted Wood TV Media Console</span>
-                        </li>
-                        <li className="flex items-center gap-2.5">
-                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
-                          <span>Architectural False Ceilings with Recessed Lighting</span>
-                        </li>
-                        <li className="flex items-center gap-2.5">
-                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
-                          <span>Modular Kitchen Joinery &amp; Master Bedroom Storage</span>
-                        </li>
-                        <li className="flex items-center gap-2.5">
-                          <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
-                          <span>Interior Space Planning &amp; 3D Visual Drafting</span>
-                        </li>
-                      </ul>
+              {/* Card 2: Dr. Arun Kumar Residence */}
+              <div className="bg-white rounded-[32px] overflow-hidden border border-[#E7E0D4] shadow-sm">
+                <div className="grid grid-cols-1 lg:grid-cols-12">
+                  {/* Visual Imagery Side (Verified Real Photography) */}
+                  <div className="lg:col-span-7 relative min-h-[360px] sm:min-h-[480px] bg-[#171714]">
+                    <Image
+                      src="/images/projects/dr-arun-kumar-residence-nagercoil/central-atrium-courtyard-chandelier-hero.webp"
+                      alt="Triple-height central atrium courtyard with floating glass staircase at Dr. Arun Kumar Residence in Nagercoil"
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 1024px) 100vw, 58vw"
+                      className="object-cover object-center"
+                    />
+                    <div className="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-[#171714]/80 backdrop-blur-sm text-white text-[12px] font-medium tracking-wide">
+                      Real Project Photography • Nagercoil
                     </div>
                   </div>
 
-                  <Link
-                    href="/projects/nagarajan-residence-nagercoil-theroor"
-                    className="inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-full bg-[#FAF8F3] hover:bg-[#171714] text-[#171714] hover:text-white border border-[#E7E0D4] font-sans font-semibold text-[14px] transition-all duration-300"
-                  >
-                    <span>View Project</span>
-                    <ArrowRight size={15} />
-                  </Link>
+                  {/* Editorial Case Summary */}
+                  <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between gap-2 text-[12.5px] text-[#B08A52] font-mono font-semibold uppercase tracking-wider mb-2">
+                        <span>Nagercoil, Tamil Nadu</span>
+                        <span>4,200 Sq. Ft.</span>
+                      </div>
+
+                      <h3 className="font-serif text-[28px] sm:text-[34px] font-bold text-[#171714] mb-3">
+                        Dr. Arun Kumar Residence
+                      </h3>
+
+                      <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed font-sans mb-6">
+                        An architectural masterpiece featuring a triple-height atrium courtyard, glass-enclosed indoor garden, floating staircase, bespoke kitchen island, and luxury joinery.
+                      </p>
+
+                      {/* Integrated Scopes Supported by Actual Project Data */}
+                      <div className="space-y-2.5 mb-8">
+                        <span className="text-[11.5px] font-mono font-semibold uppercase tracking-wider text-[#171714] block mb-2">
+                          Coordinated Scopes in this Build:
+                        </span>
+                        <ul className="space-y-2 text-[14px] text-[#68645D] font-sans">
+                          <li className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
+                            <span>Triple-Height Central Atrium &amp; Skylight Coffer</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
+                            <span>Floating Glass Staircase &amp; SS Standoff Railings</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
+                            <span>Glass-Enclosed Biophilic Courtyard Garden</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
+                            <span>Modular Waterfall Island &amp; Quartz Countertops</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <Link
+                      href="/projects/dr-arun-kumar-residence-nagercoil"
+                      className="inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-full bg-[#FAF8F3] hover:bg-[#171714] text-[#171714] hover:text-white border border-[#E7E0D4] font-sans font-semibold text-[14px] transition-all duration-300"
+                    >
+                      <span>View Project</span>
+                      <ArrowRight size={15} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

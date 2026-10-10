@@ -15,14 +15,17 @@ export default function Footer() {
   ];
 
   const portfolio = [
-    { name: "All Projects", href: "/projects" },
+    { name: "View All Projects", href: "/projects" },
+    { name: "Dr. Arun Kumar Residence", href: "/projects/dr-arun-kumar-residence-nagercoil" },
+    { name: "Selvaprasad Residence", href: "/projects/selvaprasad-residence-paruthivilai" },
+    { name: "Zahir Hussain Residence", href: "/projects/zahir-hussain-residence-nagercoil" },
     { name: "Nagarajan Residence", href: "/projects/nagarajan-residence-nagercoil-theroor" },
+    { name: "Gold Finance Branch", href: "/projects/gold-finance-parvathipuram" },
   ];
 
   const quickLinks = [
     { name: "About Us", href: "/about-us" },
     { name: "Blog", href: "/blog" },
-    { name: "Our Process", href: "/process" },
     { name: "Contact", href: "/contact" },
   ];
 

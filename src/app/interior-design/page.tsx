@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import {
   interiorCategories,
-  realProjectShowcase,
+  realProjectShowcases,
   approachSteps,
   interiorFaqs,
 } from "@/data/interiorDesign";
@@ -841,64 +841,71 @@ export default function InteriorDesignPage() {
               </Link>
             </div>
 
-            {/* Featured Project Showcase Card */}
-            <div className="bg-white rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#E7E0D4] shadow-sm w-full max-w-full">
-              <div className="grid grid-cols-1 lg:grid-cols-12">
-                {/* Media Side */}
-                <div className="lg:col-span-7 relative min-h-[280px] sm:min-h-[460px] bg-[#171614] w-full">
-                  <Image
-                    src={realProjectShowcase.image}
-                    alt={realProjectShowcase.alt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                    className="object-cover object-center"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 px-3 py-1.5 rounded-full bg-[#171614]/85 backdrop-blur-sm text-white text-[11px] sm:text-[12px] font-medium tracking-wide">
-                    Real Project Proof • {realProjectShowcase.location}
-                  </div>
-                </div>
-
-                {/* Editorial Information Side */}
-                <div className="lg:col-span-5 p-5 sm:p-8 lg:p-12 flex flex-col justify-between w-full">
-                  <div>
-                    <div className="flex items-center justify-between gap-2 text-[12px] sm:text-[13px] text-[#B08A52] font-semibold tracking-wider uppercase mb-2">
-                      <span>{realProjectShowcase.location}</span>
-                      <span>{realProjectShowcase.scale}</span>
+            {/* Featured Projects Showcase Cards */}
+            <div className="space-y-10 sm:space-y-14 w-full">
+              {realProjectShowcases.map((project) => (
+                <div
+                  key={project.slug}
+                  className="bg-white rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#E7E0D4] shadow-sm w-full max-w-full"
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-12">
+                    {/* Media Side */}
+                    <div className="lg:col-span-7 relative min-h-[280px] sm:min-h-[460px] bg-[#171614] w-full">
+                      <Image
+                        src={project.image}
+                        alt={project.alt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 58vw"
+                        className="object-cover object-center"
+                        loading="lazy"
+                      />
+                      <div className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 px-3 py-1.5 rounded-full bg-[#171614]/85 backdrop-blur-sm text-white text-[11px] sm:text-[12px] font-medium tracking-wide">
+                        Real Project Proof • {project.location}
+                      </div>
                     </div>
 
-                    <h3 className="text-[22px] sm:text-[30px] font-bold text-[#171614] tracking-tight mb-3 sm:mb-4">
-                      {realProjectShowcase.title}
-                    </h3>
+                    {/* Editorial Information Side */}
+                    <div className="lg:col-span-5 p-5 sm:p-8 lg:p-12 flex flex-col justify-between w-full">
+                      <div>
+                        <div className="flex items-center justify-between gap-2 text-[12px] sm:text-[13px] text-[#B08A52] font-semibold tracking-wider uppercase mb-2">
+                          <span>{project.location}</span>
+                          <span>{project.scale}</span>
+                        </div>
 
-                    <p className="text-[14px] sm:text-[16px] text-[#68645D] leading-relaxed mb-6 font-sans">
-                      {realProjectShowcase.description}
-                    </p>
+                        <h3 className="text-[22px] sm:text-[30px] font-bold text-[#171614] tracking-tight mb-3 sm:mb-4">
+                          {project.title}
+                        </h3>
 
-                    <div className="space-y-2.5 mb-8">
-                      <p className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#171614]">
-                        Executed Interior Features:
-                      </p>
-                      <ul className="space-y-2 text-[13px] sm:text-[14px] text-[#68645D]">
-                        {realProjectShowcase.highlights.map((item) => (
-                          <li key={item} className="flex items-center gap-2">
-                            <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                        <p className="text-[14px] sm:text-[16px] text-[#68645D] leading-relaxed mb-6 font-sans">
+                          {project.description}
+                        </p>
+
+                        <div className="space-y-2.5 mb-8">
+                          <p className="text-[12px] font-sans font-semibold uppercase tracking-wider text-[#171614]">
+                            Executed Interior Features:
+                          </p>
+                          <ul className="space-y-2 text-[13px] sm:text-[14px] text-[#68645D]">
+                            {project.highlights.map((item) => (
+                              <li key={item} className="flex items-center gap-2">
+                                <CheckCircle2 size={16} className="text-[#B08A52] shrink-0" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      <Link
+                        href={project.href}
+                        className="inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-full bg-[#FAF8F3] hover:bg-[#171614] text-[#171614] hover:text-white border border-[#E7E0D4] font-sans font-semibold text-[13px] sm:text-[14px] transition-all duration-300 shadow-sm text-center"
+                      >
+                        <span>{project.ctaText}</span>
+                        <ArrowRight size={16} className="shrink-0" />
+                      </Link>
                     </div>
                   </div>
-
-                  <Link
-                    href={realProjectShowcase.href}
-                    className="inline-flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-full bg-[#FAF8F3] hover:bg-[#171614] text-[#171614] hover:text-white border border-[#E7E0D4] font-sans font-semibold text-[13px] sm:text-[14px] transition-all duration-300 shadow-sm text-center"
-                  >
-                    <span>Read Full Nagarajan Residence Case Study</span>
-                    <ArrowRight size={16} className="shrink-0" />
-                  </Link>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>

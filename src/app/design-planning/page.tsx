@@ -589,78 +589,156 @@ export default function DesignPlanningPage() {
               </Link>
             </div>
 
-            {/* Showcase Card in Brand Theme */}
-            <div className="bg-[#FAF8F3] rounded-[24px] overflow-hidden border border-[#E7E0D4] shadow-xs">
-              <div className="grid grid-cols-1 lg:grid-cols-12">
-                <div className="lg:col-span-7 relative min-h-[300px] sm:min-h-[420px] bg-[#171714]">
-                  <Image
-                    src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room-wide.webp"
-                    alt="Planned living room architecture and false ceiling layout at Nagarajan Residence in Nagercoil"
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-[#171714]/90 backdrop-blur-md text-white text-[11px] font-mono tracking-wider">
-                    Planned &amp; Executed Outcome
+            <div className="space-y-10 sm:space-y-12">
+              {/* Project 1: Dr. Arun Kumar Residence */}
+              <div className="bg-[#FAF8F3] rounded-[24px] overflow-hidden border border-[#E7E0D4] shadow-xs">
+                <div className="grid grid-cols-1 lg:grid-cols-12">
+                  <div className="lg:col-span-7 relative min-h-[300px] sm:min-h-[420px] bg-[#171714]">
+                    <Image
+                      src="/images/projects/dr-arun-kumar-residence-nagercoil/central-atrium-courtyard-chandelier-hero.webp"
+                      alt="Planned central atrium architecture and floating staircase layout at Dr. Arun Kumar Residence in Nagercoil"
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 1024px) 100vw, 58vw"
+                      className="object-cover object-center"
+                    />
+                    <div className="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-[#171714]/90 backdrop-blur-md text-white text-[11px] font-mono tracking-wider">
+                      Planned &amp; Executed Outcome
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between gap-2 text-[11.5px] text-[#B08A52] font-mono font-semibold tracking-wider uppercase mb-2">
+                        <span>Nagercoil, Tamil Nadu</span>
+                        <span>4,200 Sq. Ft.</span>
+                      </div>
+
+                      <h3 className="text-[24px] sm:text-[28px] lg:text-[30px] font-bold text-[#171714] mb-3 leading-tight">
+                        Dr. Arun Kumar Residence
+                      </h3>
+
+                      <p className="text-[14px] sm:text-[14.5px] text-[#68645D] leading-relaxed mb-6 font-sans">
+                        The design and planning process focused on creating a triple-height central light atrium, structural coffer engineering for cascading chandeliers, and seamless biophilic integration of an indoor pebble courtyard garden.
+                      </p>
+
+                      <div className="space-y-2.5 mb-8">
+                        <p className="text-[11.5px] font-mono font-bold uppercase tracking-wider text-[#171714]">
+                          Key Design &amp; Planning Coordination:
+                        </p>
+                        <ul className="space-y-2.5 text-[13.5px] text-[#68645D] font-sans">
+                          <li className="flex items-center gap-2.5">
+                            <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
+                              <CheckCircle2 size={12} className="text-[#B08A52]" />
+                            </span>
+                            <span>Triple-Height Atrium Void &amp; Skylight Coffer Mapping</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
+                              <CheckCircle2 size={12} className="text-[#B08A52]" />
+                            </span>
+                            <span>Floating Glass Staircase Structural Steel Detailing</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
+                              <CheckCircle2 size={12} className="text-[#B08A52]" />
+                            </span>
+                            <span>Glass-Enclosed Biophilic Courtyard Drainage Routing</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
+                              <CheckCircle2 size={12} className="text-[#B08A52]" />
+                            </span>
+                            <span>Island Kitchen Waterfall Quartz &amp; MEP Coordination</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <Link
+                      href="/projects/dr-arun-kumar-residence-nagercoil"
+                      className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-full bg-[#171714] hover:bg-[#B08A52] text-white font-sans font-semibold text-[13.5px] transition-colors duration-200 shadow-xs"
+                    >
+                      <span>View Project Case Study</span>
+                      <ArrowRight size={14} />
+                    </Link>
                   </div>
                 </div>
+              </div>
 
-                <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between gap-2 text-[11.5px] text-[#B08A52] font-mono font-semibold tracking-wider uppercase mb-2">
-                      <span>Nagercoil (Theroor)</span>
-                      <span>3,500 Sq. Ft.</span>
-                    </div>
-
-                    <h3 className="text-[24px] sm:text-[28px] lg:text-[30px] font-bold text-[#171714] mb-3 leading-tight">
-                      Nagarajan Residence
-                    </h3>
-
-                    <p className="text-[14px] sm:text-[14.5px] text-[#68645D] leading-relaxed mb-6 font-sans">
-                      The planning phase for this residence focused on resolving continuous sightlines from the entrance to the main living area, integrating fluted partition screens, and aligning perimeter ceiling drops with the civil structural slab.
-                    </p>
-
-                    <div className="space-y-2.5 mb-8">
-                      <p className="text-[11.5px] font-mono font-bold uppercase tracking-wider text-[#171714]">
-                        Key Design &amp; Planning Coordination:
-                      </p>
-                      <ul className="space-y-2.5 text-[13.5px] text-[#68645D] font-sans">
-                        <li className="flex items-center gap-2.5">
-                          <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
-                            <CheckCircle2 size={12} className="text-[#B08A52]" />
-                          </span>
-                          <span>Foyer-to-Lounge Sightline &amp; Partition Mapping</span>
-                        </li>
-                        <li className="flex items-center gap-2.5">
-                          <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
-                            <CheckCircle2 size={12} className="text-[#B08A52]" />
-                          </span>
-                          <span>TV Media Wall Joinery &amp; Cable Route Schematics</span>
-                        </li>
-                        <li className="flex items-center gap-2.5">
-                          <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
-                            <CheckCircle2 size={12} className="text-[#B08A52]" />
-                          </span>
-                          <span>Drywall False Ceiling Lighting &amp; Level Drops</span>
-                        </li>
-                        <li className="flex items-center gap-2.5">
-                          <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
-                            <CheckCircle2 size={12} className="text-[#B08A52]" />
-                          </span>
-                          <span>Ergonomic Kitchen Workflow &amp; Plumbing Alignment</span>
-                        </li>
-                      </ul>
+              {/* Project 2: Godwin Dhas Residence */}
+              <div className="bg-[#FAF8F3] rounded-[24px] overflow-hidden border border-[#E7E0D4] shadow-xs">
+                <div className="grid grid-cols-1 lg:grid-cols-12">
+                  <div className="lg:col-span-7 relative min-h-[300px] sm:min-h-[420px] bg-[#171714]">
+                    <Image
+                      src="/images/projects/godwin-dhas-residence/master-suite-floating-bed-hero.webp"
+                      alt="Planned presidential master suite with illuminated floating bed at Godwin Dhas Residence in Nagercoil"
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 1024px) 100vw, 58vw"
+                      className="object-cover object-center"
+                    />
+                    <div className="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-[#171714]/90 backdrop-blur-md text-white text-[11px] font-mono tracking-wider">
+                      Planned &amp; Executed Outcome
                     </div>
                   </div>
 
-                  <Link
-                    href="/projects/nagarajan-residence-nagercoil-theroor"
-                    className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-full bg-[#171714] hover:bg-[#B08A52] text-white font-sans font-semibold text-[13.5px] transition-colors duration-200 shadow-xs"
-                  >
-                    <span>View Project Case Study</span>
-                    <ArrowRight size={14} />
-                  </Link>
+                  <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between gap-2 text-[11.5px] text-[#B08A52] font-mono font-semibold tracking-wider uppercase mb-2">
+                        <span>Chunkankadai, Nagercoil</span>
+                        <span>3,600 Sq. Ft.</span>
+                      </div>
+
+                      <h3 className="text-[24px] sm:text-[28px] lg:text-[30px] font-bold text-[#171714] mb-3 leading-tight">
+                        Godwin Dhas Residence
+                      </h3>
+
+                      <p className="text-[14px] sm:text-[14.5px] text-[#68645D] leading-relaxed mb-6 font-sans">
+                        Architectural planning incorporated a cantilevered floating velvet platform bed, monolithic illuminated canopy channel detailing, and laser-precise CNC cedar partition dividers defining open living spaces.
+                      </p>
+
+                      <div className="space-y-2.5 mb-8">
+                        <p className="text-[11.5px] font-mono font-bold uppercase tracking-wider text-[#171714]">
+                          Key Design &amp; Planning Coordination:
+                        </p>
+                        <ul className="space-y-2.5 text-[13.5px] text-[#68645D] font-sans">
+                          <li className="flex items-center gap-2.5">
+                            <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
+                              <CheckCircle2 size={12} className="text-[#B08A52]" />
+                            </span>
+                            <span>Canopy Portal Linear Lighting &amp; Headboard Schematics</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
+                              <CheckCircle2 size={12} className="text-[#B08A52]" />
+                            </span>
+                            <span>Cantilever Steel Chassis Structural Floor Anchoring</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
+                              <CheckCircle2 size={12} className="text-[#B08A52]" />
+                            </span>
+                            <span>Red Cedar &amp; CNC Jali Architectural Divider Drafting</span>
+                          </li>
+                          <li className="flex items-center gap-2.5">
+                            <span className="h-5 w-5 rounded-full border border-[#171714] bg-white flex items-center justify-center shrink-0">
+                              <CheckCircle2 size={12} className="text-[#B08A52]" />
+                            </span>
+                            <span>High-Gloss Acrylic Kitchen with Dining Pass-Through Bar</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <Link
+                      href="/projects/godwin-dhas-residence"
+                      className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-full bg-[#171714] hover:bg-[#B08A52] text-white font-sans font-semibold text-[13.5px] transition-colors duration-200 shadow-xs"
+                    >
+                      <span>View Project Case Study</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

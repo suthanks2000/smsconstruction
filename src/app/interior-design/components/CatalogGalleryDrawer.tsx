@@ -244,7 +244,7 @@ export default function CatalogGalleryDrawer({
                 <div
                   key={idx}
                   onClick={() => setLightboxIndex(idx)}
-                  className={`relative group rounded-[16px] sm:rounded-[20px] overflow-hidden bg-[#171614] border border-[#E7E0D4] shadow-xs hover:shadow-xl hover:border-[#B08A52] transition-all duration-300 cursor-pointer transform-gpu active:scale-[0.98] ${
+                  className={`relative group rounded-[16px] sm:rounded-[20px] overflow-hidden bg-[#EAE4D9] border border-[#E7E0D4] shadow-xs hover:shadow-xl hover:border-[#B08A52] transition-all duration-300 cursor-pointer transform-gpu active:scale-[0.98] ${
                     isFeatured
                       ? "col-span-2 aspect-[16/10] sm:aspect-[16/10] lg:col-span-1 lg:aspect-[4/3]"
                       : "col-span-1 aspect-[3/4] sm:aspect-[4/3]"

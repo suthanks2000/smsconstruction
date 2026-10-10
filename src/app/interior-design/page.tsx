@@ -171,7 +171,7 @@ export default function InteriorDesignPage() {
         <section
           data-header-theme="dark"
           aria-label="Interior Design Hero"
-          className="relative w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-between pt-20 sm:pt-22 lg:pt-22 pb-0 bg-[#171714] text-white overflow-hidden border-b border-[#2A2925]"
+          className="relative w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-between pt-20 sm:pt-22 lg:pt-22 pb-0 bg-[#24221E] text-white overflow-hidden border-b border-[#2A2925]"
         >
           {/* Full-Bleed Realistic Interior Background Image */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -181,6 +181,7 @@ export default function InteriorDesignPage() {
               alt="Contemporary luxury residential interior design in Nagercoil by SMS Construction"
               fill
               priority
+              fetchPriority="high"
               sizes="(max-width: 768px) 100vw, 1px"
               className="object-cover object-center md:hidden"
             />
@@ -190,6 +191,7 @@ export default function InteriorDesignPage() {
               alt="Contemporary luxury residential interior design in Nagercoil by SMS Construction"
               fill
               priority
+              fetchPriority="high"
               sizes="(min-width: 769px) 100vw, 1px"
               className="hidden md:block object-cover object-center lg:object-[center_40%]"
             />
@@ -332,7 +334,7 @@ export default function InteriorDesignPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center mb-8">
                   {/* Left: Large Primary Feature (6 cols) */}
                   <div className="lg:col-span-6">
-                    <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
+                    <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-[#EAE4D9] shadow-md group">
                       <Image
                         src={bedroom.primaryImage.src}
                         alt={bedroom.primaryImage.alt}
@@ -352,7 +354,7 @@ export default function InteriorDesignPage() {
                     {bedroom.supportingImages.map((img, idx) => (
                       <div
                         key={idx}
-                        className="relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group"
+                        className="relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#EAE4D9] border border-[#E7E0D4] group"
                       >
                         <Image
                           src={img.src}
@@ -413,7 +415,7 @@ export default function InteriorDesignPage() {
                     {kitchen.supportingImages.map((img, idx) => (
                       <div
                         key={idx}
-                        className="relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group"
+                        className="relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#EAE4D9] border border-[#E7E0D4] group"
                       >
                         <Image
                           src={img.src}
@@ -429,7 +431,7 @@ export default function InteriorDesignPage() {
 
                   {/* Right: Large Primary Feature (6 cols) */}
                   <div className="lg:col-span-6 order-1 lg:order-2">
-                    <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
+                    <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-[#EAE4D9] shadow-md group">
                       <Image
                         src={kitchen.primaryImage.src}
                         alt={kitchen.primaryImage.alt}
@@ -488,7 +490,7 @@ export default function InteriorDesignPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch mb-8">
                   {/* Left: Large Primary Feature (7 cols) with generous height & object-top so the entire ceiling is fully visible */}
                   <div className="lg:col-span-7">
-                    <div className="relative h-full min-h-[380px] sm:min-h-[480px] lg:min-h-[540px] aspect-[4/3] sm:aspect-[16/11] lg:aspect-auto rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
+                    <div className="relative h-full min-h-[380px] sm:min-h-[480px] lg:min-h-[540px] aspect-[4/3] sm:aspect-[16/11] lg:aspect-auto rounded-[24px] overflow-hidden bg-[#EAE4D9] shadow-md group">
                       <Image
                         src={falseCeiling.primaryImage.src}
                         alt={falseCeiling.primaryImage.alt}
@@ -508,7 +510,7 @@ export default function InteriorDesignPage() {
                     {falseCeiling.supportingImages.map((img, idx) => (
                       <div
                         key={idx}
-                        className="relative aspect-[3/4] sm:aspect-[4/3] lg:aspect-[4/5] rounded-[18px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group shadow-xs"
+                        className="relative aspect-[3/4] sm:aspect-[4/3] lg:aspect-[4/5] rounded-[18px] overflow-hidden bg-[#EAE4D9] border border-[#E7E0D4] group shadow-xs"
                       >
                         <Image
                           src={img.src}
@@ -567,7 +569,7 @@ export default function InteriorDesignPage() {
                   {/* Top Row: Grand Feature (8 cols) + 2 Stacked Details (4 cols) */}
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
                     {/* Grand Feature (8 cols) */}
-                    <div className="lg:col-span-8 relative aspect-[16/10] rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
+                    <div className="lg:col-span-8 relative aspect-[16/10] rounded-[24px] overflow-hidden bg-[#EAE4D9] shadow-md group">
                       <Image
                         src={tvUnit.primaryImage.src}
                         alt={tvUnit.primaryImage.alt}
@@ -586,7 +588,7 @@ export default function InteriorDesignPage() {
                       {tvUnit.supportingImages.slice(0, 2).map((img, idx) => (
                         <div
                           key={idx}
-                          className="relative aspect-[16/10] rounded-[20px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group shadow-sm"
+                          className="relative aspect-[16/10] rounded-[20px] overflow-hidden bg-[#EAE4D9] border border-[#E7E0D4] group shadow-sm"
                         >
                           <Image
                             src={img.src}
@@ -606,7 +608,7 @@ export default function InteriorDesignPage() {
                     {tvUnit.supportingImages.slice(2, 5).map((img, idx) => (
                       <div
                         key={idx}
-                        className={`relative aspect-[4/3] sm:aspect-[16/10] rounded-[20px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group shadow-sm ${idx === 2 ? "col-span-2 sm:col-span-1" : ""
+                        className={`relative aspect-[4/3] sm:aspect-[16/10] rounded-[20px] overflow-hidden bg-[#EAE4D9] border border-[#E7E0D4] group shadow-sm ${idx === 2 ? "col-span-2 sm:col-span-1" : ""
                           }`}
                       >
                         <Image
@@ -663,7 +665,7 @@ export default function InteriorDesignPage() {
 
                 {/* Open Biophilic Composition: Top Feature + 4-card supporting layout */}
                 <div className="space-y-6 sm:space-y-8">
-                  <div className="relative aspect-[16/10] sm:aspect-[21/9] rounded-[24px] overflow-hidden bg-[#171614] shadow-md group">
+                  <div className="relative aspect-[16/10] sm:aspect-[21/9] rounded-[24px] overflow-hidden bg-[#EAE4D9] shadow-md group">
                     <Image
                       src={terraceGarden.primaryImage.src}
                       alt={terraceGarden.primaryImage.alt}
@@ -681,7 +683,7 @@ export default function InteriorDesignPage() {
                     {terraceGarden.supportingImages.map((img, idx) => (
                       <div
                         key={idx}
-                        className="relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#171614] border border-[#E7E0D4] group"
+                        className="relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#EAE4D9] border border-[#E7E0D4] group"
                       >
                         <Image
                           src={img.src}
@@ -716,7 +718,7 @@ export default function InteriorDesignPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
                   {/* Left: Large Portrait Image (5 cols) */}
                   <div className="lg:col-span-5 w-full">
-                    <div className="relative aspect-[3/4] rounded-[24px] overflow-hidden bg-[#171614] shadow-md group w-full">
+                    <div className="relative aspect-[3/4] rounded-[24px] overflow-hidden bg-[#EAE4D9] shadow-md group w-full">
                       <Image
                         src={wallDecor.primaryImage.src}
                         alt={wallDecor.primaryImage.alt}
@@ -850,7 +852,7 @@ export default function InteriorDesignPage() {
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-12">
                     {/* Media Side */}
-                    <div className="lg:col-span-7 relative min-h-[280px] sm:min-h-[460px] bg-[#171614] w-full">
+                    <div className="lg:col-span-7 relative min-h-[280px] sm:min-h-[460px] bg-[#EAE4D9] w-full">
                       <Image
                         src={project.image}
                         alt={project.alt}

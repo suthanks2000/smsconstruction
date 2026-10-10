@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap && node -e \"const fs=require('fs'); if(fs.existsSync('out')) { fs.copyFileSync('public/sitemap.xml','out/sitemap.xml'); fs.copyFileSync('public/robots.txt','out/robots.txt'); }\"",
     "start": "next start",
     "lint": "eslint"
   },

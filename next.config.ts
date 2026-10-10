@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export",
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
   images: {
+    unoptimized: true,
     qualities: [70, 75, 85, 90, 100],
     remotePatterns: [
       {
@@ -23,31 +25,6 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
-  },
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "SAMEORIGIN",
-          },
-          {
-            key: "Referrer-Policy",
-            value: "strict-origin-when-cross-origin",
-          },
-          {
-            key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=(self)",
-          },
-        ],
-      },
-    ];
   },
 };
 

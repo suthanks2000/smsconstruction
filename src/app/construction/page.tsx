@@ -232,7 +232,7 @@ export default function ConstructionPage() {
         <section
           data-header-theme="dark"
           aria-label="Civil Construction Hero"
-          className="relative w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-between pt-20 pb-4 sm:pt-22 sm:pb-5 lg:pt-22 lg:pb-4 bg-[#171714] text-white overflow-hidden border-b border-[#2A2925]"
+          className="relative w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-between pt-20 pb-4 sm:pt-22 sm:pb-5 lg:pt-22 lg:pb-4 bg-[#24221E] text-white overflow-hidden border-b border-[#2A2925]"
         >
           {/* Full-Bleed Civil Construction Background Image */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -242,6 +242,7 @@ export default function ConstructionPage() {
               alt="Civil RCC residential and commercial building construction site in Nagercoil by SMS Construction"
               fill
               priority
+              fetchPriority="high"
               sizes="(max-width: 768px) 100vw, 1px"
               className="object-cover object-center md:hidden"
             />
@@ -251,6 +252,7 @@ export default function ConstructionPage() {
               alt="Civil RCC residential and commercial building construction site in Nagercoil by SMS Construction"
               fill
               priority
+              fetchPriority="high"
               sizes="(min-width: 769px) 100vw, 1px"
               className="hidden md:block object-cover object-right lg:object-[center_35%]"
             />

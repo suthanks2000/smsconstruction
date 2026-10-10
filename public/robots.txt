@@ -1,10 +1,5 @@
-# *
 User-agent: *
 Allow: /
 Disallow: /design-system
 
-# Host
-Host: https://smsconstruction.in
-
-# Sitemaps
 Sitemap: https://smsconstruction.in/sitemap.xml

@@ -123,7 +123,7 @@ export default function DesignSystemPage() {
           </div>
           <div className="pb-6 border-b border-[#EFEAE2]">
             <div className="text-section-label mb-2">Page Title (Mobile: 32-38px | Tablet: 40-48px | Desktop: 48-60px)</div>
-            <div className="text-page-title">Turnkey Interior Design &amp; Build</div>
+            <div className="text-page-title">Turnkey Interior Works &amp; Build</div>
           </div>
           <div className="pb-6 border-b border-[#EFEAE2]">
             <div className="text-section-label mb-2">Section Title (Mobile: 28-32px | Tablet: 32-36px | Desktop: 36-44px)</div>
@@ -227,7 +227,7 @@ export default function DesignSystemPage() {
           />
           <ProjectCard
             title="Minimalist Teak Residence"
-            category="Interior Design"
+            category="Interior Works"
             location="Kanyakumari, TN"
             imageSrc="/hero.webp"
           />

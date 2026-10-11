@@ -54,14 +54,14 @@ export const designServices: DesignServiceItem[] = [
   {
     number: "02",
     id: "interior-design",
-    title: "Interior Design",
+    title: "Interior Works",
     subtitle: "Space, Function & Visual Direction",
     description:
       "Shape interior living spaces around everyday function, comfort, lighting, and aesthetic direction. Coordinated early with civil structures to avoid on-site rework.",
     image: "/images/services/interior.webp",
-    imageAlt: "Interior design and space planning visualization",
+    imageAlt: "Interior works and space planning visualization",
     link: "/interior-design",
-    linkText: "Explore Interior Design",
+    linkText: "Explore Interior Works",
     deliverables: ["Room Layouts & Zoning", "False Ceiling Schematics", "Joinery & Finishes"],
   },
   {
@@ -161,7 +161,7 @@ export const planningDeliverables: DeliverableItem[] = [
   },
   {
     number: "02",
-    title: "Interior Design Direction",
+    title: "Interior Works Direction",
     category: "Design",
     tag: "Spatial Comfort",
     description: "Curated interior themes, modular joinery alignments, ergonomic room planning, and false ceiling lighting concepts.",
@@ -273,7 +273,7 @@ export const designPlanningFaqs: DesignPlanningFaq[] = [
   {
     question: "What design services does SMS Construction provide?",
     answer:
-      "SMS Construction provides four core design services: 3D Elevation modeling, Interior Design planning, Walkthrough Video visualization, and Structural Designing coordination.",
+      "SMS Construction provides four core design services: 3D Elevation modeling, Interior Works planning, Walkthrough Video visualization, and Structural Designing coordination.",
   },
   {
     question: "What is a 3D elevation?",
@@ -281,9 +281,9 @@ export const designPlanningFaqs: DesignPlanningFaq[] = [
       "A 3D elevation is an architectural digital visualization that shows the exterior facade of a building with realistic materials, textures, window openings, colors, and lighting proportions before physical construction begins.",
   },
   {
-    question: "What is included in interior design?",
+    question: "What is included in interior works?",
     answer:
-      "Interior design includes functional room space planning, furniture layout, false ceiling schematics, lighting concepts, modular kitchen design, wardrobe detailing, and material finish curation tailored to your lifestyle.",
+      "Interior works include functional room space planning, furniture layout, false ceiling schematics, lighting concepts, modular kitchen design, wardrobe detailing, and material finish curation tailored to your lifestyle.",
   },
   {
     question: "What are walkthrough videos used for?",

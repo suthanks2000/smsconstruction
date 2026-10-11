@@ -6,11 +6,11 @@ import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://smsconstruction.in"),
-  title: "SMS Construction | Best Interior & Construction in Nagercoil",
+  title: "Interior Design & Construction in Nagercoil | SMS Construction",
   description:
-    "Top-rated Interior Design & Construction Company in Nagercoil. We build premium residential homes, turnkey commercial projects, and bespoke interior spaces across Kanyakumari District.",
+    "Premier Interior Design & Construction Company in Nagercoil. Bespoke residential interior design, turnkey house construction, and specialized interior works across Kanyakumari District.",
   keywords:
-    "Best Construction Company in Nagercoil, Top Interior Designers in Nagercoil, SMS Construction, Turnkey Interiors, Home Builders Kanyakumari, Commercial Construction, Architectural Design",
+    "Interior Design in Nagercoil, Best Interior Designers in Nagercoil, Construction Company in Nagercoil, Interior Works Nagercoil, SMS Construction, Turnkey Interiors, Home Builders Kanyakumari, Commercial Construction, Architectural Design",
   alternates: {
     canonical: "/",
   },
@@ -20,8 +20,9 @@ export const metadata: Metadata = {
     apple: "/logo.png",
   },
   openGraph: {
-    title: "SMS Construction | Best Interior & Construction in Nagercoil",
-    description: "Premium Interior Design & Architecture in Nagercoil. Crafting bespoke luxury homes and seamless commercial spaces.",
+    title: "Interior Design & Construction in Nagercoil | SMS Construction",
+    description:
+      "Premier Interior Design & Construction Company in Nagercoil. Bespoke residential interior design, turnkey house construction, and specialized interior works.",
     url: "https://smsconstruction.in",
     siteName: "SMS Construction",
     images: [
@@ -37,8 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SMS Construction | Best Interior & Construction in Nagercoil",
-    description: "Premium Interior Design & Architecture in Nagercoil.",
+    title: "Interior Design & Construction in Nagercoil | SMS Construction",
+    description:
+      "Premier Interior Design & Construction Company in Nagercoil. Bespoke residential interior design, turnkey construction, and interior works.",
     images: ["/hero.webp"],
   },
   robots: {

@@ -19,16 +19,16 @@ import CategoryJumpNav from "./components/CategoryJumpNav";
 import ConversionCTA from "@/components/ConversionCTA";
 
 export const metadata: Metadata = {
-  title: "Interior Design in Nagercoil & Kanyakumari | SMS Construction",
+  title: "Interior Works in Nagercoil | SMS Construction",
   description:
-    "Explore bespoke interior design services from SMS Construction across Nagercoil and all over Kanyakumari District, including bedrooms, kitchens, false ceilings, TV units, wall decor and terrace gardens.",
+    "Turnkey interior works and bespoke interior design in Nagercoil by SMS Construction. Explore custom modular kitchens, bedroom joinery, false ceilings, TV units, and living space solutions across Kanyakumari.",
   alternates: {
     canonical: "/interior-design",
   },
   openGraph: {
-    title: "Interior Design in Nagercoil & Kanyakumari | SMS Construction",
+    title: "Interior Works in Nagercoil | SMS Construction",
     description:
-      "Explore bespoke interior design services from SMS Construction across Nagercoil and all over Kanyakumari District, including bedrooms, kitchens, false ceilings, TV units, wall decor and terrace gardens.",
+      "Turnkey interior works and bespoke interior design in Nagercoil by SMS Construction. Explore custom modular kitchens, bedroom joinery, false ceilings, TV units, and living space solutions across Kanyakumari.",
     url: "https://smsconstruction.in/interior-design",
     siteName: "SMS Construction",
     images: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         url: "/images/catalog/bedroom/bedroom-interior-design-01.webp",
         width: 1600,
         height: 1279,
-        alt: "Contemporary Interior Design in Nagercoil and Kanyakumari by SMS Construction",
+        alt: "Contemporary Interior Works and Interior Design in Nagercoil by SMS Construction",
       },
     ],
     locale: "en_IN",
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Interior Design in Nagercoil & Kanyakumari | SMS Construction",
+    title: "Interior Works in Nagercoil | SMS Construction",
     description:
-      "Explore bespoke interior design services from SMS Construction across Nagercoil and all over Kanyakumari District, including bedrooms, kitchens, false ceilings, TV units, wall decor and terrace gardens.",
+      "Turnkey interior works and bespoke interior design in Nagercoil by SMS Construction. Explore custom modular kitchens, bedroom joinery, false ceilings, TV units, and living space solutions across Kanyakumari.",
     images: ["/images/catalog/bedroom/bedroom-interior-design-01.webp"],
   },
 };
@@ -76,7 +76,7 @@ export default function InteriorDesignPage() {
       {
         "@type": "ListItem",
         position: 3,
-        name: "Interior Design",
+        name: "Interior Works",
         item: "https://smsconstruction.in/interior-design",
       },
     ],
@@ -85,10 +85,10 @@ export default function InteriorDesignPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Interior Design Services",
-    serviceType: "Residential Interior Design",
+    name: "Interior Works & Interior Design Services",
+    serviceType: "Residential Interior Works",
     description:
-      "Bespoke residential interior design, space planning, modular kitchen fabrication, bedroom joinery, false ceiling lighting, TV units, wall decor and terrace gardens in Nagercoil.",
+      "Bespoke residential interior works and interior design in Nagercoil, including space planning, modular kitchen fabrication, bedroom joinery, false ceiling lighting, TV units, wall decor and terrace gardens.",
     url: "https://smsconstruction.in/interior-design",
     provider: {
       "@type": "HomeAndConstructionBusiness",
@@ -115,7 +115,7 @@ export default function InteriorDesignPage() {
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Interior Design Catalog Specialties",
+      name: "Interior Works Catalog Specialties",
       itemListElement: interiorCategories.map((c, idx) => ({
         "@type": "Offer",
         itemOffered: {
@@ -170,7 +170,7 @@ export default function InteriorDesignPage() {
         =================================================================== */}
         <section
           data-header-theme="dark"
-          aria-label="Interior Design Hero"
+          aria-label="Interior Works Hero"
           className="relative w-full min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-between pt-20 sm:pt-22 lg:pt-22 pb-0 bg-[#24221E] text-white overflow-hidden border-b border-[#2A2925]"
         >
           {/* Full-Bleed Realistic Interior Background Image */}
@@ -178,7 +178,7 @@ export default function InteriorDesignPage() {
             {/* Mobile portrait background image */}
             <Image
               src="/images/services/services-interior-design-portrait.webp"
-              alt="Contemporary luxury residential interior design in Nagercoil by SMS Construction"
+              alt="Contemporary luxury residential interior works in Nagercoil by SMS Construction"
               fill
               priority
               fetchPriority="high"
@@ -188,7 +188,7 @@ export default function InteriorDesignPage() {
             {/* Desktop / tablet landscape background image */}
             <Image
               src="/images/services/interior.webp"
-              alt="Contemporary luxury residential interior design in Nagercoil by SMS Construction"
+              alt="Contemporary luxury residential interior works in Nagercoil by SMS Construction"
               fill
               priority
               fetchPriority="high"
@@ -206,13 +206,13 @@ export default function InteriorDesignPage() {
 
               <h1
                 className="font-bold intro-elem text-white leading-[1.1] tracking-[-0.02em] mb-3.5 sm:mb-4.5"
-                style={{ fontSize: "clamp(1.95rem, 3.6vw, 3.35rem)" }}
+                style={{ fontSize: "clamp(2rem, 3.8vw, 3.4rem)" }}
               >
-                Interior Design in Nagercoil &amp; Across Kanyakumari<span className="text-[#e3c381]">.</span>
+                Interior Works in Nagercoil<span className="text-[#e3c381]">.</span>
               </h1>
 
               <p className="text-[14.5px] sm:text-[15.5px] lg:text-[16px] leading-relaxed text-white/90 max-w-2xl mb-6 sm:mb-7 font-sans">
-                Bespoke residential interiors crafted around your family&apos;s daily routines — blending thoughtful space planning, custom millwork, ambient illumination, and direct on-site execution across Nagercoil and Kanyakumari District.
+                Bespoke residential interior works and personalized interior design in Nagercoil crafted around your family&apos;s daily routines — blending thoughtful space planning, custom millwork, ambient illumination, and direct on-site execution across Kanyakumari District.
               </p>
 
               {/* Primary & Secondary CTAs */}
@@ -261,14 +261,10 @@ export default function InteriorDesignPage() {
 
               <div className="lg:col-span-7 flex flex-col gap-6 text-[17px] sm:text-[18px] text-[#68645D] leading-relaxed font-sans">
                 <p>
-                  Every interior begins with how the space needs to function. We consider layout,
-                  storage, materials, lighting and custom elements to create spaces that feel
-                  considered as well as practical.
+                  Every interior begins with how the space needs to function. As a trusted team for interior works and interior design in Nagercoil, we consider layout, storage, materials, lighting and custom elements to create spaces that feel considered as well as practical.
                 </p>
                 <p>
-                  From full-height wardrobe joinery and ergonomic modular kitchens to false ceiling coves
-                  and fluted timber media backdrops, our team manages design through direct site
-                  execution across Nagercoil and Kanyakumari.
+                  From full-height wardrobe joinery and ergonomic modular kitchens to false ceiling coves and fluted timber media backdrops, our team manages turnkey interior design and precision interior works through direct site execution across Nagercoil and Kanyakumari.
                 </p>
               </div>
             </div>
@@ -294,7 +290,7 @@ export default function InteriorDesignPage() {
                 Spaces We Design
               </h2>
               <p className="text-[16px] sm:text-[18px] text-[#68645D] leading-relaxed">
-                Explore our curated interior design catalog. Each category showcases distinct
+                Explore our curated interior works catalog. Each category showcases distinct
                 capabilities, bespoke joinery solutions, and architectural finishes.
               </p>
             </div>
@@ -826,7 +822,7 @@ export default function InteriorDesignPage() {
                   FROM OUR PROJECTS
                 </span>
                 <h2 className="font-semibold text-[30px] sm:text-[42px] lg:text-[48px] text-[#171614] leading-[1.16] tracking-tight mb-3">
-                  See Interior Design in Real Spaces
+                  See Interior Works in Real Spaces
                 </h2>
                 <p className="text-[15px] sm:text-[18px] text-[#68645D] leading-relaxed">
                   Real residential executions demonstrate how our spatial planning, joinery crafting,
@@ -923,7 +919,7 @@ export default function InteriorDesignPage() {
                   BASED IN NAGERCOIL
                 </span>
                 <h2 className="font-semibold text-[24px] sm:text-[34px] text-[#171614] leading-[1.2] mb-3">
-                  Interior Design in Nagercoil and Surrounding Areas
+                  Interior Works in Nagercoil and Surrounding Areas
                 </h2>
                 <p className="text-[15px] sm:text-[16px] text-[#68645D] leading-relaxed max-w-2xl font-sans">
                   SMS Construction is based in Nagercoil, Tamil Nadu, helping clients plan and
@@ -1021,8 +1017,8 @@ export default function InteriorDesignPage() {
           phoneNumber={phoneNumber}
           formattedPhone={formattedPhone}
           whatsappNumber={whatsappNumber}
-          whatsappMessage="Hello SMS Construction, I am interested in interior design services for my property."
-          subtext="SMS Construction • Interior Design & Joinery Studio • Nagercoil, Tamil Nadu"
+          whatsappMessage="Hello SMS Construction, I am interested in interior works services for my property."
+          subtext="SMS Construction • Interior Works & Joinery Studio • Nagercoil, Tamil Nadu"
         />
       </main>
     </>

@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 const projectsFaqs: FaqItemType[] = [
   {
     q: "What type of projects does SMS Construction showcase?",
-    a: "SMS Construction showcases residential construction, interior design and related project work completed or documented by the company.",
+    a: "SMS Construction showcases residential construction, interior works and related project work completed or documented by the company.",
   },
   {
     q: "Where are the projects by SMS Construction located?",
@@ -31,7 +31,7 @@ const projectsFaqs: FaqItemType[] = [
   },
   {
     q: "Does SMS Construction handle both construction and interior projects?",
-    a: "Yes. The company provides construction and interior design services along with design and planning, survey-related services and fabrication works.",
+    a: "Yes. The company provides construction and interior works services along with design and planning, survey-related services and fabrication works.",
   },
   {
     q: "Can I discuss a project similar to the work shown here?",
@@ -50,7 +50,7 @@ const projectsFaqs: FaqItemType[] = [
 /* ─── Marquee ticker items ──────────────────────────────────────────────── */
 const tickerItems = [
   "Residential Construction",
-  "Interior Design",
+  "Interior Works",
   "Turnkey Interiors",
   "Commercial Construction",
   "Renovation",
@@ -443,7 +443,7 @@ export default function ProjectsPage() {
           </div>
           <div className="flex flex-col gap-6">
             <p className="font-sans text-[16px] md:text-[18px] leading-[1.7] text-[#171614]">
-              Explore completed residential construction, bespoke interior design, turnkey spaces, and renovations by SMS Construction.
+              Explore completed residential construction, bespoke interior works, turnkey spaces, and renovations by SMS Construction.
             </p>
             <p className="font-sans text-[15px] md:text-[16px] leading-[1.7] text-[#77736C]">
               Based in Nagercoil, our portfolio extends across the Kanyakumari district. From structural groundwork to meticulous material finishes, we maintain rigorous standards of excellence on every site we operate on.
@@ -478,7 +478,7 @@ export default function ProjectsPage() {
         formattedPhone="+91 94880 21183"
         whatsappNumber="919488021183"
         whatsappMessage="Hello SMS Construction, I am interested in discussing a project for my space."
-        subtext="SMS Construction • Architecture, Civil & Interior Design Studio • Nagercoil, Tamil Nadu"
+        subtext="SMS Construction • Architecture, Civil & Interior Works Studio • Nagercoil, Tamil Nadu"
       />
     </main>
   );

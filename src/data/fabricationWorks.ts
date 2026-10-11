@@ -282,7 +282,7 @@ export const fabricationFaqs: FabricationFaq[] = [
   {
     question: "Can fabrication work be part of an interior project?",
     answer:
-      "Yes. Fabricated metal elements—such as room dividers, frame borders, and custom architectural accents—can be coordinated directly with our interior design team to harmonize with cabinetry, false ceilings, and finishes.",
+      "Yes. Fabricated metal elements—such as room dividers, frame borders, and custom architectural accents—can be coordinated directly with our interior works team to harmonize with cabinetry, false ceilings, and finishes.",
   },
   {
     question: "How can I discuss a fabrication requirement?",

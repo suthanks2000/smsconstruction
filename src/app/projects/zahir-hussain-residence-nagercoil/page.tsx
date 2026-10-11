@@ -139,7 +139,7 @@ const lightboxItems: LightboxImageItem[] = galleryPhotos.map((photo) => ({
 const zahirFaqs: FaqItemType[] = [
   {
     q: "What type of project is Zahir Hussain Residence?",
-    a: "Zahir Hussain Residence is a premium turnkey residential interior design project in Nagercoil by SMS Construction.",
+    a: "Zahir Hussain Residence is a premium turnkey residential interior works project in Nagercoil by SMS Construction.",
   },
   {
     q: "Where is this project located?",
@@ -489,7 +489,7 @@ export default function ZahirHussainResidencePage() {
         primaryBtnText="Get a Free Quote"
         primaryBtnHref="/contact"
         whatsappMessage="Hello SMS Construction, I saw the Zahir Hussain Residence project and am interested in discussing a project for my space."
-        subtext="SMS Construction • Architecture, Civil & Interior Design Studio • Nagercoil, Tamil Nadu"
+        subtext="SMS Construction • Architecture, Civil & Interior Works Studio • Nagercoil, Tamil Nadu"
       />
 
       {/* 7. ACCESSIBLE FULLSCREEN LIGHTBOX (CLIENT COMPONENT) */}

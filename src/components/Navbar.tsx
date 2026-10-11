@@ -8,7 +8,7 @@ import gsap from "gsap";
 
 const servicesData = [
   {
-    category: "Interior Design",
+    category: "Interior Works",
     href: "/interior-design",
   },
   {

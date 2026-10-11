@@ -129,12 +129,12 @@ const faqs = [
   {
     question: "What services does SMS Construction provide?",
     answer:
-      "Its main services include Interior Design, Construction, Design & Planning, Survey & Approvals, and Fabrication Works.",
+      "Its main services include Interior Works, Construction, Design & Planning, Survey & Approvals, and Fabrication Works.",
   },
   {
-    question: "Does SMS Construction provide interior design services?",
+    question: "Does SMS Construction provide interior works services?",
     answer:
-      "Yes. Its interior design offering includes residential spaces such as bedrooms, kitchens, false ceilings, TV units, wall decor and terrace garden concepts.",
+      "Yes. Its interior works offering includes residential spaces such as bedrooms, kitchens, false ceilings, TV units, wall decor and terrace garden concepts.",
   },
   {
     question: "How can I contact SMS Construction?",
@@ -165,9 +165,9 @@ const faqSchema = {
 const services = [
   {
     num: "01",
-    title: "Interior Design",
+    title: "Interior Works",
     description:
-      "Residential interior design including bedrooms, kitchens, false ceilings, TV units, wall decor and terrace garden concepts.",
+      "Residential interior works including bedrooms, kitchens, false ceilings, TV units, wall decor and terrace garden concepts.",
     items: [
       "Bedroom Interiors",
       "Kitchens",
@@ -177,7 +177,7 @@ const services = [
       "Terrace Garden Concepts",
     ],
     href: "/interior-design",
-    linkText: "Explore our interior design services",
+    linkText: "Explore our interior works services",
     icon: Sparkles,
   },
   {
@@ -202,7 +202,7 @@ const services = [
       "Comprehensive architectural drafting, engineering drawings and conceptual visualization.",
     items: [
       "3D Elevation",
-      "Interior Design",
+      "Interior Works",
       "Walkthrough Videos",
       "Structural Designing",
       "Approval Drawings",
@@ -351,7 +351,7 @@ export default function AboutUsPage() {
               </h1>
 
               <p className="font-sans text-[16px] sm:text-[17.5px] leading-[1.7] text-[#68645D] max-w-2xl mb-8">
-                SMS Construction is a construction and interior design company based in Nagercoil, Tamil Nadu, offering construction, interior design, design and planning, survey-related services and fabrication works.
+                SMS Construction is a construction and interior works company based in Nagercoil, Tamil Nadu, offering construction, interior works, design and planning, survey-related services and fabrication works.
               </p>
 
               {/* Hero CTAs */}
@@ -400,7 +400,7 @@ export default function AboutUsPage() {
 
               <div className="lg:col-span-7">
                 <p className="font-sans text-[16px] sm:text-[18px] leading-relaxed text-[#68645D] mb-6">
-                  SMS Construction is based in Nagercoil, Tamil Nadu, bringing construction, interior design, planning, surveying and fabrication services together to support residential and related project requirements.
+                  SMS Construction is based in Nagercoil, Tamil Nadu, bringing construction, interior works, planning, surveying and fabrication services together to support residential and related project requirements.
                 </p>
 
                 <AboutStats />
@@ -433,10 +433,10 @@ export default function AboutUsPage() {
 
                 <div className="space-y-4 font-sans text-[15.5px] sm:text-[16.5px] leading-relaxed text-[#68645D]">
                   <p>
-                    SMS Construction is permanently based in Nagercoil, Tamil Nadu, operating as an integrated practice that bridges building construction and interior design under one coordinated roof.
+                    SMS Construction is permanently based in Nagercoil, Tamil Nadu, operating as an integrated practice that bridges building construction and interior works under one coordinated roof.
                   </p>
                   <p>
-                    Construction and interior design form the primary focus of our day-to-day operations. Alongside building and interior fit-outs, comprehensive architectural planning, land surveying, and custom fabrication services are part of our core offering.
+                    Construction and interior works form the primary focus of our day-to-day operations. Alongside building and interior fit-outs, comprehensive architectural planning, land surveying, and custom fabrication services are part of our core offering.
                   </p>
                   <p>
                     Every project is approached around its specific site conditions, spatial requirements, and practical scope. We emphasize disciplined planning, coordinated trade execution, and meticulous attention to materials and finish quality.
@@ -745,7 +745,7 @@ export default function AboutUsPage() {
                     <div className="relative rounded-[22px] overflow-hidden border border-[#E7E0D4] bg-[#FAF8F3] aspect-[4/3] mb-3">
                       <Image
                         src="/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-living-room.webp"
-                        alt="Living room interior design and recessed illumination at Zahir Hussain Residence in Nagercoil"
+                        alt="Living room interior works and recessed illumination at Zahir Hussain Residence in Nagercoil"
                         fill
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 33vw"
@@ -876,7 +876,7 @@ export default function AboutUsPage() {
             </>
           }
           description={[
-            "SMS Construction is based in Nagercoil, Tamil Nadu, with services covering construction, interior design, planning, survey-related work and fabrication based on project requirements.",
+            "SMS Construction is based in Nagercoil, Tamil Nadu, with services covering construction, interior works, planning, survey-related work and fabrication based on project requirements.",
             "Being permanently established in Nagercoil allows our engineering and design team to conduct responsive site visits, understand local soil conditions and town planning guidelines, and maintain close supervision throughout every stage of execution across Kanyakumari District.",
           ]}
           localities={["Nagercoil", "Suchindram", "Theroor", "Kanyakumari", "Marthandam", "Colachel"]}
@@ -912,7 +912,7 @@ export default function AboutUsPage() {
           theme="light"
           badge="START YOUR PROJECT"
           title="Let’s build your next space."
-          description="Discuss your construction, interior design, or renovation project with SMS Construction in Nagercoil."
+          description="Discuss your construction, interior works, or renovation project with SMS Construction in Nagercoil."
           primaryBtnText="Get a Quote"
           primaryBtnHref="/contact"
           phoneNumber={phoneNumber}

@@ -1,7 +1,7 @@
 export const BLOG_CATEGORIES = [
   "All",
   "Construction",
-  "Interior Design",
+  "Interior Works",
   "Design & Planning",
   "Home Ideas",
   "Guides",

@@ -117,7 +117,7 @@ const faqs = [
   {
     question: "What type of project can I enquire about?",
     answer:
-      "You can enquire about construction, interior design, design and planning, survey-related services, fabrication works and related project requirements.",
+      "You can enquire about construction, interior works, design and planning, survey-related services, fabrication works and related project requirements.",
   },
   {
     question: "What information should I include in my enquiry?",
@@ -125,9 +125,9 @@ const faqs = [
       "Include your name, contact details, project type, project location and a short description of your requirements.",
   },
   {
-    question: "Can I contact SMS Construction for an interior design project?",
+    question: "Can I contact SMS Construction for an interior works project?",
     answer:
-      "Yes. You can submit an enquiry for residential interior design and related interior work.",
+      "Yes. You can submit an enquiry for residential interior works and related interior work.",
   },
 ];
 

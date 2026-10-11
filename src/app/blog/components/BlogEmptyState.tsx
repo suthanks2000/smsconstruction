@@ -14,7 +14,7 @@ const UPCOMING_DISCIPLINES = [
       "Engineering checklists, residential planning steps, and structural guidelines for building in Nagercoil and Kanyakumari.",
   },
   {
-    name: "Interior Design",
+    name: "Interior Works",
     href: "/interior-design",
     icon: Paintbrush,
     description:
@@ -62,7 +62,7 @@ export default function BlogEmptyState({ selectedCategory = "All" }: BlogEmptySt
         </h2>
 
         <p className="font-sans text-[16px] sm:text-[17.5px] text-[#68645D] leading-[1.7] max-w-2xl mx-auto mb-9">
-          We are preparing practical articles covering construction, interior design, planning and related project topics from our studio in Nagercoil. In the meantime, explore our verified project services or speak directly with our engineering team.
+          We are preparing practical articles covering construction, interior works, planning and related project topics from our studio in Nagercoil. In the meantime, explore our verified project services or speak directly with our engineering team.
         </p>
 
         {/* Primary and Secondary Action Links */}

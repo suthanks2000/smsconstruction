@@ -84,7 +84,7 @@ export default function BlogPage() {
               </h1>
 
               <p className="font-sans text-[16px] sm:text-[17.5px] leading-[1.7] text-[#68645D]">
-                Practical insights on construction, interior design, planning, home improvement and related services from SMS Construction, Nagercoil.
+                Practical insights on construction, interior works, planning, home improvement and related services from SMS Construction, Nagercoil.
               </p>
             </div>
           </div>

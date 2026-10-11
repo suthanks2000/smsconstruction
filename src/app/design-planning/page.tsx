@@ -397,7 +397,7 @@ export default function DesignPlanningPage() {
                     Primary Discipline
                   </span>
                   <h3 className="text-[20px] sm:text-[22px] font-bold text-[#171714] leading-snug mb-2.5 group-hover:text-[#B08A52] transition-colors duration-200">
-                    Interior Design
+                    Interior Works
                   </h3>
                   <p className="text-[13.5px] sm:text-[14.5px] text-[#68645D] leading-relaxed font-sans">
                     Shape interior living spaces around function, comfort, lighting, modular joinery, and ceiling schematics before structural finishes begin.
@@ -547,7 +547,7 @@ export default function DesignPlanningPage() {
                 href="/interior-design"
                 className="inline-flex items-center gap-1.5 font-semibold text-[#171714] hover:text-[#B08A52] transition-colors"
               >
-                <span>Interior Design</span>
+                <span>Interior Works</span>
                 <ArrowRight size={13} className="text-[#B08A52]" />
               </Link>
               <span className="text-[#D6CEBF] hidden sm:inline">•</span>
@@ -814,7 +814,7 @@ export default function DesignPlanningPage() {
                   href="/interior-design"
                   className="px-4 py-2 rounded-full bg-white hover:bg-[#B08A52] hover:text-white border border-[#E7E0D4] text-[#171714] font-medium transition-colors"
                 >
-                  Interior Design
+                  Interior Works
                 </Link>
                 <Link
                   href="/construction"

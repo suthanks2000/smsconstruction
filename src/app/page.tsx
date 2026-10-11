@@ -49,7 +49,7 @@ function Hero() {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src="/hero.webp"
-          alt="Luxury Construction & Interior Design Background"
+          alt="Luxury Construction & Interior Works Background"
           fill
           priority
           fetchPriority="high"
@@ -292,10 +292,10 @@ function TrustStats() {
 /* ─── Services ────────────────────────────────────────────── */
 const servicesData = [
   {
-    title: "Interior design",
+    title: "Interior works",
     href: "/interior-design",
     img: "/images/services/services-interior-design-portrait.webp",
-    alt: "Bespoke luxury interior design and spaces by SMS Construction in Nagercoil",
+    alt: "Bespoke luxury interior works and spaces by SMS Construction in Nagercoil",
   },
   {
     title: "Civil construction",
@@ -1243,11 +1243,11 @@ function Testimonials() {
 const faqs = [
   {
     q: "What services does SMS Construction provide?",
-    a: "We specialize in Interior Design, Construction, Design & Planning, Survey & Approvals, and Fabrication Works.",
+    a: "We specialize in Interior Works, Construction, Design & Planning, Survey & Approvals, and Fabrication Works.",
   },
   {
-    q: "Do you provide complete interior design for homes?",
-    a: "Yes, we provide end-to-end interior design services for homes — right from 3D design conceptualization through to material selection and complete execution.",
+    q: "Do you provide complete interior works for homes?",
+    a: "Yes, we provide end-to-end interior works services for homes — right from 3D design conceptualization through to material selection and complete execution.",
   },
   {
     q: "Do you undertake residential construction projects in Nagercoil?",

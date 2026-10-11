@@ -512,7 +512,7 @@ export default function DrArunKumarResidencePage() {
         primaryBtnText="Get a Free Quote"
         primaryBtnHref="/contact"
         whatsappMessage="Hello SMS Construction, I saw the Dr. Arun Kumar Residence project and would like to discuss building my home."
-        subtext="SMS Construction • Architecture, Civil & Interior Design Studio • Nagercoil, Tamil Nadu"
+        subtext="SMS Construction • Architecture, Civil & Interior Works Studio • Nagercoil, Tamil Nadu"
       />
 
       {/* 7. ACCESSIBLE FULLSCREEN LIGHTBOX (CLIENT COMPONENT) */}

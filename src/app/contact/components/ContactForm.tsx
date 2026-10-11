@@ -23,7 +23,7 @@ interface FormErrors {
 
 const PROJECT_TYPES = [
   "Construction",
-  "Interior Design",
+  "Interior Works",
   "Design & Planning",
   "Survey & Approvals",
   "Fabrication Works",

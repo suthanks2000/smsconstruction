@@ -136,7 +136,7 @@ export default function TermsAndConditionsPage() {
                 </h2>
               </div>
               <p className="font-sans text-[16px] sm:text-[17px] leading-[1.8] text-[#171614]/85 font-light mb-4">
-                SMS Construction is an established architecture, interior design, and turnkey building practice based in Nagercoil, Kanyakumari District, Tamil Nadu. We specialize in bespoke residential developments, commercial projects, renovation works, and comprehensive interior fit-outs.
+                SMS Construction is an established architecture, interior works, and turnkey building practice based in Nagercoil, Kanyakumari District, Tamil Nadu. We specialize in bespoke residential developments, commercial projects, renovation works, and comprehensive interior fit-outs.
               </p>
               <p className="font-sans text-[16px] sm:text-[17px] leading-[1.8] text-[#171614]/85 font-light">
                 Learn more about our methodology, philosophy, and background on our{" "}
@@ -219,7 +219,7 @@ export default function TermsAndConditionsPage() {
                 or contacting us through telephone, WhatsApp, or email does not automatically create a binding construction contract or service agreement.
               </p>
               <p className="font-sans text-[16px] sm:text-[17px] leading-[1.8] text-[#171614]/85 font-light">
-                Formal architectural, engineering, or interior design contracts are established only when both parties formally execute a separate, mutually agreed-upon written work contract detailing project milestones, cost breakdowns, payment schedules, and structural specifications.
+                Formal architectural, engineering, or interior works contracts are established only when both parties formally execute a separate, mutually agreed-upon written work contract detailing project milestones, cost breakdowns, payment schedules, and structural specifications.
               </p>
             </section>
 

@@ -506,9 +506,9 @@ export const craftDetails: CraftDetail[] = [
 ========================================================================= */
 export const interiorFaqs: InteriorFaq[] = [
   {
-    question: "What interior design services does SMS Construction provide?",
+    question: "What interior works services does SMS Construction provide?",
     answer:
-      "SMS Construction provides complete residential interior design solutions in Nagercoil, including full-home turnkey interiors, space planning, modular kitchen design, bedroom styling with custom wardrobes, false ceiling illumination, bespoke TV units, decorative wall partitions, and terrace garden landscaping.",
+      "SMS Construction provides complete residential interior works solutions in Nagercoil, including full-home turnkey interiors, space planning, modular kitchen design, bedroom styling with custom wardrobes, false ceiling illumination, bespoke TV units, decorative wall partitions, and terrace garden landscaping.",
   },
   {
     question: "Can you design individual spaces such as bedrooms and kitchens?",
@@ -516,17 +516,17 @@ export const interiorFaqs: InteriorFaq[] = [
       "Yes. While we often undertake complete turnkey homes, we also design and execute individual high-impact spaces such as modular kitchens, master suites, custom TV media walls, and living room false ceilings.",
   },
   {
-    question: "Do you handle both interior design and execution?",
+    question: "Do you handle both interior works planning and execution?",
     answer:
       "Yes. We are a design-and-build studio. Our in-house team develops the architectural and interior drawings, 3D renderings, and material specifications, and then oversees the physical carpentry, electrical cabling, painting, and installation on-site.",
   },
   {
-    question: "Do you provide interior design services in Nagercoil?",
+    question: "Do you provide interior works services in Nagercoil?",
     answer:
       "Yes. Our studio is based in Nagercoil, and we actively design and execute homes across Nagercoil, Suchindram, Theroor, Kanyakumari, Marthandam, and nearby localities in Kanyakumari District.",
   },
   {
-    question: "How does the interior design process work?",
+    question: "How does the interior works process work?",
     answer:
       "Our process follows six structured milestones: Initial lifestyle consultation, space planning and zoning, photorealistic 3D visualization and material boards, collaborative design refinement, on-site joinery and fit-out execution, and final handover with quality inspections.",
   },
@@ -541,7 +541,7 @@ export const interiorFaqs: InteriorFaq[] = [
       "You can submit an inquiry through our contact page, message us on WhatsApp, or call our studio directly at +91 94880 21183. We will schedule a site visit or office meeting to review your space and provide an itemized, transparent quotation.",
   },
   {
-    question: "How long does an interior design project usually take?",
+    question: "How long does an interior works project usually take?",
     answer:
       "Project duration depends on overall scope, floor area, site readiness, and material choices. An individual space such as a modular kitchen or master suite typically takes 3 to 5 weeks, while a full 3 to 4-bedroom home interior usually takes between 8 and 16 weeks from approved 3D designs to final handover.",
   },

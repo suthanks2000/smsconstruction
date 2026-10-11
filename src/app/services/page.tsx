@@ -31,9 +31,9 @@ if (typeof window !== "undefined") {
 /* ─── 5-Panel Hero Background Images ─────────────────────────────────────── */
 const heroBackgroundPanels = [
   {
-    title: "Interior Design",
+    title: "Interior Works",
     src: "/images/services/services-interior-design-portrait.webp",
-    alt: "Bespoke interior design in Nagercoil by SMS Construction",
+    alt: "Bespoke interior works in Nagercoil by SMS Construction",
   },
   {
     title: "Civil Construction",
@@ -97,7 +97,7 @@ export default function ServicesPage() {
     },
     {
       num: 4,
-      title: "Interior Design",
+      title: "Interior Works",
       description: "Shape the living experience inside through custom millwork, false ceilings, and lighting.",
       icon: Sparkles,
       href: "/interior-design",
@@ -303,7 +303,7 @@ export default function ServicesPage() {
                 className="font-bold intro-elem text-white leading-[1.08] tracking-[-0.02em] mb-2.5 sm:mb-4 drop-shadow-sm"
                 style={{ fontSize: "clamp(1.75rem, 3.8vw, 3.25rem)" }}
               >
-                Construction &amp; Interior Design Services in Nagercoil<span className="text-[#e3c381]">.</span>
+                Construction &amp; Interior Works Services in Nagercoil<span className="text-[#e3c381]">.</span>
               </h1>
 
               <p className="intro-elem text-[13.5px] sm:text-[15px] lg:text-[16px] leading-relaxed text-white/90 max-w-2xl mb-4 sm:mb-6 font-sans drop-shadow-xs">
@@ -593,7 +593,7 @@ export default function ServicesPage() {
                   <div className="lg:col-span-7 relative min-h-[360px] sm:min-h-[480px] bg-[#171714]">
                     <Image
                       src="/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room.webp"
-                      alt="Living room interior design and woodwork at Nagarajan Residence in Theroor, Nagercoil by SMS Construction"
+                      alt="Living room interior works and woodwork at Nagarajan Residence in Theroor, Nagercoil by SMS Construction"
                       fill
                       loading="lazy"
                       sizes="(max-width: 1024px) 100vw, 58vw"
@@ -740,12 +740,12 @@ export default function ServicesPage() {
           badge="BASED IN NAGERCOIL"
           title={
             <>
-              Construction &amp; Interior Design Services in Nagercoil
+              Construction &amp; Interior Works Services in Nagercoil
               <span className="text-[#B08A52]">.</span>
             </>
           }
           description={[
-            "SMS Construction is based in Nagercoil, Tamil Nadu, providing construction, interior design, design and planning, survey and fabrication services within its actual service area across Kanyakumari District.",
+            "SMS Construction is based in Nagercoil, Tamil Nadu, providing construction, interior works, design and planning, survey and fabrication services within its actual service area across Kanyakumari District.",
             "Our permanent engineering studio in Nagercoil ensures responsive site visits, prompt regulatory approvals, and disciplined quality control across Nagercoil, Suchindram, Theroor, Kanyakumari, Marthandam, and surrounding regions.",
           ]}
           localities={geoLocalities}

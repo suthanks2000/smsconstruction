@@ -30,7 +30,7 @@ export default function ConversionCTA({
   formattedPhone = "+91 94880 21183",
   whatsappNumber = "919488021183",
   whatsappMessage = "Hello SMS Construction, I am interested in your services for my property.",
-  subtext = "SMS Construction • Interior Design & Architecture Studio • Nagercoil, Tamil Nadu",
+  subtext = "SMS Construction • Interior Works & Architecture Studio • Nagercoil, Tamil Nadu",
   className = "",
   theme = "light",
 }: ConversionCTAProps) {

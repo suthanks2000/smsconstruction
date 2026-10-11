@@ -113,7 +113,7 @@ export default function PrivacyPolicyPage() {
                 </h2>
               </div>
               <p className="font-sans text-[16px] sm:text-[17px] leading-[1.8] text-[#171614]/85 font-light mb-4">
-                Welcome to SMS Construction (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;). We are an established architecture, interior design, and turnkey building studio based in Nagercoil, Tamil Nadu. We deeply value your trust and are committed to protecting your personal privacy when you interact with our website or submit details regarding prospective architectural or construction commissions.
+                Welcome to SMS Construction (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;). We are an established architecture, interior works, and turnkey building studio based in Nagercoil, Tamil Nadu. We deeply value your trust and are committed to protecting your personal privacy when you interact with our website or submit details regarding prospective architectural or construction commissions.
               </p>
               <p className="font-sans text-[16px] sm:text-[17px] leading-[1.8] text-[#171614]/85 font-light">
                 By visiting our website or communicating with our team, you acknowledge the terms described in this Privacy Policy. If you have questions about how your information is handled, please reach out directly through our{" "}
@@ -169,7 +169,7 @@ export default function PrivacyPolicyPage() {
                 </h2>
               </div>
               <p className="font-sans text-[16px] sm:text-[17px] leading-[1.8] text-[#171614]/85 font-light mb-4">
-                We use collected information strictly to facilitate our construction and interior design services:
+                We use collected information strictly to facilitate our construction and interior works services:
               </p>
               <ul className="space-y-3 font-sans text-[16px] sm:text-[17px] leading-[1.8] text-[#171614]/85 font-light list-none pl-0">
                 <li className="flex items-start gap-3">

@@ -589,7 +589,7 @@ export default function ConstructionPage() {
                   href="/interior-design"
                   className="px-4 py-2 rounded-full bg-white hover:bg-[#B08A52] hover:text-white border border-[#E7E0D4] text-[#171714] font-medium transition-colors"
                 >
-                  Interior Design
+                  Interior Works
                 </Link>
                 <Link
                   href="/design-planning"

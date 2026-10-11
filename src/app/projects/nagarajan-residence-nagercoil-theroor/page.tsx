@@ -152,7 +152,7 @@ const nagarajanFaqs: FaqItemType[] = [
   },
   {
     q: "Can SMS Construction handle a similar residential interior project?",
-    a: "Yes. You can contact SMS Construction to discuss your residential construction or interior design requirements.",
+    a: "Yes. You can contact SMS Construction to discuss your residential construction or interior works requirements.",
   },
   {
     q: "How can I contact SMS Construction about a project?",
@@ -347,7 +347,7 @@ export default function NagarajanResidencePage() {
           {/* Left Column: Heading & Subtitle */}
           <div className="lg:col-span-5 flex flex-col items-start text-left">
             <span className="hero-reveal  text-[20px] uppercase font-semibold text-[#B08A52] mb-4 md:mb-6">
-              RESIDENTIAL INTERIOR DESIGN
+              RESIDENTIAL INTERIOR WORKS
             </span>
             <h1
               className="hero-reveal font-bold text-[#171614] leading-[1.05] tracking-[-0.02em] mb-4 md:mb-6"
@@ -422,7 +422,7 @@ export default function NagarajanResidencePage() {
                     Focus
                   </dt>
                   <dd className="text-[15px] md:text-[16px] text-[#171614] font-medium">
-                    Interior Design
+                    Interior Works
                   </dd>
                 </div>
               </dl>
@@ -512,7 +512,7 @@ export default function NagarajanResidencePage() {
         primaryBtnText="Get a Free Quote"
         primaryBtnHref="/contact"
         whatsappMessage="Hello SMS Construction, I saw the Nagarajan Residence project and am interested in discussing a project for my space."
-        subtext="SMS Construction • Architecture, Civil & Interior Design Studio • Nagercoil, Tamil Nadu"
+        subtext="SMS Construction • Architecture, Civil & Interior Works Studio • Nagercoil, Tamil Nadu"
       />
 
       {/* 7. ACCESSIBLE FULLSCREEN LIGHTBOX (CLIENT COMPONENT) */}

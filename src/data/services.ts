@@ -42,7 +42,7 @@ export const primaryServices: PrimaryService[] = [
     number: "01",
     slug: "interior-design",
     id: "interior-design",
-    title: "Interior Design",
+    title: "Interior Works",
     eyebrow: "Bespoke Residential Spaces",
     href: "/interior-design",
     description:
@@ -56,7 +56,7 @@ export const primaryServices: PrimaryService[] = [
       "TV Units & Acoustic Wall Paneling",
       "Balcony & Terrace Green Patios",
     ],
-    ctaText: "Explore Interior Design",
+    ctaText: "Explore Interior Works",
   },
   {
     number: "02",
@@ -99,7 +99,7 @@ export const primaryServices: PrimaryService[] = [
     matrix: {
       design: [
         "3D Elevation",
-        "Interior Design",
+        "Interior Works",
         "Walkthrough Videos",
         "Structural Designing",
       ],
@@ -181,7 +181,7 @@ export const projectJourney: JourneyStep[] = [
   },
   {
     number: "04",
-    title: "INTERIOR DESIGN",
+    title: "INTERIOR WORKS",
     description: "Shape the living experience inside through custom millwork, false ceilings, and ambient lighting.",
     href: "/interior-design",
   },
@@ -225,7 +225,7 @@ export const startingPoints: StartingPoint[] = [
   {
     id: "interior-fitout",
     need: "Designing Your Interiors",
-    service: "Interior Design",
+    service: "Interior Works",
     href: "/interior-design",
     description: "Craft bespoke living spaces, bedrooms, modular kitchens, custom TV consoles, false ceilings, and wall decor.",
   },
@@ -243,17 +243,17 @@ export const serviceFaqs: ServiceFaq[] = [
   {
     question: "What services does SMS Construction provide?",
     answer:
-      "SMS Construction provides five primary integrated disciplines: Interior Design, Construction, Design & Planning, Survey & Approvals, and Fabrication Works across Nagercoil and Kanyakumari District.",
+      "SMS Construction provides five primary integrated disciplines: Interior Works, Construction, Design & Planning, Survey & Approvals, and Fabrication Works across Nagercoil and Kanyakumari District.",
   },
   {
-    question: "Does SMS Construction handle both construction and interior design?",
+    question: "Does SMS Construction handle both construction and interior works?",
     answer:
       "Yes. We operate as an integrated design-and-build studio, coordinating civil building construction and interior joinery under a single execution team to eliminate discrepancies between architectural plans and finished spaces.",
   },
   {
-    question: "What interior design services are available?",
+    question: "What interior works services are available?",
     answer:
-      "Our interior design services cover tailored bedrooms, high-efficiency modular kitchens, architectural false ceilings with recessed lighting, bespoke TV media units, decorative wall panelling, and landscaped terrace gardens.",
+      "Our interior works services cover tailored bedrooms, high-efficiency modular kitchens, architectural false ceilings with recessed lighting, bespoke TV media units, decorative wall panelling, and landscaped terrace gardens.",
   },
   {
     question: "What design and planning services are available?",
@@ -278,7 +278,7 @@ export const serviceFaqs: ServiceFaq[] = [
   {
     question: "Which service should I start with for a new project?",
     answer:
-      "For a vacant land plot, we recommend beginning with Survey & Approvals or Design & Planning. For existing buildings requiring remodeling or new fit-outs, you can start directly with Interior Design or Fabrication Works.",
+      "For a vacant land plot, we recommend beginning with Survey & Approvals or Design & Planning. For existing buildings requiring remodeling or new fit-outs, you can start directly with Interior Works or Fabrication Works.",
   },
   {
     question: "Do you provide services in Nagercoil?",

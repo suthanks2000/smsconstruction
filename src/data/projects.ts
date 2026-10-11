@@ -1,6 +1,6 @@
 export type ProjectCategory =
   | "Residential Construction"
-  | "Interior Design"
+  | "Interior Works"
   | "Turnkey Interiors"
   | "Commercial Construction"
   | "Renovation";
@@ -50,12 +50,12 @@ export const projects: Project[] = [
     number: "01",
     slug: "nagarajan-residence-nagercoil-theroor",
     title: "Nagarajan Residence",
-    category: "Interior Design",
+    category: "Interior Works",
     location: "Nagercoil (Theroor)",
     year: "2026",
     image: "/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room.webp",
     alt: "Living room interior at Nagarajan Residence in Nagercoil (Theroor)",
-    description: "A premium bespoke residential interior design project balancing warm wood textures and modern living spaces in Theroor.",
+    description: "A premium bespoke residential interior works project balancing warm wood textures and modern living spaces in Theroor.",
     area: "3,500 Sq. Ft.",
     duration: "6 Months",
     completionDate: "Early 2026",
@@ -76,7 +76,7 @@ export const projects: Project[] = [
     solutions: "We used 3D laser templating for precision mapping and hand-matched veneer grains under strict studio lighting before installation.",
     finalResult: "A masterfully finished residential interior that delivers high-end luxury without compromising on the cozy warmth of a family home.",
     clientReview: {
-      text: "The interior design perfectly captures our vision. The attention to detail in the woodwork and lighting is simply remarkable.",
+      text: "The interior works perfectly capture our vision. The attention to detail in the woodwork and lighting is simply remarkable.",
       author: "Mr. Nagarajan",
       role: "Homeowner",
     },

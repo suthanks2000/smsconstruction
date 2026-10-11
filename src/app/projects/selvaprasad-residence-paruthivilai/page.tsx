@@ -160,7 +160,7 @@ const lightboxItems: LightboxImageItem[] = galleryPhotos.map((photo) => ({
 const selvaprasadFaqs: FaqItemType[] = [
   {
     q: "What type of project is Selvaprasad Residence?",
-    a: "Selvaprasad Residence is an ultra-premium turnkey residential interior design and bespoke millwork execution in Paruthivilai, Nagercoil by SMS Construction.",
+    a: "Selvaprasad Residence is an ultra-premium turnkey residential interior works and bespoke millwork execution in Paruthivilai, Nagercoil by SMS Construction.",
   },
   {
     q: "Where is this project located?",
@@ -510,7 +510,7 @@ export default function SelvaprasadResidencePage() {
         primaryBtnText="Get a Free Quote"
         primaryBtnHref="/contact"
         whatsappMessage="Hello SMS Construction, I saw the Selvaprasad Residence project and am interested in discussing a project for my space."
-        subtext="SMS Construction • Architecture, Civil & Interior Design Studio • Nagercoil, Tamil Nadu"
+        subtext="SMS Construction • Architecture, Civil & Interior Works Studio • Nagercoil, Tamil Nadu"
       />
 
       {/* 7. ACCESSIBLE FULLSCREEN LIGHTBOX (CLIENT COMPONENT) */}

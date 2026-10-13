@@ -118,16 +118,16 @@ const galleryPhotos: GalleryPhoto[] = [
     heightClass: "h-[45vh] md:h-[60vh]",
     sizes: "(max-width: 768px) 100vw, 50vw",
   },
-  // Row 5: 4 / 4 / 4 Split
+  // Row 5: 6 / 6 Split
   {
     src: "/images/projects/godwin-dhas-residence/staircase-under-step-storage.webp",
     alt: "Custom under-stair stepped storage cabinetry and washbasin counter",
     label: "Under-Stair Storage",
     width: 1280,
     height: 576,
-    spanClass: "md:col-span-4",
-    heightClass: "h-[40vh] md:h-[55vh]",
-    sizes: "(max-width: 768px) 100vw, 33vw",
+    spanClass: "md:col-span-6",
+    heightClass: "h-[45vh] md:h-[60vh]",
+    sizes: "(max-width: 768px) 100vw, 50vw",
   },
   {
     src: "/images/projects/godwin-dhas-residence/lounge-curved-cove-ceiling.webp",
@@ -135,19 +135,9 @@ const galleryPhotos: GalleryPhoto[] = [
     label: "Curved Ceiling Cove",
     width: 1280,
     height: 960,
-    spanClass: "md:col-span-4",
-    heightClass: "h-[40vh] md:h-[55vh]",
-    sizes: "(max-width: 768px) 100vw, 33vw",
-  },
-  {
-    src: "/images/projects/godwin-dhas-residence/teak-kitchen-wicker-baskets.webp",
-    alt: "Teak modular kitchen with wicker vegetable pull-out baskets and overhead cabinets",
-    label: "Teak Kitchen Joinery",
-    width: 960,
-    height: 1280,
-    spanClass: "md:col-span-4",
-    heightClass: "h-[40vh] md:h-[55vh]",
-    sizes: "(max-width: 768px) 100vw, 33vw",
+    spanClass: "md:col-span-6",
+    heightClass: "h-[45vh] md:h-[60vh]",
+    sizes: "(max-width: 768px) 100vw, 50vw",
   },
 ];
 

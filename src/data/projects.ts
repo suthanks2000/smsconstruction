@@ -338,7 +338,6 @@ export const projects: Project[] = [
         "/images/projects/godwin-dhas-residence/bedroom-curved-platform-bed.webp",
         "/images/projects/godwin-dhas-residence/staircase-under-step-storage.webp",
         "/images/projects/godwin-dhas-residence/lounge-curved-cove-ceiling.webp",
-        "/images/projects/godwin-dhas-residence/teak-kitchen-wicker-baskets.webp",
         "/images/projects/godwin-dhas-residence/sliding-wardrobe-tufted-bed.webp",
       ],
     },

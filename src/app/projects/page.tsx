@@ -1,15 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import ConversionCTA from "@/components/ConversionCTA";
 import ModernFaq, { FaqItemType } from "@/components/ModernFaq";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/data/projects";
-
-gsap.registerPlugin(ScrollTrigger);
 
 /* ─── Projects FAQ Items ─────────────────────────────────────────────────── */
 const projectsFaqs: FaqItemType[] = [
@@ -61,48 +56,30 @@ function pad(n: string) {
   return n.padStart(2, "0");
 }
 
-/* ─── InfiniteMarquee ───────────────────────────────────────────────────── */
 function InfiniteMarquee() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-
   const repeated = [...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems];
 
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let direction = 1;
-
-    const ctx = gsap.context(() => {
-      const marqueeTween = gsap.to(track, {
-        xPercent: -50,
-        repeat: -1,
-        duration: 28,
-        ease: "none",
-      });
-
-      ScrollTrigger.create({
-        onUpdate: (self) => {
-          if (self.direction !== direction) {
-            direction = self.direction;
-            gsap.to(marqueeTween, {
-              timeScale: direction,
-              duration: 0.8,
-              overwrite: true,
-            });
-          }
-        },
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <div ref={containerRef} className="relative bg-[#171614] border-t border-b border-[#2A2928] overflow-hidden py-4 select-none">
+    <div className="relative bg-[#171614] border-t border-b border-[#2A2928] overflow-hidden py-4 select-none pointer-events-none">
+      <style>{`
+        @keyframes projectsTicker {
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
+        }
+        .projects-ticker-track {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          width: max-content;
+          animation: projectsTicker 32s linear infinite;
+          will-change: transform;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .projects-ticker-track {
+            animation: none;
+          }
+        }
+      `}</style>
       <div
         aria-hidden="true"
         className="absolute inset-y-0 left-0 w-20 z-10 pointer-events-none"
@@ -114,12 +91,7 @@ function InfiniteMarquee() {
         style={{ background: "linear-gradient(to left, #171614, transparent)" }}
       />
 
-      <div
-        ref={trackRef}
-        aria-hidden="true"
-        className="flex items-center whitespace-nowrap w-max"
-        style={{ willChange: "transform" }}
-      >
+      <div aria-hidden="true" className="projects-ticker-track">
         {repeated.map((item, i) => (
           <span key={i} className="inline-flex items-center gap-5 px-2">
             <span className="font-sans text-[12px] tracking-[0.22em] uppercase font-semibold text-[#B08A52]">
@@ -140,24 +112,58 @@ function InfiniteMarquee() {
 }
 
 /* ─── Collage Component ─────────────────────────────────────────────────── */
-function ProjectCollage({ images, title }: { images: string[], title: string }) {
+function ProjectCollage({ images, title, priority = false }: { images: string[], title: string, priority?: boolean }) {
+  if (!images || images.length === 0) return null;
+
+  // 1 Image: Full bleed hero container
+  if (images.length === 1) {
+    return (
+      <div className="relative w-full aspect-[4/5] md:aspect-auto md:w-full md:h-full overflow-hidden rounded-2xl bg-[#EAE4D9]">
+        <Image
+          src={images[0]}
+          fill
+          className="object-cover"
+          alt={`${title} - Main View`}
+          sizes="(max-width: 1024px) 100vw, 65vw"
+          quality={75}
+          priority={priority}
+          loading={priority ? "eager" : "lazy"}
+        />
+      </div>
+    );
+  }
+
+  // 2 Images: Vertical split
+  if (images.length === 2) {
+    return (
+      <div className="w-full aspect-[4/5] md:aspect-auto md:w-full md:h-full grid grid-cols-2 gap-2 md:gap-3 p-1 md:p-2">
+        <div className="relative w-full h-full overflow-hidden rounded-2xl bg-[#EAE4D9]">
+          <Image src={images[0]} fill className="object-cover" alt={`${title} - View 1`} sizes="(max-width: 1024px) 50vw, 35vw" quality={75} priority={priority} loading={priority ? "eager" : "lazy"} />
+        </div>
+        <div className="relative w-full h-full overflow-hidden rounded-2xl bg-[#EAE4D9]">
+          <Image src={images[1]} fill className="object-cover" alt={`${title} - View 2`} sizes="(max-width: 1024px) 50vw, 35vw" quality={75} priority={priority} loading={priority ? "eager" : "lazy"} />
+        </div>
+      </div>
+    );
+  }
+
   if (images.length === 3) {
     // 3 Images: 1 large on left, 2 smaller on right
     return (
-      <div className="w-full aspect-[4/5] md:aspect-auto md:w-full md:h-full grid grid-cols-2 grid-rows-2 gap-2 md:gap-4 p-1 md:p-2">
+      <div className="w-full aspect-[4/5] md:aspect-auto md:w-full md:h-full grid grid-cols-2 grid-rows-2 gap-2 md:gap-3 p-1 md:p-2">
         {/* Large left image spanning 2 rows */}
-        <div className="relative w-full h-full overflow-hidden row-span-2 rounded-2xl" style={{ borderTopRightRadius: '80px', borderBottomRightRadius: '80px' }}>
-          <Image src={images[0]} fill className="object-cover" alt={`${title} - Main View`} sizes="(max-width: 1024px) 100vw, 50vw" quality={90} loading="lazy" />
+        <div className="relative w-full h-full overflow-hidden row-span-2 rounded-2xl bg-[#EAE4D9]">
+          <Image src={images[0]} fill className="object-cover" alt={`${title} - Main View`} sizes="(max-width: 1024px) 100vw, 50vw" quality={75} priority={priority} loading={priority ? "eager" : "lazy"} />
         </div>
 
         {/* Top Right */}
-        <div className="relative w-full h-full overflow-hidden rounded-2xl" style={{ borderBottomLeftRadius: '60px' }}>
-          <Image src={images[1]} fill className="object-cover" alt={`${title} - Detail View 1`} sizes="(max-width: 1024px) 50vw, 25vw" quality={85} loading="lazy" />
+        <div className="relative w-full h-full overflow-hidden rounded-2xl bg-[#EAE4D9]">
+          <Image src={images[1]} fill className="object-cover" alt={`${title} - Detail View 1`} sizes="(max-width: 1024px) 50vw, 25vw" quality={75} priority={priority} loading={priority ? "eager" : "lazy"} />
         </div>
 
         {/* Bottom Right */}
-        <div className="relative w-full h-full overflow-hidden rounded-2xl" style={{ borderTopLeftRadius: '60px' }}>
-          <Image src={images[2]} fill className="object-cover" alt={`${title} - Detail View 2`} sizes="(max-width: 1024px) 50vw, 25vw" quality={85} loading="lazy" />
+        <div className="relative w-full h-full overflow-hidden rounded-2xl bg-[#EAE4D9]">
+          <Image src={images[2]} fill className="object-cover" alt={`${title} - Detail View 2`} sizes="(max-width: 1024px) 50vw, 25vw" quality={75} priority={priority} loading={priority ? "eager" : "lazy"} />
         </div>
       </div>
     );
@@ -165,18 +171,18 @@ function ProjectCollage({ images, title }: { images: string[], title: string }) 
 
   // 4+ Images: Premium Asymmetric Bento Grid (7/5 & 5/7)
   return (
-    <div className="w-full aspect-[4/5] md:aspect-auto md:w-full md:h-full grid grid-cols-12 grid-rows-2 gap-2 md:gap-4 p-1 md:p-2">
-      <div className="relative col-span-7 h-full w-full overflow-hidden rounded-2xl" style={{ borderBottomRightRadius: '60px' }}>
-        <Image src={images[0]} fill className="object-cover" alt={`${title} - View 1`} sizes="(max-width: 1024px) 100vw, 60vw" quality={90} loading="lazy" />
+    <div className="w-full aspect-[4/5] md:aspect-auto md:w-full md:h-full grid grid-cols-12 grid-rows-2 gap-2 md:gap-3 p-1 md:p-2">
+      <div className="relative col-span-7 h-full w-full overflow-hidden rounded-2xl bg-[#EAE4D9]">
+        <Image src={images[0]} fill className="object-cover" alt={`${title} - View 1`} sizes="(max-width: 1024px) 100vw, 45vw" quality={75} priority={priority} loading={priority ? "eager" : "lazy"} />
       </div>
-      <div className="relative col-span-5 h-full w-full overflow-hidden rounded-2xl" style={{ borderBottomLeftRadius: '60px' }}>
-        <Image src={images[1]} fill className="object-cover" alt={`${title} - View 2`} sizes="(max-width: 1024px) 50vw, 40vw" quality={90} loading="lazy" />
+      <div className="relative col-span-5 h-full w-full overflow-hidden rounded-2xl bg-[#EAE4D9]">
+        <Image src={images[1]} fill className="object-cover" alt={`${title} - View 2`} sizes="(max-width: 1024px) 50vw, 30vw" quality={75} priority={priority} loading={priority ? "eager" : "lazy"} />
       </div>
-      <div className="relative col-span-5 h-full w-full overflow-hidden rounded-2xl" style={{ borderTopRightRadius: '60px' }}>
-        <Image src={images[2]} fill className="object-cover" alt={`${title} - View 3`} sizes="(max-width: 1024px) 50vw, 40vw" quality={90} loading="lazy" />
+      <div className="relative col-span-5 h-full w-full overflow-hidden rounded-2xl bg-[#EAE4D9]">
+        <Image src={images[2]} fill className="object-cover" alt={`${title} - View 3`} sizes="(max-width: 1024px) 50vw, 30vw" quality={75} priority={priority} loading={priority ? "eager" : "lazy"} />
       </div>
-      <div className="relative col-span-7 h-full w-full overflow-hidden rounded-2xl" style={{ borderTopLeftRadius: '60px' }}>
-        <Image src={images[3]} fill className="object-cover" alt={`${title} - View 4`} sizes="(max-width: 1024px) 100vw, 60vw" quality={90} loading="lazy" />
+      <div className="relative col-span-7 h-full w-full overflow-hidden rounded-2xl bg-[#EAE4D9]">
+        <Image src={images[3]} fill className="object-cover" alt={`${title} - View 4`} sizes="(max-width: 1024px) 100vw, 45vw" quality={75} priority={priority} loading={priority ? "eager" : "lazy"} />
       </div>
     </div>
   );
@@ -184,67 +190,7 @@ function ProjectCollage({ images, title }: { images: string[], title: string }) 
 
 /* ─── Main Page Component ───────────────────────────────────────────────── */
 export default function ProjectsPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const lookbookProjects = projects; // Display all verified real projects
-
-  /* ── GSAP Scroll Sequence ── */
-  useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) return;
-
-    const ctx = gsap.context(() => {
-      // Intro animations
-      gsap.fromTo(
-        ".intro-elem",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" }
-      );
-
-      const mm = gsap.matchMedia();
-
-      // Desktop Showcase Standard Scroll Reveal
-      mm.add("(min-width: 768px)", () => {
-        gsap.utils.toArray<HTMLElement>(".showcase-panel").forEach((panel) => {
-          gsap.fromTo(
-            panel,
-            { opacity: 0, y: 60 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: panel,
-                start: "top 80%",
-              },
-            }
-          );
-        });
-      });
-
-      // Mobile Reveal
-      mm.add("(max-width: 767px)", () => {
-        gsap.utils.toArray<HTMLElement>(".mobile-panel").forEach((el) => {
-          gsap.fromTo(el,
-            { opacity: 0, y: 30 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: el,
-                start: "top 85%"
-              }
-            }
-          );
-        });
-      });
-
-    });
-
-    return () => ctx.revert();
-  }, []);
 
   // Structured Data: FAQPage Schema
   const faqSchema = {
@@ -262,33 +208,68 @@ export default function ProjectsPage() {
 
   return (
     <main className="bg-[#F7F3ED]">
+      <style>{`
+        @keyframes heroFadeUp {
+          from {
+            opacity: 0;
+            transform: translate3d(0, 14px, 0);
+          }
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
+        .intro-elem {
+          animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .intro-elem-1 { animation-delay: 0.04s; }
+        .intro-elem-2 { animation-delay: 0.10s; }
+        .intro-elem-3 { animation-delay: 0.16s; }
+        .intro-elem-4 { animation-delay: 0.22s; }
+        @media (prefers-reduced-motion: reduce) {
+          .intro-elem {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+        }
+      `}</style>
+
       {/* FAQ Schema for Search & Answer Engines */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+
       {/* ══════════════════════════════════════════════════════
-          1. COMPACT EDITORIAL HERO (100vh)
+          1. COMPACT EDITORIAL HERO (STABLE VIEWPORT HEIGHT)
       ══════════════════════════════════════════════════════ */}
-      <div className="min-h-[100dvh] flex flex-col pt-24 md:pt-32">
-        <section className="flex-grow flex flex-col justify-center px-6 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full pb-12">
-          <p className="intro-elem font-sans text-[11px] tracking-[0.28em] uppercase font-semibold text-[#B08A52] mb-4 flex items-center gap-3">
+      <div className="relative w-full min-h-screen min-h-[100svh] flex flex-col justify-between pt-20 sm:pt-24 md:pt-28 overflow-hidden">
+        <section className="flex-grow flex flex-col justify-center px-6 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full pb-8 sm:pb-12">
+          <p className="intro-elem intro-elem-1 font-sans text-[11px] tracking-[0.28em] uppercase font-semibold text-[#B08A52] mb-4 flex items-center gap-3">
             <span className="inline-block w-8 h-px bg-[#B08A52]" aria-hidden="true" />
             Selected Work
           </p>
           <h1
-            className="font-semibold intro-elem text-[#171614] leading-[1.05] tracking-[-0.02em] mb-5"
+            className="font-semibold intro-elem intro-elem-2 text-[#171614] leading-[1.05] tracking-[-0.02em] mb-5"
             style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
           >
             Our Projects.
           </h1>
-          <p className="intro-elem font-sans text-[16px] md:text-[18px] leading-[1.7] text-[#171614] max-w-xl">
+          <p className="intro-elem intro-elem-3 font-sans text-[16px] md:text-[18px] leading-[1.7] text-[#171614] max-w-xl">
             A collection of spaces shaped through thoughtful design, careful execution and attention to detail.
           </p>
 
           <button
-            onClick={() => document.getElementById('projects-start')?.scrollIntoView({ behavior: 'smooth' })}
-            className="intro-elem mt-12 md:mt-20 flex items-center gap-5 hover:opacity-80 transition-opacity cursor-pointer text-left focus:outline-none"
+            onClick={() => {
+              const el = document.getElementById('projects-start');
+              if (el) {
+                const navOffset = window.innerWidth >= 768 ? 96 : 80;
+                const top = el.getBoundingClientRect().top + window.scrollY - navOffset;
+                window.scrollTo({ top, behavior: 'smooth' });
+              }
+            }}
+            className="intro-elem intro-elem-4 mt-8 sm:mt-12 md:mt-16 flex items-center gap-5 hover:opacity-80 transition-opacity cursor-pointer text-left focus:outline-none"
             aria-label="Scroll down to projects"
           >
             <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#B08A52] text-white shadow-xl shadow-[#B08A52]/20">
@@ -310,21 +291,21 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      {/* Anchor point for scrolling */}
-      <div id="projects-start" />
+      {/* Anchor point for scrolling with clearance for fixed navbar */}
+      <div id="projects-start" className="scroll-mt-28 md:scroll-mt-32" />
 
       {/* ══════════════════════════════════════════════════════
           3. EDITORIAL PROJECT SHOWCASE (DESKTOP)
       ══════════════════════════════════════════════════════ */}
-      <section className="hidden md:block w-full bg-[#F7F3ED]">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-20 flex flex-col">
+      <section className="hidden md:block w-full bg-[#F7F3ED] pt-24 lg:pt-28 pb-24">
+        <div className="max-w-[1440px] mx-auto px-12 lg:px-20 flex flex-col gap-28 lg:gap-36">
 
           {lookbookProjects.map((project, i) => {
             const isEven = i % 2 === 0;
             return (
               <div
                 key={project.slug}
-                className={`showcase-panel min-h-[100dvh] flex justify-between gap-12 lg:gap-20 items-center py-20 ${isEven ? 'flex-row' : 'flex-row-reverse'}`}
+                className={`showcase-panel min-h-[65vh] lg:min-h-[70vh] flex justify-between gap-12 lg:gap-20 items-center py-4 ${isEven ? 'flex-row' : 'flex-row-reverse'}`}
               >
                 {/* TEXT (25%) */}
                 <div className="w-[30%] lg:w-[25%] min-w-[280px] flex flex-col justify-center">
@@ -365,12 +346,12 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* IMAGE COLLAGE (75%) */}
-                <div className="w-[70%] lg:w-[75%] h-[80dvh] lg:h-[85dvh] flex justify-center items-center">
+                <div className="w-[70%] lg:w-[75%] h-[70vh] lg:h-[74vh] max-h-[760px] flex justify-center items-center">
                   <Link
                     href={`/projects/${project.slug}`}
                     className="group block w-full h-full collage-container overflow-hidden rounded-xl transition-transform duration-700 hover:scale-[1.015]"
                   >
-                    <ProjectCollage images={project.gallery.completed.slice(0, 4)} title={project.title} />
+                    <ProjectCollage images={project.gallery.completed.slice(0, 4)} title={project.title} priority={i === 0} />
 
                     {/* Subtle Dark Overlay on Hover */}
                     <div className="absolute inset-0 bg-[#171614]/0 group-hover:bg-[#171614]/5 transition-colors duration-500 rounded-xl pointer-events-none" aria-hidden="true" />
@@ -385,9 +366,9 @@ export default function ProjectsPage() {
       {/* ══════════════════════════════════════════════════════
           4. MOBILE VERTICAL STACK (HIDDEN ON DESKTOP)
       ══════════════════════════════════════════════════════ */}
-      <section className="md:hidden bg-[#F7F3ED] px-6 py-12 flex flex-col gap-24">
+      <section className="md:hidden bg-[#F7F3ED] px-6 pt-16 sm:pt-20 pb-20 flex flex-col gap-20">
         {lookbookProjects.map((project, i) => (
-          <article key={project.slug} className="mobile-panel flex flex-col relative">
+          <article key={project.slug} className="mobile-panel flex flex-col relative scroll-mt-24">
             <div className="font-sans text-[11px] tracking-[0.2em] font-semibold text-[#77736C] mb-4">
               {pad((i + 1).toString())} / {pad(lookbookProjects.length.toString())}
             </div>
@@ -407,7 +388,7 @@ export default function ProjectsPage() {
             </div>
 
             <Link href={`/projects/${project.slug}`} className="block relative w-full mb-8 rounded-lg overflow-hidden">
-              <ProjectCollage images={project.gallery.completed.slice(0, 4)} title={project.title} />
+              <ProjectCollage images={project.gallery.completed.slice(0, 4)} title={project.title} priority={i === 0} />
             </Link>
 
             <p className="font-sans text-[15px] leading-[1.6] text-[#171614] mb-8">

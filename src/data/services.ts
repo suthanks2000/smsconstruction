@@ -154,6 +154,46 @@ export const primaryServices: PrimaryService[] = [
     ],
     ctaText: "Explore Fabrication Works",
   },
+  {
+    number: "06",
+    slug: "real-estate",
+    id: "real-estate",
+    title: "Real Estate",
+    eyebrow: "Property Guidance & Advisory",
+    href: "/real-estate",
+    description:
+      "Structured real estate advisory and property facilitation across Nagercoil, Kanyakumari District, and all over Tamil Nadu. Assisting buyers and sellers with verified plot discovery, physical site due diligence, boundary verification, and transparent transaction coordination.",
+    image: "/images/services/services-real-estate-portrait.webp",
+    alt: "Real estate property buying and selling assistance across Tamil Nadu by SMS Construction",
+    subservices: [
+      "Residential Plot & Villa Site Advisory",
+      "Commercial Property Facilitation",
+      "Property Selling & Owner Support",
+      "On-Ground Boundary Verification",
+      "Documentation & Due Diligence Review",
+    ],
+    ctaText: "Explore Real Estate",
+  },
+  {
+    number: "07",
+    slug: "loan-services",
+    id: "loan-services",
+    title: "Loan Services",
+    eyebrow: "Financing & Loan Enquiry Desk",
+    href: "/loan-services",
+    description:
+      "Guidance and enquiry assistance for various loan options across Nagercoil, Kanyakumari District, and all over Tamil Nadu. Explore provisional categories such as home loans, property loans, business loans, and personal financing with professional coordination for construction estimates and project drawings.",
+    image: "/images/services/services-loan-services-portrait.webp",
+    alt: "Loan enquiry and project financing guidance across Tamil Nadu by SMS Construction",
+    subservices: [
+      "Home Construction Loan Enquiries",
+      "Property Loan / LAP Consultation",
+      "Business Loan Guidance",
+      "Personal Financing Enquiries",
+      "Bank Estimation & Blueprint Support",
+    ],
+    ctaText: "Explore Loan Services",
+  },
 ];
 
 // For backward compatibility
@@ -236,6 +276,20 @@ export const startingPoints: StartingPoint[] = [
     href: "/fabrication-works",
     description: "Fabricate lightweight ACP cladding, structural steel framing, or precision aluminium profiles built to project specs.",
   },
+  {
+    id: "real-estate",
+    need: "Buying or Selling Property",
+    service: "Real Estate",
+    href: "/real-estate",
+    description: "Discover verified residential plots, commercial land parcels, and property transaction guidance in Nagercoil.",
+  },
+  {
+    id: "loan-support",
+    need: "Need Loan Assistance",
+    service: "Loan Services",
+    href: "/loan-services",
+    description: "Enquire about provisional loan options including home, property, business, and personal financing guidance.",
+  },
 ];
 
 // Section 9: 10 Authoritative Service FAQs
@@ -243,7 +297,7 @@ export const serviceFaqs: ServiceFaq[] = [
   {
     question: "What services does SMS Construction provide?",
     answer:
-      "SMS Construction provides five primary integrated disciplines: Interior Works, Construction, Design & Planning, Survey & Approvals, and Fabrication Works across Nagercoil and Kanyakumari District.",
+      "SMS Construction provides integrated disciplines including Interior Works, Construction, Design & Planning, Survey & Approvals, Fabrication Works, Real Estate guidance, and Loan enquiry services across Nagercoil and Kanyakumari District.",
   },
   {
     question: "Does SMS Construction handle both construction and interior works?",

@@ -12,6 +12,8 @@ export default function Footer() {
     { name: "Design & Planning", href: "/design-planning" },
     { name: "Survey & Approvals", href: "/survey-approvals" },
     { name: "Fabrication Works", href: "/fabrication-works" },
+    { name: "Real Estate", href: "/real-estate" },
+    { name: "Loan Services", href: "/loan-services" },
   ];
 
   const portfolio = [

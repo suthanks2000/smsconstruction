@@ -27,6 +27,8 @@ const PROJECT_TYPES = [
   "Design & Planning",
   "Survey & Approvals",
   "Fabrication Works",
+  "Real Estate",
+  "Loan Services",
   "Renovation",
   "Other",
 ];

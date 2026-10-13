@@ -5,16 +5,16 @@ import BlogCTA from "./components/BlogCTA";
 
 /* ─── SEO Metadata ────────────────────────────────────────────────────────── */
 export const metadata: Metadata = {
-  title: "Construction & Interior Design Blog | SMS Construction Nagercoil",
+  title: "Construction, Real Estate & Interior Design Blog | SMS Construction Nagercoil",
   description:
-    "Explore construction, interior design, home planning, architecture and fabrication insights from SMS Construction in Nagercoil, Tamil Nadu.",
+    "Explore construction, interior design, home planning, real estate advisory, and loan enquiry insights from SMS Construction across Nagercoil and Tamil Nadu.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
-    title: "Construction & Interior Design Blog | SMS Construction Nagercoil",
+    title: "Construction, Real Estate & Interior Design Blog | SMS Construction Nagercoil",
     description:
-      "Explore construction, interior design, home planning, architecture and fabrication insights from SMS Construction in Nagercoil, Tamil Nadu.",
+      "Explore construction, interior design, home planning, real estate advisory, and loan enquiry insights from SMS Construction across Nagercoil and Tamil Nadu.",
     url: "https://smsconstruction.in/blog",
     siteName: "SMS Construction",
     locale: "en_IN",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Construction & Interior Design Blog | SMS Construction Nagercoil",
+    title: "Construction, Real Estate & Interior Design Blog | SMS Construction Nagercoil",
     description:
-      "Explore construction, interior design, home planning, architecture and fabrication insights from SMS Construction in Nagercoil, Tamil Nadu.",
+      "Explore construction, interior design, home planning, real estate advisory, and loan enquiry insights from SMS Construction across Nagercoil and Tamil Nadu.",
   },
 };
 
@@ -84,7 +84,7 @@ export default function BlogPage() {
               </h1>
 
               <p className="font-sans text-[16px] sm:text-[17.5px] leading-[1.7] text-[#68645D]">
-                Practical insights on construction, interior works, planning, home improvement and related services from SMS Construction, Nagercoil.
+                Practical insights on construction, interior works, planning, real estate, loan assistance and related services from SMS Construction across Nagercoil and Tamil Nadu.
               </p>
             </div>
           </div>

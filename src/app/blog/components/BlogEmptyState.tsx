@@ -1,5 +1,15 @@
 import Link from "next/link";
-import { ArrowRight, Compass, Hammer, Paintbrush, Ruler, ShieldCheck, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Compass,
+  Hammer,
+  Landmark,
+  Paintbrush,
+  Ruler,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 
 interface BlogEmptyStateProps {
   selectedCategory?: string;
@@ -19,6 +29,20 @@ const UPCOMING_DISCIPLINES = [
     icon: Paintbrush,
     description:
       "Material palettes, modern kitchen planning, space optimization, and bespoke styling insights for coastal homes.",
+  },
+  {
+    name: "Real Estate",
+    href: "/real-estate",
+    icon: Building2,
+    description:
+      "Objective property acquisition guidance, physical boundary verification, and verified advisory across Tamil Nadu.",
+  },
+  {
+    name: "Loan Services",
+    href: "/loan-services",
+    icon: Landmark,
+    description:
+      "Financing consultation, project estimation dossiers, BOQ preparation, and documentation guidance for project loans.",
   },
   {
     name: "Design & Planning",
@@ -62,7 +86,7 @@ export default function BlogEmptyState({ selectedCategory = "All" }: BlogEmptySt
         </h2>
 
         <p className="font-sans text-[16px] sm:text-[17.5px] text-[#68645D] leading-[1.7] max-w-2xl mx-auto mb-9">
-          We are preparing practical articles covering construction, interior works, planning and related project topics from our studio in Nagercoil. In the meantime, explore our verified project services or speak directly with our engineering team.
+          We are preparing practical articles covering construction, interior works, planning, real estate advisory, and loan assistance from our studio in Nagercoil. In the meantime, explore our verified project services or speak directly with our engineering team.
         </p>
 
         {/* Primary and Secondary Action Links */}

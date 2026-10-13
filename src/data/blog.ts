@@ -3,6 +3,8 @@ export const BLOG_CATEGORIES = [
   "Construction",
   "Interior Works",
   "Design & Planning",
+  "Real Estate",
+  "Loan Services",
   "Home Ideas",
   "Guides",
   "Fabrication",

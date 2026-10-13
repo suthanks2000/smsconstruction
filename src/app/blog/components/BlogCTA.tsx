@@ -22,8 +22,8 @@ export default function BlogCTA() {
           Planning a project?
         </h2>
 
-        <p className="text-[16px] sm:text-[17.5px] leading-relaxed max-w-[620px] mx-auto mb-9 font-sans text-[#68645D]">
-          Explore our construction, interior works, planning and fabrication services.
+        <p className="text-[16px] sm:text-[17.5px] leading-relaxed max-w-[660px] mx-auto mb-9 font-sans text-[#68645D]">
+          Explore our construction, interior works, planning, real estate, and loan assistance services.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">

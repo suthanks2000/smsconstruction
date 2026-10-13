@@ -294,7 +294,7 @@ const servicesData = [
   {
     title: "Interior works",
     href: "/interior-design",
-    img: "/images/services/services-interior-design-portrait.webp",
+    img: "/images/services/interior.webp",
     alt: "Bespoke luxury interior works and spaces by SMS Construction in Nagercoil",
   },
   {
@@ -321,6 +321,18 @@ const servicesData = [
     href: "/fabrication-works",
     img: "/images/services/services-fabrication-works-portrait.webp",
     alt: "Architectural metalwork, aluminum joinery, and structural steel fabrication",
+  },
+  {
+    title: "Real estate",
+    href: "/real-estate",
+    img: "/images/services/services-real-estate-portrait.webp",
+    alt: "Real estate and plot advisory in Nagercoil by SMS Construction",
+  },
+  {
+    title: "Loan services",
+    href: "/loan-services",
+    img: "/images/services/services-loan-services-portrait.webp",
+    alt: "Loan enquiry and project financing in Nagercoil by SMS Construction",
   },
 ];
 
@@ -402,17 +414,17 @@ function Services() {
           </div>
         </div>
 
-        {/* 5 Service Cards — Interior Design Featured Wide Card on Mobile, 5 Columns on Desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-4">
+        {/* 7 Service Cards — Interior Works Featured Wide Card, Perfectly balanced across 4-column desktop grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
           {servicesData.map((svc, idx) => {
-            const isFeatured = idx === 0; // Interior design is wide, matha ellam normal size
+            const isFeatured = idx === 0; // Interior works is featured wide card on mobile and first row of desktop
             return (
               <Link
                 key={svc.title}
                 href={svc.href}
                 className={`services-card ${isFeatured
-                    ? "col-span-2 lg:col-span-1 aspect-[16/8] sm:aspect-[2.2/1] lg:aspect-[3/4.4]"
-                    : "col-span-1 aspect-[3/4] sm:aspect-[3/4.2] lg:aspect-[3/4.4]"
+                    ? "col-span-2 lg:col-span-2 aspect-[16/9.5] sm:aspect-[2.1/1] lg:aspect-auto min-h-[210px] sm:min-h-[250px] lg:min-h-0"
+                    : "col-span-1 aspect-[3/4] sm:aspect-[3/4.2] lg:aspect-[3/4]"
                   } rounded-[18px] sm:rounded-[22px] overflow-hidden relative group block bg-[#171614] shadow-xs hover:shadow-xl transition-all duration-500`}
               >
                 {/* Image */}
@@ -421,8 +433,12 @@ function Services() {
                   alt={svc.alt}
                   fill
                   loading="lazy"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                  className={`object-cover ${isFeatured ? "object-[center_35%]" : "object-center"} transition-transform duration-700 ease-out group-hover:scale-105`}
+                  sizes={
+                    isFeatured
+                      ? "(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
+                      : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                  }
                 />
 
                 {/* Bottom gradient */}

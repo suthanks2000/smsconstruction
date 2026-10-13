@@ -51,6 +51,18 @@ export default function ProjectServiceHub({
             >
               Fabrication Works
             </Link>
+            <Link
+              href="/real-estate"
+              className="px-4 py-2 rounded-full bg-white hover:bg-[#B08A52] hover:text-white border border-[#E7E0D4] text-[#171714] font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52]"
+            >
+              Real Estate
+            </Link>
+            <Link
+              href="/loan-services"
+              className="px-4 py-2 rounded-full bg-white hover:bg-[#B08A52] hover:text-white border border-[#E7E0D4] text-[#171714] font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A52]"
+            >
+              Loan Services
+            </Link>
           </div>
         </div>
       </div>

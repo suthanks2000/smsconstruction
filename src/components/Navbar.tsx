@@ -27,6 +27,14 @@ const servicesData = [
     category: "Fabrication Works",
     href: "/fabrication-works",
   },
+  {
+    category: "Real Estate",
+    href: "/real-estate",
+  },
+  {
+    category: "Loan Services",
+    href: "/loan-services",
+  },
 ];
 const MagneticContactButton = ({ href, className }: { href: string, className?: string, isMobile?: boolean }) => {
   return (
@@ -159,6 +167,8 @@ export default function Navbar() {
     "/design-planning",
     "/survey-approvals",
     "/fabrication-works",
+    "/real-estate",
+    "/loan-services",
   ];
   const isServicesActive = serviceRoutes.some(
     (route) => pathname === route || (pathname ? pathname.startsWith(`${route}/`) : false)

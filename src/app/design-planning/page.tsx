@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Design & Planning Services in Nagercoil | SMS Construction",
     description:
       "Explore design and planning services from SMS Construction in Nagercoil, including 3D elevation, interior design, walkthrough visualization, structural design, drawings and building plans.",
-    url: "https://smsconstruction.in/design-planning",
+    url: "https://www.smsconstruction.in/design-planning",
     siteName: "SMS Construction",
     images: [
       {
@@ -68,19 +68,19 @@ export default function DesignPlanningPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://smsconstruction.in",
+        item: "https://www.smsconstruction.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://smsconstruction.in/services",
+        item: "https://www.smsconstruction.in/services",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Design & Planning",
-        item: "https://smsconstruction.in/design-planning",
+        item: "https://www.smsconstruction.in/design-planning",
       },
     ],
   };
@@ -92,7 +92,7 @@ export default function DesignPlanningPage() {
     serviceType: "Architectural Design, Spatial Planning, and 3D Visualization",
     description:
       "Architectural space planning, 3D elevation, interior design direction, walkthrough visualization, structural coordination, and pre-construction building plans in Nagercoil.",
-    url: "https://smsconstruction.in/design-planning",
+    url: "https://www.smsconstruction.in/design-planning",
     provider: {
       "@type": "HomeAndConstructionBusiness",
       name: "SMS Construction",

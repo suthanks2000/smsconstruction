@@ -243,36 +243,36 @@ export default function SelvaprasadResidencePage() {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://smsconstruction.in/projects/selvaprasad-residence-paruthivilai#breadcrumb",
+        "@id": "https://www.smsconstruction.in/projects/selvaprasad-residence-paruthivilai#breadcrumb",
         itemListElement: [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://smsconstruction.in",
+            "item": "https://www.smsconstruction.in",
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Projects",
-            "item": "https://smsconstruction.in/projects",
+            "item": "https://www.smsconstruction.in/projects",
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Selvaprasad Residence",
-            "item": "https://smsconstruction.in/projects/selvaprasad-residence-paruthivilai",
+            "item": "https://www.smsconstruction.in/projects/selvaprasad-residence-paruthivilai",
           },
         ],
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://smsconstruction.in/projects/selvaprasad-residence-paruthivilai#project",
+        "@id": "https://www.smsconstruction.in/projects/selvaprasad-residence-paruthivilai#project",
         "name": "Selvaprasad Residence",
         "headline": "Selvaprasad Residence, Paruthivilai",
         "description": project.description,
-        "url": "https://smsconstruction.in/projects/selvaprasad-residence-paruthivilai",
-        "image": "https://smsconstruction.in/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp",
+        "url": "https://www.smsconstruction.in/projects/selvaprasad-residence-paruthivilai",
+        "image": "https://www.smsconstruction.in/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp",
         "locationCreated": {
           "@type": "Place",
           "name": "Paruthivilai, Nagercoil",
@@ -284,7 +284,7 @@ export default function SelvaprasadResidencePage() {
           },
         },
         "creator": {
-          "@id": "https://smsconstruction.in",
+          "@id": "https://www.smsconstruction.in",
         },
       },
     ],

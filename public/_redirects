@@ -1,0 +1,42 @@
+# Cloudflare Pages 301 Permanent Redirects for SMS Construction
+# Format: <source-path> <target-path> <status-code>
+
+# Core Company & Contact Routes
+/about                       /about-us                301
+/contact-us                  /contact                 301
+
+# Services Routes
+/service                     /services                301
+/our-services                /services                301
+/services/civil-and-building-construction /construction 301
+/civil-construction          /construction            301
+/residential-construction    /construction            301
+/commercial-construction     /construction            301
+/house-construction          /construction            301
+/interior-works              /interior-design         301
+/interiors                   /interior-design         301
+/turnkey-interiors           /interior-design         301
+/architectural-design        /design-planning         301
+/planning                    /design-planning         301
+/structural-design           /design-planning         301
+/fabrication                 /fabrication-works       301
+/home-loans                  /loan-services           301
+/housing-loans               /loan-services           301
+/plots                       /real-estate             301
+/lands                       /real-estate             301
+/land-survey                 /survey-approvals        301
+/building-plan-approvals     /survey-approvals        301
+/approvals                   /survey-approvals        301
+
+# Portfolio & Projects Routes
+/portfolio                   /projects                301
+/our-projects                /projects                301
+
+# Legal Routes
+/privacy                     /privacy-policy          301
+/terms                       /terms-and-conditions    301
+/terms-conditions            /terms-and-conditions    301
+
+# Homepage Aliases
+/home                        /                        301
+/index.html                  /                        301

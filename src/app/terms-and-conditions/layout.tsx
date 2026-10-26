@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "Terms & Conditions | SMS Construction Nagercoil",
     description:
       "Read the Terms & Conditions for using the SMS Construction website and submitting project enquiries.",
-    url: "https://smsconstruction.in/terms-and-conditions",
+    url: "https://www.smsconstruction.in/terms-and-conditions",
     siteName: "SMS Construction",
     images: [
       {
@@ -70,13 +70,13 @@ export default function TermsAndConditionsLayout({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://smsconstruction.in",
+        item: "https://www.smsconstruction.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Terms & Conditions",
-        item: "https://smsconstruction.in/terms-and-conditions",
+        item: "https://www.smsconstruction.in/terms-and-conditions",
       },
     ],
   };
@@ -84,26 +84,26 @@ export default function TermsAndConditionsLayout({
   const webpageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://smsconstruction.in/terms-and-conditions#webpage",
-    url: "https://smsconstruction.in/terms-and-conditions",
+    "@id": "https://www.smsconstruction.in/terms-and-conditions#webpage",
+    url: "https://www.smsconstruction.in/terms-and-conditions",
     name: "Terms & Conditions | SMS Construction Nagercoil",
     description:
       "Read the Terms & Conditions for using the SMS Construction website and submitting project enquiries.",
     inLanguage: "en-IN",
     isPartOf: {
       "@type": "WebSite",
-      "@id": "https://smsconstruction.in/#website",
-      url: "https://smsconstruction.in",
+      "@id": "https://www.smsconstruction.in/#website",
+      url: "https://www.smsconstruction.in",
       name: "SMS Construction",
     },
     about: {
       "@type": "HomeAndConstructionBusiness",
-      "@id": "https://smsconstruction.in",
+      "@id": "https://www.smsconstruction.in",
       name: "SMS Construction",
     },
     publisher: {
       "@type": "HomeAndConstructionBusiness",
-      "@id": "https://smsconstruction.in",
+      "@id": "https://www.smsconstruction.in",
       name: "SMS Construction",
       telephone: "+919488021183",
       email: "smsconstructionngl@gmail.com",

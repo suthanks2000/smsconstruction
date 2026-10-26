@@ -166,13 +166,13 @@ export default function ServicesPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://smsconstruction.in",
+        item: "https://www.smsconstruction.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://smsconstruction.in/services",
+        item: "https://www.smsconstruction.in/services",
       },
     ],
   };
@@ -189,7 +189,7 @@ export default function ServicesPage() {
       position: idx + 1,
       name: service.title,
       description: service.description,
-      url: `https://smsconstruction.in${service.href}`,
+      url: `https://www.smsconstruction.in${service.href}`,
       provider: {
         "@type": "HomeAndConstructionBusiness",
         name: "SMS Construction",

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "ACP, Steel & Aluminium Fabrication in Nagercoil | SMS Construction",
     description:
       "Explore ACP, steel and aluminium fabrication services from SMS Construction in Nagercoil, Tamil Nadu, for architectural, construction and interior project requirements.",
-    url: "https://smsconstruction.in/fabrication-works",
+    url: "https://www.smsconstruction.in/fabrication-works",
     siteName: "SMS Construction",
     images: [
       {
@@ -72,19 +72,19 @@ export default function FabricationWorksPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://smsconstruction.in",
+        item: "https://www.smsconstruction.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://smsconstruction.in/services",
+        item: "https://www.smsconstruction.in/services",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Fabrication Works",
-        item: "https://smsconstruction.in/fabrication-works",
+        item: "https://www.smsconstruction.in/fabrication-works",
       },
     ],
   };

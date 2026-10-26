@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Contact SMS Construction | Nagercoil Construction & Interior Design",
     description:
       "Contact SMS Construction in Nagercoil, Tamil Nadu for construction, interior design, planning, survey and fabrication enquiries.",
-    url: "https://smsconstruction.in/contact",
+    url: "https://www.smsconstruction.in/contact",
      },
 };
 
@@ -31,20 +31,20 @@ export const metadata: Metadata = {
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "@id": "https://smsconstruction.in/contact#webpage",
-  url: "https://smsconstruction.in/contact",
+  "@id": "https://www.smsconstruction.in/contact#webpage",
+  url: "https://www.smsconstruction.in/contact",
   name: "Contact SMS Construction | Nagercoil Construction & Interior Design",
   description:
     "Contact SMS Construction in Nagercoil, Tamil Nadu for construction, interior design, planning, survey and fabrication enquiries.",
   isPartOf: {
     "@type": "WebSite",
-    "@id": "https://smsconstruction.in/#website",
+    "@id": "https://www.smsconstruction.in/#website",
     name: "SMS Construction",
-    url: "https://smsconstruction.in",
+    url: "https://www.smsconstruction.in",
   },
   mainEntity: {
     "@type": "HomeAndConstructionBusiness",
-    "@id": "https://smsconstruction.in",
+    "@id": "https://www.smsconstruction.in",
     name: "SMS Construction",
     telephone: "+91-9488021183",
     email: "smsconstructionngl@gmail.com",
@@ -79,26 +79,26 @@ const contactPageSchema = {
     ],
   },
   breadcrumb: {
-    "@id": "https://smsconstruction.in/contact#breadcrumb",
+    "@id": "https://www.smsconstruction.in/contact#breadcrumb",
   },
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "@id": "https://smsconstruction.in/contact#breadcrumb",
+  "@id": "https://www.smsconstruction.in/contact#breadcrumb",
   itemListElement: [
     {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://smsconstruction.in",
+      item: "https://www.smsconstruction.in",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Contact",
-      item: "https://smsconstruction.in/contact",
+      item: "https://www.smsconstruction.in/contact",
     },
   ],
 };

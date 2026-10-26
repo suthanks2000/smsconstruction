@@ -243,36 +243,36 @@ export default function DrArunKumarResidencePage() {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://smsconstruction.in/projects/dr-arun-kumar-residence-nagercoil#breadcrumb",
+        "@id": "https://www.smsconstruction.in/projects/dr-arun-kumar-residence-nagercoil#breadcrumb",
         itemListElement: [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://smsconstruction.in",
+            "item": "https://www.smsconstruction.in",
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Projects",
-            "item": "https://smsconstruction.in/projects",
+            "item": "https://www.smsconstruction.in/projects",
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Dr. Arun Kumar Residence",
-            "item": "https://smsconstruction.in/projects/dr-arun-kumar-residence-nagercoil",
+            "item": "https://www.smsconstruction.in/projects/dr-arun-kumar-residence-nagercoil",
           },
         ],
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://smsconstruction.in/projects/dr-arun-kumar-residence-nagercoil#project",
+        "@id": "https://www.smsconstruction.in/projects/dr-arun-kumar-residence-nagercoil#project",
         "name": "Dr. Arun Kumar Residence",
         "headline": "Dr. Arun Kumar Residence, Nagercoil",
         "description": project.description,
-        "url": "https://smsconstruction.in/projects/dr-arun-kumar-residence-nagercoil",
-        "image": "https://smsconstruction.in/images/projects/dr-arun-kumar-residence-nagercoil/central-atrium-courtyard-chandelier-hero.webp",
+        "url": "https://www.smsconstruction.in/projects/dr-arun-kumar-residence-nagercoil",
+        "image": "https://www.smsconstruction.in/images/projects/dr-arun-kumar-residence-nagercoil/central-atrium-courtyard-chandelier-hero.webp",
         "locationCreated": {
           "@type": "Place",
           "name": "Nagercoil, Tamil Nadu",
@@ -284,7 +284,7 @@ export default function DrArunKumarResidencePage() {
           },
         },
         "creator": {
-          "@id": "https://smsconstruction.in",
+          "@id": "https://www.smsconstruction.in",
         },
       },
     ],

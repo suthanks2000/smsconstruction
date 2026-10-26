@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Construction & Interior Design Services in Nagercoil | SMS Construction",
     description:
       "Explore SMS Construction services in Nagercoil, including interior design, construction, design and planning, survey services and fabrication works.",
-    url: "https://smsconstruction.in/services",
+    url: "https://www.smsconstruction.in/services",
     siteName: "SMS Construction",
     images: [
       {

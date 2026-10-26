@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "About SMS Construction | Construction & Interior Design in Nagercoil",
     description:
       "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, planning, surveying and fabrication services.",
-    url: "https://smsconstruction.in/about-us",
+    url: "https://www.smsconstruction.in/about-us",
     siteName: "SMS Construction",
     images: [
       {
@@ -55,37 +55,37 @@ export const metadata: Metadata = {
 const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "@id": "https://smsconstruction.in/about-us#webpage",
-  url: "https://smsconstruction.in/about-us",
+  "@id": "https://www.smsconstruction.in/about-us#webpage",
+  url: "https://www.smsconstruction.in/about-us",
   name: "About SMS Construction | Construction & Interior Design in Nagercoil",
   description:
     "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, planning, surveying and fabrication services.",
   isPartOf: {
     "@type": "WebSite",
-    "@id": "https://smsconstruction.in/#website",
+    "@id": "https://www.smsconstruction.in/#website",
     name: "SMS Construction",
-    url: "https://smsconstruction.in",
+    url: "https://www.smsconstruction.in",
   },
   about: {
-    "@id": "https://smsconstruction.in",
+    "@id": "https://www.smsconstruction.in",
   },
   mainEntity: {
-    "@id": "https://smsconstruction.in",
+    "@id": "https://www.smsconstruction.in",
   },
   breadcrumb: {
-    "@id": "https://smsconstruction.in/about-us#breadcrumb",
+    "@id": "https://www.smsconstruction.in/about-us#breadcrumb",
   },
 };
 
 const ceoPersonSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "@id": "https://smsconstruction.in/about-us#ceo",
+  "@id": "https://www.smsconstruction.in/about-us#ceo",
   name: "S. Harish",
   jobTitle: "Chief Executive Officer",
   worksFor: {
     "@type": "HomeAndConstructionBusiness",
-    "@id": "https://smsconstruction.in",
+    "@id": "https://www.smsconstruction.in",
     name: "SMS Construction",
   },
 };
@@ -93,19 +93,19 @@ const ceoPersonSchema = {
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "@id": "https://smsconstruction.in/about-us#breadcrumb",
+  "@id": "https://www.smsconstruction.in/about-us#breadcrumb",
   itemListElement: [
     {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://smsconstruction.in",
+      item: "https://www.smsconstruction.in",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "About Us",
-      item: "https://smsconstruction.in/about-us",
+      item: "https://www.smsconstruction.in/about-us",
     },
   ],
 };

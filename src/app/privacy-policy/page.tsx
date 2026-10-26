@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy | SMS Construction Nagercoil",
     description:
       "Read the Privacy Policy for SMS Construction in Nagercoil, Tamil Nadu. Learn how we handle your personal information and project enquiries.",
-    url: "https://smsconstruction.in/privacy-policy",
+    url: "https://www.smsconstruction.in/privacy-policy",
     siteName: "SMS Construction",
     locale: "en_IN",
     type: "website",

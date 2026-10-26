@@ -38,13 +38,13 @@ export const metadata: Metadata = {
     "SMS Construction Nagercoil",
   ],
   alternates: {
-    canonical: "https://smsconstruction.in/construction",
+    canonical: "/construction",
   },
   openGraph: {
     title: "Civil & Building Construction Contractors in Nagercoil | SMS Construction",
     description:
       "All-sector civil construction in Nagercoil: residential villas, commercial complexes, industrial sheds, RCC framing, and turnkey handover by SMS Construction.",
-    url: "https://smsconstruction.in/construction",
+    url: "https://www.smsconstruction.in/construction",
     siteName: "SMS Construction",
     images: [
       {
@@ -95,19 +95,19 @@ export default function ConstructionPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://smsconstruction.in",
+        item: "https://www.smsconstruction.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://smsconstruction.in/services",
+        item: "https://www.smsconstruction.in/services",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Construction",
-        item: "https://smsconstruction.in/construction",
+        item: "https://www.smsconstruction.in/construction",
       },
     ],
   };
@@ -119,9 +119,9 @@ export default function ConstructionPage() {
     name: "SMS Construction",
     description:
       "Premier civil, commercial, and residential building construction contractor in Nagercoil, Tamil Nadu. Ground-up construction, RCC structural works, industrial sheds, and turnkey delivery.",
-    url: "https://smsconstruction.in/construction",
+    url: "https://www.smsconstruction.in/construction",
     telephone: phoneNumber,
-    image: "https://smsconstruction.in/images/services/civil-construction-hero.webp",
+    image: "https://www.smsconstruction.in/images/services/civil-construction-hero.webp",
     priceRange: "₹₹",
     openingHours: "Mo-Sa 08:30-19:30",
     address: {
@@ -156,7 +156,7 @@ export default function ConstructionPage() {
     },
     description:
       "End-to-end civil building construction across Nagercoil and Kanyakumari: residential homes, commercial plazas, industrial facilities, structural RCC framing, and turnkey execution.",
-    url: "https://smsconstruction.in/construction",
+    url: "https://www.smsconstruction.in/construction",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Comprehensive Construction Sectors",

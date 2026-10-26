@@ -233,36 +233,36 @@ export default function GodwinDhasResidencePage() {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://smsconstruction.in/projects/godwin-dhas-residence#breadcrumb",
+        "@id": "https://www.smsconstruction.in/projects/godwin-dhas-residence#breadcrumb",
         itemListElement: [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://smsconstruction.in",
+            "item": "https://www.smsconstruction.in",
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Projects",
-            "item": "https://smsconstruction.in/projects",
+            "item": "https://www.smsconstruction.in/projects",
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Godwin Dhas Residence",
-            "item": "https://smsconstruction.in/projects/godwin-dhas-residence",
+            "item": "https://www.smsconstruction.in/projects/godwin-dhas-residence",
           },
         ],
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://smsconstruction.in/projects/godwin-dhas-residence#project",
+        "@id": "https://www.smsconstruction.in/projects/godwin-dhas-residence#project",
         "name": "Godwin Dhas Residence",
         "headline": "Godwin Dhas Residence, Chunkankadai",
         "description": project.description,
-        "url": "https://smsconstruction.in/projects/godwin-dhas-residence",
-        "image": "https://smsconstruction.in/images/projects/godwin-dhas-residence/master-suite-floating-bed-hero.webp",
+        "url": "https://www.smsconstruction.in/projects/godwin-dhas-residence",
+        "image": "https://www.smsconstruction.in/images/projects/godwin-dhas-residence/master-suite-floating-bed-hero.webp",
         "locationCreated": {
           "@type": "Place",
           "name": "Chunkankadai, Nagercoil",
@@ -274,7 +274,7 @@ export default function GodwinDhasResidencePage() {
           },
         },
         "creator": {
-          "@id": "https://smsconstruction.in",
+          "@id": "https://www.smsconstruction.in",
         },
       },
     ],

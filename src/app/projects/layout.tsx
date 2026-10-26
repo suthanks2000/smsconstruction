@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Construction & Interior Design Projects in Nagercoil | SMS Construction",
     description:
       "Explore residential construction and interior design projects by SMS Construction in Nagercoil, Tamil Nadu, including completed spaces and project case studies.",
-    url: "https://smsconstruction.in/projects",
+    url: "https://www.smsconstruction.in/projects",
     siteName: "SMS Construction",
     images: [
       {

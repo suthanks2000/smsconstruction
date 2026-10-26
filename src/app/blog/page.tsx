@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Construction, Real Estate & Interior Design Blog | SMS Construction Nagercoil",
     description:
       "Explore construction, interior design, home planning, real estate advisory, and loan enquiry insights from SMS Construction across Nagercoil and Tamil Nadu.",
-    url: "https://smsconstruction.in/blog",
+    url: "https://www.smsconstruction.in/blog",
     siteName: "SMS Construction",
     locale: "en_IN",
     type: "website",
@@ -32,19 +32,19 @@ export const metadata: Metadata = {
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "@id": "https://smsconstruction.in/blog#breadcrumb",
+  "@id": "https://www.smsconstruction.in/blog#breadcrumb",
   itemListElement: [
     {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://smsconstruction.in",
+      item: "https://www.smsconstruction.in",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Blog",
-      item: "https://smsconstruction.in/blog",
+      item: "https://www.smsconstruction.in/blog",
     },
   ],
 };

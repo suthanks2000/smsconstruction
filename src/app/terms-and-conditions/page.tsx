@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Terms and Conditions | SMS Construction Nagercoil",
     description:
       "Review the Terms and Conditions for using the SMS Construction website and requesting architectural, construction, or interior design services.",
-    url: "https://smsconstruction.in/terms-and-conditions",
+    url: "https://www.smsconstruction.in/terms-and-conditions",
     siteName: "SMS Construction",
     locale: "en_IN",
     type: "website",

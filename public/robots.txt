@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://smsconstruction.in/sitemap.xml
-
+Sitemap: https://www.smsconstruction.in/sitemap.xml

@@ -201,36 +201,36 @@ export default function GoldFinancePage() {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://smsconstruction.in/projects/gold-finance-parvathipuram#breadcrumb",
+        "@id": "https://www.smsconstruction.in/projects/gold-finance-parvathipuram#breadcrumb",
         itemListElement: [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://smsconstruction.in",
+            "item": "https://www.smsconstruction.in",
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Projects",
-            "item": "https://smsconstruction.in/projects",
+            "item": "https://www.smsconstruction.in/projects",
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Gold Finance Branch",
-            "item": "https://smsconstruction.in/projects/gold-finance-parvathipuram",
+            "item": "https://www.smsconstruction.in/projects/gold-finance-parvathipuram",
           },
         ],
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://smsconstruction.in/projects/gold-finance-parvathipuram#project",
+        "@id": "https://www.smsconstruction.in/projects/gold-finance-parvathipuram#project",
         "name": "Gold Finance Branch",
         "headline": "Gold Finance Branch, Parvathipuram",
         "description": project.description,
-        "url": "https://smsconstruction.in/projects/gold-finance-parvathipuram",
-        "image": "https://smsconstruction.in/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp",
+        "url": "https://www.smsconstruction.in/projects/gold-finance-parvathipuram",
+        "image": "https://www.smsconstruction.in/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp",
         "locationCreated": {
           "@type": "Place",
           "name": "Parvathipuram, Nagercoil",
@@ -242,7 +242,7 @@ export default function GoldFinancePage() {
           },
         },
         "creator": {
-          "@id": "https://smsconstruction.in",
+          "@id": "https://www.smsconstruction.in",
         },
       },
     ],

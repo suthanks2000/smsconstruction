@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://smsconstruction.in"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.smsconstruction.in"),
   title: "Interior Design & Construction in Nagercoil | SMS Construction",
   description:
     "Premier Interior Design & Construction Company in Nagercoil. Bespoke residential interior design, turnkey house construction, and specialized interior works across Kanyakumari District.",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Interior Design & Construction in Nagercoil | SMS Construction",
     description:
       "Premier Interior Design & Construction Company in Nagercoil. Bespoke residential interior design, turnkey house construction, and specialized interior works.",
-    url: "https://smsconstruction.in",
+    url: "https://www.smsconstruction.in",
     siteName: "SMS Construction",
     images: [
       {

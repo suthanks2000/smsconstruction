@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import ContactForm from "./components/ContactForm";
 import ModernFaq from "@/components/ModernFaq";
+import { SITE_URL } from "@/lib/constants";
 
 /* ─── SEO Metadata ────────────────────────────────────────────────────────── */
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     title: "Contact SMS Construction | Nagercoil Construction & Interior Design",
     description:
       "Contact SMS Construction in Nagercoil, Tamil Nadu for construction, interior design, planning, survey and fabrication enquiries.",
-    url: "https://www.smsconstruction.in/contact",
+    url: `${SITE_URL}/contact`,
      },
 };
 
@@ -31,20 +32,20 @@ export const metadata: Metadata = {
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "@id": "https://www.smsconstruction.in/contact#webpage",
-  url: "https://www.smsconstruction.in/contact",
+  "@id": `${SITE_URL}/contact#webpage`,
+  url: `${SITE_URL}/contact`,
   name: "Contact SMS Construction | Nagercoil Construction & Interior Design",
   description:
     "Contact SMS Construction in Nagercoil, Tamil Nadu for construction, interior design, planning, survey and fabrication enquiries.",
   isPartOf: {
     "@type": "WebSite",
-    "@id": "https://www.smsconstruction.in/#website",
+    "@id": `${SITE_URL}/#website`,
     name: "SMS Construction",
-    url: "https://www.smsconstruction.in",
+    url: SITE_URL,
   },
   mainEntity: {
     "@type": "HomeAndConstructionBusiness",
-    "@id": "https://www.smsconstruction.in",
+    "@id": SITE_URL,
     name: "SMS Construction",
     telephone: "+91-9488021183",
     email: "smsconstructionngl@gmail.com",
@@ -79,26 +80,26 @@ const contactPageSchema = {
     ],
   },
   breadcrumb: {
-    "@id": "https://www.smsconstruction.in/contact#breadcrumb",
+    "@id": `${SITE_URL}/contact#breadcrumb`,
   },
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "@id": "https://www.smsconstruction.in/contact#breadcrumb",
+  "@id": `${SITE_URL}/contact#breadcrumb`,
   itemListElement: [
     {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://www.smsconstruction.in",
+      item: SITE_URL,
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Contact",
-      item: "https://www.smsconstruction.in/contact",
+      item: `${SITE_URL}/contact`,
     },
   ],
 };

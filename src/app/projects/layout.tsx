@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Construction & Interior Design Projects in Nagercoil | SMS Construction",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     title: "Construction & Interior Design Projects in Nagercoil | SMS Construction",
     description:
       "Explore residential construction and interior design projects by SMS Construction in Nagercoil, Tamil Nadu, including completed spaces and project case studies.",
-    url: "https://www.smsconstruction.in/projects",
+    url: `${SITE_URL}/projects`,
     siteName: "SMS Construction",
     images: [
       {

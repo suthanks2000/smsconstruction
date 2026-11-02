@@ -9,6 +9,7 @@ import ProjectAnimations from "@/app/projects/ProjectAnimations";
 import ProjectServiceHub from "@/app/projects/ProjectServiceHub";
 import ProjectNavigation from "@/app/projects/ProjectNavigation";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 interface GalleryPhoto {
   src: string;
@@ -167,7 +168,7 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!project) {
     return {
       title: "Project Not Found | SMS Construction",
-      robots: { index: false, follow: false },
+      robots: { index: true, follow: true },
     };
   }
 
@@ -222,36 +223,36 @@ export default function ZahirHussainResidencePage() {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://www.smsconstruction.in/projects/zahir-hussain-residence-nagercoil#breadcrumb",
+        "@id": `${SITE_URL}/projects/zahir-hussain-residence-nagercoil#breadcrumb`,
         itemListElement: [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://www.smsconstruction.in",
+            "item": SITE_URL,
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Projects",
-            "item": "https://www.smsconstruction.in/projects",
+            "item": `${SITE_URL}/projects`,
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Zahir Hussain Residence",
-            "item": "https://www.smsconstruction.in/projects/zahir-hussain-residence-nagercoil",
+            "item": `${SITE_URL}/projects/zahir-hussain-residence-nagercoil`,
           },
         ],
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://www.smsconstruction.in/projects/zahir-hussain-residence-nagercoil#project",
+        "@id": `${SITE_URL}/projects/zahir-hussain-residence-nagercoil#project`,
         "name": "Zahir Hussain Residence",
         "headline": "Zahir Hussain Residence, Nagercoil",
         "description": project.description,
-        "url": "https://www.smsconstruction.in/projects/zahir-hussain-residence-nagercoil",
-        "image": "https://www.smsconstruction.in/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-living-room.webp",
+        "url": `${SITE_URL}/projects/zahir-hussain-residence-nagercoil`,
+        "image": `${SITE_URL}/images/projects/zahir-hussain-residence-nagercoil/zahir-hussain-residence-living-room.webp`,
         "locationCreated": {
           "@type": "Place",
           "name": "Nagercoil",
@@ -263,7 +264,7 @@ export default function ZahirHussainResidencePage() {
           },
         },
         "creator": {
-          "@id": "https://www.smsconstruction.in",
+          "@id": SITE_URL,
         },
       },
     ],

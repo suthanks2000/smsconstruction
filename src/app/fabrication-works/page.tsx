@@ -24,6 +24,7 @@ import { geoLocalities } from "@/data/geo";
 import ModernFaq from "@/components/ModernFaq";
 import LocalServiceArea from "@/components/LocalServiceArea";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "ACP, Steel & Aluminium Fabrication in Nagercoil | SMS Construction",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     title: "ACP, Steel & Aluminium Fabrication in Nagercoil | SMS Construction",
     description:
       "Explore ACP, steel and aluminium fabrication services from SMS Construction in Nagercoil, Tamil Nadu, for architectural, construction and interior project requirements.",
-    url: "https://www.smsconstruction.in/fabrication-works",
+    url: `${SITE_URL}/fabrication-works`,
     siteName: "SMS Construction",
     images: [
       {
@@ -72,19 +73,19 @@ export default function FabricationWorksPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.smsconstruction.in",
+        item: SITE_URL,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://www.smsconstruction.in/services",
+        item: `${SITE_URL}/services`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Fabrication Works",
-        item: "https://www.smsconstruction.in/fabrication-works",
+        item: `${SITE_URL}/fabrication-works`,
       },
     ],
   };

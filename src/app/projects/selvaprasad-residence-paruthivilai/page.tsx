@@ -9,6 +9,7 @@ import ProjectAnimations from "@/app/projects/ProjectAnimations";
 import ProjectServiceHub from "@/app/projects/ProjectServiceHub";
 import ProjectNavigation from "@/app/projects/ProjectNavigation";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 interface GalleryPhoto {
   src: string;
@@ -188,7 +189,7 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!project) {
     return {
       title: "Project Not Found | SMS Construction",
-      robots: { index: false, follow: false },
+      robots: { index: true, follow: true },
     };
   }
 
@@ -243,36 +244,36 @@ export default function SelvaprasadResidencePage() {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://www.smsconstruction.in/projects/selvaprasad-residence-paruthivilai#breadcrumb",
+        "@id": `${SITE_URL}/projects/selvaprasad-residence-paruthivilai#breadcrumb`,
         itemListElement: [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://www.smsconstruction.in",
+            "item": SITE_URL,
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Projects",
-            "item": "https://www.smsconstruction.in/projects",
+            "item": `${SITE_URL}/projects`,
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Selvaprasad Residence",
-            "item": "https://www.smsconstruction.in/projects/selvaprasad-residence-paruthivilai",
+            "item": `${SITE_URL}/projects/selvaprasad-residence-paruthivilai`,
           },
         ],
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://www.smsconstruction.in/projects/selvaprasad-residence-paruthivilai#project",
+        "@id": `${SITE_URL}/projects/selvaprasad-residence-paruthivilai#project`,
         "name": "Selvaprasad Residence",
         "headline": "Selvaprasad Residence, Paruthivilai",
         "description": project.description,
-        "url": "https://www.smsconstruction.in/projects/selvaprasad-residence-paruthivilai",
-        "image": "https://www.smsconstruction.in/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp",
+        "url": `${SITE_URL}/projects/selvaprasad-residence-paruthivilai`,
+        "image": `${SITE_URL}/images/projects/selvaprasad-residence-paruthivilai/living-room-tv-unit-hero.webp`,
         "locationCreated": {
           "@type": "Place",
           "name": "Paruthivilai, Nagercoil",
@@ -284,7 +285,7 @@ export default function SelvaprasadResidencePage() {
           },
         },
         "creator": {
-          "@id": "https://www.smsconstruction.in",
+          "@id": SITE_URL,
         },
       },
     ],

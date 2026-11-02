@@ -20,6 +20,7 @@ import {
 import ModernFaq from "@/components/ModernFaq";
 import LocalServiceArea from "@/components/LocalServiceArea";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Design & Planning Services in Nagercoil | SMS Construction",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     title: "Design & Planning Services in Nagercoil | SMS Construction",
     description:
       "Explore design and planning services from SMS Construction in Nagercoil, including 3D elevation, interior design, walkthrough visualization, structural design, drawings and building plans.",
-    url: "https://www.smsconstruction.in/design-planning",
+    url: `${SITE_URL}/design-planning`,
     siteName: "SMS Construction",
     images: [
       {
@@ -68,19 +69,19 @@ export default function DesignPlanningPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.smsconstruction.in",
+        item: SITE_URL,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://www.smsconstruction.in/services",
+        item: `${SITE_URL}/services`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Design & Planning",
-        item: "https://www.smsconstruction.in/design-planning",
+        item: `${SITE_URL}/design-planning`,
       },
     ],
   };
@@ -92,7 +93,7 @@ export default function DesignPlanningPage() {
     serviceType: "Architectural Design, Spatial Planning, and 3D Visualization",
     description:
       "Architectural space planning, 3D elevation, interior design direction, walkthrough visualization, structural coordination, and pre-construction building plans in Nagercoil.",
-    url: "https://www.smsconstruction.in/design-planning",
+    url: `${SITE_URL}/design-planning`,
     provider: {
       "@type": "HomeAndConstructionBusiness",
       name: "SMS Construction",

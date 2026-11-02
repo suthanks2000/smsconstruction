@@ -6,9 +6,6 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(self)
 
-/design-system*
-  X-Robots-Tag: noindex, nofollow
-
 
 # Immutable cache for static build assets
 /_next/static/*

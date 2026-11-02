@@ -1,13 +1,14 @@
 import { LocalBusiness, WithContext } from "schema-dts";
+import { SITE_URL } from "@/lib/constants";
 
 export default function LocalBusinessSchema() {
   const jsonLd: WithContext<LocalBusiness> = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     name: "SMS Construction",
-    image: "https://www.smsconstruction.in/hero.webp",
-    "@id": "https://www.smsconstruction.in/#organization",
-    url: "https://www.smsconstruction.in",
+    image: `${SITE_URL}/hero.webp`,
+    "@id": `${SITE_URL}/#organization`,
+    url: SITE_URL,
     telephone: "+919488021183",
     email: "smsconstructionngl@gmail.com",
     address: {

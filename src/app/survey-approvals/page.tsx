@@ -21,6 +21,7 @@ import { geoLocalities } from "@/data/geo";
 import ModernFaq from "@/components/ModernFaq";
 import LocalServiceArea from "@/components/LocalServiceArea";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Land Survey & Approval Support in Nagercoil | SMS Construction",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     title: "Land Survey & Approval Support in Nagercoil | SMS Construction",
     description:
       "Explore land and site survey services from SMS Construction in Nagercoil, including tape, digital, total station, building marking, topographical and contour surveys, layout preparation and FMB-related support.",
-    url: "https://www.smsconstruction.in/survey-approvals",
+    url: `${SITE_URL}/survey-approvals`,
     siteName: "SMS Construction",
     images: [
       {
@@ -69,19 +70,19 @@ export default function SurveyApprovalsPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.smsconstruction.in",
+        item: SITE_URL,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://www.smsconstruction.in/services",
+        item: `${SITE_URL}/services`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Survey & Approvals",
-        item: "https://www.smsconstruction.in/survey-approvals",
+        item: `${SITE_URL}/survey-approvals`,
       },
     ],
   };

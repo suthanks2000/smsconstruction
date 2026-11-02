@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions | SMS Construction Nagercoil",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     title: "Terms and Conditions | SMS Construction Nagercoil",
     description:
       "Review the Terms and Conditions for using the SMS Construction website and requesting architectural, construction, or interior design services.",
-    url: "https://www.smsconstruction.in/terms-and-conditions",
+    url: `${SITE_URL}/terms-and-conditions`,
     siteName: "SMS Construction",
     locale: "en_IN",
     type: "website",

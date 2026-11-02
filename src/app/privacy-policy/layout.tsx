@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | SMS Construction Nagercoil",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy | SMS Construction Nagercoil",
     description:
       "Read the Privacy Policy for SMS Construction, a construction and interior design studio in Nagercoil, Tamil Nadu.",
-    url: "https://www.smsconstruction.in/privacy-policy",
+    url: `${SITE_URL}/privacy-policy`,
     siteName: "SMS Construction",
     images: [
       {
@@ -70,13 +71,13 @@ export default function PrivacyPolicyLayout({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.smsconstruction.in",
+        item: SITE_URL,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Privacy Policy",
-        item: "https://www.smsconstruction.in/privacy-policy",
+        item: `${SITE_URL}/privacy-policy`,
       },
     ],
   };
@@ -84,26 +85,26 @@ export default function PrivacyPolicyLayout({
   const webpageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://www.smsconstruction.in/privacy-policy#webpage",
-    url: "https://www.smsconstruction.in/privacy-policy",
+    "@id": `${SITE_URL}/privacy-policy#webpage`,
+    url: `${SITE_URL}/privacy-policy`,
     name: "Privacy Policy | SMS Construction Nagercoil",
     description:
       "Read the Privacy Policy for SMS Construction, a construction and interior design studio in Nagercoil, Tamil Nadu.",
     inLanguage: "en-IN",
     isPartOf: {
       "@type": "WebSite",
-      "@id": "https://www.smsconstruction.in/#website",
-      url: "https://www.smsconstruction.in",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
       name: "SMS Construction",
     },
     about: {
       "@type": "HomeAndConstructionBusiness",
-      "@id": "https://www.smsconstruction.in",
+      "@id": SITE_URL,
       name: "SMS Construction",
     },
     publisher: {
       "@type": "HomeAndConstructionBusiness",
-      "@id": "https://www.smsconstruction.in",
+      "@id": SITE_URL,
       name: "SMS Construction",
       telephone: "+919488021183",
       email: "smsconstructionngl@gmail.com",

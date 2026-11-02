@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "This space hasn't been built yet. The page you're looking for may have moved, been removed, or never existed.",
   robots: {
-    index: false,
+    index: true,
     follow: true,
   },
 };

@@ -4,9 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.smsconstruction.in"),
+  metadataBase: new URL(SITE_URL),
   title: "Interior Design & Construction in Nagercoil | SMS Construction",
   description:
     "Premier Interior Design & Construction Company in Nagercoil. Bespoke residential interior design, turnkey house construction, and specialized interior works across Kanyakumari District.",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     title: "Interior Design & Construction in Nagercoil | SMS Construction",
     description:
       "Premier Interior Design & Construction Company in Nagercoil. Bespoke residential interior design, turnkey house construction, and specialized interior works.",
-    url: "https://www.smsconstruction.in",
+    url: SITE_URL,
     siteName: "SMS Construction",
     images: [
       {

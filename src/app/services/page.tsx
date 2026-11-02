@@ -23,6 +23,7 @@ import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import LocalServiceArea from "@/components/LocalServiceArea";
 import ModernFaq from "@/components/ModernFaq";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -166,13 +167,13 @@ export default function ServicesPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.smsconstruction.in",
+        item: SITE_URL,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://www.smsconstruction.in/services",
+        item: `${SITE_URL}/services`,
       },
     ],
   };
@@ -189,7 +190,7 @@ export default function ServicesPage() {
       position: idx + 1,
       name: service.title,
       description: service.description,
-      url: `https://www.smsconstruction.in${service.href}`,
+      url: `${SITE_URL}${service.href}`,
       provider: {
         "@type": "HomeAndConstructionBusiness",
         name: "SMS Construction",

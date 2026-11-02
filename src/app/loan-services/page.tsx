@@ -22,6 +22,7 @@ import { geoLocalities } from "@/data/geo";
 import ModernFaq from "@/components/ModernFaq";
 import LocalServiceArea from "@/components/LocalServiceArea";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Loan Services in Nagercoil & Tamil Nadu | SMS Construction",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     title: "Loan Services in Nagercoil & Tamil Nadu | SMS Construction",
     description:
       "Enquire about loan options and project financing coordination across Nagercoil, Kanyakumari District, and all over Tamil Nadu. Information on provisional home loans, property loans, business, and personal loans.",
-    url: "https://www.smsconstruction.in/loan-services",
+    url: `${SITE_URL}/loan-services`,
     siteName: "SMS Construction",
     images: [
       {
@@ -72,19 +73,19 @@ export default function LoanServicesPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.smsconstruction.in",
+        item: SITE_URL,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://www.smsconstruction.in/services",
+        item: `${SITE_URL}/services`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Loan Services",
-        item: "https://www.smsconstruction.in/loan-services",
+        item: `${SITE_URL}/loan-services`,
       },
     ],
   };

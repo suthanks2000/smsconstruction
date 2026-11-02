@@ -1,6 +1,11 @@
 # Cloudflare Pages 301 Permanent Redirects for SMS Construction
 # Format: <source-path> <target-path> <status-code>
 
+# Force non-www and HTTPS canonical domain
+https://www.smsconstruction.in/* https://smsconstruction.in/:splat 301!
+http://www.smsconstruction.in/*  https://smsconstruction.in/:splat 301!
+http://smsconstruction.in/*      https://smsconstruction.in/:splat 301!
+
 # Core Company & Contact Routes
 /about                       /about-us                301
 /contact-us                  /contact                 301

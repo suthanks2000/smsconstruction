@@ -9,6 +9,7 @@ import ProjectAnimations from "@/app/projects/ProjectAnimations";
 import ProjectServiceHub from "@/app/projects/ProjectServiceHub";
 import ProjectNavigation from "@/app/projects/ProjectNavigation";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 interface GalleryPhoto {
   src: string;
@@ -146,7 +147,7 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!project) {
     return {
       title: "Project Not Found | SMS Construction",
-      robots: { index: false, follow: false },
+      robots: { index: true, follow: true },
     };
   }
 
@@ -201,36 +202,36 @@ export default function GoldFinancePage() {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://www.smsconstruction.in/projects/gold-finance-parvathipuram#breadcrumb",
+        "@id": `${SITE_URL}/projects/gold-finance-parvathipuram#breadcrumb`,
         itemListElement: [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://www.smsconstruction.in",
+            "item": SITE_URL,
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Projects",
-            "item": "https://www.smsconstruction.in/projects",
+            "item": `${SITE_URL}/projects`,
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Gold Finance Branch",
-            "item": "https://www.smsconstruction.in/projects/gold-finance-parvathipuram",
+            "item": `${SITE_URL}/projects/gold-finance-parvathipuram`,
           },
         ],
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://www.smsconstruction.in/projects/gold-finance-parvathipuram#project",
+        "@id": `${SITE_URL}/projects/gold-finance-parvathipuram#project`,
         "name": "Gold Finance Branch",
         "headline": "Gold Finance Branch, Parvathipuram",
         "description": project.description,
-        "url": "https://www.smsconstruction.in/projects/gold-finance-parvathipuram",
-        "image": "https://www.smsconstruction.in/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp",
+        "url": `${SITE_URL}/projects/gold-finance-parvathipuram`,
+        "image": `${SITE_URL}/images/projects/gold-finance-parvathipuram/gold-finance-banking-hall-hero.webp`,
         "locationCreated": {
           "@type": "Place",
           "name": "Parvathipuram, Nagercoil",
@@ -242,7 +243,7 @@ export default function GoldFinancePage() {
           },
         },
         "creator": {
-          "@id": "https://www.smsconstruction.in",
+          "@id": SITE_URL,
         },
       },
     ],

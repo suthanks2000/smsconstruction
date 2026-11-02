@@ -17,6 +17,7 @@ import ModernFaq from "@/components/ModernFaq";
 import CatalogGalleryDrawer from "./components/CatalogGalleryDrawer";
 import CategoryJumpNav from "./components/CategoryJumpNav";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Interior Works in Nagercoil | SMS Construction",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     title: "Interior Works in Nagercoil | SMS Construction",
     description:
       "Turnkey interior works and bespoke interior design in Nagercoil by SMS Construction. Explore custom modular kitchens, bedroom joinery, false ceilings, TV units, and living space solutions across Kanyakumari.",
-    url: "https://www.smsconstruction.in/interior-design",
+    url: `${SITE_URL}/interior-design`,
     siteName: "SMS Construction",
     images: [
       {
@@ -65,19 +66,19 @@ export default function InteriorDesignPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.smsconstruction.in",
+        item: SITE_URL,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://www.smsconstruction.in/services",
+        item: `${SITE_URL}/services`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Interior Works",
-        item: "https://www.smsconstruction.in/interior-design",
+        item: `${SITE_URL}/interior-design`,
       },
     ],
   };
@@ -89,7 +90,7 @@ export default function InteriorDesignPage() {
     serviceType: "Residential Interior Works",
     description:
       "Bespoke residential interior works and interior design in Nagercoil, including space planning, modular kitchen fabrication, bedroom joinery, false ceiling lighting, TV units, wall decor and terrace gardens.",
-    url: "https://www.smsconstruction.in/interior-design",
+    url: `${SITE_URL}/interior-design`,
     provider: {
       "@type": "HomeAndConstructionBusiness",
       name: "SMS Construction",

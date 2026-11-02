@@ -22,6 +22,7 @@ import { geoLocalities } from "@/data/geo";
 import ModernFaq from "@/components/ModernFaq";
 import LocalServiceArea from "@/components/LocalServiceArea";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Real Estate Services in Nagercoil & Tamil Nadu | SMS Construction",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     title: "Real Estate Services in Nagercoil & Tamil Nadu | SMS Construction",
     description:
       "Professional real estate services across Nagercoil, Kanyakumari District, and all over Tamil Nadu. Property buying guidance, selling assistance, site evaluation, and technical due diligence by SMS Construction.",
-    url: "https://www.smsconstruction.in/real-estate",
+    url: `${SITE_URL}/real-estate`,
     siteName: "SMS Construction",
     images: [
       {
@@ -70,19 +71,19 @@ export default function RealEstatePage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.smsconstruction.in",
+        item: SITE_URL,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://www.smsconstruction.in/services",
+        item: `${SITE_URL}/services`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Real Estate",
-        item: "https://www.smsconstruction.in/real-estate",
+        item: `${SITE_URL}/real-estate`,
       },
     ],
   };

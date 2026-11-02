@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/data/blog";
 import BlogContentSection from "./components/BlogContentSection";
 import BlogCTA from "./components/BlogCTA";
+import { SITE_URL } from "@/lib/constants";
 
 /* ─── SEO Metadata ────────────────────────────────────────────────────────── */
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     title: "Construction, Real Estate & Interior Design Blog | SMS Construction Nagercoil",
     description:
       "Explore construction, interior design, home planning, real estate advisory, and loan enquiry insights from SMS Construction across Nagercoil and Tamil Nadu.",
-    url: "https://www.smsconstruction.in/blog",
+    url: `${SITE_URL}/blog`,
     siteName: "SMS Construction",
     locale: "en_IN",
     type: "website",
@@ -32,19 +33,19 @@ export const metadata: Metadata = {
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "@id": "https://www.smsconstruction.in/blog#breadcrumb",
+  "@id": `${SITE_URL}/blog#breadcrumb`,
   itemListElement: [
     {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://www.smsconstruction.in",
+      item: SITE_URL,
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Blog",
-      item: "https://www.smsconstruction.in/blog",
+      item: `${SITE_URL}/blog`,
     },
   ],
 };

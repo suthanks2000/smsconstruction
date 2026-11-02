@@ -14,6 +14,7 @@ import LocalServiceArea from "@/components/LocalServiceArea";
 import ModernFaq from "@/components/ModernFaq";
 import ConversionCTA from "@/components/ConversionCTA";
 import AboutStats from "@/components/AboutStats";
+import { SITE_URL } from "@/lib/constants";
 
 /* ─── SEO Metadata ────────────────────────────────────────────────────────── */
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     title: "About SMS Construction | Construction & Interior Design in Nagercoil",
     description:
       "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, planning, surveying and fabrication services.",
-    url: "https://www.smsconstruction.in/about-us",
+    url: `${SITE_URL}/about-us`,
     siteName: "SMS Construction",
     images: [
       {
@@ -55,37 +56,37 @@ export const metadata: Metadata = {
 const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "@id": "https://www.smsconstruction.in/about-us#webpage",
-  url: "https://www.smsconstruction.in/about-us",
+  "@id": `${SITE_URL}/about-us#webpage`,
+  url: `${SITE_URL}/about-us`,
   name: "About SMS Construction | Construction & Interior Design in Nagercoil",
   description:
     "Learn about SMS Construction, a Nagercoil-based construction and interior design company offering construction, planning, surveying and fabrication services.",
   isPartOf: {
     "@type": "WebSite",
-    "@id": "https://www.smsconstruction.in/#website",
+    "@id": `${SITE_URL}/#website`,
     name: "SMS Construction",
-    url: "https://www.smsconstruction.in",
+    url: SITE_URL,
   },
   about: {
-    "@id": "https://www.smsconstruction.in",
+    "@id": SITE_URL,
   },
   mainEntity: {
-    "@id": "https://www.smsconstruction.in",
+    "@id": SITE_URL,
   },
   breadcrumb: {
-    "@id": "https://www.smsconstruction.in/about-us#breadcrumb",
+    "@id": `${SITE_URL}/about-us#breadcrumb`,
   },
 };
 
 const ceoPersonSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "@id": "https://www.smsconstruction.in/about-us#ceo",
+  "@id": `${SITE_URL}/about-us#ceo`,
   name: "S. Harish",
   jobTitle: "Chief Executive Officer",
   worksFor: {
     "@type": "HomeAndConstructionBusiness",
-    "@id": "https://www.smsconstruction.in",
+    "@id": SITE_URL,
     name: "SMS Construction",
   },
 };
@@ -93,19 +94,19 @@ const ceoPersonSchema = {
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "@id": "https://www.smsconstruction.in/about-us#breadcrumb",
+  "@id": `${SITE_URL}/about-us#breadcrumb`,
   itemListElement: [
     {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://www.smsconstruction.in",
+      item: SITE_URL,
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "About Us",
-      item: "https://www.smsconstruction.in/about-us",
+      item: `${SITE_URL}/about-us`,
     },
   ],
 };

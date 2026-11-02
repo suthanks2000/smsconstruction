@@ -9,6 +9,7 @@ import ProjectAnimations from "@/app/projects/ProjectAnimations";
 import ProjectServiceHub from "@/app/projects/ProjectServiceHub";
 import ProjectNavigation from "@/app/projects/ProjectNavigation";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 interface GalleryPhoto {
   src: string;
@@ -178,7 +179,7 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!project) {
     return {
       title: "Project Not Found | SMS Construction",
-      robots: { index: false, follow: false },
+      robots: { index: true, follow: true },
     };
   }
 
@@ -233,36 +234,36 @@ export default function GodwinDhasResidencePage() {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://www.smsconstruction.in/projects/godwin-dhas-residence#breadcrumb",
+        "@id": `${SITE_URL}/projects/godwin-dhas-residence#breadcrumb`,
         itemListElement: [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://www.smsconstruction.in",
+            "item": SITE_URL,
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Projects",
-            "item": "https://www.smsconstruction.in/projects",
+            "item": `${SITE_URL}/projects`,
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Godwin Dhas Residence",
-            "item": "https://www.smsconstruction.in/projects/godwin-dhas-residence",
+            "item": `${SITE_URL}/projects/godwin-dhas-residence`,
           },
         ],
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://www.smsconstruction.in/projects/godwin-dhas-residence#project",
+        "@id": `${SITE_URL}/projects/godwin-dhas-residence#project`,
         "name": "Godwin Dhas Residence",
         "headline": "Godwin Dhas Residence, Chunkankadai",
         "description": project.description,
-        "url": "https://www.smsconstruction.in/projects/godwin-dhas-residence",
-        "image": "https://www.smsconstruction.in/images/projects/godwin-dhas-residence/master-suite-floating-bed-hero.webp",
+        "url": `${SITE_URL}/projects/godwin-dhas-residence`,
+        "image": `${SITE_URL}/images/projects/godwin-dhas-residence/master-suite-floating-bed-hero.webp`,
         "locationCreated": {
           "@type": "Place",
           "name": "Chunkankadai, Nagercoil",
@@ -274,7 +275,7 @@ export default function GodwinDhasResidencePage() {
           },
         },
         "creator": {
-          "@id": "https://www.smsconstruction.in",
+          "@id": SITE_URL,
         },
       },
     ],

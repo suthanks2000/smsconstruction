@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | SMS Construction Nagercoil",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy | SMS Construction Nagercoil",
     description:
       "Read the Privacy Policy for SMS Construction in Nagercoil, Tamil Nadu. Learn how we handle your personal information and project enquiries.",
-    url: "https://www.smsconstruction.in/privacy-policy",
+    url: `${SITE_URL}/privacy-policy`,
     siteName: "SMS Construction",
     locale: "en_IN",
     type: "website",

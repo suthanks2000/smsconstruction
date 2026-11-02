@@ -9,6 +9,7 @@ import ProjectAnimations from "@/app/projects/ProjectAnimations";
 import ProjectServiceHub from "@/app/projects/ProjectServiceHub";
 import ProjectNavigation from "@/app/projects/ProjectNavigation";
 import ConversionCTA from "@/components/ConversionCTA";
+import { SITE_URL } from "@/lib/constants";
 
 // Real Nagarajan Residence Gallery Data (real images only, verified filenames)
 interface GalleryPhoto {
@@ -168,7 +169,7 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!project) {
     return {
       title: "Project Not Found | SMS Construction",
-      robots: { index: false, follow: false },
+      robots: { index: true, follow: true },
     };
   }
 
@@ -226,37 +227,37 @@ export default function NagarajanResidencePage() {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://www.smsconstruction.in/projects/nagarajan-residence-nagercoil-theroor#breadcrumb",
+        "@id": `${SITE_URL}/projects/nagarajan-residence-nagercoil-theroor#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://www.smsconstruction.in",
+            "item": SITE_URL,
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Projects",
-            "item": "https://www.smsconstruction.in/projects",
+            "item": `${SITE_URL}/projects`,
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Nagarajan Residence",
-            "item": "https://www.smsconstruction.in/projects/nagarajan-residence-nagercoil-theroor",
+            "item": `${SITE_URL}/projects/nagarajan-residence-nagercoil-theroor`,
           },
         ],
       },
       {
         "@type": "CreativeWork",
-        "@id": "https://www.smsconstruction.in/projects/nagarajan-residence-nagercoil-theroor#project",
+        "@id": `${SITE_URL}/projects/nagarajan-residence-nagercoil-theroor#project`,
         "name": "Nagarajan Residence",
         "headline": "Nagarajan Residence, Nagercoil",
         "description":
           "Explore the Nagarajan Residence project in Nagercoil, featuring residential interior design, custom living spaces, kitchen design and detailed interior work by SMS Construction.",
-        "url": "https://www.smsconstruction.in/projects/nagarajan-residence-nagercoil-theroor",
-        "image": "https://www.smsconstruction.in/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room-wide.webp",
+        "url": `${SITE_URL}/projects/nagarajan-residence-nagercoil-theroor`,
+        "image": `${SITE_URL}/images/projects/nagarajan-residence-nagercoil-theroor/nagarajan-residence-living-room-wide.webp`,
         "locationCreated": {
           "@type": "Place",
           "name": "Theroor, Nagercoil",
@@ -268,7 +269,7 @@ export default function NagarajanResidencePage() {
           },
         },
         "creator": {
-          "@id": "https://www.smsconstruction.in",
+          "@id": SITE_URL,
         },
       },
     ],

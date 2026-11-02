@@ -20,7 +20,6 @@ export default function GlobalError({
     <html lang="en">
       <head>
         <title>Something Went Wrong | SMS Construction</title>
-        <meta name="robots" content="noindex, nofollow" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
